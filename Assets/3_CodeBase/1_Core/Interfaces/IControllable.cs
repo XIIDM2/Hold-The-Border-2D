@@ -1,6 +1,1 @@
-using UnityEngine;
-
-public interface IControllable
-{
-
-}
+public interface IControllable { }

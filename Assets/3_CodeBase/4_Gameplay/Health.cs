@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     public event UnityAction<int> OnHealthChanged;
     public event UnityAction OnDeath;
 
-    [Header("Parameters")]
+    [Header("Parameters"), Space(5)]
     [SerializeField] private int _maxHealth;
     [SerializeField] private int _currentHealth;
 

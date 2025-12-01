@@ -6,18 +6,23 @@ public class ObjectDirection
     
     public void FaceDirection(Transform transform, float value)
     {
-        Vector3 transformScale = transform.localScale;
+        Vector3 currentScale = transform.localScale;
+        float newScaleX = currentScale.x;
 
         if (value < -THRESHOLD)
         {
-            transformScale.x = -Mathf.Abs(transformScale.x);
+            newScaleX = Mathf.Abs(newScaleX);
         }
         else if (value > THRESHOLD)
         {
-            transformScale.x = Mathf.Abs(transformScale.x);
+            newScaleX = -Mathf.Abs(newScaleX);
         }
 
-        transform.localScale = transformScale;
+        if (currentScale.x != newScaleX)
+        {
+            currentScale.x = newScaleX;
+            transform.localScale = currentScale;
+        }
     }
 }
 
