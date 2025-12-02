@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour, IControllable
 {
-    public Transform _testTransform;
-
     [Header("Components")]
     public UnitMovement Movement {  get; private set; }
     public Health Health { get; private set; }
     public UnitAnimation Animation { get; private set; }
+
+    public UnitPathing Pathing { get; private set; }
 
     [Header("FSM")]
     public FiniteStateMachine<UnitController> ActionFSM { get; private set; }
@@ -17,6 +17,7 @@ public class UnitController : MonoBehaviour, IControllable
     {        
         Movement = GetComponent<UnitMovement>();
         Animation = GetComponentInChildren<UnitAnimation>();
+        Pathing = GetComponent<UnitPathing>();
 
         Health = GetComponent<Health>();
     }
@@ -43,6 +44,11 @@ public class UnitController : MonoBehaviour, IControllable
     private void FixedUpdate()
     {
         ActionFSM.FixedUpdateState(this);
+    }
+
+    public void DestroyUnit()
+    {
+        Destroy(gameObject);
     }
 
 }

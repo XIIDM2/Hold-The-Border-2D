@@ -19,13 +19,26 @@ public class UnitMoveState : UnitState
         controller.Animation.SetFloat(UnitAnimationParameter.Horizontal, controller.Movement.Direction.x);
         controller.Animation.SetFloat(UnitAnimationParameter.Vertical, controller.Movement.Direction.y);
         controller.Animation.SetBool(UnitAnimationParameter.IsMoving, true);
+
+        if (controller.Pathing.CheckWaypointReached())
+        { 
+            controller.Pathing.SetNextWaypoint();
+
+            if (controller.Pathing.HasReachedEnd())
+            {
+                // Logic of damaging player
+                controller.DestroyUnit();
+                return;
+            }
+
+        }
     }
 
     public override void FixedUpdate(UnitController controller)
     {
         base.FixedUpdate(controller);
 
-        controller.Movement.Move(controller._testTransform.position);
+        controller.Movement.Move(controller.Pathing.CurrentPosition);
     }
 
     public override void Exit(UnitController controller)

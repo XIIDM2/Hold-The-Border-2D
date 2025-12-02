@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7315338313252261706}
   - component: {fileID: 6495913371268176026}
   - component: {fileID: 1515303371058885398}
+  - component: {fileID: 7991394258158374428}
   m_Layer: 0
   m_Name: Visual Model
   m_TagString: Untagged
@@ -102,7 +103,7 @@ Animator:
   m_GameObject: {fileID: 4619070346026018629}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6674c6804b6d96d44832dbe5523c9d94, type: 2}
+  m_Controller: {fileID: 22100000, guid: 23737d2542d27f24ea16cc0aad69c3c7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -160,6 +161,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.47692, y: 0.82406557}
   m_EdgeRadius: 0
+--- !u!114 &7991394258158374428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4619070346026018629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d966faa1c435ede40be5940258770a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAnimation
 --- !u!1 &7949650424772140157
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +182,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8323583371487474544}
+  - component: {fileID: 3216604539289381673}
+  - component: {fileID: -6557192063188809589}
+  - component: {fileID: 3657075576374647880}
+  - component: {fileID: 1340096752523334569}
+  - component: {fileID: 4684230387540147149}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -192,3 +210,83 @@ Transform:
   - {fileID: 4173926716448611784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &3216604539289381673
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949650424772140157}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-6557192063188809589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949650424772140157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6999d766eb2f9a845b4987fc85d3016b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  _maxHealth: 0
+  _currentHealth: 0
+--- !u!114 &3657075576374647880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949650424772140157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6afdabb1b3081458ac436928f1078c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
+  _movementSpeed: 2
+--- !u!114 &1340096752523334569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949650424772140157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitController
+--- !u!114 &4684230387540147149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949650424772140157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ee65104a15bf442906c4a7c3977ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
+  _current: {fileID: 0}
+  _distance: 0.5

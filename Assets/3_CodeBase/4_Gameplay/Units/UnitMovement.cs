@@ -22,11 +22,12 @@ public class UnitMovement : MonoBehaviour
 
     public void Move(Vector2 target)
     {
-        Direction = (target - _rb.position);
+        Direction = target - _rb.position;
 
         _rb.MovePosition(_rb.position + Direction.normalized * Time.fixedDeltaTime * _movementSpeed);
 
         _unitDirection.FaceDirection(transform, Direction.x);
     }
+
 }
     

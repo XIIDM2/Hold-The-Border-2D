@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 7107710250012191701}
   - component: {fileID: 4599035323822510898}
   - component: {fileID: 6805162202336357743}
+  - component: {fileID: 4399440532094975211}
   m_Layer: 0
   m_Name: Bee
   m_TagString: Untagged
@@ -275,4 +276,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitController
-  _testTransform: {fileID: 0}
+--- !u!114 &4399440532094975211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8557600674527194567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ee65104a15bf442906c4a7c3977ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
+  _current: {fileID: 0}
+  _distance: 0.5

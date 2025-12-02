@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 945888555483874124}
   - component: {fileID: 6759961708135071507}
   - component: {fileID: 1930276598612900704}
+  - component: {fileID: 5473815523527175957}
   m_Layer: 0
   m_Name: BabySlime
   m_TagString: Untagged
@@ -275,4 +276,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitController
-  _testTransform: {fileID: 0}
+--- !u!114 &5473815523527175957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9057844722518317413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5ee65104a15bf442906c4a7c3977ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
+  _current: {fileID: 0}
+  _distance: 0.5
