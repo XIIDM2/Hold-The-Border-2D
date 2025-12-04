@@ -1,10 +1,13 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(UnitMovement))]
+[RequireComponent(typeof(UnitPathing))]
 public class UnitController : MonoBehaviour, IControllable
 {
     [Header("Components")]
-    public UnitMovement Movement {  get; private set; }
     public Health Health { get; private set; }
+    public UnitMovement Movement {  get; private set; }
     public UnitAnimation Animation { get; private set; }
 
     public UnitPathing Pathing { get; private set; }
@@ -44,6 +47,11 @@ public class UnitController : MonoBehaviour, IControllable
     private void FixedUpdate()
     {
         ActionFSM.FixedUpdateState(this);
+    }
+
+    public void Init(Waypoint start)
+    {
+        Pathing.Init(start);
     }
 
     public void DestroyUnit()

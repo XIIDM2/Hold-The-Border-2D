@@ -288,5 +288,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ee65104a15bf442906c4a7c3977ee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
-  _current: {fileID: 0}
-  _distance: 0.5
+  _offset: 1
+  _distance: 0.2

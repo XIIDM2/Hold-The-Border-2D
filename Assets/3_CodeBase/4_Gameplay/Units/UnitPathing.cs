@@ -4,13 +4,14 @@ public class UnitPathing : MonoBehaviour
 {
     public Vector2 CurrentPosition { get; private set; }
 
-    [SerializeField] private Waypoint _current;
-
-    [SerializeField] private float _distance = 0.5f;
     [SerializeField] private float _offset = 1.0f;
+    [SerializeField] private float _distance = 0.2f;
 
-    private void Start()
+    private Waypoint _current;
+
+    public void Init(Waypoint start)
     {
+        _current = start;
         AddRandomOffset();
     }
 

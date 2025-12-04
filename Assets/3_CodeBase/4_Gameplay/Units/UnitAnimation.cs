@@ -11,6 +11,7 @@ public enum UnitAnimationParameter
 
 }
 
+[RequireComponent(typeof(Animator))]
 public class UnitAnimation : MonoBehaviour
 {
     private Animator _animator;
