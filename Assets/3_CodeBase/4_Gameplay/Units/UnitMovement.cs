@@ -1,10 +1,11 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
     public Vector2 Direction { get; private set; }
 
-    [SerializeField] private float _movementSpeed;
+    [SerializeField, ReadOnly] private float _movementSpeed;
 
     private Rigidbody2D _rb;
 
@@ -18,6 +19,11 @@ public class UnitMovement : MonoBehaviour
     private void Start()
     {
         _unitDirection = new ObjectDirection();
+    }
+
+    public void Init(float movementSpeed)
+    {
+        _movementSpeed = movementSpeed;
     }
 
     public void Move(Vector2 target)

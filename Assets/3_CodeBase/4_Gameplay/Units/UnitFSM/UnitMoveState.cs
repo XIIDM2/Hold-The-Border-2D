@@ -26,7 +26,7 @@ public class UnitMoveState : UnitState
 
             if (controller.Pathing.HasReachedEnd())
             {
-                // Logic of damaging player
+                Messenger<int>.Broadcast(Events.UnitReachedEnd, controller.Attack.PathEndDamage);
                 controller.DestroyUnit();
                 return;
             }

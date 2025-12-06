@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,11 +8,9 @@ public class Health : MonoBehaviour
     public event UnityAction<int> OnHealthChanged;
     public event UnityAction OnDeath;
 
-    [Header("Parameters"), Space(5)]
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _currentHealth;
-
-    public int MaxHealth => _maxHealth;
+    [Header("Parameters")]
+    [ShowNativeProperty] public int MaxHealth {  get; private set; }
+    [SerializeField, ReadOnly] private int _currentHealth;
 
     public int CurrentHealth
     {
@@ -21,20 +20,20 @@ public class Health : MonoBehaviour
         }
         private set
         {
-            _currentHealth = Math.Clamp(value, 0, _maxHealth);
+            _currentHealth = Math.Clamp(value, 0, MaxHealth);
             OnHealthChanged?.Invoke(_currentHealth);
         }
-    }
- 
-    private void Awake()
-    {
-        _maxHealth = 10; // change on data later
-        _currentHealth = _maxHealth;
     }
 
     private void Start()
     {
+        _currentHealth = MaxHealth;
         OnHealthChanged?.Invoke(_currentHealth);
+    }
+
+    public void Init(int maxHealth)
+    {
+        MaxHealth = maxHealth;
     }
 
     public void TakeDamage(int amount)
@@ -51,7 +50,7 @@ public class Health : MonoBehaviour
 
     public void HealDamage(int amount)
     {
-        if (CurrentHealth <= 0 || CurrentHealth >= _maxHealth) return;
+        if (CurrentHealth <= 0 || CurrentHealth >= MaxHealth) return;
 
         CurrentHealth += amount;       
     }

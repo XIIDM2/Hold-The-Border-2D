@@ -2,5 +2,6 @@ using UnityEngine;
 
 public enum Events
 {
-    UnitSpawn
+    UnitSpawn,
+    UnitReachedEnd
 }

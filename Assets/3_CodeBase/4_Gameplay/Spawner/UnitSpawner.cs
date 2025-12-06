@@ -23,7 +23,7 @@ public class UnitSpawner : MonoBehaviour
 
     private async void CreateUnit(UnitType type, Waypoint start)
     {
-        await _factory.CreateUnit(type, start, _spawnPosition.transform.position);
+        await _factory.CreateUnit(type, start, _spawnPosition.position);
     }
 
 }

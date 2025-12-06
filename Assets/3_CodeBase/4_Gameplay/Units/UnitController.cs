@@ -8,9 +8,10 @@ public class UnitController : MonoBehaviour, IControllable
     [Header("Components")]
     public Health Health { get; private set; }
     public UnitMovement Movement {  get; private set; }
+    public UnitAttack Attack { get; private set; }
+    public UnitPathing Pathing { get; private set; }
     public UnitAnimation Animation { get; private set; }
 
-    public UnitPathing Pathing { get; private set; }
 
     [Header("FSM")]
     public FiniteStateMachine<UnitController> ActionFSM { get; private set; }
@@ -18,11 +19,13 @@ public class UnitController : MonoBehaviour, IControllable
 
     private void Awake()
     {        
+        Health = GetComponent<Health>();
         Movement = GetComponent<UnitMovement>();
-        Animation = GetComponentInChildren<UnitAnimation>();
+        Attack = GetComponent<UnitAttack>();
+
         Pathing = GetComponent<UnitPathing>();
 
-        Health = GetComponent<Health>();
+        Animation = GetComponentInChildren<UnitAnimation>();
     }
 
     private void Start()
@@ -49,8 +52,11 @@ public class UnitController : MonoBehaviour, IControllable
         ActionFSM.FixedUpdateState(this);
     }
 
-    public void Init(Waypoint start)
+    public void Init(UnitData data, Waypoint start)
     {
+        Health.Init(data.MaxHealth);
+        Movement.Init(data.MovementSpeed);
+        Attack.Init(data.PathEndDamage);
         Pathing.Init(start);
     }
 

@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6251746102875843322}
   - component: {fileID: 2921938918027186114}
   - component: {fileID: 4875361252986551951}
-  - component: {fileID: 6722440969848927301}
+  - component: {fileID: -6773740713251604946}
   - component: {fileID: 8688920723153410881}
+  - component: {fileID: 6722440969848927301}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -76,7 +77,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6999d766eb2f9a845b4987fc85d3016b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  _maxHealth: 0
   _currentHealth: 0
 --- !u!114 &4875361252986551951
 MonoBehaviour:
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
   _movementSpeed: 2
---- !u!114 &6722440969848927301
+--- !u!114 &-6773740713251604946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2422115259116329252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ff88fc49952ad844a746dd302adcee7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitController
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAttack
 --- !u!114 &8688920723153410881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +117,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
   _offset: 1
   _distance: 0.2
+--- !u!114 &6722440969848927301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422115259116329252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitController
 --- !u!1 &4644839957556240327
 GameObject:
   m_ObjectHideFlags: 0

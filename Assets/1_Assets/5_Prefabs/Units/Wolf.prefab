@@ -185,8 +185,9 @@ GameObject:
   - component: {fileID: 3216604539289381673}
   - component: {fileID: -6557192063188809589}
   - component: {fileID: 3657075576374647880}
-  - component: {fileID: 1340096752523334569}
+  - component: {fileID: 4778198856059285902}
   - component: {fileID: 4684230387540147149}
+  - component: {fileID: 1340096752523334569}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -249,7 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6999d766eb2f9a845b4987fc85d3016b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  _maxHealth: 0
   _currentHealth: 0
 --- !u!114 &3657075576374647880
 MonoBehaviour:
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitMovement
   _movementSpeed: 2
---- !u!114 &1340096752523334569
+--- !u!114 &4778198856059285902
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,9 +273,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7949650424772140157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ff88fc49952ad844a746dd302adcee7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitController
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAttack
 --- !u!114 &4684230387540147149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,3 +290,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
   _offset: 1
   _distance: 0.2
+--- !u!114 &1340096752523334569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949650424772140157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitController

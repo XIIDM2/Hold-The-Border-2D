@@ -6,19 +6,15 @@ using UnityEngine.AddressableAssets;
 public class UnitFactory
 {
     private Dictionary<string, GameObject> _cachedUnits = new Dictionary<string, GameObject>();
+    private Dictionary<string, UnitData> _cachedUnitsData = new Dictionary<string, UnitData>();
 
     public async UniTask<GameObject> CreateUnit(UnitType type, Waypoint start, Vector2 position)
     {
+        UnitData unitData = await LoadUnitData(type);
+
         GameObject unit = Object.Instantiate(await LoadUnit(type), position, Quaternion.identity);
 
-        if (!unit.TryGetComponent<UnitController>(out UnitController controller))
-        {
-            Debug.LogError($"Unit Controller on {unit.name} not found");
-            Object.Destroy(unit);
-            return null;
-        }
-
-        controller.Init(start);
+        unit.GetComponent<UnitController>().Init(unitData, start);
 
         return unit;
 
@@ -48,5 +44,31 @@ public class UnitFactory
             return null;
         }
         
+    }
+
+    private async UniTask<UnitData> LoadUnitData(UnitType type)
+    {
+        string label = type.ToString();
+
+        if (_cachedUnitsData.TryGetValue(label, out UnitData cached))
+        {
+            return cached;
+        }
+
+        try
+        {
+            UnitData loaded = await Addressables.LoadAssetAsync<UnitData>(label).ToUniTask();
+
+            _cachedUnitsData[label] = loaded;
+
+            return loaded;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError("Failed to download unit data from Addressables with exception: " + ex);
+
+            return null;
+        }
+
     }
 }
