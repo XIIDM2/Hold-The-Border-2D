@@ -1,16 +1,16 @@
-using NaughtyAttributes;
+using TriInspector;
 using UnityEngine;
 
 public class UnitAttack : MonoBehaviour
 {
-    [ShowNativeProperty]
+    [ShowInInspector, ReadOnly]
     public int PathEndDamage {  get; private set; }
-    [ShowNativeProperty]
+    [ShowInInspector, ReadOnly]
     public int AttackDamage {  get; private set; }
-
-    public void Init(int damage)
+    public void Init(int pathEndDamage, int attackDamage)
     {
-        PathEndDamage = damage;
+        PathEndDamage = pathEndDamage;
+        AttackDamage = attackDamage;
     }
 
     public void Attack()

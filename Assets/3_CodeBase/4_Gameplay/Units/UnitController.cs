@@ -56,7 +56,7 @@ public class UnitController : MonoBehaviour, IControllable
     {
         Health.Init(data.MaxHealth);
         Movement.Init(data.MovementSpeed);
-        Attack.Init(data.PathEndDamage);
+        Attack.Init(data.PathEndDamage, data.AttackDamage);
         Pathing.Init(start);
     }
 

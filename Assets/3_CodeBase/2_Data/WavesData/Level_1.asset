@@ -9,14 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f7e11a4b42419a4484480f8f13d9c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: d7fb6e5c73fb8dd4eb94963edac381aa, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: Assembly-CSharp::WavesData
   _wavesStartInterval: 0
   _waves:
   - _units:
     - _unitType: 0
-      _amount: 0
+      _amount: 2
+      _interval: 0.3
+      _path: 0
+    - _unitType: 1
+      _amount: 1
       _interval: 0
+      _path: 0
+    - _unitType: 2
+      _amount: 3
+      _interval: 1
       _path: 0
     _waveInterval: 0

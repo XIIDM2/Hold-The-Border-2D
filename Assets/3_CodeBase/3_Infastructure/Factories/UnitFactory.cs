@@ -71,4 +71,27 @@ public class UnitFactory
         }
 
     }
+
+    public void ReleaseUnitAssets()
+    {
+        if (_cachedUnits != null)
+        {
+            foreach (GameObject unit in _cachedUnits.Values)
+            {
+                Addressables.Release(unit);
+            }
+
+            _cachedUnits.Clear();
+        }
+
+        if (_cachedUnitsData != null)
+        {
+            foreach (UnitData unitData in _cachedUnitsData.Values)
+            {
+                Addressables.Release(unitData);
+            }
+
+            _cachedUnitsData.Clear();
+        }
+    }
 }

@@ -1,5 +1,5 @@
-using NaughtyAttributes;
 using System;
+using TriInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,7 +9,8 @@ public class Health : MonoBehaviour
     public event UnityAction OnDeath;
 
     [Header("Parameters")]
-    [ShowNativeProperty] public int MaxHealth {  get; private set; }
+    [ShowInInspector, ReadOnly]
+    public int MaxHealth {  get; private set; }
     [SerializeField, ReadOnly] private int _currentHealth;
 
     public int CurrentHealth
