@@ -10,7 +10,8 @@ public class Health : MonoBehaviour
     [Header("Parameters")]
 
     public int MaxHealth {  get; private set; }
-    [SerializeField] private int _currentHealth;
+
+    [SerializeField, ReadOnly] private int _currentHealth;
 
     public int CurrentHealth
     {
