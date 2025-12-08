@@ -1,11 +1,11 @@
-using TriInspector;
+
 using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
     public Vector2 Direction { get; private set; }
 
-    [SerializeField, ReadOnly] private float _movementSpeed;
+    [SerializeField] private float _movementSpeed;
 
     private Rigidbody2D _rb;
 

@@ -15,7 +15,7 @@ public class WaveManager : MonoBehaviour
 
     private IEnumerator WavesLogicRoutine()
     {
-        yield return new WaitForSeconds(_data.WavesStartInterval);
+        yield return new WaitForSeconds(_data.WavesStartTimer);
 
         foreach (WaveData.Wave wave in _data.Waves)
         {
@@ -24,8 +24,9 @@ public class WaveManager : MonoBehaviour
                 for (int i = 0; i < units.Amount; i++)
                 {
                     Messenger<UnitType, Waypoint>.Broadcast(Events.UnitSpawn, units.Type, _start);
-                    yield return new WaitForSeconds(units.Interval);
+                    yield return new WaitForSeconds(units.IntervalCurrent);
                 }
+                yield return new WaitForSeconds(units.IntervalNext);
             }
             yield return new WaitForSeconds(wave.WaveInterval);
         }

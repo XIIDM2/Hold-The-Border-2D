@@ -12,19 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fb6e5c73fb8dd4eb94963edac381aa, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: Assembly-CSharp::WavesData
-  _wavesStartInterval: 0
+  _wavesStartTimer: 0
   _waves:
   - _units:
     - _unitType: 0
       _amount: 2
-      _interval: 0.3
+      _intervalCurrent: 2
+      _intervalNext: 5
       _path: 0
     - _unitType: 1
       _amount: 1
-      _interval: 0
+      _intervalCurrent: 0
+      _intervalNext: 5
       _path: 0
     - _unitType: 2
       _amount: 3
-      _interval: 1
+      _intervalCurrent: 1
+      _intervalNext: 0
       _path: 0
     _waveInterval: 0

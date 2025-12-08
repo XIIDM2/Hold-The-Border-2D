@@ -20,15 +20,19 @@ public class WaveData : ScriptableObject
         {
             public UnitType Type => _unitType;
             public int Amount => _amount;
-            public float Interval => _interval;
+            public float IntervalCurrent => _intervalCurrent;
+            public float IntervalNext => _intervalNext;
 
             public PathType Path => _path;
 
             [SerializeField] private UnitType _unitType;
             [SerializeField] private int _amount;
 
-            [Header("Interval Between Units")]
-            [SerializeField] private float _interval;
+            [Header("Interval Between Current Units")]
+            [SerializeField] private float _intervalCurrent;
+
+            [Header("Interval Between Next Units")]
+            [SerializeField] private float _intervalNext;
 
             [Header("Start Waypoint")]
             [SerializeField] private PathType _path;
@@ -36,9 +40,9 @@ public class WaveData : ScriptableObject
         }
     }
 
-    [SerializeField] private float _wavesStartInterval;
+    [SerializeField] private float _wavesStartTimer;
     [SerializeField] private Wave[] _waves;
 
-    public float WavesStartInterval => _wavesStartInterval;
+    public float WavesStartTimer => _wavesStartTimer;
     public Wave[] Waves => _waves;
 }
