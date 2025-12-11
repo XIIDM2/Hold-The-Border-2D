@@ -26,15 +26,11 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        _currentHealth = MaxHealth;
-        OnHealthChanged?.Invoke(_currentHealth);
-    }
-
     public void Init(int maxHealth)
     {
         MaxHealth = maxHealth;
+        _currentHealth = MaxHealth;
+        OnHealthChanged?.Invoke(_currentHealth);
     }
 
     public void TakeDamage(int amount)

@@ -6,7 +6,7 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] private WaveData _data;
-    [SerializeField] private Waypoint _start;
+    [SerializeField] private PathService _pathService;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class WaveManager : MonoBehaviour
             {
                 for (int i = 0; i < units.Amount; i++)
                 {
-                    Messenger<UnitType, Waypoint>.Broadcast(Events.UnitSpawn, units.Type, _start);
+                    Messenger<UnitType, Waypoint>.Broadcast(Events.UnitSpawn, units.Type, _pathService.GetWaypoint(units.Path));
                     yield return new WaitForSeconds(units.IntervalCurrent);
                 }
                 yield return new WaitForSeconds(units.IntervalNext);
