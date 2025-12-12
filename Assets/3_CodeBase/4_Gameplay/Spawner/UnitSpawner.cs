@@ -1,14 +1,16 @@
 using UnityEngine;
+using VContainer;
 
 public class UnitSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _spawnPosition;
 
-    private UnitFactory _factory;
+    private IUnitFactory _factory;
 
-    private void Awake()
+    [Inject]
+    public void Construct(IUnitFactory factory)
     {
-        _factory = new UnitFactory();
+        _factory = factory;
     }
 
     private void OnEnable()
@@ -23,7 +25,7 @@ public class UnitSpawner : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_factory != null) _factory.ReleaseUnitAssets();
+       // if (_factory != null) _factory.ReleaseUnitAssets();
     }
 
     private async void CreateUnit(UnitType type, Waypoint start)

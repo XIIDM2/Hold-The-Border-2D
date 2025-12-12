@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Player Data
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   _maxHeath: 10
+  _startGold: 100

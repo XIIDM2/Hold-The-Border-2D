@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 8a6fc81ed873ee24c8ff529fb78ee125
   m_currentHash:
     serializedVersion: 2
-    Hash: 7f5dee51be9aa06f3cfe5b8214a0620b
+    Hash: a597586d0c0692b49f270522c1529bd0
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
     - BabySlime
     - Slime
     - Bee
+    - Level 1
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: ec3a06d2311b03c418ff7a945c8eec86, type: 2}

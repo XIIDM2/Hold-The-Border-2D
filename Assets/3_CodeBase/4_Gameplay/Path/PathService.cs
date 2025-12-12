@@ -17,7 +17,7 @@ public class PathService : MonoBehaviour, IPathProvider
 
     [SerializeField] private Path[] _paths;
 
-    private void Start()
+    private void Awake()
     {
         foreach (Path path in _paths)
         {

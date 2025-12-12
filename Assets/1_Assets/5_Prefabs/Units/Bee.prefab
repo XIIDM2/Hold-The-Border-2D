@@ -183,7 +183,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1184968994331143991}
   - component: {fileID: 728439185002337703}
-  - component: {fileID: 7107710250012191701}
   - component: {fileID: 4599035323822510898}
   - component: {fileID: 7175163909907918197}
   - component: {fileID: 4399440532094975211}
@@ -238,19 +237,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7107710250012191701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8557600674527194567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6999d766eb2f9a845b4987fc85d3016b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  _currentHealth: 0
 --- !u!114 &4599035323822510898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ff88fc49952ad844a746dd302adcee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitAttack
+  _pathEndDamage: 0
+  _attackDamage: 0
 --- !u!114 &4399440532094975211
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6defe1fee970d4080614d94eec397b, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  _prefabReference:
+    m_AssetGUID: a112f57e9c06b8042b4aecf8b3d3bbc4
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 1
   _maxHealth: 10
   _movementSpeed: 1
   _attackDamage: 1

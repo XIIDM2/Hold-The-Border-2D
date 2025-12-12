@@ -1,10 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Health))]
 [RequireComponent(typeof(UnitMovement))]
 [RequireComponent(typeof(UnitPathing))]
 public class UnitController : MonoBehaviour, IControllable
 {
+    [SerializeField, ReadOnly] private int _currentHealth;
+
     [Header("Components")]
     public Health Health { get; private set; }
     public UnitMovement Movement {  get; private set; }
@@ -12,14 +13,15 @@ public class UnitController : MonoBehaviour, IControllable
     public UnitPathing Pathing { get; private set; }
     public UnitAnimation Animation { get; private set; }
 
-
     [Header("FSM")]
     public FiniteStateMachine<UnitController> ActionFSM { get; private set; }
     public UnitState MoveState { get; private set; }
 
+
     private void Awake()
     {        
-        Health = GetComponent<Health>();
+        Health = new Health();
+
         Movement = GetComponent<UnitMovement>();
         Attack = GetComponent<UnitAttack>();
 
@@ -39,6 +41,7 @@ public class UnitController : MonoBehaviour, IControllable
     private void Update()
     {
         ActionFSM.UpdateState(this);
+        _currentHealth = Health.CurrentHealth;
     }
 
     private void LateUpdate()

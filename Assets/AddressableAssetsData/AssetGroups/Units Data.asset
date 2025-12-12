@@ -19,6 +19,7 @@ MonoBehaviour:
     m_Address: Assets/3_CodeBase/2_Data/UnitsData/Wolf.asset
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Level 1
     - Unit
     - Wolf
     FlaggedDuringContentUpdateRestriction: 0
@@ -27,12 +28,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Bee
+    - Level 1
     - Unit
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bf410c2a5a8e84a4983b491aed93bb85
     m_Address: Assets/3_CodeBase/2_Data/UnitsData/Slime.asset
     m_ReadOnly: 0
     m_SerializedLabels:
+    - Level 1
     - Slime
     - Unit
     FlaggedDuringContentUpdateRestriction: 0
@@ -41,6 +44,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - BabySlime
+    - Level 1
     - Unit
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d5a2ec4ab05702145a12a0faa8813ba5
@@ -48,6 +52,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Goblin
+    - Level 1
     - Unit
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0

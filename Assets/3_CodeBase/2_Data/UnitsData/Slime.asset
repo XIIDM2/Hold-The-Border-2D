@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6defe1fee970d4080614d94eec397b, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  _prefabReference:
+    m_AssetGUID: 8fcfe3331843d85489a8b703b8a2f0ce
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _maxHealth: 6
   _movementSpeed: 1
   _attackDamage: 1

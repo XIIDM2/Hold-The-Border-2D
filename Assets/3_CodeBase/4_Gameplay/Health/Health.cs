@@ -2,16 +2,14 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : MonoBehaviour
+public class Health : IHealth
 {
     public event UnityAction<int> OnHealthChanged;
     public event UnityAction OnDeath;
 
-    [Header("Parameters")]
-
     public int MaxHealth {  get; private set; }
 
-    [SerializeField, ReadOnly] private int _currentHealth;
+    private int _currentHealth;
 
     public int CurrentHealth
     {

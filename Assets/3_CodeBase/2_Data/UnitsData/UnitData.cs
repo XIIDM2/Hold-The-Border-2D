@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [CreateAssetMenu(fileName = "Unit Data", menuName = "Scriptable Objects/Units/Unit Data")]
 public class UnitData : ScriptableObject
