@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: 8a6fc81ed873ee24c8ff529fb78ee125
   m_currentHash:
     serializedVersion: 2
-    Hash: a597586d0c0692b49f270522c1529bd0
+    Hash: 8b96565d676de322610da8e49590485b
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -101,13 +101,6 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - default
-    - Unit
-    - Goblin
-    - Wolf
-    - BabySlime
-    - Slime
-    - Bee
     - Level 1
   m_SchemaTemplates: []
   m_GroupTemplateObjects:

@@ -16,44 +16,34 @@ MonoBehaviour:
   m_GUID: 72f80852048acc64ab2d5ae3cba7661f
   m_SerializeEntries:
   - m_GUID: 00edfd7439ff0e44c809ed418bbef0ac
-    m_Address: Assets/3_CodeBase/2_Data/UnitsData/Wolf.asset
+    m_Address: Wolf
     m_ReadOnly: 0
     m_SerializedLabels:
     - Level 1
-    - Unit
-    - Wolf
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 20d901b82a4b7834489587dfac0d8bde
-    m_Address: Assets/3_CodeBase/2_Data/UnitsData/Bee.asset
+    m_Address: Bee
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Bee
     - Level 1
-    - Unit
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bf410c2a5a8e84a4983b491aed93bb85
-    m_Address: Assets/3_CodeBase/2_Data/UnitsData/Slime.asset
+    m_Address: Slime
     m_ReadOnly: 0
     m_SerializedLabels:
     - Level 1
-    - Slime
-    - Unit
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c37ccf770a61dc549b3880414df6169d
-    m_Address: Assets/3_CodeBase/2_Data/UnitsData/BabySlime.asset
+    m_Address: BabySlime
     m_ReadOnly: 0
     m_SerializedLabels:
-    - BabySlime
     - Level 1
-    - Unit
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d5a2ec4ab05702145a12a0faa8813ba5
-    m_Address: Assets/3_CodeBase/2_Data/UnitsData/Goblin.asset
+    m_Address: Goblin
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Goblin
     - Level 1
-    - Unit
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}

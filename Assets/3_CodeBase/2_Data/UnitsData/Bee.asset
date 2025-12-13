@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6defe1fee970d4080614d94eec397b, type: 3}
   m_Name: Bee
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  _type: 2
   _prefabReference:
     m_AssetGUID: 7f414382b44fbcf4c9fa52dad2c08d1c
     m_SubObjectName: 

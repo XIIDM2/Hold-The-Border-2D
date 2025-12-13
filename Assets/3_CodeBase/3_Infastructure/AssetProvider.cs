@@ -6,19 +6,20 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class AssetProvider : IAssetProvider
 { 
-    private readonly Dictionary<string, ScriptableObject> _cachedData = new Dictionary<string, ScriptableObject>();
-    private readonly Dictionary<string, GameObject> _cachedPrefabs = new Dictionary<string, GameObject>();
 
     private readonly Dictionary<string, AsyncOperationHandle> _asyncOperations = new Dictionary<string, AsyncOperationHandle>();
 
-    public async UniTask<GameObject> LoadAsset(string label)
+    public async UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class
     {
-        if (_cachedPrefabs.TryGetValue(label, out GameObject cached))
+        string GUID = reference.AssetGUID;
+
+        if (_asyncOperations.TryGetValue(GUID, out AsyncOperationHandle cachedHandle))
         {
-            return cached;
+            return cachedHandle.Result as T;
         }
 
-        AsyncOperationHandle<GameObject> handle = Addressables.LoadAssetAsync<GameObject>(label);
+        AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(GUID);
+
         await handle.ToUniTask();
 
         if (handle.Status != AsyncOperationStatus.Succeeded)
@@ -28,39 +29,19 @@ public class AssetProvider : IAssetProvider
             return null;
         }
 
-        _asyncOperations[label] = handle;
-        _cachedPrefabs[label] = handle.Result;
-
+        _asyncOperations[GUID] = handle;
         return handle.Result;
-
     }
 
-    public async UniTask<T> LoadAssetData<T>(string label) where T : ScriptableObject
+    public void Release(AssetReference reference)
     {
-        if (_cachedData.TryGetValue(label, out ScriptableObject cached))
-        {
-            return cached as T;
-        }
+        string GUID = reference.AssetGUID;
 
-        AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(label);
-        await handle.ToUniTask();
-
-        if (handle.Status != AsyncOperationStatus.Succeeded)
+        if (_asyncOperations.TryGetValue(GUID, out var handle))
         {
-            Debug.LogError("Failed to download asset data from addressables");
             Addressables.Release(handle);
-            return null;
+            _asyncOperations.Remove(GUID);
         }
-
-        _asyncOperations[label] = handle;
-        _cachedData[label] = handle.Result;
-
-        return handle.Result;
-    }
-
-    public void Release()
-    {
-        throw new System.NotImplementedException();
     }
 
     public void ReleaseAll()
@@ -70,8 +51,6 @@ public class AssetProvider : IAssetProvider
             Addressables.Release(handle);
         }
 
-        _cachedData.Clear();
-        _cachedPrefabs.Clear();
         _asyncOperations.Clear();
     }
 }
