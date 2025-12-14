@@ -32,7 +32,7 @@ public class PathService : MonoBehaviour, IPathProvider
             return waypoint;
         }
 
-        Debug.LogError("Could not retrieve path from dict");
+        Debug.LogError($"Could not retrieve {path} from dict");
         return null;
     }
 }

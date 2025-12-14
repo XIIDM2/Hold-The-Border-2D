@@ -5,7 +5,8 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public interface IAssetProvider
 {
+    UniTask LoadMultipleAssetsByLabel<T>(string label) where T : class;
     UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class;
-    void Release(AssetReference reference);
+    UniTask Release(AssetReference reference);
     void ReleaseAll();
 }

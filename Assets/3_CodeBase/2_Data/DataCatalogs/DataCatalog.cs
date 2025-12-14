@@ -17,7 +17,7 @@ public class DataCatalog : ScriptableObject
     {
         if (_unitDatas == null || _unitDatas.Length == 0)
         {
-            Debug.LogWarning("Unit datas array is empty, can not init dictionary...");
+            Debug.LogWarning("Unit datas array is empty, can not initialize dictionary...");
             return;
         }
 
@@ -27,7 +27,7 @@ public class DataCatalog : ScriptableObject
         {
             if (_unitDataDict.ContainsKey(unitData.Type))
             {
-                Debug.LogWarning("Unit Data already in Unit dictionary, skipping...");
+                Debug.LogWarning($"{unitData.Type} data already in unit dictionary, skipping...");
                 continue;
             }
 
@@ -39,7 +39,7 @@ public class DataCatalog : ScriptableObject
     {
         if (_unitDataDict == null)
         {
-            Debug.LogWarning("Unit Dictionary is null, initializing dictionary...");
+            Debug.LogWarning("Unit dictionary is null, initializing dictionary...");
             UnitDictionaryInit();
         }
 
@@ -48,7 +48,7 @@ public class DataCatalog : ScriptableObject
             return data;    
         }
 
-        Debug.LogError("Failed to retrieve unit data from catalog");
+        Debug.LogError($"Failed to retrieve {type} data from catalog");
         return null;
     }
 }

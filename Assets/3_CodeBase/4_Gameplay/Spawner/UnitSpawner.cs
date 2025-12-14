@@ -23,11 +23,6 @@ public class UnitSpawner : MonoBehaviour
         Messenger<UnitType, Waypoint>.RemoveListener(Events.UnitSpawn, CreateUnit);
     }
 
-    private void OnDestroy()
-    {
-       // if (_factory != null) _factory.ReleaseUnitAssets();
-    }
-
     private async void CreateUnit(UnitType type, Waypoint start)
     {
         await _factory.CreateUnit(type, start, _spawnPosition.position);
