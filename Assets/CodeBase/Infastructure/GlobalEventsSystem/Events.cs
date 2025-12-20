@@ -2,6 +2,7 @@ using UnityEngine;
 
 public enum Events
 {
-    UnitSpawn,
-    UnitReachedEnd
+    UnitSpawned,
+    UnitReachedEnd,
+    TowerUpgradeRequested,
 }

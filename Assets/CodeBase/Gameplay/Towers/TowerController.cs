@@ -1,67 +1,77 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class TowerController : MonoBehaviour
+public class TowerController : MonoBehaviour, IControllable
 {
-    public bool IsUpgrading {  get; private set; }
-    public TowerAnimation Animation {  get; private set; }
+    public event UnityAction UpgradeRequested;
+    public int CurrentTierIndex {  get; private set; }
+    public int MaxTier => _data.TierConfigs.Length;
+    public TowerData.TowerTierConfig CurrentTierConfig => _data.TierConfigs[CurrentTierIndex];
 
     [SerializeField] private TowerData _data;
 
-    private Coroutine _upgradeCoroutine;
-    private int _currentTierIndex = 0;
+    [Header("Components")]
+    public TowerAnimation Animation {  get; private set; }
+
+    [Header("FSM")]
+    public FiniteStateMachine<TowerController> ActionFSM { get; private set; }
+    public TowerUpgradeState UpgradeState { get; private set; }
+    public TowerIdleState IdleState { get; private set; }
 
     private void Awake()
     {
         Animation = GetComponentInChildren<TowerAnimation>();
     }
 
-    private void OnDisable()
+    private void Start()
     {
-        IsUpgrading = false;
-        _upgradeCoroutine = null;
+        Init();
+
+        UpgradeState = new TowerUpgradeState();
+        IdleState = new TowerIdleState();
+
+        ActionFSM = new FiniteStateMachine<TowerController>();
+        ActionFSM.StateInit(IdleState, this);
     }
 
-    public void TryUpgrade()
+    private void Update()
     {
-        if (IsUpgrading)
-        {
-            Debug.Log("Tower currently upgrading, Cannot upgrade tower");
-            return;
-        }
-
-        if (_currentTierIndex >= _data.TierConfigs.Length)
-        {
-            Debug.Log("Tower tier is maximum! Cannot upgrade tower");
-            return;
-        }
-
-        _upgradeCoroutine = StartCoroutine(UpgradeRoutine());
+        ActionFSM.UpdateState(this);
     }
 
-    private IEnumerator UpgradeRoutine()
+    private void LateUpdate()
     {
-        IsUpgrading = true;
+        ActionFSM.LateUpdateState(this);
 
-        TowerData.TowerTierConfig tierConfig = _data.TierConfigs[_currentTierIndex];
+    }
 
-        Animation.PlayUpgradeAnimation(tierConfig.UpgradeAnimation);
-        Animation.ChangeIdleAnimation(tierConfig.IdleAnimation);
+    private void FixedUpdate()
+    {
+        ActionFSM.FixedUpdateState(this);
+    }
 
-        yield return new WaitForSeconds(tierConfig.UpgradeAnimation.length);
+    public void Init()
+    {
+        ApplyCurrentTier();
+        // первичная инициализация
+    }
 
-        _currentTierIndex++;
+    public void ApplyCurrentTier()
+    {
+        Animation.UpgradeTowerAnimations(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation); 
+        // назначение данных
+    }
 
-        IsUpgrading = false;
-        _upgradeCoroutine = null;
-
+    public void MoveToNextTier()
+    {
+        CurrentTierIndex++;
     }
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(10, 10, 150, 100), "Upgrade Tower"))
+        if (GUI.Button(new Rect(10, 200, 150, 100), "Upgrade Tower"))
         {
-            TryUpgrade();
+            UpgradeRequested?.Invoke();
         }
     }
 
