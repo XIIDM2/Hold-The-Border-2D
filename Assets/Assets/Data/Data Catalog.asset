@@ -18,3 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 20d901b82a4b7834489587dfac0d8bde, type: 2}
   - {fileID: 11400000, guid: 00edfd7439ff0e44c809ed418bbef0ac, type: 2}
   - {fileID: 11400000, guid: d5a2ec4ab05702145a12a0faa8813ba5, type: 2}
+  _towerDatas:
+  - {fileID: 11400000, guid: eea1d9f056739a443aef3cbb2d11aad1, type: 2}

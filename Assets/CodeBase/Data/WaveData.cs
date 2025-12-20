@@ -5,18 +5,18 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     [System.Serializable]
-    public class Wave
+    public class WaveConfig
     {
-        public IReadOnlyList<WaveUnits> Units => _units;
+        public IReadOnlyList<WaveUnitsConfig> Units => _units;
         public float WaveInterval => _waveInterval;
 
-        [SerializeField] private WaveUnits[] _units;
+        [SerializeField] private WaveUnitsConfig[] _units;
 
         [Header("Interval Between Next Wave")]
         [SerializeField] private float _waveInterval;
 
         [System.Serializable]
-        public struct WaveUnits
+        public struct WaveUnitsConfig
         {
             public UnitType Type => _unitType;
             public int Amount => _amount;
@@ -41,8 +41,8 @@ public class WaveData : ScriptableObject
     }
 
     [SerializeField] private float _wavesStartTimer;
-    [SerializeField] private Wave[] _waves;
+    [SerializeField] private WaveConfig[] _waves;
 
     public float WavesStartTimer => _wavesStartTimer;
-    public Wave[] Waves => _waves;
+    public WaveConfig[] Waves => _waves;
 }

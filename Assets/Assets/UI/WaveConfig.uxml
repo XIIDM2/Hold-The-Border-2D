@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:VisualElement style="flex-grow: 1;">
-        <ui:Label text="Wave Details&#10;" name="Label" style="align-self: center; -unity-font-style: bold; font-size: 16px; -unity-text-align: upper-center; -unity-text-outline-width: 0.5px; letter-spacing: 10px; margin-top: 6px; margin-right: 6px; margin-bottom: 6px; margin-left: 6px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;" />
+        <ui:Label text="Wave Details&#10;" name="WaveHeader" style="align-self: center; -unity-font-style: bold; font-size: 16px; -unity-text-align: upper-center; -unity-text-outline-width: 0.5px; letter-spacing: 10px; margin-top: 6px; margin-right: 6px; margin-bottom: 6px; margin-left: 6px; padding-top: 6px; padding-right: 6px; padding-bottom: 6px; padding-left: 6px;" />
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 1;">
         <uie:PropertyField binding-path="_units" label="Units in Wave" />

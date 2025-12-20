@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4998061809078433617}
   - component: {fileID: 5819992749557213440}
   m_Layer: 0
-  m_Name: VisualModel_T2
+  m_Name: VisualModel_T3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6937817954938267909, guid: f74da6d85f2d7ab4d82a077844686175, type: 3}
+  m_Sprite: {fileID: -6470460504253458178, guid: 2ef1ef287aa5eba408db34ae7a69a7e8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

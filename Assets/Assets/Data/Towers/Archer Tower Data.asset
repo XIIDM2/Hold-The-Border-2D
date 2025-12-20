@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3ca2f600a15ee4bb86e5f1162c2f74, type: 3}
+  m_Name: Archer Tower Data
+  m_EditorClassIdentifier: Assembly-CSharp::TowerData
+  _tiersConfigs:
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: be257cc0ed5d4ab459cf2607f477f32f, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: 67964e5fbaec30b478283c9277be8aed, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: af364be1f82f0894690af9b87355ffca, type: 2}
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: 8b36cad8159485d488a9ea18cea96f9d, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: 2d33e0aacd5968247af0abbd580392af, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: 975b172647ba1664bae9811ccfbe4f32, type: 2}
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: 8ae81f6c76bbc0348a4cd2d3f3a6574e, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: d5a45c16c10d714469bf04c51d0eaabf, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: 6037353944246804abec635a034f0521, type: 2}
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: d8383635aa2f7df48949ce2082194d3d, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: 90fb0a26e8fb6574982c0df48da33889, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: 93cbe023301bf2542ac446d9d77623fb, type: 2}
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: e53261d2f2eab0c4dbafa8e0f2c0a453, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: 95ed68ca8b234d14dbe4901564f8cdf8, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: 1e97893d19bd5814489ae6248211e8cc, type: 2}
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: 781720bfa5c6096478266a272b2d6c01, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: 91e931a99ba2518428bcbaf8905bc724, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: 41efa513fcbafa14da10730998712988, type: 2}
+  - _damage: 1
+    _attackCooldown: 1
+    _attackRadius: 1
+    _visualModel: {fileID: 8015660062677019830, guid: 6f1d316ea2f8fa3468aa4f65cbfab962, type: 3}
+    _upgradeAnimation: {fileID: 7400000, guid: f1f1fa4ee6cf6944d904581599d77e2d, type: 2}
+    _idleAnimation: {fileID: 7400000, guid: 83390489e3aa9954791ca8e5d1a59511, type: 2}

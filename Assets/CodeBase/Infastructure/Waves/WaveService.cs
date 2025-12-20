@@ -7,9 +7,9 @@ public class WaveService : IWaveService
     {
         yield return new WaitForSeconds(data.WavesStartTimer);
 
-        foreach (WaveData.Wave wave in data.Waves)
+        foreach (WaveData.WaveConfig wave in data.Waves)
         {
-            foreach (WaveData.Wave.WaveUnits units in wave.Units)
+            foreach (WaveData.WaveConfig.WaveUnitsConfig units in wave.Units)
             {
                 for (int i = 0; i < units.Amount; i++)
                 {

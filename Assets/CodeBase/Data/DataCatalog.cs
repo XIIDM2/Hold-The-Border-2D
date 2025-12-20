@@ -5,12 +5,15 @@ using UnityEngine;
 public class DataCatalog : ScriptableObject
 {
     [SerializeField] private UnitData[] _unitDatas;
+    [SerializeField] private TowerData[] _towerDatas;
 
     private Dictionary<UnitType, UnitData> _unitDataDict;
+    private Dictionary<TowerType, TowerData> _towerDataDict;
 
     private void OnEnable()
     {
         UnitDictionaryInit();
+        TowertDictionaryInit();
     }
 
     private void UnitDictionaryInit()
@@ -23,7 +26,7 @@ public class DataCatalog : ScriptableObject
 
         _unitDataDict = new Dictionary<UnitType, UnitData>();
 
-        foreach (var unitData in _unitDatas)
+        foreach (UnitData unitData in _unitDatas)
         {
             if (_unitDataDict.ContainsKey(unitData.Type))
             {
@@ -32,6 +35,28 @@ public class DataCatalog : ScriptableObject
             }
 
             _unitDataDict[unitData.Type] = unitData;
+        }
+    }
+
+    private void TowertDictionaryInit()
+    {
+        if (_towerDataDict == null || _towerDatas.Length == 0)
+        {
+            Debug.LogWarning("Tower datas array is empty, can not initialize dictionary...");
+            return;
+        }
+
+        _towerDataDict = new Dictionary<TowerType, TowerData>();
+
+        foreach (TowerData towerData in _towerDatas)
+        {
+            if (_towerDataDict.ContainsKey(towerData.Type))
+            {
+                Debug.LogWarning($"{towerData.Type} data already in tower dictionary, skipping...");
+                continue;
+            }
+
+            _towerDataDict[towerData.Type] = towerData;
         }
     }
 
@@ -46,6 +71,23 @@ public class DataCatalog : ScriptableObject
         if (_unitDataDict.TryGetValue(type, out UnitData data))
         {
             return data;    
+        }
+
+        Debug.LogError($"Failed to retrieve {type} data from catalog");
+        return null;
+    }
+
+    public TowerData GetTowerData(TowerType type)
+    {
+        if (_towerDataDict == null)
+        {
+            Debug.LogWarning("Tower dictionary is null, initializing dictionary...");
+            UnitDictionaryInit();
+        }
+
+        if (_towerDataDict.TryGetValue(type, out TowerData data))
+        {
+            return data;
         }
 
         Debug.LogError($"Failed to retrieve {type} data from catalog");
