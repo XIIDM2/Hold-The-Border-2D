@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5713055351075454033}
   - component: {fileID: 4998061809078433617}
   - component: {fileID: 5819992749557213440}
+  - component: {fileID: 8155960205615879760}
   m_Layer: 0
   m_Name: VisualModel_T7
   m_TagString: Untagged
@@ -101,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 8015660062677019830}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: de74520e8aa59194c8d9b442d5ce6193, type: 2}
+  m_Controller: {fileID: 9100000, guid: 85196e1393d1eca4195bb25a60ae3a50, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -113,3 +114,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8155960205615879760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8015660062677019830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b129a1cd2f88a54890e5a1dc4876793, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAnimation

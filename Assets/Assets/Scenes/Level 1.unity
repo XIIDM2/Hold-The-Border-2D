@@ -11901,6 +11901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3190791418416437182, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 85196e1393d1eca4195bb25a60ae3a50, type: 2}
     - target: {fileID: 5514210107518247970, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
       propertyPath: m_Name
       value: Archer Tower
@@ -11908,8 +11912,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5514210107518247970, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6627623671616104281}
   m_SourcePrefab: {fileID: 100100000, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
+--- !u!1 &6627623671616104280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5514210107518247970, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
+  m_PrefabInstance: {fileID: 6627623671616104279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6627623671616104281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6627623671616104280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb6254104b70784ba15f6764bb7638c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerController
+  _data: {fileID: 11400000, guid: eea1d9f056739a443aef3cbb2d11aad1, type: 2}
 --- !u!1001 &6897740713744274212
 PrefabInstance:
   m_ObjectHideFlags: 0
