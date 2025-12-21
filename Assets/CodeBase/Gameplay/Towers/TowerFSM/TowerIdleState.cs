@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class TowerIdleState : TowerState
 {
-    private bool isTowerUpgradeRequested;
+    private bool _towerUpgradeRequested;
 
     public override State<TowerController> HandleTransitions(TowerController controller)
     {
-        if (isTowerUpgradeRequested)
+        if (_towerUpgradeRequested)
         {
+            _towerUpgradeRequested = false;
+
             if (controller.CurrentTierIndex >= controller.MaxTier) return null;
 
-            isTowerUpgradeRequested = false;
             return controller.UpgradeState;
         }
 
@@ -33,6 +34,6 @@ public class TowerIdleState : TowerState
     }
     private void OnTowerUpgradeRequested()
     {
-        isTowerUpgradeRequested = true;
+        _towerUpgradeRequested = true;
     }
 }

@@ -2,12 +2,12 @@ using UnityEngine;
 
 [RequireComponent(typeof(UnitMovement))]
 [RequireComponent(typeof(UnitPathing))]
-public class UnitController : MonoBehaviour, IControllable
+public class UnitController : MonoBehaviour, IControllable, IAttackable
 {
     [SerializeField, ReadOnly] private int _currentHealth;
 
     [Header("Components")]
-    public Health Health { get; private set; }
+    public IHealth Health { get; private set; }
     public UnitMovement Movement {  get; private set; }
     public UnitAttack Attack { get; private set; }
     public UnitPathing Pathing { get; private set; }

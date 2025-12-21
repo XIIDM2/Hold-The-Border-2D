@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Default Local Group
   m_GUID: 8a6fc81ed873ee24c8ff529fb78ee125
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 6d0f1513c1bb7274b96b65a0b3a1556c
+    m_Address: Assets/Assets/Prefabs/Towers/ArcherTower.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level 1
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}
   m_SchemaSet:

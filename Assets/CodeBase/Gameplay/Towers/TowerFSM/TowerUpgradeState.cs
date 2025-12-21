@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class TowerUpgradeState : TowerState
 {
-    private float _elapsed = 0.0f;
-    private float _upgradeAnimationLength;
-
+    private bool _upgradeAnimationCompleted;
     public override State<TowerController> HandleTransitions(TowerController controller)
     {
-        if (_elapsed >= _upgradeAnimationLength) return controller.IdleState;
+        if (_upgradeAnimationCompleted) return controller.IdleState;
 
         return base.HandleTransitions(controller);
     }
@@ -16,20 +14,26 @@ public class TowerUpgradeState : TowerState
     {
         base.Enter(controller);
 
-        _elapsed = 0.0f;
-
-        _upgradeAnimationLength = controller.CurrentTierConfig.UpgradeAnimation.length;
+        _upgradeAnimationCompleted = false;
 
         controller.MoveToNextTier();
         controller.ApplyCurrentTier();
+
         controller.Animation.PlayUpgradeAnimation();
+
+        controller.Animation.UpgradeAnimationCompleted += OnUpgradeAnimationCompleted;
     }
 
-    public override void Update(TowerController controller)
+    public override void Exit(TowerController controller)
     {
-        base.Update(controller);
+        base.Exit(controller);
 
-        _elapsed += Time.deltaTime;
+        controller.Animation.UpgradeAnimationCompleted -= OnUpgradeAnimationCompleted;
+    }
+
+    private void OnUpgradeAnimationCompleted()
+    {
+        _upgradeAnimationCompleted = true;
     }
 
 }

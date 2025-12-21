@@ -5,12 +5,13 @@ public class TowerController : MonoBehaviour, IControllable
 {
     public event UnityAction UpgradeRequested;
     public int CurrentTierIndex {  get; private set; }
-    public int MaxTier => _data.TierConfigs.Length;
+    public int MaxTier => _data.TierConfigs.Length - 1;
     public TowerData.TowerTierConfig CurrentTierConfig => _data.TierConfigs[CurrentTierIndex];
 
     [SerializeField] private TowerData _data;
 
     [Header("Components")]
+    public TowerDetection Detection {  get; private set; }
     public TowerAnimation Animation {  get; private set; }
 
     [Header("FSM")]
@@ -20,6 +21,7 @@ public class TowerController : MonoBehaviour, IControllable
 
     private void Awake()
     {
+        Detection = GetComponentInChildren<TowerDetection>();
         Animation = GetComponentInChildren<TowerAnimation>();
     }
 
@@ -52,18 +54,21 @@ public class TowerController : MonoBehaviour, IControllable
 
     public void Init()
     {
+        Detection.Init(CurrentTierConfig.AttackRadius);
         ApplyCurrentTier();
         // первичная инициализация
     }
 
     public void ApplyCurrentTier()
     {
-        Animation.UpgradeTowerAnimations(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation); 
+        Animation.UpgradeTowerAnimations(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
         // назначение данных
     }
 
     public void MoveToNextTier()
     {
+        if (CurrentTierIndex >= MaxTier) return;
+
         CurrentTierIndex++;
     }
 

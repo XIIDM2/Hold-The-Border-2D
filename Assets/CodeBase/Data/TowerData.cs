@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 [CreateAssetMenu(fileName = "Tower Data", menuName = "Scriptable Objects/Towers/Tower Data")]
 public class TowerData : ScriptableObject
@@ -10,7 +11,6 @@ public class TowerData : ScriptableObject
         public float AttackCooldown => _attackCooldown;
         public float AttackRadius => _attackRadius;
 
-        public GameObject VisualModel => _visualModel; 
         public AnimationClip UpgradeAnimation => _upgradeAnimation; 
         public AnimationClip IdleAnimation => _idleAnimation;
 
@@ -18,14 +18,16 @@ public class TowerData : ScriptableObject
         [SerializeField] private float _attackCooldown;
         [SerializeField] private float _attackRadius;
 
-        [SerializeField] private GameObject _visualModel;
         [SerializeField] private AnimationClip _upgradeAnimation;
         [SerializeField] private AnimationClip _idleAnimation;
     }
 
     [SerializeField] private TowerType _type;
+    [SerializeField] private AssetReference _towerPrefab;
+
     [SerializeField] private TowerTierConfig[] _tiersConfigs;
 
     public TowerType Type => _type;
+    public AssetReference TowerPrefab => _towerPrefab;
     public TowerTierConfig[] TierConfigs => _tiersConfigs;
 }

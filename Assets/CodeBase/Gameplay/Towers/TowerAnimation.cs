@@ -1,12 +1,14 @@
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TowerAnimation : MonoBehaviour
 {
+    public event UnityAction UpgradeAnimationCompleted;
+
     private const string UPGRADE_DEFAULT_CLIP_NAME = "Tower_Upgrade";
     private const string IDLE_DEFAULT_CLIP_NAME = "Tower_Idle";
 
-    private const string UPGRADE_STATE_NAME = "Upgrade";
+    private static readonly int _upgradeStateHash = Animator.StringToHash("Upgrade");
 
     private Animator _animator;
     private AnimatorOverrideController _overrideController;
@@ -27,6 +29,11 @@ public class TowerAnimation : MonoBehaviour
 
     public void PlayUpgradeAnimation()
     {
-        _animator.Play(UPGRADE_STATE_NAME);
+        _animator.Play(_upgradeStateHash);
+    }
+
+    public void OnUpgradeAnimationComplete()
+    {
+        UpgradeAnimationCompleted?.Invoke();
     }
 }
