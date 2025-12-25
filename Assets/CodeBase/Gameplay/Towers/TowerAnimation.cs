@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(Animator))]
 public class TowerAnimation : MonoBehaviour
 {
     public event UnityAction UpgradeAnimationCompleted;

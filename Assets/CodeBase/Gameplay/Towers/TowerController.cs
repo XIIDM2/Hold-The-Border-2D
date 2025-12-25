@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class TowerController : MonoBehaviour, IControllable
 {
     public event UnityAction UpgradeRequested;
@@ -19,6 +20,7 @@ public class TowerController : MonoBehaviour, IControllable
     public FiniteStateMachine<TowerController> ActionFSM { get; private set; }
     public TowerUpgradeState UpgradeState { get; private set; }
     public TowerIdleState IdleState { get; private set; }
+    public TowerAttackState AttackState { get; private set; }
 
     private void Awake()
     {
@@ -33,7 +35,8 @@ public class TowerController : MonoBehaviour, IControllable
         Init();
 
         UpgradeState = new TowerUpgradeState();
-        IdleState = new TowerIdleState();
+        IdleState = new TowerIdleState(); 
+        AttackState = new TowerAttackState();
 
         ActionFSM = new FiniteStateMachine<TowerController>();
         ActionFSM.StateInit(IdleState, this);

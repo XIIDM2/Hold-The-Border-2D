@@ -103,7 +103,7 @@ Animator:
   m_GameObject: {fileID: 4760546766561923478}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 9dd43f276bf46ff47ab656b476d2e7fa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6674c6804b6d96d44832dbe5523c9d94, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -263,7 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitAttack
   _pathEndDamage: 0
-  _attackDamage: 0
+  _damage: 0
+  _attackCooldown: 0
 --- !u!114 &6469098006057992710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,3 +291,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16f1958161ef1e6469e5447680c85440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitController
+  _currentHealth: 0

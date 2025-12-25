@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786eca5a11661ed44959c60cd9e3b6d0, type: 3}
+  m_Name: Wolf
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAnimationsData
+  d_Attack: {fileID: 7400000, guid: 532263dc2b243f34994fedbf58a3f365, type: 2}
+  d_Death: {fileID: 7400000, guid: 85a04107cf72047498c741ac9cd274ec, type: 2}
+  d_Disolve: {fileID: 7400000, guid: 3916c8fb5e84c134faefee8a95bde59a, type: 2}
+  d_Walk: {fileID: 7400000, guid: 257659fbf7e78ad4ca203df1c18a2907, type: 2}
+  s_Attack: {fileID: 7400000, guid: 19cefd2f72bcb8e419599e3f96eb3f75, type: 2}
+  s_Death: {fileID: 7400000, guid: 68b24d1fae3da884ea394ff57f9e8c30, type: 2}
+  s_Disolve: {fileID: 7400000, guid: 6d9152675426b7e4995a73ef791425da, type: 2}
+  s_Walk: {fileID: 7400000, guid: ad323cc9adf06074ba576af11dbea9e5, type: 2}
+  u_Attack: {fileID: 7400000, guid: a800a4e3544b3d144b2790bd5b858e26, type: 2}
+  u_Death: {fileID: 7400000, guid: 8b512cb587b6c4740b84e9c8f6dcebde, type: 2}
+  u_Disolve: {fileID: 7400000, guid: df082bb1c4b8a0644bb4bb4b6ca159cc, type: 2}
+  u_Walk: {fileID: 7400000, guid: 2d28a714dbbadcc4dabf5bce14748a60, type: 2}

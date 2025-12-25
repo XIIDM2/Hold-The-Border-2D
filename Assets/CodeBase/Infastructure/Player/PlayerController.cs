@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerController : IPlayerController
 {
-    public Health Health {  get; private set; }
+    public IDamageable Health {  get; private set; }
     public int Gold { get; private set; }
 
     public void Init(PlayerData _data)

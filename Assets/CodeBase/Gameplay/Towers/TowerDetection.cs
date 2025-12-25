@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+
 [RequireComponent(typeof(CircleCollider2D))]
 public class TowerDetection : MonoBehaviour
 {
-    public event UnityAction<IDamageable> TargetEntered;
-    public event UnityAction<IDamageable> TargetExited;
+    public event UnityAction<ITargetable> TargetEntered;
+    public event UnityAction<ITargetable> TargetExited;
 
     [SerializeField, ReadOnly] private float _attackRadius;
 
@@ -23,17 +24,17 @@ public class TowerDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.root.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (collision.transform.root.TryGetComponent<ITargetable>(out ITargetable target))
         {
-            TargetEntered?.Invoke(damageable);
+            TargetEntered?.Invoke(target);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.transform.root.TryGetComponent<IDamageable>(out IDamageable damageable))
+        if (collision.transform.root.TryGetComponent<ITargetable>(out ITargetable target))
         {
-            TargetExited?.Invoke(damageable);
+            TargetExited?.Invoke(target);
         }
     }
 

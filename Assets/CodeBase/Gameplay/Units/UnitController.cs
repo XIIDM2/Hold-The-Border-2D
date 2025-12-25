@@ -2,14 +2,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(UnitMovement))]
 [RequireComponent(typeof(UnitPathing))]
-public class UnitController : MonoBehaviour, IControllable, IDamageable
+public class UnitController : MonoBehaviour, IControllable, ITargetable
 {
     public Vector2 Position => transform.position;
 
     [SerializeField, ReadOnly] private int _currentHealth;
 
     [Header("Components")]
-    public Health Health { get; private set; }
+    public IDamageable Damageable { get; private set; }
     public UnitMovement Movement {  get; private set; }
     public UnitAttack Attack { get; private set; }
     public UnitPathing Pathing { get; private set; }
@@ -22,7 +22,7 @@ public class UnitController : MonoBehaviour, IControllable, IDamageable
 
     private void Awake()
     {        
-        Health = new Health();
+        Damageable = new Health();
 
         Movement = GetComponent<UnitMovement>();
         Attack = GetComponent<UnitAttack>();
@@ -42,18 +42,18 @@ public class UnitController : MonoBehaviour, IControllable, IDamageable
 
     private void OnEnable()
     {
-        Health.OnDeath += DestroyUnit;
+        Damageable.OnDeath += DestroyUnit;
     }
 
     private void OnDisable()
     {
-        Health.OnDeath -= DestroyUnit;
+        Damageable.OnDeath -= DestroyUnit;
     }
 
     private void Update()
     {
         ActionFSM.UpdateState(this);
-        _currentHealth = Health.CurrentHealth;
+        _currentHealth = Damageable.CurrentHealth;
     }
 
     private void LateUpdate()
@@ -69,13 +69,14 @@ public class UnitController : MonoBehaviour, IControllable, IDamageable
 
     public void Init(UnitData data, Waypoint start)
     {
-        Health.Init(data.MaxHealth);
+        Animation.Init(data.Animations);
+        Damageable.Init(data.MaxHealth);
         Movement.Init(data.MovementSpeed);
         Attack.Init(data.PathEndDamage, data.AttackDamage, data.AttackCooldown);
         Pathing.Init(start);
     }
 
-    public void DestroyUnit()
+    public void DestroyUnit(IDamageable damageable)
     {
         Destroy(gameObject);
     }

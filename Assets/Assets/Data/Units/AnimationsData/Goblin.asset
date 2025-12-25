@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 786eca5a11661ed44959c60cd9e3b6d0, type: 3}
+  m_Name: Goblin
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAnimationsData
+  d_Attack: {fileID: 7400000, guid: 01789f8352a1a1c4082af79972a78bea, type: 2}
+  d_Death: {fileID: 7400000, guid: c5e24bcd511613045ae2ee37761bca70, type: 2}
+  d_Disolve: {fileID: 7400000, guid: 28a28b3f3deca354ba10a328be0361d3, type: 2}
+  d_Walk: {fileID: 7400000, guid: eb7855da457bc644492e0336ff649713, type: 2}
+  s_Attack: {fileID: 7400000, guid: 4d2ad7e9e9b3efe42ae9d41a4a605b73, type: 2}
+  s_Death: {fileID: 7400000, guid: 92561c90d96ffd0499c76b24935ae4e2, type: 2}
+  s_Disolve: {fileID: 7400000, guid: 58e29e3481a60624ba11c819ecfa9304, type: 2}
+  s_Walk: {fileID: 7400000, guid: ac2da1b26e1e0634abaca4c23e31aa9b, type: 2}
+  u_Attack: {fileID: 7400000, guid: 1212b9c1be84f6146accc4b68e46afcd, type: 2}
+  u_Death: {fileID: 7400000, guid: 038b3ae2947f8cb4d804d1b9058ec3b9, type: 2}
+  u_Disolve: {fileID: 7400000, guid: 6545f667c0095234a98537621684ec6b, type: 2}
+  u_Walk: {fileID: 7400000, guid: e38e05c19327ac942a00294f2bf9fa80, type: 2}

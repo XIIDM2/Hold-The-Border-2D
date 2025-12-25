@@ -1,10 +1,10 @@
 using System;
 using UnityEngine.Events;
 
-public class Health
+public class Health : IDamageable
 {
     public event UnityAction<int> OnHealthChanged;
-    public event UnityAction OnDeath;
+    public event UnityAction<IDamageable> OnDeath;
 
     public int MaxHealth {  get; private set; }
 
@@ -38,7 +38,7 @@ public class Health
 
         if (CurrentHealth <= 0)
         {
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(this);
         }
     }
 

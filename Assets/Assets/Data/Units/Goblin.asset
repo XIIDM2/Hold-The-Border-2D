@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6defe1fee970d4080614d94eec397b, type: 3}
   m_Name: Goblin
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  _type: 0
   _prefabReference:
     m_AssetGUID: a112f57e9c06b8042b4aecf8b3d3bbc4
     m_SubObjectName: 
@@ -22,3 +23,5 @@ MonoBehaviour:
   _movementSpeed: 1
   _attackDamage: 1
   _pathEndDamage: 1
+  _attackCooldown: 0
+  _animations: {fileID: 11400000, guid: 967a99d8b95c5bb4ba6c909f328e921a, type: 2}

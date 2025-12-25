@@ -23,3 +23,5 @@ MonoBehaviour:
   _movementSpeed: 1.5
   _attackDamage: 1
   _pathEndDamage: 1
+  _attackCooldown: 0
+  _animations: {fileID: 11400000, guid: 30b88d6211ff85f4fafcbe29e2e079bd, type: 2}
