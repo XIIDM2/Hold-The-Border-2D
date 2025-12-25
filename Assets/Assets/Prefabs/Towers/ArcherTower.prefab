@@ -126,8 +126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b129a1cd2f88a54890e5a1dc4876793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerAnimation
-  _defaultUpgradeClip: {fileID: 7400000, guid: 1fa6bd65adc9bfd4da2daeae7429aee0, type: 2}
-  _defaultIdleClip: {fileID: 7400000, guid: 0a1644301cd80ab49bb8ed5a0cae8bfc, type: 2}
 --- !u!1 &5514210107518247970
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,6 +135,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1759513498716524337}
+  - component: {fileID: 5564246304581366704}
+  - component: {fileID: 3738287823587563431}
   - component: {fileID: 2798986763045696664}
   m_Layer: 0
   m_Name: ArcherTower
@@ -161,6 +161,55 @@ Transform:
   - {fileID: 3668188181458443005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &5564246304581366704
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514210107518247970}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
+--- !u!114 &3738287823587563431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514210107518247970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c8e06fddbfb7945adf4df9e5da3b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerDetection
+  _attackRadius: 0
 --- !u!114 &2798986763045696664
 MonoBehaviour:
   m_ObjectHideFlags: 0

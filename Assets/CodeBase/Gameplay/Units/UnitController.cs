@@ -2,12 +2,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(UnitMovement))]
 [RequireComponent(typeof(UnitPathing))]
-public class UnitController : MonoBehaviour, IControllable, IAttackable
+public class UnitController : MonoBehaviour, IControllable, IDamageable
 {
+    public Vector2 Position => transform.position;
+
     [SerializeField, ReadOnly] private int _currentHealth;
 
     [Header("Components")]
-    public IHealth Health { get; private set; }
+    public Health Health { get; private set; }
     public UnitMovement Movement {  get; private set; }
     public UnitAttack Attack { get; private set; }
     public UnitPathing Pathing { get; private set; }
@@ -38,6 +40,16 @@ public class UnitController : MonoBehaviour, IControllable, IAttackable
         ActionFSM.StateInit(MoveState, this);
     }
 
+    private void OnEnable()
+    {
+        Health.OnDeath += DestroyUnit;
+    }
+
+    private void OnDisable()
+    {
+        Health.OnDeath -= DestroyUnit;
+    }
+
     private void Update()
     {
         ActionFSM.UpdateState(this);
@@ -59,7 +71,7 @@ public class UnitController : MonoBehaviour, IControllable, IAttackable
     {
         Health.Init(data.MaxHealth);
         Movement.Init(data.MovementSpeed);
-        Attack.Init(data.PathEndDamage, data.AttackDamage);
+        Attack.Init(data.PathEndDamage, data.AttackDamage, data.AttackCooldown);
         Pathing.Init(start);
     }
 

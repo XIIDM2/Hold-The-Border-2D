@@ -11,6 +11,7 @@ public class UnitData : ScriptableObject
     [SerializeField] private float _movementSpeed;
     [SerializeField] private int _attackDamage;
     [SerializeField] private int _pathEndDamage;
+    [SerializeField] private float _attackCooldown;
 
     public UnitType Type => _type;
     public AssetReferenceGameObject PrefabReference => _prefabReference;
@@ -18,4 +19,5 @@ public class UnitData : ScriptableObject
     public float MovementSpeed => _movementSpeed;
     public int AttackDamage => _attackDamage;
     public int PathEndDamage => _pathEndDamage;
+    public float AttackCooldown => _attackCooldown;
 }

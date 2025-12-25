@@ -12,6 +12,7 @@ public class TowerController : MonoBehaviour, IControllable
 
     [Header("Components")]
     public TowerDetection Detection {  get; private set; }
+    public ITowerAttack Attack {  get; private set; }
     public TowerAnimation Animation {  get; private set; }
 
     [Header("FSM")]
@@ -21,7 +22,9 @@ public class TowerController : MonoBehaviour, IControllable
 
     private void Awake()
     {
-        Detection = GetComponentInChildren<TowerDetection>();
+        Detection = GetComponent<TowerDetection>();
+        Attack = GetComponent<ITowerAttack>();
+
         Animation = GetComponentInChildren<TowerAnimation>();
     }
 
@@ -34,6 +37,18 @@ public class TowerController : MonoBehaviour, IControllable
 
         ActionFSM = new FiniteStateMachine<TowerController>();
         ActionFSM.StateInit(IdleState, this);
+    }
+
+    private void OnEnable()
+    {
+        Detection.TargetEntered += Attack.AddToAttackList;
+        Detection.TargetExited += Attack.RemoveFromAttackList;
+    }
+
+    private void OnDisable()
+    {
+        Detection.TargetEntered -= Attack.AddToAttackList;
+        Detection.TargetExited -= Attack.RemoveFromAttackList;
     }
 
     private void Update()
@@ -54,14 +69,15 @@ public class TowerController : MonoBehaviour, IControllable
 
     public void Init()
     {
-        Detection.Init(CurrentTierConfig.AttackRadius);
         ApplyCurrentTier();
         // первичная инициализация
     }
 
     public void ApplyCurrentTier()
     {
-        Animation.UpgradeTowerAnimations(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
+        Animation.ApplyCurrentTier(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
+        Detection.ApplyCurrentTier(CurrentTierConfig.AttackRadius);
+        Attack.ApplyCurrentTier(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
         // назначение данных
     }
 

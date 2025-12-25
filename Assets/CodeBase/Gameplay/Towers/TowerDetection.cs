@@ -4,8 +4,10 @@ using UnityEngine.Events;
 [RequireComponent(typeof(CircleCollider2D))]
 public class TowerDetection : MonoBehaviour
 {
-    public event UnityAction<IAttackable> TargetEntered;
-    public event UnityAction<IAttackable> TargetExited;
+    public event UnityAction<IDamageable> TargetEntered;
+    public event UnityAction<IDamageable> TargetExited;
+
+    [SerializeField, ReadOnly] private float _attackRadius;
 
     private CircleCollider2D _collider;
 
@@ -21,23 +23,24 @@ public class TowerDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IAttackable>(out IAttackable attackable))
+        if (collision.transform.root.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            TargetEntered?.Invoke(attackable);
+            TargetEntered?.Invoke(damageable);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<IAttackable>(out IAttackable attackable))
+        if (collision.transform.root.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
-            TargetExited?.Invoke(attackable);
+            TargetExited?.Invoke(damageable);
         }
     }
 
-    public void Init(float radius)
+    public void ApplyCurrentTier(float radius)
     {
-        _collider.radius = radius;
+        _attackRadius = radius;
+        _collider.radius = _attackRadius;
     }
 
     private void OnDrawGizmosSelected()

@@ -1,8 +1,7 @@
 using System;
-using UnityEngine;
 using UnityEngine.Events;
 
-public class Health : IHealth
+public class Health
 {
     public event UnityAction<int> OnHealthChanged;
     public event UnityAction OnDeath;

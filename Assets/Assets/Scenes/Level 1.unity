@@ -6791,26 +6791,14 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 577952080}
     - targetCorrespondingSourceObject: {fileID: 5514210107518247970, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 577952079}
+      insertIndex: 4
+      addedObject: {fileID: 577952083}
   m_SourcePrefab: {fileID: 100100000, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
 --- !u!1 &577952078 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5514210107518247970, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
   m_PrefabInstance: {fileID: 577952077}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &577952079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577952078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89c8e06fddbfb7945adf4df9e5da3b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TowerDetection
 --- !u!58 &577952080
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6847,6 +6835,20 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &577952083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577952078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06ba77bd6aedbd47a5183b6485f99e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAttackByUnits
+  _damage: 0
+  _cooldown: 0
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
