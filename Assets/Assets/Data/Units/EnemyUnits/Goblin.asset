@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b6b10cb98737ab4389eb370b1109b5e, type: 3}
+  m_Name: Goblin
+  m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  _type: 0
+  _prefabReference:
+    m_AssetGUID: a112f57e9c06b8042b4aecf8b3d3bbc4
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _maxHealth: 5
+  _movementSpeed: 1
+  _attackDamage: 1
+  _pathEndDamage: 1
+  _attackCooldown: 1
+  _animations: {fileID: 11400000, guid: 967a99d8b95c5bb4ba6c909f328e921a, type: 2}

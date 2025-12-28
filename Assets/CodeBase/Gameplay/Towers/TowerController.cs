@@ -13,7 +13,7 @@ public class TowerController : MonoBehaviour, IControllable
 
     [Header("Components")]
     public TowerDetection Detection {  get; private set; }
-    public ITowerAttack Attack {  get; private set; }
+    public BaseTowerAttack Attack {  get; private set; }
     public TowerAnimation Animation {  get; private set; }
 
     [Header("FSM")]
@@ -25,7 +25,7 @@ public class TowerController : MonoBehaviour, IControllable
     private void Awake()
     {
         Detection = GetComponent<TowerDetection>();
-        Attack = GetComponent<ITowerAttack>();
+        Attack = GetComponent<BaseTowerAttack>();
 
         Animation = GetComponentInChildren<TowerAnimation>();
     }

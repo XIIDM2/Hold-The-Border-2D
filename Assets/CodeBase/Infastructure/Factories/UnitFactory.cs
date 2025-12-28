@@ -14,7 +14,7 @@ public class UnitFactory : IUnitFactory
 
     public async UniTask<GameObject> CreateUnit(UnitType type, Waypoint start, Vector2 position)
     {
-        UnitData unitData = _dataCatalog.GetUnitData(type);
+        EnemyUnitData unitData = _dataCatalog.GetUnitData(type);
 
         if (unitData == null)
         {
@@ -30,7 +30,7 @@ public class UnitFactory : IUnitFactory
             return null;
         }
 
-        unit.GetComponent<UnitController>().Init(unitData, start);
+        unit.GetComponent<EnemyUnitController>().Init(unitData, start);
 
         return unit;
 

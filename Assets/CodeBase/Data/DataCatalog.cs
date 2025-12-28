@@ -4,10 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data Catalog", menuName = "Scriptable Objects/Catalogs/DataCatalog")]
 public class DataCatalog : ScriptableObject
 {
-    [SerializeField] private UnitData[] _unitDatas;
+    [SerializeField] private EnemyUnitData[] _unitDatas;
     [SerializeField] private TowerData[] _towerDatas;
 
-    private Dictionary<UnitType, UnitData> _unitDataDict;
+    private Dictionary<UnitType, EnemyUnitData> _unitDataDict;
     private Dictionary<TowerType, TowerData> _towerDataDict;
 
     private void OnEnable()
@@ -24,9 +24,9 @@ public class DataCatalog : ScriptableObject
             return;
         }
 
-        _unitDataDict = new Dictionary<UnitType, UnitData>();
+        _unitDataDict = new Dictionary<UnitType, EnemyUnitData>();
 
-        foreach (UnitData unitData in _unitDatas)
+        foreach (EnemyUnitData unitData in _unitDatas)
         {
             if (_unitDataDict.ContainsKey(unitData.Type))
             {
@@ -60,7 +60,7 @@ public class DataCatalog : ScriptableObject
         }
     }
 
-    public UnitData GetUnitData(UnitType type)
+    public EnemyUnitData GetUnitData(UnitType type)
     {
         if (_unitDataDict == null)
         {
@@ -68,7 +68,7 @@ public class DataCatalog : ScriptableObject
             UnitDictionaryInit();
         }
 
-        if (_unitDataDict.TryGetValue(type, out UnitData data))
+        if (_unitDataDict.TryGetValue(type, out EnemyUnitData data))
         {
             return data;    
         }
