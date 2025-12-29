@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_playerController.Health.CurrentHealth);
+        Debug.Log("Current Player Health: " + _playerController.Health.CurrentHealth);
     }
 
 }

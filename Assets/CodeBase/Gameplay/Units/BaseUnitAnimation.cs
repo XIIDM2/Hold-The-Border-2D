@@ -1,29 +1,15 @@
 using UnityEngine;
 
-public abstract class BaseUnitAnimation<T> : MonoBehaviour where T : BaseUnitAnimationData
+public abstract class BaseUnitAnimation : MonoBehaviour
 {
     protected Animator _animator;
-    protected AnimatorOverrideController _animatorOverrideController;
 
-    protected AnimationClipOverrides _clipOverrides;
-
-    private void Awake()
+    protected virtual void Awake()
     {
         _animator = GetComponent<Animator>();
-        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
-        _animator.runtimeAnimatorController = _animatorOverrideController;
-
-        _clipOverrides = new AnimationClipOverrides(_animatorOverrideController.overridesCount);
-        _animatorOverrideController.GetOverrides(_clipOverrides);
     }
 
-
-    public abstract void Init(T data);
-
-    protected void ApplyClipsOverrides()
-    {
-        _animatorOverrideController.ApplyOverrides(_clipOverrides);
-    }
+    public abstract void Init(BaseUnitAnimationData data);
 
     public void SetFloat(string parameterName, float value)
     {

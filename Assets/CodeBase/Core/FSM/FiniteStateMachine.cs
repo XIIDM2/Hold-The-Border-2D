@@ -22,7 +22,6 @@ public class FiniteStateMachine<T> where T : IControllable
         {
             _currentState.Update(controller);
         }
-        Debug.Log(_currentState);
     }
 
     public void LateUpdateState(T controller)

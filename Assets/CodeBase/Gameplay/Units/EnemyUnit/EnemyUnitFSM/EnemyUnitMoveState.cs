@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UnitMoveState : UnitState
+public class EnemyUnitMoveState : UnitState<EnemyUnitController>
 {
     public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
     {

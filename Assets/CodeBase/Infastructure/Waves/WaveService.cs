@@ -13,7 +13,7 @@ public class WaveService : IWaveService
             {
                 for (int i = 0; i < units.Amount; i++)
                 {
-                    Messenger<UnitType, Waypoint>.Broadcast(Events.UnitSpawned, units.Type, pathProvider.GetWaypoint(units.Path));
+                    Messenger<EnemyUnitType, Waypoint>.Broadcast(Events.UnitSpawned, units.Type, pathProvider.GetWaypoint(units.Path));
                     yield return new WaitForSeconds(units.IntervalCurrent);
                 }
                 yield return new WaitForSeconds(units.IntervalNext);

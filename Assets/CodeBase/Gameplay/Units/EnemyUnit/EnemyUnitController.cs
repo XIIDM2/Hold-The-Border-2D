@@ -15,20 +15,21 @@ public class EnemyUnitController : BaseUnitController<EnemyUnitController>, ITar
     public EnemyUnitPathing Pathing { get; private set; }
 
     [Header("FSM")]
-    public UnitMoveState MoveState { get; private set; }
+    public EnemyUnitMoveState MoveState { get; private set; }
 
     protected override void Awake()
     {
         base.Awake();
 
         Damageable = new Health();
+        Attack = GetComponent<EnemyUnitAttack>();
         Movement = GetComponent<UnitMovement>();
         Pathing = GetComponent<EnemyUnitPathing>();
 
     }
     private void Start()
     {
-        MoveState = new UnitMoveState();
+        MoveState = new EnemyUnitMoveState();
 
         ActionFSM = new FiniteStateMachine<EnemyUnitController>();
         ActionFSM.StateInit(MoveState, this);

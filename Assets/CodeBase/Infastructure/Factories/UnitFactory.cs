@@ -12,7 +12,7 @@ public class UnitFactory : IUnitFactory
         _dataCatalog = dataCatalog;
     }
 
-    public async UniTask<GameObject> CreateUnit(UnitType type, Waypoint start, Vector2 position)
+    public async UniTask<GameObject> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position)
     {
         EnemyUnitData unitData = _dataCatalog.GetUnitData(type);
 

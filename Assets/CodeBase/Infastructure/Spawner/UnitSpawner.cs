@@ -15,15 +15,15 @@ public class UnitSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        Messenger<UnitType, Waypoint>.AddListener(Events.UnitSpawned, CreateUnit);
+        Messenger<EnemyUnitType, Waypoint>.AddListener(Events.UnitSpawned, CreateUnit);
     }
 
     private void OnDisable()
     {
-        Messenger<UnitType, Waypoint>.RemoveListener(Events.UnitSpawned, CreateUnit);
+        Messenger<EnemyUnitType, Waypoint>.RemoveListener(Events.UnitSpawned, CreateUnit);
     }
 
-    private async void CreateUnit(UnitType type, Waypoint start)
+    private async void CreateUnit(EnemyUnitType type, Waypoint start)
     {
         await _factory.CreateUnit(type, start, _spawnPosition.position);
     }

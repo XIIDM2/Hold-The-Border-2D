@@ -18,14 +18,14 @@ public class WaveData : ScriptableObject
         [System.Serializable]
         public struct WaveUnitsConfig
         {
-            public UnitType Type => _unitType;
+            public EnemyUnitType Type => _unitType;
             public int Amount => _amount;
             public float IntervalCurrent => _intervalCurrent;
             public float IntervalNext => _intervalNext;
 
             public PathType Path => _path;
 
-            [SerializeField] private UnitType _unitType;
+            [SerializeField] private EnemyUnitType _unitType;
             [SerializeField] private int _amount;
 
             [Header("Interval Between Current Units")]

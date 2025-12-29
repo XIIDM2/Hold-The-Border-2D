@@ -1,2 +1,4 @@
-public class UnitState : State<EnemyUnitController> { }
+public class UnitState<T> : State<T> where T : BaseUnitController<T>
+{ 
+}
 

@@ -4,15 +4,14 @@ public abstract class BaseUnitController<T> : MonoBehaviour, IControllable where
 {
     [Header("Components")]
     public BaseUnitAttack Attack { get; protected set; }
-    public BaseUnitAnimation<BaseUnitAnimationData> Animation { get; protected set; }
+    public BaseUnitAnimation Animation { get; protected set; }
 
     [Header("FSM")]
     public FiniteStateMachine<T> ActionFSM { get; protected set; }
 
     protected virtual void Awake()
     {
-        Attack = GetComponent<BaseUnitAttack>();
-        Animation = GetComponentInChildren<BaseUnitAnimation<BaseUnitAnimationData>>();
+        Animation = GetComponentInChildren<BaseUnitAnimation>();
     }
 
     protected virtual void Update()

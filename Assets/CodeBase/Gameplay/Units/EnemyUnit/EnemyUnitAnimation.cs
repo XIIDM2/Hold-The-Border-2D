@@ -11,8 +11,7 @@ public enum EnemyUnitAnimationParameter
 
 }
 
-[RequireComponent(typeof(Animator))]
-public class EnemyUnitAnimation : BaseUnitAnimation<EnemyUnitAnimationsData>
+public class EnemyUnitAnimation : UnitAnimationsOverrides<EnemyUnitAnimationsData>
 {
     [Header("Down Direction")]
     private const string D_ATTACK = "D_Attack";
@@ -33,7 +32,7 @@ public class EnemyUnitAnimation : BaseUnitAnimation<EnemyUnitAnimationsData>
     private const string U_WALK = "U_Walk";
 
 
-    public override void Init(EnemyUnitAnimationsData data)
+    protected override void InitData(EnemyUnitAnimationsData data)
     {
 
         _clipOverrides[D_ATTACK] = data.D_Attack;

@@ -1,4 +1,4 @@
-public enum UnitType
+public enum EnemyUnitType
 {
     Goblin,
     Wolf,

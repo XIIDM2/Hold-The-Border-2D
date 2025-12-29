@@ -7,7 +7,7 @@ public class DataCatalog : ScriptableObject
     [SerializeField] private EnemyUnitData[] _unitDatas;
     [SerializeField] private TowerData[] _towerDatas;
 
-    private Dictionary<UnitType, EnemyUnitData> _unitDataDict;
+    private Dictionary<EnemyUnitType, EnemyUnitData> _unitDataDict;
     private Dictionary<TowerType, TowerData> _towerDataDict;
 
     private void OnEnable()
@@ -24,7 +24,7 @@ public class DataCatalog : ScriptableObject
             return;
         }
 
-        _unitDataDict = new Dictionary<UnitType, EnemyUnitData>();
+        _unitDataDict = new Dictionary<EnemyUnitType, EnemyUnitData>();
 
         foreach (EnemyUnitData unitData in _unitDatas)
         {
@@ -40,7 +40,7 @@ public class DataCatalog : ScriptableObject
 
     private void TowertDictionaryInit()
     {
-        if (_towerDataDict == null || _towerDatas.Length == 0)
+        if (_towerDatas == null || _towerDatas.Length == 0)
         {
             Debug.LogWarning("Tower datas array is empty, can not initialize dictionary...");
             return;
@@ -60,7 +60,7 @@ public class DataCatalog : ScriptableObject
         }
     }
 
-    public EnemyUnitData GetUnitData(UnitType type)
+    public EnemyUnitData GetUnitData(EnemyUnitType type)
     {
         if (_unitDataDict == null)
         {

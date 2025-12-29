@@ -93,7 +93,7 @@ public class TowerController : MonoBehaviour, IControllable
 
     private void OnGUI()
     {
-        if (GUI.Button(new Rect(10, 200, 150, 100), "Upgrade Tower"))
+        if (GUI.Button(new Rect(10, 10, 100, 50), "Upgrade Tower"))
         {
             UpgradeRequested?.Invoke();
         }
