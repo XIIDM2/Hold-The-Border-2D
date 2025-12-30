@@ -13,7 +13,7 @@ public class DataCatalog : ScriptableObject
     private void OnEnable()
     {
         UnitDictionaryInit();
-        TowertDictionaryInit();
+        TowerDictionaryInit();
     }
 
     private void UnitDictionaryInit()
@@ -28,17 +28,14 @@ public class DataCatalog : ScriptableObject
 
         foreach (EnemyUnitData unitData in _unitDatas)
         {
-            if (_unitDataDict.ContainsKey(unitData.Type))
+            if (!_unitDataDict.TryAdd(unitData.Type, unitData))
             {
-                Debug.LogWarning($"{unitData.Type} data already in unit dictionary, skipping...");
-                continue;
+                Debug.LogWarning($"Failed to add {unitData} for {unitData.Type}");
             }
-
-            _unitDataDict[unitData.Type] = unitData;
         }
     }
 
-    private void TowertDictionaryInit()
+    private void TowerDictionaryInit()
     {
         if (_towerDatas == null || _towerDatas.Length == 0)
         {
@@ -50,13 +47,10 @@ public class DataCatalog : ScriptableObject
 
         foreach (TowerData towerData in _towerDatas)
         {
-            if (_towerDataDict.ContainsKey(towerData.Type))
+            if (!_towerDataDict.TryAdd(towerData.Type, towerData))
             {
-                Debug.LogWarning($"{towerData.Type} data already in tower dictionary, skipping...");
-                continue;
+                Debug.LogWarning($"Failed to add {towerData} for {towerData.Type}");
             }
-
-            _towerDataDict[towerData.Type] = towerData;
         }
     }
 

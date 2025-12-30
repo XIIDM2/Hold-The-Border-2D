@@ -22,7 +22,7 @@ public class TowerAnimation : MonoBehaviour
         _animator.runtimeAnimatorController = _overrideController;
     }
 
-    public void ApplyCurrentTier(AnimationClip upgradeClip, AnimationClip idleClip)
+    public void Init(AnimationClip upgradeClip, AnimationClip idleClip)
     {
         _overrideController[UPGRADE_DEFAULT_CLIP_NAME] = upgradeClip;
         _overrideController[IDLE_DEFAULT_CLIP_NAME] = idleClip;

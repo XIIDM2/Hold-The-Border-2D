@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4210ddef3899d0e40bc12ecfcf25fdeb, type: 3}
+  m_Name: TowerArcher_T3
+  m_EditorClassIdentifier: Assembly-CSharp::AnimationData
+  _configs:
+  - _baseClip: {fileID: 7400000, guid: b9083fa50aa1e2e4ba46466a7200ee04, type: 2}
+    _overrideClip: {fileID: 7400000, guid: f15e8ce4867491a479e9d1ff270d737f, type: 2}
+  - _baseClip: {fileID: 7400000, guid: d0cd69d81f7c3224b99aba6cf0aa6d02, type: 2}
+    _overrideClip: {fileID: 7400000, guid: c3b8017ef6dcf6841bf4c0934280717c, type: 2}
+  - _baseClip: {fileID: 7400000, guid: 2c31cf81c49c8e64f86b2348a885bf95, type: 2}
+    _overrideClip: {fileID: 7400000, guid: 0b0f45971345b284896578918c96dd30, type: 2}
+  - _baseClip: {fileID: 7400000, guid: fb3ce9aadc2325b4097766ea99ad903e, type: 2}
+    _overrideClip: {fileID: 7400000, guid: fd180a15790f063428c4e5226c629d15, type: 2}
+  - _baseClip: {fileID: 7400000, guid: a51a5197c2039764ab26cdd0b7499aa2, type: 2}
+    _overrideClip: {fileID: 7400000, guid: beea13881406bbf4ebfb6f9cfbd41bfa, type: 2}
+  - _baseClip: {fileID: 7400000, guid: 9f60c80cedf11804fa0f21b23525425f, type: 2}
+    _overrideClip: {fileID: 7400000, guid: c40dc2862e2c49447ae71b53560e3335, type: 2}

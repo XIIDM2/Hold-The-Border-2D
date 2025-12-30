@@ -1,14 +1,26 @@
 using UnityEngine;
 
-public class TowerRangedUnitController : TowerUnitController
+public class TowerRangedUnitController : BaseUnitController<TowerRangedUnitController>, IAttacker
 {
-    public override void Init(TowerUnitAnimationData data)
+    [Header("FSM")]
+    public TowerRangedUnitIdleState IdleState { get; private set; }
+
+    private void Start()
     {
-        throw new System.NotImplementedException();
+        IdleState = new TowerRangedUnitIdleState();
+
+        ActionFSM = new FiniteStateMachine<TowerRangedUnitController>();
+        ActionFSM.StateInit(IdleState, this);
     }
 
-    public override void RequestAttack()
+    public void Init(AnimationData animations, int damage, float coolDown)
     {
-        Debug.Log("Attacking");
+        if (Animation) Animation.Init(animations);
+        if (Attack) Attack.Init(damage, coolDown);
+    }
+
+    public void ExecuteAttack()
+    {
+        Debug.Log("Attacking!");
     }
 }

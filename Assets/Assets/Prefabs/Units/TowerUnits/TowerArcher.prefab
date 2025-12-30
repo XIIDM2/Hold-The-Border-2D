@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5348146719292196219}
+  - component: {fileID: 9137620017602352662}
   m_Layer: 0
   m_Name: TowerArcher
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 686989225846656920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9137620017602352662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675314045665097179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f5060ca38792745a7c17da61ff66ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerRangedUnitController
 --- !u!1 &8227694819024128683
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,6 +56,7 @@ GameObject:
   - component: {fileID: 686989225846656920}
   - component: {fileID: 2635510987944179052}
   - component: {fileID: 7106985290555778612}
+  - component: {fileID: 7539805594685675252}
   m_Layer: 0
   m_Name: Visual Model
   m_TagString: Untagged
@@ -133,7 +147,7 @@ Animator:
   m_GameObject: {fileID: 8227694819024128683}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1646284755453804a9beb065cf61230e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6674c6804b6d96d44832dbe5523c9d94, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -145,3 +159,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7539805594685675252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8227694819024128683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a58887dd9a3dad4dbc5579a75c3bba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UnitAnimation

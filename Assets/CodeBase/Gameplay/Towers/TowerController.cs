@@ -78,9 +78,18 @@ public class TowerController : MonoBehaviour, IControllable
 
     public void ApplyCurrentTier()
     {
-        Animation.ApplyCurrentTier(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
-        Detection.ApplyCurrentTier(CurrentTierConfig.AttackRadius);
-        Attack.ApplyCurrentTier(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+        Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
+        Detection.Init(CurrentTierConfig.AttackRadius);
+
+        if (Attack is IAttackerRequireable towerAttack)
+        {
+            towerAttack.Init(CurrentTierConfig.UnitAnimations, CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+        }
+        else
+        {
+            Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+        }
+
         // назначение данных
     }
 

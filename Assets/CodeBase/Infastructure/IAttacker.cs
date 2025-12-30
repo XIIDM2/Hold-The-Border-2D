@@ -2,5 +2,6 @@ using UnityEngine;
 
 public interface IAttacker
 {
-    abstract void RequestAttack();
+    void Init(AnimationData animations, int damage, float coolDown);
+    void ExecuteAttack();
 }

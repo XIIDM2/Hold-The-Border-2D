@@ -6,8 +6,8 @@
         <ui:FloatField label="Attack Radius" value="0" binding-path="_attackRadius" />
     </ui:Foldout>
     <ui:Foldout text="Visuals&#10;">
-        <uie:PropertyField binding-path="_visualModel" tooltip="Tower Visual Model Prefab" label="Tower Visual Model Prefab" />
-        <uie:PropertyField binding-path="_upgradeAnimation" />
-        <uie:PropertyField binding-path="_idleAnimation" />
+        <uie:PropertyField label="Upgrade Animation" binding-path="_upgradeAnimation" />
+        <uie:PropertyField label="Idle Animation" binding-path="_idleAnimation" />
+        <uie:PropertyField label="Unit Animations" binding-path="_unitAnimations" />
     </ui:Foldout>
 </ui:UXML>

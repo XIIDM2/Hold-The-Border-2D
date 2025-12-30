@@ -12,7 +12,8 @@ public class TowerData : ScriptableObject
         public float AttackRadius => _attackRadius;
 
         public AnimationClip UpgradeAnimation => _upgradeAnimation; 
-        public AnimationClip IdleAnimation => _idleAnimation;
+        public AnimationClip IdleAnimation => _idleAnimation; 
+        public AnimationData UnitAnimations => _unitAnimations;
 
         [SerializeField] private int _damage;
         [SerializeField] private float _attackCooldown;
@@ -20,6 +21,8 @@ public class TowerData : ScriptableObject
 
         [SerializeField] private AnimationClip _upgradeAnimation;
         [SerializeField] private AnimationClip _idleAnimation;
+
+        [SerializeField] private AnimationData _unitAnimations;
     }
 
     [SerializeField] private TowerType _type;

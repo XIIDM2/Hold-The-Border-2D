@@ -10,15 +10,15 @@ public class EnemyUnitMoveState : UnitState<EnemyUnitController>
     public override void Enter(EnemyUnitController controller)
     {
         base.Enter(controller);
-        controller.Animation.SetBool(EnemyUnitAnimationParameter.IsMoving.ToString(), true);
+        controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), true);
     }
 
     public override void Update(EnemyUnitController controller)
     {
         base.Update(controller);
 
-        controller.Animation.SetFloat(EnemyUnitAnimationParameter.Horizontal.ToString(), controller.Movement.Direction.x);
-        controller.Animation.SetFloat(EnemyUnitAnimationParameter.Vertical.ToString(), controller.Movement.Direction.y);
+        controller.Animation.SetFloat(UnitAnimationParameter.Horizontal.ToString(), controller.Movement.Direction.x);
+        controller.Animation.SetFloat(UnitAnimationParameter.Vertical.ToString(), controller.Movement.Direction.y);
 
         if (controller.Pathing.CheckWaypointReached())
         { 
@@ -45,6 +45,6 @@ public class EnemyUnitMoveState : UnitState<EnemyUnitController>
     {
         base.Exit(controller);
 
-        controller.Animation.SetBool(EnemyUnitAnimationParameter.IsMoving.ToString(), false);
+        controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), false);
     }
 }

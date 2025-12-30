@@ -24,4 +24,4 @@ MonoBehaviour:
   _attackDamage: 1
   _pathEndDamage: 1
   _attackCooldown: 1
-  _animations: {fileID: 11400000, guid: 30b88d6211ff85f4fafcbe29e2e079bd, type: 2}
+  _animations: {fileID: 11400000, guid: e9e8b795ab93e1345b95bf7e8c3048d4, type: 2}

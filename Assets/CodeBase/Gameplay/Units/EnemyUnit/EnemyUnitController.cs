@@ -9,24 +9,9 @@ public class EnemyUnitController : BaseUnitController<EnemyUnitController>, ITar
 
     [SerializeField, ReadOnly] private int _currentHealth;
 
-    [Header("Components")]
-    public IDamageable Damageable { get; private set; }
-    public UnitMovement Movement { get; private set; }
-    public EnemyUnitPathing Pathing { get; private set; }
-
     [Header("FSM")]
     public EnemyUnitMoveState MoveState { get; private set; }
 
-    protected override void Awake()
-    {
-        base.Awake();
-
-        Damageable = new Health();
-        Attack = GetComponent<EnemyUnitAttack>();
-        Movement = GetComponent<UnitMovement>();
-        Pathing = GetComponent<EnemyUnitPathing>();
-
-    }
     private void Start()
     {
         MoveState = new EnemyUnitMoveState();
@@ -55,11 +40,13 @@ public class EnemyUnitController : BaseUnitController<EnemyUnitController>, ITar
     public void Init(EnemyUnitData data, Waypoint start)
     {
         PathEndDamage = data.PathEndDamage;
-        Animation.Init(data.Animations);
-        Damageable.Init(data.MaxHealth);
-        Movement.Init(data.MovementSpeed);
-        Attack.Init(data.AttackDamage, data.AttackCooldown);
-        Pathing.Init(start);
+
+        Damageable?.Init(data.MaxHealth);
+
+        if (Animation) Animation.Init(data.Animations);
+        if (Movement) Movement.Init(data.MovementSpeed);
+        if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
+        if (Pathing) Pathing.Init(start);
     }
 
     public void DestroyUnit(IDamageable damageable)

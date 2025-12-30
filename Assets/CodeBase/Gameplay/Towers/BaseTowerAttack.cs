@@ -16,7 +16,7 @@ public abstract class BaseTowerAttack : MonoBehaviour
 
     protected Coroutine _attackCoroutine;
 
-    public void ApplyCurrentTier(int damage, float cooldown)
+    public void Init(int damage, float cooldown)
     {
         _damage = damage;
         _cooldown = cooldown;
