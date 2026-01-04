@@ -1,3 +1,5 @@
+using Data;
+using Infrastructure.Interfaces;
 using UnityEngine;
 
 public interface IPlayerController

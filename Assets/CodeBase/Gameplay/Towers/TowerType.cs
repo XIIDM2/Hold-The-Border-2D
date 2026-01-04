@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public enum TowerType
+namespace Gameplay.Towers
 {
-    ArcherTower,
+    public enum TowerType
+    {
+        ArcherTower,
+    }
 }

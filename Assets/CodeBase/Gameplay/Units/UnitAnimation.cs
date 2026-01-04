@@ -1,59 +1,63 @@
+using Data;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum UnitAnimationParameter
-{ 
-    IsMoving,
-    Horizontal,
-    Vertical,
-}
-
-
-public class UnitAnimation : MonoBehaviour
+namespace Gameplay.Units
 {
-    private Animator _animator;
-
-    private AnimatorOverrideController _animatorOverrideController;
-
-    private List<KeyValuePair<AnimationClip, AnimationClip>> _clipOverrides;
-
-    private void Awake()
+    public enum UnitAnimationParameter
     {
-        _animator = GetComponent<Animator>();
-
-        _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
-        _animator.runtimeAnimatorController = _animatorOverrideController;
-
+        IsMoving,
+        Horizontal,
+        Vertical,
     }
 
-    public void Init(AnimationData data)
-    {
-        _clipOverrides = new List<KeyValuePair<AnimationClip, AnimationClip>>(_animatorOverrideController.overridesCount);
-        _animatorOverrideController.GetOverrides(_clipOverrides);
 
-        for (int i = 0; i < _clipOverrides.Count; ++i)
+    public class UnitAnimation : MonoBehaviour
+    {
+        private Animator _animator;
+
+        private AnimatorOverrideController _animatorOverrideController;
+
+        private List<KeyValuePair<AnimationClip, AnimationClip>> _clipOverrides;
+
+        private void Awake()
         {
-            _clipOverrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(_clipOverrides[i].Key, data.GetClip(_clipOverrides[i].Key));
+            _animator = GetComponent<Animator>();
+
+            _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+            _animator.runtimeAnimatorController = _animatorOverrideController;
+
         }
 
-        _animatorOverrideController.ApplyOverrides(_clipOverrides);
+        public void Init<T>(T data) where T : AnimationData
+        {
+            _clipOverrides = new List<KeyValuePair<AnimationClip, AnimationClip>>(_animatorOverrideController.overridesCount);
+            _animatorOverrideController.GetOverrides(_clipOverrides);
+
+            for (int i = 0; i < _clipOverrides.Count; ++i)
+            {
+                _clipOverrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(_clipOverrides[i].Key, data.GetClip(_clipOverrides[i].Key));
+            }
+
+            _animatorOverrideController.ApplyOverrides(_clipOverrides);
+        }
+
+
+        public void SetFloat(string parameterName, float value)
+        {
+            _animator.SetFloat(parameterName, value);
+
+        }
+
+        public void SetBool(string parameterName, bool value)
+        {
+            _animator.SetBool(parameterName, value);
+        }
+
+        public void SetTrigger(string parameterName)
+        {
+            _animator.SetTrigger(parameterName);
+        }
+
     }
-    
-
-    public void SetFloat(string parameterName, float value)
-    {
-        _animator.SetFloat(parameterName, value);
-
-    }
-
-    public void SetBool(string parameterName, bool value)
-    {
-        _animator.SetBool(parameterName, value);
-    }
-
-    public void SetTrigger(string parameterName)
-    {
-        _animator.SetTrigger(parameterName);
-    }
-
 }

@@ -1,34 +1,39 @@
+using Data;
+using Infrastructure.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable
+namespace Gameplay.Towers
 {
-    private List<IAttacker> _attackers = new List<IAttacker>();
-
-    public void Init(AnimationData animations, int damage, float coolDown)
+    public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable
     {
-        _attackers = GetComponentsInChildren<IAttacker>().ToList();
+        private List<IAttacker> _attackers = new List<IAttacker>();
 
-        foreach (IAttacker attacker in _attackers)
+        public void Init(AnimationData animations, int damage, float coolDown)
         {
-            attacker.Init(animations, _damage, _cooldown);
-        }
-    }
+            _attackers = GetComponentsInChildren<IAttacker>().ToList();
 
-    protected override IEnumerator AttackRoutine()
-    {
-        while (_unitsToAttack.Count > 0)
-        {
             foreach (IAttacker attacker in _attackers)
             {
-                attacker.ExecuteAttack();
+                attacker.Init(animations, _damage, _cooldown);
             }
-
-            yield return new WaitForSeconds(_cooldown);
         }
+
+        protected override IEnumerator AttackRoutine()
+        {
+            while (_unitsToAttack.Count > 0)
+            {
+                foreach (IAttacker attacker in _attackers)
+                {
+                    attacker.ExecuteAttack();
+                }
+
+                yield return new WaitForSeconds(_cooldown);
+            }
+        }
+
+
     }
-
-
 }

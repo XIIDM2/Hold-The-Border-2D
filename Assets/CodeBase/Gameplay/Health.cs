@@ -1,3 +1,4 @@
+using Infrastructure.Interfaces;
 using System;
 using UnityEngine.Events;
 

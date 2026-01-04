@@ -1,27 +1,31 @@
+using Core.FSM;
 using UnityEngine;
 
-public class TowerAttackState : TowerState
+namespace Gameplay.Towers.FSM
 {
-    public override State<TowerController> HandleTransitions(TowerController controller)
+    public class TowerAttackState : TowerState
     {
-        if (controller.Attack.UnitsToAttack.Count <= 0)
+        public override State<TowerController> HandleTransitions(TowerController controller)
         {
-            return controller.IdleState;
+            if (controller.Attack.UnitsToAttack.Count <= 0)
+            {
+                return controller.IdleState;
+            }
+
+            return base.HandleTransitions(controller);
+        }
+        public override void Enter(TowerController controller)
+        {
+            base.Enter(controller);
+
+            controller.Attack.Attack();
         }
 
-        return base.HandleTransitions(controller);
-    }
-    public override void Enter(TowerController controller)
-    {
-        base.Enter(controller);
+        public override void Exit(TowerController controller)
+        {
+            base.Exit(controller);
 
-        controller.Attack.Attack();
-    }
-
-    public override void Exit(TowerController controller)
-    {
-        base.Exit(controller);
-
-        controller.Attack.StopAttack();
+            controller.Attack.StopAttack();
+        }
     }
 }

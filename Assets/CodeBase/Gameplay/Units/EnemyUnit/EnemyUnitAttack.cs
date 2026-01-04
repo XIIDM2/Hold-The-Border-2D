@@ -1,10 +1,15 @@
+using Gameplay.Units;
+using Infrastructure.Interfaces;
 using UnityEngine;
 
-public class EnemyUnitAttack : BaseUnitAttack
+namespace Gameplay.Units.Enemy
 {
-    public override void Attack(ITargetable target)
+    public class EnemyUnitAttack : BaseUnitAttack
     {
-        
-    }
+        public override void Attack(ITargetable target)
+        {
 
+        }
+
+    }
 }

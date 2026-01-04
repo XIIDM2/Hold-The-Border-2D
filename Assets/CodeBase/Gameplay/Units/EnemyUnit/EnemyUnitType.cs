@@ -1,8 +1,11 @@
-public enum EnemyUnitType
+namespace Gameplay.Units.Enemy
 {
-    Goblin,
-    Wolf,
-    Bee,
-    Slime,
-    BabySlime,
+    public enum EnemyUnitType
+    {
+        Goblin,
+        Wolf,
+        Bee,
+        Slime,
+        BabySlime,
+    }
 }

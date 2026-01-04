@@ -1,14 +1,18 @@
+using Core.FSM;
 using UnityEngine;
 
-public class TowerIdleState : TowerState
+namespace Gameplay.Towers.FSM
 {
-    public override State<TowerController> HandleTransitions(TowerController controller)
-    { 
-        if (controller.Attack.UnitsToAttack.Count > 0)
+    public class TowerIdleState : TowerState
+    {
+        public override State<TowerController> HandleTransitions(TowerController controller)
         {
-            return controller.AttackState;
-        }
+            if (controller.Attack.UnitsToAttack.Count > 0)
+            {
+                return controller.AttackState;
+            }
 
-        return base.HandleTransitions(controller);
+            return base.HandleTransitions(controller);
+        }
     }
 }

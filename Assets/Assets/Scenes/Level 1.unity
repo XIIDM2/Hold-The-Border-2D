@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelLifeTimeScope
   parentReference:
-    TypeName: RootLifeTimeScope
+    TypeName: 
   autoRun: 1
   autoInjectGameObjects: []
   _waveData: {fileID: 11400000, guid: 557ac4c51c4f577408cd4e7c006decb4, type: 2}
@@ -9363,7 +9363,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f5060ca38792745a7c17da61ff66ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 578f856c9cd16474ca9fc3142a8bef71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerRangedUnitController
 --- !u!1 &921992782

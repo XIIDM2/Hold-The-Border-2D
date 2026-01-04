@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public interface ITargetable
+namespace Infrastructure.Interfaces
 {
-    Vector2 Position { get; }
-    IDamageable Damageable { get; }
+    public interface ITargetable
+    {
+        Vector2 Position { get; }
+        IDamageable Damageable { get; }
+    }
 }

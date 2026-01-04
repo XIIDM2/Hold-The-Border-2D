@@ -1,6 +1,10 @@
+using Data;
 using UnityEngine;
 
-public interface IAttackerRequireable
+namespace Infrastructure.Interfaces
 {
-    void Init(AnimationData animations, int damage, float coolDown);
+    public interface IAttackerRequireable
+    {
+        void Init(AnimationData animations, int damage, float coolDown);
+    }
 }

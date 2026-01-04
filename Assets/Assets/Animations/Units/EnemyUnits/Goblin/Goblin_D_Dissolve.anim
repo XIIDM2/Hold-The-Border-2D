@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wolf_S_Disolve
+  m_Name: Goblin_D_Dissolve
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -8841434923846461604, guid: 08781bf43c5d70848a1853f8eab66f49, type: 3}
+      value: {fileID: 9193826506098663565, guid: a2b886fcc5e138942abc4e6e7110014f, type: 3}
     - time: 0.083333336
-      value: {fileID: -1810334828694086222, guid: 08781bf43c5d70848a1853f8eab66f49, type: 3}
+      value: {fileID: 7470103261667125919, guid: a2b886fcc5e138942abc4e6e7110014f, type: 3}
     - time: 0.16666667
-      value: {fileID: 986756850881568546, guid: 08781bf43c5d70848a1853f8eab66f49, type: 3}
+      value: {fileID: 2513419813702969998, guid: a2b886fcc5e138942abc4e6e7110014f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -48,9 +48,9 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -8841434923846461604, guid: 08781bf43c5d70848a1853f8eab66f49, type: 3}
-    - {fileID: -1810334828694086222, guid: 08781bf43c5d70848a1853f8eab66f49, type: 3}
-    - {fileID: 986756850881568546, guid: 08781bf43c5d70848a1853f8eab66f49, type: 3}
+    - {fileID: 9193826506098663565, guid: a2b886fcc5e138942abc4e6e7110014f, type: 3}
+    - {fileID: 7470103261667125919, guid: a2b886fcc5e138942abc4e6e7110014f, type: 3}
+    - {fileID: 2513419813702969998, guid: a2b886fcc5e138942abc4e6e7110014f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -76,7 +76,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0.16666667
     functionName: AEDestroyGameObject
     data: 
     objectReferenceParameter: {fileID: 0}

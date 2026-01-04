@@ -1,7 +1,11 @@
 using Cysharp.Threading.Tasks;
+using Gameplay.Units.Enemy;
 using UnityEngine;
 
-public interface IUnitFactory
+namespace Infrastructure.Factories
 {
-    UniTask<GameObject> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position);
+    public interface IUnitFactory
+    {
+        UniTask<GameObject> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position);
+    }
 }

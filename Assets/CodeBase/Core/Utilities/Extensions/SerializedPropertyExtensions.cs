@@ -1,17 +1,20 @@
 using System.Text.RegularExpressions;
 using UnityEditor;
 
-public static class SerializedPropertyExtensions
+namespace Core.Utilities.Extensions
 {
-    public static int GetArrayIndex(this SerializedProperty property)
+    public static class SerializedPropertyExtensions
     {
-        Match match = Regex.Match(property.propertyPath, @"\[(\d+)\]");
-
-        if (match.Success)
+        public static int GetArrayIndex(this SerializedProperty property)
         {
-            return int.Parse(match.Groups[1].Value);
-        }
+            Match match = Regex.Match(property.propertyPath, @"\[(\d+)\]");
 
-        return 0;
+            if (match.Success)
+            {
+                return int.Parse(match.Groups[1].Value);
+            }
+
+            return 0;
+        }
     }
 }

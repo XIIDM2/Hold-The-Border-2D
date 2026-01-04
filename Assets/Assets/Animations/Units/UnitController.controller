@@ -115,7 +115,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Disolve_Tree
+  m_Name: Dissolve_Tree
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: d7b67ebe8ace30545ace6fbc35932ae8, type: 2}
@@ -567,7 +567,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Disolve
+  m_Name: Dissolve
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

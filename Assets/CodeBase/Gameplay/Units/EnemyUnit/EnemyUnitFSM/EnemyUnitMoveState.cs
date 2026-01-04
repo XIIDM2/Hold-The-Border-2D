@@ -1,50 +1,54 @@
-using UnityEngine;
+using Core.FSM;
+using Gameplay.Units.Enemy;
 
-public class EnemyUnitMoveState : UnitState<EnemyUnitController>
+namespace Gameplay.Units.FSM.Enemy
 {
-    public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
+    public class EnemyUnitMoveState : UnitState<EnemyUnitController>
     {
-        return base.HandleTransitions(controller);
-    }
-
-    public override void Enter(EnemyUnitController controller)
-    {
-        base.Enter(controller);
-        controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), true);
-    }
-
-    public override void Update(EnemyUnitController controller)
-    {
-        base.Update(controller);
-
-        controller.Animation.SetFloat(UnitAnimationParameter.Horizontal.ToString(), controller.Movement.Direction.x);
-        controller.Animation.SetFloat(UnitAnimationParameter.Vertical.ToString(), controller.Movement.Direction.y);
-
-        if (controller.Pathing.CheckWaypointReached())
-        { 
-            controller.Pathing.SetNextWaypoint();
-
-            if (controller.Pathing.HasReachedEnd())
-            {
-                Messenger<int>.Broadcast(Events.UnitReachedEnd, controller.PathEndDamage);
-                controller.DestroyUnit(controller.Damageable);
-                return;
-            }
-
+        public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
+        {
+            return base.HandleTransitions(controller);
         }
-    }
 
-    public override void FixedUpdate(EnemyUnitController controller)
-    {
-        base.FixedUpdate(controller);
+        public override void Enter(EnemyUnitController controller)
+        {
+            base.Enter(controller);
+            controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), true);
+        }
 
-        controller.Movement.Move(controller.Pathing.CurrentPosition);
-    }
+        public override void Update(EnemyUnitController controller)
+        {
+            base.Update(controller);
 
-    public override void Exit(EnemyUnitController controller)
-    {
-        base.Exit(controller);
+            controller.Animation.SetFloat(UnitAnimationParameter.Horizontal.ToString(), controller.Movement.Direction.x);
+            controller.Animation.SetFloat(UnitAnimationParameter.Vertical.ToString(), controller.Movement.Direction.y);
 
-        controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), false);
+            if (controller.Pathing.CheckWaypointReached())
+            {
+                controller.Pathing.SetNextWaypoint();
+
+                if (controller.Pathing.HasReachedEnd())
+                {
+                    Messenger<int>.Broadcast(Events.UnitReachedEnd, controller.PathEndDamage);
+                    controller.DestroyUnit(controller.Damageable);
+                    return;
+                }
+
+            }
+        }
+
+        public override void FixedUpdate(EnemyUnitController controller)
+        {
+            base.FixedUpdate(controller);
+
+            controller.Movement.Move(controller.Pathing.CurrentPosition);
+        }
+
+        public override void Exit(EnemyUnitController controller)
+        {
+            base.Exit(controller);
+
+            controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), false);
+        }
     }
 }

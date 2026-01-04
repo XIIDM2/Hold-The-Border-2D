@@ -1,38 +1,44 @@
+using Core.Interfaces;
 using Cysharp.Threading.Tasks;
+using Data;
+using Gameplay.Units.Enemy;
 using UnityEngine;
 
-public class UnitFactory : IUnitFactory
+namespace Infrastructure.Factories
 {
-    private readonly IAssetProvider _assetProvider;
-    private readonly DataCatalog _dataCatalog;
-
-    public UnitFactory(IAssetProvider assetProvider, DataCatalog dataCatalog)
+    public class UnitFactory : IUnitFactory
     {
-        _assetProvider = assetProvider;
-        _dataCatalog = dataCatalog;
-    }
+        private readonly IAssetProvider _assetProvider;
+        private readonly DataCatalog _dataCatalog;
 
-    public async UniTask<GameObject> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position)
-    {
-        EnemyUnitData unitData = _dataCatalog.GetUnitData(type);
-
-        if (unitData == null)
+        public UnitFactory(IAssetProvider assetProvider, DataCatalog dataCatalog)
         {
-            Debug.LogError($"Failed to create unit, {type} data is null");
-            return null;
+            _assetProvider = assetProvider;
+            _dataCatalog = dataCatalog;
         }
 
-        GameObject unit = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference), position, Quaternion.identity);
-
-        if (unit == null)
+        public async UniTask<GameObject> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position)
         {
-            Debug.LogError($"Failed to create unit, {type} prefab is null");
-            return null;
+            EnemyUnitData unitData = _dataCatalog.GetUnitData(type);
+
+            if (unitData == null)
+            {
+                Debug.LogError($"Failed to create unit, {type} data is null");
+                return null;
+            }
+
+            GameObject unit = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference), position, Quaternion.identity);
+
+            if (unit == null)
+            {
+                Debug.LogError($"Failed to create unit, {type} prefab is null");
+                return null;
+            }
+
+            unit.GetComponent<EnemyUnitController>().Init(unitData, start);
+
+            return unit;
+
         }
-
-        unit.GetComponent<EnemyUnitController>().Init(unitData, start);
-
-        return unit;
-
     }
 }

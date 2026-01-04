@@ -1,4 +1,6 @@
 using UnityEngine;
 
-public class ReadOnlyAttribute : PropertyAttribute { }
-
+namespace Core.Utilities.CustomProperties
+{
+    public class ReadOnlyAttribute : PropertyAttribute { }
+}

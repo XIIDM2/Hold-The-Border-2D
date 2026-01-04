@@ -1,54 +1,58 @@
+using Core.Utilities.CustomProperties;
+using Infrastructure.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-[RequireComponent(typeof(CircleCollider2D))]
-public class TowerDetection : MonoBehaviour
+namespace Gameplay.Towers
 {
-    public event UnityAction<ITargetable> TargetEntered;
-    public event UnityAction<ITargetable> TargetExited;
-
-    [SerializeField, ReadOnly] private float _attackRadius;
-
-    private CircleCollider2D _collider;
-
-    private void Awake()
+    [RequireComponent(typeof(CircleCollider2D))]
+    public class TowerDetection : MonoBehaviour
     {
-        _collider = GetComponent<CircleCollider2D>();
-    }
+        public event UnityAction<ITargetable> TargetEntered;
+        public event UnityAction<ITargetable> TargetExited;
 
-    private void Start()
-    {
-        _collider.isTrigger = true;
-    }
+        [SerializeField, ReadOnly] private float _attackRadius;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.root.TryGetComponent<ITargetable>(out ITargetable target))
+        private CircleCollider2D _collider;
+
+        private void Awake()
         {
-            TargetEntered?.Invoke(target);
+            _collider = GetComponent<CircleCollider2D>();
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.transform.root.TryGetComponent<ITargetable>(out ITargetable target))
+        private void Start()
         {
-            TargetExited?.Invoke(target);
+            _collider.isTrigger = true;
         }
-    }
 
-    public void Init(float radius)
-    {
-        _attackRadius = radius;
-        _collider.radius = _attackRadius;
-    }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.transform.root.TryGetComponent(out ITargetable target))
+            {
+                TargetEntered?.Invoke(target);
+            }
+        }
 
-    private void OnDrawGizmosSelected()
-    {
-        if (_collider == null) return;
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.transform.root.TryGetComponent(out ITargetable target))
+            {
+                TargetExited?.Invoke(target);
+            }
+        }
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, _collider.radius);
+        public void Init(float radius)
+        {
+            _attackRadius = radius;
+            _collider.radius = _attackRadius;
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (_collider == null) return;
+
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, _collider.radius);
+        }
     }
 }
