@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5348146719292196219}
   - component: {fileID: 9137620017602352662}
   m_Layer: 0
-  m_Name: TowerArcher
+  m_Name: TowerArcher_T1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 686989225846656920}
   - component: {fileID: 2635510987944179052}
   - component: {fileID: 7106985290555778612}
-  - component: {fileID: 7539805594685675252}
+  - component: {fileID: 1131879073026975606}
   m_Layer: 0
   m_Name: Visual Model
   m_TagString: Untagged
@@ -81,6 +81,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2635510987944179052
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -126,6 +127,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 2847894867104497665, guid: 542350faca13f7d418a91278e5127526, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -135,7 +137,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &7106985290555778612
 Animator:
@@ -159,7 +160,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7539805594685675252
+--- !u!114 &1131879073026975606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8227694819024128683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a58887dd9a3dad4dbc5579a75c3bba9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5432060cb607eb1488cec75b14cb2677, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitAnimation
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Towers.Units.TowerUnitAnimation
+  _animationData: {fileID: 11400000, guid: 7d2bac0aebf50ef4c83cdcccbb0e18ae, type: 2}

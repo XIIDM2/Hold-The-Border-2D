@@ -11,13 +11,37 @@ namespace Gameplay.Towers
     {
         private List<IAttacker> _attackers = new List<IAttacker>();
 
-        public void Init(AnimationData animations, int damage, float coolDown)
+        public void InitAttackers(GameObject unitPrefab, Vector2[] unitsPositions)
         {
-            _attackers = GetComponentsInChildren<IAttacker>().ToList();
+            foreach (IAttacker attacker in _attackers)
+            {
+                if (attacker is Component component)
+                {
+                    Destroy(component.gameObject);
+                }
+            }
+
+            _attackers.Clear();
+
+            foreach (Vector2 unitPosition in unitsPositions)
+            {
+                GameObject unit = Instantiate(unitPrefab, gameObject.transform, false);
+
+                unit.transform.localPosition = unitPosition;
+
+                if (unit.TryGetComponent<IAttacker>(out IAttacker attacker))
+                {
+                    _attackers.Add(attacker);
+                }
+                else
+                {
+                    Destroy(unit);
+                }
+            }
 
             foreach (IAttacker attacker in _attackers)
             {
-                attacker.Init(animations, _damage, _cooldown);
+                attacker.Init(_damage, _cooldown);
             }
         }
 

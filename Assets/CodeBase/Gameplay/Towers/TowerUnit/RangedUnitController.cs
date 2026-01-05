@@ -20,9 +20,8 @@ namespace Gameplay.Towers.Units
             ActionFSM.StateInit(IdleState, this);
         }
 
-        public void Init(AnimationData animations, int damage, float coolDown)
+        public void Init( int damage, float coolDown)
         {
-            if (Animation) Animation.Init(animations);
             if (Attack) Attack.Init(damage, coolDown);
         }
 

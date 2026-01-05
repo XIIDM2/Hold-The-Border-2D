@@ -1,13 +1,15 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:Label name="TowerTierHeader" text="Tower Tier Details" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 14px; letter-spacing: 5px; -unity-text-outline-width: 0.5px;" />
+    <ui:Label name="TowerTierHeader" text="Tower Tier Details" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 14px; letter-spacing: 5px; -unity-text-outline-width: 0.5px; padding-top: 5px;"/>
     <ui:Foldout text="Stats&#10;" name="Foldout" style="-unity-text-align: upper-left;">
-        <ui:IntegerField label="Damage" value="0" binding-path="_damage" />
-        <ui:FloatField label="Attack Cooldown" value="0" binding-path="_attackCooldown" />
-        <ui:FloatField label="Attack Radius" value="0" binding-path="_attackRadius" />
+        <ui:IntegerField label="Damage" value="0" binding-path="_damage"/>
+        <ui:FloatField label="Attack Cooldown" value="0" binding-path="_attackCooldown"/>
+        <ui:FloatField label="Attack Radius" value="0" binding-path="_attackRadius"/>
     </ui:Foldout>
     <ui:Foldout text="Visuals&#10;">
-        <uie:PropertyField label="Upgrade Animation" binding-path="_upgradeAnimation" />
-        <uie:PropertyField label="Idle Animation" binding-path="_idleAnimation" />
-        <uie:PropertyField label="Unit Animations" binding-path="_unitAnimations" />
+        <uie:PropertyField label="Upgrade Animation" binding-path="_upgradeAnimation"/>
+        <uie:PropertyField label="Idle Animation" binding-path="_idleAnimation"/>
     </ui:Foldout>
+    <ui:Label text="Tower`s Units Details&#10;(if there are no units in tower, leave all as null)" style="-unity-text-align: upper-center; font-size: 12px; letter-spacing: 5px; margin-top: 5px;"/>
+    <uie:PropertyField label="Unit Prefab" binding-path="_unitPrefab"/>
+    <uie:PropertyField binding-path="_unitsPositions" label="Units Positions"/>
 </ui:UXML>

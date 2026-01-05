@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Tower`s Units
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Tower`s Units
+  m_GUID: 8ab41c7fd87386b45bf518c50580ee90
+  m_SerializeEntries:
+  - m_GUID: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08
+    m_Address: TowerArcher_T3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level 1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c166d5f38b9df04082e76113ae91ef1
+    m_Address: TowerArcher_T2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level 1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0956e9f9a72ba446a755ef6472c5cd5
+    m_Address: TowerArcher_T1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level 1
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 22ee74c25a5ea1c4eb5f423c8372d36e, type: 2}
+    - {fileID: 11400000, guid: f571f43b4a6763643b983e37ec99bae2, type: 2}

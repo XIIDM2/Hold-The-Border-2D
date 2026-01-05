@@ -5,7 +5,7 @@ namespace Infrastructure.Interfaces
 {
     public interface IAttacker
     {
-        void Init(AnimationData animations, int damage, float coolDown);
+        void Init(int damage, float coolDown);
         void ExecuteAttack();
     }
 }

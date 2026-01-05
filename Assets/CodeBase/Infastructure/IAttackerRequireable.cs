@@ -5,6 +5,6 @@ namespace Infrastructure.Interfaces
 {
     public interface IAttackerRequireable
     {
-        void Init(AnimationData animations, int damage, float coolDown);
+        void InitAttackers(GameObject unitPrefab, Vector2[] unitsPositions);
     }
 }

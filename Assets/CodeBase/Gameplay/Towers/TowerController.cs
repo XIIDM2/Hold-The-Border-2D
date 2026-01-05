@@ -86,14 +86,11 @@ namespace Gameplay.Towers
         {
             Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
             Detection.Init(CurrentTierConfig.AttackRadius);
+            if (Attack) Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
 
             if (Attack is IAttackerRequireable towerAttack)
             {
-                towerAttack.Init(CurrentTierConfig.UnitAnimations, CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
-            }
-            else
-            {
-                Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+                towerAttack.InitAttackers(CurrentTierConfig.UnitPrefab, CurrentTierConfig.UnitsPositions);
             }
 
             // назначение данных
