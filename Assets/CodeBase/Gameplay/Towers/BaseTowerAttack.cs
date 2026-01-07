@@ -20,11 +20,12 @@ namespace Gameplay.Towers
 
         protected Coroutine _attackCoroutine;
 
-        public void Init(int damage, float cooldown)
+        public virtual void Init(int damage, float cooldown)
         {
             _damage = damage;
             _cooldown = cooldown;
         }
+
 
         public void Attack()
         {

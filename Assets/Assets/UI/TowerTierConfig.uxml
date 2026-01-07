@@ -8,8 +8,6 @@
     <ui:Foldout text="Visuals&#10;">
         <uie:PropertyField label="Upgrade Animation" binding-path="_upgradeAnimation"/>
         <uie:PropertyField label="Idle Animation" binding-path="_idleAnimation"/>
+        <uie:PropertyField label="Attackers Module Prefab" binding-path="_attackersModulePrefab"/>
     </ui:Foldout>
-    <ui:Label text="Tower`s Units Details&#10;(if there are no units in tower, leave all as null)" style="-unity-text-align: upper-center; font-size: 12px; letter-spacing: 5px; margin-top: 5px;"/>
-    <uie:PropertyField label="Unit Prefab" binding-path="_unitPrefab"/>
-    <uie:PropertyField binding-path="_unitsPositions" label="Units Positions"/>
 </ui:UXML>

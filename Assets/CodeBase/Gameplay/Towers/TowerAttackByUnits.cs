@@ -7,41 +7,21 @@ using UnityEngine;
 
 namespace Gameplay.Towers
 {
-    public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable
+    public class TowerAttackByUnits : BaseTowerAttack
     {
         private List<IAttacker> _attackers = new List<IAttacker>();
 
-        public void InitAttackers(GameObject unitPrefab, Vector2[] unitsPositions)
+        public override void Init(int damage, float cooldown)
         {
-            foreach (IAttacker attacker in _attackers)
-            {
-                if (attacker is Component component)
-                {
-                    Destroy(component.gameObject);
-                }
-            }
+            base.Init(damage, cooldown);
 
             _attackers.Clear();
 
-            foreach (Vector2 unitPosition in unitsPositions)
-            {
-                GameObject unit = Instantiate(unitPrefab, gameObject.transform, false);
-
-                unit.transform.localPosition = unitPosition;
-
-                if (unit.TryGetComponent<IAttacker>(out IAttacker attacker))
-                {
-                    _attackers.Add(attacker);
-                }
-                else
-                {
-                    Destroy(unit);
-                }
-            }
+            _attackers = GetComponentsInChildren<IAttacker>().ToList();
 
             foreach (IAttacker attacker in _attackers)
             {
-                attacker.Init(_damage, _cooldown);
+                attacker.Init(damage, cooldown);
             }
         }
 

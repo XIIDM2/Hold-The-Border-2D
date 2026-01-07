@@ -9,8 +9,11 @@ namespace Gameplay.Towers.Units
 {
     public class RangedUnitController : BaseUnitController<RangedUnitController>, IAttacker
     {
+        [SerializeField] private AnimationData _data;
+
         [Header("FSM")]
         public RangedUnitIdleState IdleState { get; private set; }
+
 
         private void Start()
         {
@@ -20,8 +23,10 @@ namespace Gameplay.Towers.Units
             ActionFSM.StateInit(IdleState, this);
         }
 
-        public void Init( int damage, float coolDown)
+        public void Init(int damage, float coolDown)
         {
+            Animation.Init(_data);
+            Debug.Log("Init Attackers");
             if (Attack) Attack.Init(damage, coolDown);
         }
 

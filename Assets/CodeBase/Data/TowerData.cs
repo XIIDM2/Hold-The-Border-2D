@@ -16,8 +16,7 @@ namespace Data
 
             public AnimationClip UpgradeAnimation => _upgradeAnimation;
             public AnimationClip IdleAnimation => _idleAnimation;
-            public GameObject UnitPrefab => _unitPrefab;
-            public Vector2[] UnitsPositions => _unitsPositions;
+            public GameObject AttackersModulePrefab =>_attackersModulePrefab;
 
             [SerializeField] private int _damage;
             [SerializeField] private float _attackCooldown;
@@ -26,8 +25,7 @@ namespace Data
             [SerializeField] private AnimationClip _upgradeAnimation;
             [SerializeField] private AnimationClip _idleAnimation;
 
-            [SerializeField] private GameObject _unitPrefab;
-            [SerializeField] private Vector2[] _unitsPositions;
+            [SerializeField] private GameObject _attackersModulePrefab;
         }
 
         [SerializeField] private TowerType _type;
