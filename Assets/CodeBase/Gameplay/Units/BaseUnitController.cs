@@ -21,7 +21,7 @@ namespace Gameplay.Units
         protected virtual void Awake()
         {
             Damageable = new Health();
-            Attack = GetComponent<EnemyUnitAttack>();
+            Attack = GetComponent<BaseUnitAttack>();
             Movement = GetComponent<UnitMovement>();
             Pathing = GetComponent<EnemyUnitPathing>();
             Animation = GetComponentInChildren<UnitAnimation>();

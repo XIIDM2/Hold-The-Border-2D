@@ -10,13 +10,16 @@ namespace Data
         [System.Serializable]
         public class TowerTierConfig
         {
+            public AssetReferenceGameObject TowerPrefab => _towerPrefab;
+
             public int Damage => _damage;
             public float AttackCooldown => _attackCooldown;
             public float AttackRadius => _attackRadius;
 
             public AnimationClip UpgradeAnimation => _upgradeAnimation;
             public AnimationClip IdleAnimation => _idleAnimation;
-            public GameObject AttackersModulePrefab =>_attackersModulePrefab;
+
+            [SerializeField] private AssetReferenceGameObject _towerPrefab;
 
             [SerializeField] private int _damage;
             [SerializeField] private float _attackCooldown;
@@ -25,7 +28,6 @@ namespace Data
             [SerializeField] private AnimationClip _upgradeAnimation;
             [SerializeField] private AnimationClip _idleAnimation;
 
-            [SerializeField] private GameObject _attackersModulePrefab;
         }
 
         [SerializeField] private TowerType _type;
@@ -34,7 +36,6 @@ namespace Data
         [SerializeField] private TowerTierConfig[] _tiersConfigs;
 
         public TowerType Type => _type;
-        public AssetReference TowerPrefab => _towerPrefab;
         public TowerTierConfig[] TierConfigs => _tiersConfigs;
     }
 }

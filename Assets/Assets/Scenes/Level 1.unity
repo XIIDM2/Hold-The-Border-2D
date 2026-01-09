@@ -6546,6 +6546,63 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &560592584
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.3575512
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16781473
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753676731449980301, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6816475295532654238, guid: b0be8aa8571666944ae669334f160303, type: 3}
+      propertyPath: m_Name
+      value: ArcherTower_T1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0be8aa8571666944ae669334f160303, type: 3}
 --- !u!1 &568679118
 GameObject:
   m_ObjectHideFlags: 0
@@ -6737,79 +6794,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &577952077
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1238749609336606391, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -855298285791758126, guid: 3c4946f6aefc599468c6170a6623705c, type: 3}
-    - target: {fileID: 1238749609336606391, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1238749609336606391, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.71
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1759513498716524337, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2798986763045696664, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: _test
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5514210107518247970, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
-      propertyPath: m_Name
-      value: ArcherTower
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6d0f1513c1bb7274b96b65a0b3a1556c, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -12083,4 +12067,4 @@ SceneRoots:
   - {fileID: 670719547}
   - {fileID: 1106412244}
   - {fileID: 935983097}
-  - {fileID: 577952077}
+  - {fileID: 560592584}

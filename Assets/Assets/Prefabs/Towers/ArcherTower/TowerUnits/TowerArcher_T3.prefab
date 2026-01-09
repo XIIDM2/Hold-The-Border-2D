@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5348146719292196219}
   - component: {fileID: 9137620017602352662}
+  - component: {fileID: 2687746460290470396}
   m_Layer: 0
   m_Name: TowerArcher_T3
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerRangedUnitController
   _data: {fileID: 11400000, guid: 118bb61e04fbc8545a8e74b9dd17fab0, type: 2}
+--- !u!114 &2687746460290470396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675314045665097179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 159a65891c4dc474eb6e4fed61c227ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Towers.Units.TowerUnitAttack
+  _damage: 0
+  _cooldown: 0
 --- !u!1 &8227694819024128683
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,11 +9,21 @@ namespace Gameplay.Towers.Units
 {
     public class RangedUnitController : BaseUnitController<RangedUnitController>, IAttacker
     {
+        public Vector2 TargetDirection { get; private set; }
+        public ObjectDirection Direction { get; private set; }
+
         [SerializeField] private AnimationData _data;
+
 
         [Header("FSM")]
         public RangedUnitIdleState IdleState { get; private set; }
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            Direction = new ObjectDirection();
+        }
 
         private void Start()
         {
@@ -26,13 +36,18 @@ namespace Gameplay.Towers.Units
         public void Init(int damage, float coolDown)
         {
             Animation.Init(_data);
-            Debug.Log("Init Attackers");
+
             if (Attack) Attack.Init(damage, coolDown);
         }
 
-        public void ExecuteAttack()
+        public void ExecuteAttack(ITargetable target)
         {
-            Debug.Log("Attacking!");
+            if (target is Component component)
+            {
+                TargetDirection = component.gameObject.transform.position - transform.position;
+            }
+
+            Attack.Attack(target);
         }
     }
 }

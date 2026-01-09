@@ -1,3 +1,4 @@
+using Gameplay.Units;
 using UnityEngine;
 
 namespace Gameplay.Towers.Units.FSM
@@ -8,7 +9,9 @@ namespace Gameplay.Towers.Units.FSM
         {
             base.Update(controller);
 
-            Debug.Log("Im in idle state");
+            controller.Direction.FaceDirection(controller.transform, controller.TargetDirection.x);
+            controller.Animation.SetFloat(UnitAnimationParameter.Horizontal.ToString(), controller.TargetDirection.x);
+            controller.Animation.SetFloat(UnitAnimationParameter.Vertical.ToString(), controller.TargetDirection.y);      
         }
     }
 }

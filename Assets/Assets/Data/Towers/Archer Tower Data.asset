@@ -20,45 +20,80 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _tiersConfigs:
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: b0be8aa8571666944ae669334f160303
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 67964e5fbaec30b478283c9277be8aed, type: 2}
     _idleAnimation: {fileID: 7400000, guid: af364be1f82f0894690af9b87355ffca, type: 2}
-    _attackersModulePrefab: {fileID: 98283637033271406, guid: df6a853990669f549a5c883f1a0ee1c7, type: 3}
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: 75a2e33d04fdde044864a51b5c14f3ef
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 2d33e0aacd5968247af0abbd580392af, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 975b172647ba1664bae9811ccfbe4f32, type: 2}
-    _attackersModulePrefab: {fileID: 4142465943587291779, guid: c55ff600e04009846a00829226e4f751, type: 3}
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: c4315a5115a34114f9cced4535efb5ca
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: d5a45c16c10d714469bf04c51d0eaabf, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 6037353944246804abec635a034f0521, type: 2}
-    _attackersModulePrefab: {fileID: 8406411887793116193, guid: 2073380b5689d45458c61fbc8fe091d5, type: 3}
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: 095c7a063eed41b4aae3af1bced36551
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 90fb0a26e8fb6574982c0df48da33889, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 93cbe023301bf2542ac446d9d77623fb, type: 2}
-    _attackersModulePrefab: {fileID: 3474309830747115732, guid: 276ce498b4c50b34fbd645045aa7bc66, type: 3}
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: cd2085dff01a194409d67d86f93c4adb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 95ed68ca8b234d14dbe4901564f8cdf8, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 1e97893d19bd5814489ae6248211e8cc, type: 2}
-    _attackersModulePrefab: {fileID: 7149330139674131627, guid: 23f742617d0d4e44d88133a1ce69db00, type: 3}
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: b351cf3dd598edc4da93d501c8dccbb6
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 91e931a99ba2518428bcbaf8905bc724, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 41efa513fcbafa14da10730998712988, type: 2}
-    _attackersModulePrefab: {fileID: 1353076718083628239, guid: daaed360d69e6b245aae3328c3b6b192, type: 3}
-  - _damage: 1
+  - _towerPrefab:
+      m_AssetGUID: 2645d2f3c999e804b9b98384db50c3be
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_SubObjectGUID: 
+      m_EditorAssetChanged: 0
+    _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: f1f1fa4ee6cf6944d904581599d77e2d, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 83390489e3aa9954791ca8e5d1a59511, type: 2}
-    _attackersModulePrefab: {fileID: 3981354271106361015, guid: 617cd6b25131b504585e8baf88e8827e, type: 3}

@@ -6,6 +6,6 @@ namespace Infrastructure.Interfaces
     public interface IAttacker
     {
         void Init(int damage, float coolDown);
-        void ExecuteAttack();
+        void ExecuteAttack(ITargetable target);
     }
 }

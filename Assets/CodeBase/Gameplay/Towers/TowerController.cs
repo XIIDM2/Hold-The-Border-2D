@@ -28,8 +28,6 @@ namespace Gameplay.Towers
         public TowerIdleState IdleState { get; private set; }
         public TowerAttackState AttackState { get; private set; }
 
-        private GameObject _attackerModulePrefab;
-
         private void Awake()
         {
             Detection = GetComponent<TowerDetection>();
@@ -89,14 +87,8 @@ namespace Gameplay.Towers
             Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
             Detection.Init(CurrentTierConfig.AttackRadius);
 
-            if (_attackerModulePrefab != null)
-            {
-                Destroy(_attackerModulePrefab);
-            }
-
-             _attackerModulePrefab = Instantiate(CurrentTierConfig.AttackersModulePrefab, this.transform, false);
-
             if (Attack) Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+
             // назначение данных
         }
 

@@ -3,11 +3,12 @@ using Infrastructure.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Gameplay.Towers
 {
-    public class TowerAttackByUnits : BaseTowerAttack
+    public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable
     {
         private List<IAttacker> _attackers = new List<IAttacker>();
 
@@ -15,13 +16,19 @@ namespace Gameplay.Towers
         {
             base.Init(damage, cooldown);
 
+            InitAttackers();
+
+        }
+
+        public void InitAttackers()
+        {
             _attackers.Clear();
 
             _attackers = GetComponentsInChildren<IAttacker>().ToList();
 
             foreach (IAttacker attacker in _attackers)
             {
-                attacker.Init(damage, cooldown);
+                attacker.Init(_damage, _cooldown);
             }
         }
 
@@ -31,7 +38,7 @@ namespace Gameplay.Towers
             {
                 foreach (IAttacker attacker in _attackers)
                 {
-                    attacker.ExecuteAttack();
+                    attacker.ExecuteAttack(_unitsToAttack[0]);
                 }
 
                 yield return new WaitForSeconds(_cooldown);
