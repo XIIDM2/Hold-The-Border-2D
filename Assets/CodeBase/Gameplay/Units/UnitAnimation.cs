@@ -9,6 +9,7 @@ namespace Gameplay.Units
         IsMoving,
         Horizontal,
         Vertical,
+        IsAttacking,
     }
 
 
@@ -20,7 +21,7 @@ namespace Gameplay.Units
 
         private List<KeyValuePair<AnimationClip, AnimationClip>> _clipOverrides;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _animator = GetComponent<Animator>();
 

@@ -10,7 +10,6 @@ namespace Gameplay.Towers
     {
         public IReadOnlyList<ITargetable> UnitsToAttack => _unitsToAttack;
 
-        [SerializeField] protected Projectile testPrefab;
         [SerializeField, ReadOnly] protected int _damage;
         [SerializeField, ReadOnly] protected float _cooldown;
 

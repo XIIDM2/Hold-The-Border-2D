@@ -22,10 +22,14 @@ public class Projectile : MonoBehaviour
         Move();
     }
 
-    public void Init(ITargetable target, int damage)
+    public void Init(int damage)
+    {
+        _damage = damage;
+    }
+
+    public void SetTarget(ITargetable target)
     {
         _target = target;
-        _damage = damage;
     }
 
     private void Move()

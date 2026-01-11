@@ -89,6 +89,11 @@ namespace Gameplay.Towers
 
             if (Attack) Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
 
+            if (Attack is IProjectileRequireable projectileRequireable)
+            {
+                projectileRequireable.InitProjectile(CurrentTierConfig.ProjectilePrefab);
+            }
+
             // назначение данных
         }
 
