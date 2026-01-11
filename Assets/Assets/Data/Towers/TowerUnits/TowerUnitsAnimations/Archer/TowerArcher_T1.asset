@@ -18,7 +18,7 @@ MonoBehaviour:
   - _baseClip: {fileID: 7400000, guid: d0cd69d81f7c3224b99aba6cf0aa6d02, type: 2}
     _overrideClip: {fileID: 7400000, guid: 1ec77a46234dfa34291e3e961f3df4ec, type: 2}
   - _baseClip: {fileID: 7400000, guid: 2c31cf81c49c8e64f86b2348a885bf95, type: 2}
-    _overrideClip: {fileID: 7400000, guid: 1ec77a46234dfa34291e3e961f3df4ec, type: 2}
+    _overrideClip: {fileID: 7400000, guid: 8f1a52d7835832f4981babbb8b515322, type: 2}
   - _baseClip: {fileID: 7400000, guid: fb3ce9aadc2325b4097766ea99ad903e, type: 2}
     _overrideClip: {fileID: 7400000, guid: 34c918625a2c32542b89c027535f9c6b, type: 2}
   - _baseClip: {fileID: 7400000, guid: a51a5197c2039764ab26cdd0b7499aa2, type: 2}

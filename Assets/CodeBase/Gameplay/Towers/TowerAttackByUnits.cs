@@ -45,7 +45,7 @@ namespace Gameplay.Towers
 
         private void InstantiateProjectile()
         {
-            Projectile projectile = Instantiate(_projectilePrefab);
+            Projectile projectile = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
             projectile.SetTarget(_unitsToAttack[0]);
 
         }
@@ -56,6 +56,7 @@ namespace Gameplay.Towers
             {
                 foreach (TowerUnitAnimation attacker in _attackers)
                 {
+                    attacker.SetTarget(_unitsToAttack[0]);
                     attacker.PlayAttackAnimation();
                 }
 
