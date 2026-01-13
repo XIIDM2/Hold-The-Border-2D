@@ -12,6 +12,8 @@ namespace Gameplay.Towers
         [SerializeField, ReadOnly] private Projectile _projectilePrefab;
 
         private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
+
+        private WaitForSeconds _timerUnitsAttack;
         public override void Init(int damage, float cooldown)
         {
             base.Init(damage, cooldown);
@@ -41,11 +43,13 @@ namespace Gameplay.Towers
             {
                 attacker.AttackAnimationEvent += InstantiateProjectile;
             }
+
+            _timerUnitsAttack = new WaitForSeconds(_cooldown / _attackers.Count);
         }
 
-        private void InstantiateProjectile()
+        private void InstantiateProjectile(Transform _firePoint)
         {
-            Projectile projectile = Instantiate(_projectilePrefab, transform.position, Quaternion.identity);
+            Projectile projectile = Instantiate(_projectilePrefab, _firePoint.transform.position, Quaternion.identity);
             projectile.SetTarget(_unitsToAttack[0]);
 
         }
@@ -58,9 +62,8 @@ namespace Gameplay.Towers
                 {
                     attacker.SetTarget(_unitsToAttack[0]);
                     attacker.PlayAttackAnimation();
+                    yield return _timerUnitsAttack;
                 }
-
-                yield return new WaitForSeconds(_cooldown);
             }
         }
     }

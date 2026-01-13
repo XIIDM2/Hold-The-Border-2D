@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.355
@@ -221,6 +225,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2635510987944179052, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
@@ -306,6 +314,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.20700005
@@ -388,6 +400,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.23
@@ -452,7 +468,7 @@ PrefabInstance:
       objectReference: {fileID: 7028616704906629411, guid: 76b7be27c70bf93419c6b89f0a23fe4f, type: 3}
     - target: {fileID: 2282100483602374321, guid: cca30ba2f12219042ad0c64f2988122e, type: 3}
       propertyPath: m_Name
-      value: ArcherTowerVisualModel_T7 Variant Variant
+      value: ArcherTowerVisualModel_T7 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2282100483602374321, guid: cca30ba2f12219042ad0c64f2988122e, type: 3}
       propertyPath: m_IsActive

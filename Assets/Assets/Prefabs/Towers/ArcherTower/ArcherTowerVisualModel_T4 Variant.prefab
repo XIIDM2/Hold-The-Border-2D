@@ -146,7 +146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2282100483602374321, guid: cca30ba2f12219042ad0c64f2988122e, type: 3}
       propertyPath: m_Name
-      value: ArcherTowerVisualModel_T4 Variant Variant
+      value: ArcherTowerVisualModel_T4 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3299071695236944645, guid: cca30ba2f12219042ad0c64f2988122e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -268,6 +268,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6950833915553756566, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -345,6 +349,10 @@ PrefabInstance:
     - target: {fileID: 5348146719292196219, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6950833915553756566, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

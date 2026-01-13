@@ -8,8 +8,10 @@ namespace Gameplay.Towers.Units
 {
     public class TowerUnitAnimation : UnitAnimation
     {
-        public event UnityAction AttackAnimationEvent;
+        public Transform FirePoint => _firePoint;
+        public event UnityAction<Transform> AttackAnimationEvent;
 
+        [SerializeField] private Transform _firePoint;
         [SerializeField] private AnimationData _data;
 
         private ObjectDirection _direction;
@@ -20,11 +22,7 @@ namespace Gameplay.Towers.Units
         {
             base.Awake();
             _direction = new ObjectDirection();
-        }
 
-
-        private void Start()
-        {
             Init(_data);
         }
 
@@ -50,12 +48,14 @@ namespace Gameplay.Towers.Units
 
         public void PlayAttackAnimation()
         {
+            if (!enabled) return; 
+
             SetTrigger(UnitAnimationParameter.IsAttacking.ToString());
         }
 
         public void AEAttack()
         {
-            AttackAnimationEvent?.Invoke();
+            AttackAnimationEvent?.Invoke(_firePoint);
         }
 
         private Vector2 CalculateDirection()

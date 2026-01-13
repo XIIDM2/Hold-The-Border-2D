@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6950833915553756566}
   - component: {fileID: 4278619484944074188}
   - component: {fileID: -8135598166424856412}
+  - component: {fileID: -3299906522461815148}
   m_Layer: 0
   m_Name: TowerArcher_T2
   m_TagString: Untagged
@@ -31,7 +32,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2827520776970656154}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6950833915553756566
@@ -82,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 2847894867104497665, guid: 6560e93073248194fa11dfbea3ad1b95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -127,4 +129,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40b4cc906d76564fa8a2a1a7b27847b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Towers.Units.TowerUnitAnimation
+  _firePoint: {fileID: 2827520776970656154}
   _data: {fileID: 11400000, guid: 6971e791fce67644b9bb7a65ca517ff8, type: 2}
+--- !u!114 &-3299906522461815148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675314045665097179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bc4ae378694eaa43a5548522d205f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Towers.Units.TowerUnitSpawn
+  _spawnDuration: 1
+--- !u!1 &7052870185793789389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2827520776970656154}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2827520776970656154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7052870185793789389}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5348146719292196219}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
