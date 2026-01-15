@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using Infrastructure.Interfaces;
 
 namespace Gameplay.Towers
 {
@@ -49,6 +50,8 @@ namespace Gameplay.Towers
 
         private void InstantiateProjectile(Transform _firePoint)
         {
+            if (_unitsToAttack.Count == 0) return;
+
             Projectile projectile = Instantiate(_projectilePrefab, _firePoint.transform.position, Quaternion.identity);
             projectile.SetTarget(_unitsToAttack[0]);
 
@@ -60,8 +63,11 @@ namespace Gameplay.Towers
             {
                 foreach (TowerUnitAnimation attacker in _attackers)
                 {
+                    if (_unitsToAttack.Count == 0) yield break;
+
                     attacker.SetTarget(_unitsToAttack[0]);
                     attacker.PlayAttackAnimation();
+
                     yield return _timerUnitsAttack;
                 }
             }

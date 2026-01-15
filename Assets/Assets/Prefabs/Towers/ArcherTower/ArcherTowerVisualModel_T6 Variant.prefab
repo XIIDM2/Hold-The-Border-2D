@@ -31,75 +31,8 @@ Transform:
   m_Children:
   - {fileID: 997504192102437560}
   - {fileID: 1259530522097881533}
-  - {fileID: 6606349893725593127}
   m_Father: {fileID: 8888522258357931033}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1267225784098036572
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3841428107088492702}
-    m_Modifications:
-    - target: {fileID: 675314045665097179, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_Name
-      value: TowerArcher_T3 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_MaskInteraction
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
---- !u!4 &6606349893725593127 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
-  m_PrefabInstance: {fileID: 1267225784098036572}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5183563852086745027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,11 +51,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.33
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.z
@@ -180,7 +113,7 @@ PrefabInstance:
       objectReference: {fileID: 3465286685962602723, guid: c31bbcf2fdfced0428d8c75e42149210, type: 3}
     - target: {fileID: 2282100483602374321, guid: cca30ba2f12219042ad0c64f2988122e, type: 3}
       propertyPath: m_Name
-      value: ArcherTowerVisualModel_T6 Variant Variant
+      value: ArcherTowerVisualModel_T6 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2282100483602374321, guid: cca30ba2f12219042ad0c64f2988122e, type: 3}
       propertyPath: m_IsActive
@@ -257,11 +190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.01
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 5348146719292196219, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_LocalPosition.z
