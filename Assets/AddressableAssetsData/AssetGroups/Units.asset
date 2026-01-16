@@ -15,32 +15,8 @@ MonoBehaviour:
   m_GroupName: Units
   m_GUID: 17aca4fe0a3bd864ba84ba0717e882cf
   m_SerializeEntries:
-  - m_GUID: 4e4c26007ab2de54e8ecb6589a571866
-    m_Address: BabySlime
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Level 1
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7f414382b44fbcf4c9fa52dad2c08d1c
-    m_Address: Bee
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Level 1
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8fcfe3331843d85489a8b703b8a2f0ce
-    m_Address: Slime
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Level 1
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a112f57e9c06b8042b4aecf8b3d3bbc4
-    m_Address: Goblin
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Level 1
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b3000b3edd5fe4b438c5b5d0775e6720
-    m_Address: Wolf
+    m_Address: BasicEnemyPrefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Level 1

@@ -1,3 +1,4 @@
+using Core.Utilities;
 using Core.Utilities.CustomProperties;
 using Infrastructure.Interfaces;
 using UnityEngine;
@@ -8,18 +9,22 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _minAttackDistance = 0.1f;
 
+    private Vector2 oldPosition;
 
     private ITargetable _target;
     private Vector2 lastTargetPosition;
 
+
     private void Update()
     {
-        if (_target != null)
+        if (_target as Object != null)
         {
             lastTargetPosition = _target.Position;
         }
 
+        oldPosition = transform.position;
         Move();
+        Rotate();
     }
 
     public void Init(int damage)
@@ -40,6 +45,16 @@ public class Projectile : MonoBehaviour
         {
             ApplyDamageToTarget();
         }
+    }
+
+    private void Rotate()
+    {
+        Vector2 direction = (Vector2)transform.position - oldPosition;
+
+        float angle = Utilities.GetAngleFromVector(direction);
+
+        transform.eulerAngles = new Vector3(0, 0, angle);
+
     }
 
     private void ApplyDamageToTarget()

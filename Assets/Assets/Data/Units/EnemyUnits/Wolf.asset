@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6b10cb98737ab4389eb370b1109b5e, type: 3}
   m_Name: Wolf
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  _type: 1
   _prefabReference:
-    m_AssetGUID: b3000b3edd5fe4b438c5b5d0775e6720
+    m_AssetGUID: a112f57e9c06b8042b4aecf8b3d3bbc4
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  _animations: {fileID: 11400000, guid: e9e8b795ab93e1345b95bf7e8c3048d4, type: 2}
+  _type: 1
   _maxHealth: 3
   _movementSpeed: 1.5
   _attackDamage: 1
   _pathEndDamage: 1
   _attackCooldown: 1
-  _animations: {fileID: 11400000, guid: e9e8b795ab93e1345b95bf7e8c3048d4, type: 2}

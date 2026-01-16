@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6b10cb98737ab4389eb370b1109b5e, type: 3}
   m_Name: BabySlime
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
-  _type: 4
   _prefabReference:
-    m_AssetGUID: 4e4c26007ab2de54e8ecb6589a571866
+    m_AssetGUID: a112f57e9c06b8042b4aecf8b3d3bbc4
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  _animations: {fileID: 11400000, guid: ce94fa83593542a4cb234268ef8309f6, type: 2}
+  _type: 4
   _maxHealth: 1
   _movementSpeed: 1
   _attackDamage: 0
   _pathEndDamage: 1
   _attackCooldown: 0
-  _animations: {fileID: 11400000, guid: ce94fa83593542a4cb234268ef8309f6, type: 2}

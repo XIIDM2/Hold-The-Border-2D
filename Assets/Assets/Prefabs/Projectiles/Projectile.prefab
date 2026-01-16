@@ -35,6 +35,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4627808493523812157
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -80,7 +81,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -855298285791758126, guid: e0457130f2dfbde40a8a327881cbd21c, type: 3}
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 8389134475083476877, guid: 37df949a485d58e47825f3fda353209d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,7 +91,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &9021716259478016115
 MonoBehaviour:
@@ -103,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7f2e90b6e96574897d7300f6485ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  _damage: 0
-  _speed: 3
+  _damage: 100
+  _speed: 10
   _minAttackDistance: 0.1

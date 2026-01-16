@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8688920723153410881}
   - component: {fileID: 6722440969848927301}
   m_Layer: 0
-  m_Name: Goblin
+  m_Name: BasicEnemyPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
