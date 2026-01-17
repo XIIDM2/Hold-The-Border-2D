@@ -19,10 +19,14 @@ namespace Infrastructure.DI
 
             builder.Register<IWaveService, WaveService>(Lifetime.Scoped);
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Scoped);
+            builder.Register<ITowerFactory, TowerFactory>(Lifetime.Scoped);
+
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 
+            builder.RegisterComponentInHierarchy<TowerBuildService>().As<ITowerBuildService>();
             builder.RegisterComponentInHierarchy<UnitSpawner>();
+
             builder.RegisterComponentInHierarchy<GameManager>();
         }
     }

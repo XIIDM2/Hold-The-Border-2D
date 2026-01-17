@@ -6,6 +6,6 @@ namespace Infrastructure.Factories
 {
     public interface IUnitFactory
     {
-        UniTask<GameObject> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position);
+        UniTask CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position);
     }
 }

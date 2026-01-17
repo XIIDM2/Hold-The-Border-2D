@@ -4,5 +4,6 @@ public enum Events
 {
     UnitSpawned,
     UnitReachedEnd,
+    TowerBuildRequested,
     TowerUpgradeRequested,
 }

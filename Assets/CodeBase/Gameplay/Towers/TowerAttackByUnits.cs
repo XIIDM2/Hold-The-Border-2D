@@ -59,6 +59,8 @@ namespace Gameplay.Towers
 
         protected override IEnumerator AttackRoutine()
         {
+            if (_attackers.Count == 0) yield break;
+
             while (_unitsToAttack.Count > 0)
             {
                 foreach (TowerUnitAnimation attacker in _attackers)

@@ -13,9 +13,10 @@ namespace Gameplay.Towers
         public event UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
         public int MaxTier => _data.TierConfigs.Length - 1;
-        public TowerData.TowerTierConfig CurrentTierConfig => _data.TierConfigs[CurrentTierIndex];
 
-        [SerializeField] private TowerData _data;
+        private TowerData.TowerTierConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
+
+       [SerializeField] private TowerData _data;
 
         [Header("Components")]
         public TowerDetection Detection { get; private set; }
@@ -38,8 +39,6 @@ namespace Gameplay.Towers
 
         private void Start()
         {
-            Init();
-
             UpgradeState = new TowerUpgradeState();
             IdleState = new TowerIdleState();
             AttackState = new TowerAttackState();
@@ -76,22 +75,24 @@ namespace Gameplay.Towers
             ActionFSM.FixedUpdateState(this);
         }
 
-        public void Init()
+        public void Init(TowerData data)
         {
+            _data = data;
+
             ApplyCurrentTier();
             // первичная инициализация
         }
 
         public void ApplyCurrentTier()
         {
-            Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
-            Detection.Init(CurrentTierConfig.AttackRadius);
+            Animation.Init(currentTierConfig.UpgradeAnimation, currentTierConfig.IdleAnimation);
+            Detection.Init(currentTierConfig.AttackRadius);
 
-            if (Attack) Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+            if (Attack) Attack.Init(currentTierConfig.Damage, currentTierConfig.AttackCooldown);
 
             if (Attack is IProjectileRequireable projectileRequireable)
             {
-                projectileRequireable.InitProjectile(CurrentTierConfig.ProjectilePrefab);
+                projectileRequireable.InitProjectile(currentTierConfig.ProjectilePrefab);
             }
 
             // назначение данных

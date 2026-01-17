@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BabySlime
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
   _prefabReference:
-    m_AssetGUID: a112f57e9c06b8042b4aecf8b3d3bbc4
+    m_AssetGUID: 8e13f4f59f86fde44b1b0d626252237b
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

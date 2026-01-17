@@ -1,6 +1,6 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
     <ui:Label name="TowerTierHeader" text="Tower Tier Details" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 14px; letter-spacing: 5px; -unity-text-outline-width: 0.5px; padding-top: 5px;"/>
-    <uie:PropertyField label="Tower Visual Prefab" binding-path="_towerVisualPrefab"/>
+    <uie:PropertyField label="Tower Visual Prefab Reference" binding-path="_towerVisualPrefabReference"/>
     <uie:PropertyField label="Projectile Prefab" binding-path="_projectilePrefab"/>
     <ui:Foldout text="Stats&#10;" name="Foldout" style="-unity-text-align: upper-left;">
         <ui:IntegerField label="Damage" value="0" binding-path="_damage"/>
