@@ -11,10 +11,13 @@ namespace Gameplay.Towers
     public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable, IProjectileRequireable
     {
         [SerializeField, ReadOnly] private Projectile _projectilePrefab;
+        private GameObject _towerUnitVisualPrefab;
+        private GameObject towerUnitVisual;
 
         private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
 
         private WaitForSeconds _timerUnitsAttack;
+
         public override void Init(int damage, float cooldown)
         {
             base.Init(damage, cooldown);
@@ -23,14 +26,19 @@ namespace Gameplay.Towers
 
         }
 
-        public void InitProjectile(GameObject projectilePrefab)
+        public void InitTowerUnitVisualPrefab(GameObject prefab)
         {
-            _projectilePrefab = projectilePrefab.GetComponent<Projectile>();
-            _projectilePrefab.Init(_damage);
+            Destroy(towerUnitVisual);
+
+            _towerUnitVisualPrefab = prefab;
+
+            towerUnitVisual = Instantiate(_towerUnitVisualPrefab, gameObject.transform);
         }
+
 
         public void InitAttackers()
         {
+
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent -= InstantiateProjectile;
@@ -38,7 +46,7 @@ namespace Gameplay.Towers
 
             _attackers.Clear();
 
-            _attackers = GetComponentsInChildren<TowerUnitAnimation>().ToList();
+            _attackers = towerUnitVisual.GetComponentsInChildren<TowerUnitAnimation>().ToList();
 
             foreach (TowerUnitAnimation attacker in _attackers)
             {
@@ -46,6 +54,12 @@ namespace Gameplay.Towers
             }
 
             _timerUnitsAttack = new WaitForSeconds(_cooldown / _attackers.Count);
+        }
+
+        public void InitProjectile(GameObject projectilePrefab)
+        {
+            _projectilePrefab = projectilePrefab.GetComponent<Projectile>();
+            _projectilePrefab.Init(_damage);
         }
 
         private void InstantiateProjectile(Transform _firePoint)

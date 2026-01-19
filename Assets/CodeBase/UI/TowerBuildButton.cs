@@ -7,7 +7,8 @@ public class TowerBuildButton : MonoBehaviour
 
     public void Build()
     {
-        Debug.Log("Button Clicked");
-        Messenger<TowerType, Vector2>.Broadcast(Events.TowerBuildRequested, _type, new Vector2(3.5f, -7f));
+        Messenger<TowerType, Vector2>.Broadcast(Events.TowerBuildRequested, _type, Vector2.zero);
     }
+
+   
 }

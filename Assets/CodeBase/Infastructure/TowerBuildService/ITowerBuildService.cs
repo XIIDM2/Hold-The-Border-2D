@@ -1,9 +1,11 @@
 ﻿using Gameplay.Towers;
 using UnityEngine;
 
-
-public interface ITowerBuildService
+namespace Infrastructure.Services
 {
-    public void Build(TowerType type, Vector2 position);
+    public interface ITowerBuildService
+    {
+        public void BuildTower(TowerType type, Vector2 position);
 
+    }
 }

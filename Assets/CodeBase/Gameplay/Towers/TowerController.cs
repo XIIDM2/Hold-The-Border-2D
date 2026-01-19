@@ -10,13 +10,10 @@ namespace Gameplay.Towers
 {
     public class TowerController : MonoBehaviour, IControllable
     {
-        public event UnityAction UpgradeRequested;
+        public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
         public int MaxTier => _data.TierConfigs.Length - 1;
-
-        private TowerData.TowerTierConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
-
-       [SerializeField] private TowerData _data;
+        public TowerData.TowerTierConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
 
         [Header("Components")]
         public TowerDetection Detection { get; private set; }
@@ -28,6 +25,9 @@ namespace Gameplay.Towers
         public TowerUpgradeState UpgradeState { get; private set; }
         public TowerIdleState IdleState { get; private set; }
         public TowerAttackState AttackState { get; private set; }
+
+
+        private TowerData _data;
 
         private void Awake()
         {
@@ -88,6 +88,11 @@ namespace Gameplay.Towers
             Animation.Init(currentTierConfig.UpgradeAnimation, currentTierConfig.IdleAnimation);
             Detection.Init(currentTierConfig.AttackRadius);
 
+            if (Attack is TowerAttackByUnits attackByUnits)
+            {
+                attackByUnits.InitTowerUnitVisualPrefab(currentTierConfig.TowerVisualPrefab);
+            }
+
             if (Attack) Attack.Init(currentTierConfig.Damage, currentTierConfig.AttackCooldown);
 
             if (Attack is IProjectileRequireable projectileRequireable)
@@ -103,14 +108,6 @@ namespace Gameplay.Towers
             if (CurrentTierIndex >= MaxTier) return;
 
             CurrentTierIndex++;
-        }
-
-        private void OnGUI()
-        {
-            if (GUI.Button(new Rect(10, 10, 100, 50), "Upgrade Tower"))
-            {
-                UpgradeRequested?.Invoke();
-            }
         }
 
     }

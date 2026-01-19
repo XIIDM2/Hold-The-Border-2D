@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Archer Tower Data
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   _type: 0
+  _buildPrice: 0
   _prefabReference:
     m_AssetGUID: 6d0f1513c1bb7274b96b65a0b3a1556c
     m_SubObjectName: 
@@ -20,85 +21,57 @@ MonoBehaviour:
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
   _tiersConfigs:
-  - _towerVisualPrefabReference:
-      m_AssetGUID: 4396d5ee86b0e8b48ae000e55462b0af
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 4042472692339305226, guid: 4396d5ee86b0e8b48ae000e55462b0af, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 2
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 67964e5fbaec30b478283c9277be8aed, type: 2}
     _idleAnimation: {fileID: 7400000, guid: af364be1f82f0894690af9b87355ffca, type: 2}
-  - _towerVisualPrefabReference:
-      m_AssetGUID: 6a854250c4f11eb4fbf8165696c80199
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 5410235932242746450, guid: 6a854250c4f11eb4fbf8165696c80199, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 2d33e0aacd5968247af0abbd580392af, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 975b172647ba1664bae9811ccfbe4f32, type: 2}
-  - _towerVisualPrefabReference:
-      m_AssetGUID: 3f16b769918c60b4c809374be6b10ea8
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 4402702260163873216, guid: 3f16b769918c60b4c809374be6b10ea8, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: d5a45c16c10d714469bf04c51d0eaabf, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 6037353944246804abec635a034f0521, type: 2}
-  - _towerVisualPrefabReference:
-      m_AssetGUID: 37f751edb4eb46f4d8495e0a12f96aeb
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 1703070766824639569, guid: 37f751edb4eb46f4d8495e0a12f96aeb, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 90fb0a26e8fb6574982c0df48da33889, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 93cbe023301bf2542ac446d9d77623fb, type: 2}
-  - _towerVisualPrefabReference:
-      m_AssetGUID: 097c64b4114e9424faff2b9df17e1b67
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 2038025970584500082, guid: 097c64b4114e9424faff2b9df17e1b67, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 95ed68ca8b234d14dbe4901564f8cdf8, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 1e97893d19bd5814489ae6248211e8cc, type: 2}
-  - _towerVisualPrefabReference:
-      m_AssetGUID: 5652266a426b4624b8178e498bed4120
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 4854221530917577242, guid: 5652266a426b4624b8178e498bed4120, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 2
     _attackRadius: 3.5
     _upgradeAnimation: {fileID: 7400000, guid: 91e931a99ba2518428bcbaf8905bc724, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 41efa513fcbafa14da10730998712988, type: 2}
-  - _towerVisualPrefabReference:
-      m_AssetGUID: c6984999b4985224fa76d3e512e3ab7c
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_SubObjectGUID: 
-      m_EditorAssetChanged: 0
+  - _towerVisualPrefab: {fileID: 1929474823437188122, guid: c6984999b4985224fa76d3e512e3ab7c, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
+    _upgradePrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
