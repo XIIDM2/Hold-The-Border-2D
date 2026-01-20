@@ -3,15 +3,16 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Towers;
 using UnityEngine;
+using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 namespace Infrastructure.Factories
 {
     public class TowerFactory : ITowerFactory
     {
         private readonly IAssetProvider _assetProvider;
-        private readonly DataCatalog _dataCatalog;
+        private readonly GameplayRegistry _dataCatalog;
 
-        public TowerFactory(IAssetProvider assetProvider, DataCatalog dataCatalog)
+        public TowerFactory(IAssetProvider assetProvider, GameplayRegistry dataCatalog)
         {
             _assetProvider = assetProvider;
             _dataCatalog = dataCatalog;
@@ -36,6 +37,17 @@ namespace Infrastructure.Factories
             }
 
             tower.GetComponent<TowerController>().Init(towerData);
+        }
+
+        public async UniTask CreateBuildSite(Vector2 position)
+        {
+            GameObject BuildSite = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference), position, Quaternion.identity);
+
+            if (BuildSite == null)
+            {
+                Debug.LogError($"Failed to create tower, BuildSite prefab is null");
+                return;
+            }
         }
     }
 }

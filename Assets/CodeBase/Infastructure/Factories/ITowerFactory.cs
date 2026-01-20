@@ -7,5 +7,6 @@ namespace Infrastructure.Factories
     public interface ITowerFactory
     {
         UniTask CreateTower(TowerType type, Vector2 position);
+        UniTask CreateBuildSite(Vector2 position);
     }
 }

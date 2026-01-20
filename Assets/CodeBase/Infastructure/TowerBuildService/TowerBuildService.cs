@@ -1,9 +1,10 @@
 using Data;
 using Gameplay.Towers;
+using Gameplay.Towers.BuildSite;
 using Infrastructure.Factories;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
-using VContainer;
 using VContainer.Unity;
 
 namespace Infrastructure.Services
@@ -11,11 +12,11 @@ namespace Infrastructure.Services
     public class TowerBuildService : ITowerBuildService, IInitializable, IDisposable
     {
         private IPlayerController _player;
-        private DataCatalog _catalog;
+        private GameplayRegistry _catalog;
 
         private ITowerFactory _factory;
 
-        public TowerBuildService(IPlayerController player, DataCatalog catalog, ITowerFactory factory)
+        public TowerBuildService(IPlayerController player, GameplayRegistry catalog, ITowerFactory factory)
         {
             _player = player;
             _catalog = catalog;
@@ -24,45 +25,57 @@ namespace Infrastructure.Services
 
         public void Initialize()
         {
-            Messenger<TowerType, Vector2>.AddListener(Events.TowerBuildRequested, BuildTower);
-            Messenger<TowerController>.AddListener(Events.TowerUpgradeRequested, UpdateTower);
+            Messenger<TowerType, BuildSite>.AddListener(Events.TowerBuildRequested, BuildTower);
+            Messenger<TowerController>.AddListener(Events.TowerUpgradeRequested, UpgradeTower); 
+            Messenger<TowerController>.AddListener(Events.TowerSellRequested, SellTower);
         }
 
         public void Dispose()
         {
-            Messenger<TowerType, Vector2>.RemoveListener(Events.TowerBuildRequested, BuildTower);
-            Messenger<TowerController>.RemoveListener(Events.TowerUpgradeRequested, UpdateTower);
+            Messenger<TowerType, BuildSite>.RemoveListener(Events.TowerBuildRequested, BuildTower);
+            Messenger<TowerController>.RemoveListener(Events.TowerUpgradeRequested, UpgradeTower);
+            Messenger<TowerController>.RemoveListener(Events.TowerSellRequested, SellTower);
         }
 
-        public async void BuildTower(TowerType type, Vector2 position)
+        public async void BuildTower(TowerType type, BuildSite site)
         {
-            int price = _catalog.GetTowerData(type).BuildPrice;
+            int buildPrice = _catalog.GetTowerData(type).BuildPrice;
 
-            if (price >= _player.Gold)
+            if (buildPrice > _player.Gold)
             {
                 Debug.Log("Not enough gold");
                 return;
             }
 
 
-            await _factory.CreateTower(type, position);
+            UnityEngine.Object.Destroy(site.gameObject);
+            _player.TrySpendGold(buildPrice);
+            await _factory.CreateTower(type, site.transform.position);
 
         }
 
-        public void UpdateTower(TowerController tower)
+        public void UpgradeTower(TowerController tower)
         {
-            int price = tower.currentTierConfig.UpgradePrice;
+            int upgradePrice = tower.currentTierConfig.UpgradePrice;
 
-            if (price >= _player.Gold)
+            if (upgradePrice > _player.Gold)
             {
                 Debug.Log("Not enough gold");
                 return;
             }
-
+            _player.TrySpendGold(upgradePrice);
             tower.UpgradeRequested?.Invoke();
         }
 
+        public async void SellTower(TowerController tower)
+        {
+            int sellPrice = tower.currentTierConfig.SellPrice;
+            Vector2 position = tower.transform.position;
 
-        // upgradetower
+            _player.GetGold(sellPrice);
+
+            UnityEngine.Object.Destroy(tower.gameObject);
+            await _factory.CreateBuildSite(position);
+        }
     }
 }

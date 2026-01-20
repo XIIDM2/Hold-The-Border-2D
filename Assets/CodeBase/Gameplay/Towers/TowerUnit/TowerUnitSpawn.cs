@@ -30,7 +30,7 @@ namespace Gameplay.Towers.Units
             _unitSpawnTween = _unitSprite.DOFade(1.0f, _spawnDuration).OnComplete(() =>
             {
                 _unitAnimation.enabled = true;
-            });
+            }).SetLink(gameObject);
         }
 
         private void OnDisable()

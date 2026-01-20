@@ -9,14 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23dee1bc8753c5a4082000f374e8e415, type: 3}
+  m_Script: {fileID: 11500000, guid: 188e61a3e27285746940560a29bc0515, type: 3}
   m_Name: Data Catalog
   m_EditorClassIdentifier: Assembly-CSharp::DataCatalog
+  _buildSiteReference:
+    m_AssetGUID: 53c3f2dc6b1b8cb47b465b69750becdc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _unitDatas:
   - {fileID: 11400000, guid: d5a2ec4ab05702145a12a0faa8813ba5, type: 2}
-  - {fileID: 11400000, guid: 00edfd7439ff0e44c809ed418bbef0ac, type: 2}
-  - {fileID: 11400000, guid: 20d901b82a4b7834489587dfac0d8bde, type: 2}
-  - {fileID: 11400000, guid: bf410c2a5a8e84a4983b491aed93bb85, type: 2}
   - {fileID: 11400000, guid: c37ccf770a61dc549b3880414df6169d, type: 2}
+  - {fileID: 11400000, guid: bf410c2a5a8e84a4983b491aed93bb85, type: 2}
+  - {fileID: 11400000, guid: 20d901b82a4b7834489587dfac0d8bde, type: 2}
+  - {fileID: 11400000, guid: 00edfd7439ff0e44c809ed418bbef0ac, type: 2}
   _towerDatas:
   - {fileID: 11400000, guid: eea1d9f056739a443aef3cbb2d11aad1, type: 2}

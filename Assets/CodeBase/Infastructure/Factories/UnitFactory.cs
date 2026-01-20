@@ -9,9 +9,9 @@ namespace Infrastructure.Factories
     public class UnitFactory : IUnitFactory
     {
         private readonly IAssetProvider _assetProvider;
-        private readonly DataCatalog _dataCatalog;
+        private readonly GameplayRegistry _dataCatalog;
 
-        public UnitFactory(IAssetProvider assetProvider, DataCatalog dataCatalog)
+        public UnitFactory(IAssetProvider assetProvider, GameplayRegistry dataCatalog)
         {
             _assetProvider = assetProvider;
             _dataCatalog = dataCatalog;

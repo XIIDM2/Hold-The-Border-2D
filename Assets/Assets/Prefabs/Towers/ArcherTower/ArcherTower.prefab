@@ -226,7 +226,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttackByUnits
   _damage: 0
   _cooldown: 0
-  _towerUnitVisualPrefab: {fileID: 4042472692339305226, guid: 4396d5ee86b0e8b48ae000e55462b0af, type: 3}
   _projectilePrefab: {fileID: 0}
 --- !u!114 &2798986763045696664
 MonoBehaviour:

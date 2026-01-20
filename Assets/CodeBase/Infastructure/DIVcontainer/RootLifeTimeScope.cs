@@ -8,7 +8,7 @@ namespace Infrastructure.DI
 {
     public class RootLifeTimeScope : LifetimeScope
     {
-        [SerializeField] private DataCatalog _dataCatalog;
+        [SerializeField] private GameplayRegistry _dataCatalog;
         [SerializeField] private PlayerData _playerData;
 
         protected override void Configure(IContainerBuilder builder)

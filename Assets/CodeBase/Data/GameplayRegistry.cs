@@ -2,12 +2,17 @@ using Gameplay.Towers;
 using Gameplay.Units.Enemy;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Data Catalog", menuName = "Scriptable Objects/Catalogs/DataCatalog")]
-    public class DataCatalog : ScriptableObject
+    [CreateAssetMenu(fileName = "Gameplay Registry", menuName = "Scriptable Objects/Catalogs/GameplayRegistry")]
+    public class GameplayRegistry : ScriptableObject
     {
+        public AssetReferenceGameObject BuildSiteReference => _buildSiteReference;
+
+        [SerializeField] private AssetReferenceGameObject _buildSiteReference;
+
         [SerializeField] private EnemyUnitData[] _unitDatas;
         [SerializeField] private TowerData[] _towerDatas;
 

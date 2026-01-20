@@ -5,10 +5,11 @@ using Gameplay.Towers.FSM;
 using Infrastructure.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 namespace Gameplay.Towers
 {
-    public class TowerController : MonoBehaviour, IControllable
+    public class TowerController : MonoBehaviour, IControllable, IPointerClickHandler
     {
         public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
@@ -75,6 +76,11 @@ namespace Gameplay.Towers
             ActionFSM.FixedUpdateState(this);
         }
 
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            Messenger<TowerController>.Broadcast(Events.TowerClicked, this);
+        }
+
         public void Init(TowerData data)
         {
             _data = data;
@@ -109,6 +115,7 @@ namespace Gameplay.Towers
 
             CurrentTierIndex++;
         }
+
 
     }
 }

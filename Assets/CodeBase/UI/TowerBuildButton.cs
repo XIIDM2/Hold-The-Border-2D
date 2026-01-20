@@ -1,14 +1,35 @@
 using Gameplay.Towers;
+using Gameplay.Towers.BuildSite;
 using UnityEngine;
 
-public class TowerBuildButton : MonoBehaviour
+namespace Gameplay.UI
 {
-    [SerializeField] private TowerType _type;
-
-    public void Build()
+    public class TowerBuildButton : MonoBehaviour
     {
-        Messenger<TowerType, Vector2>.Broadcast(Events.TowerBuildRequested, _type, Vector2.zero);
-    }
+        [SerializeField] private TowerType _type;
 
-   
+        private BuildSite _site;
+
+        private void OnEnable()
+        {
+            Messenger<BuildSite>.AddListener(Events.BuildSiteClicked, SetBuildSite);
+
+        }
+
+        private void OnDisable()
+        {
+            Messenger<BuildSite>.RemoveListener(Events.BuildSiteClicked, SetBuildSite);
+        }
+
+        private void SetBuildSite(BuildSite site)
+        {
+            _site = site;
+        }
+
+        public void Build()
+        {
+            if (_site) Messenger<TowerType, BuildSite>.Broadcast(Events.TowerBuildRequested, _type, _site);
+        }
+
+    }
 }

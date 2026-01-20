@@ -14,6 +14,7 @@ namespace Data
             public GameObject ProjectilePrefab => _projectilePrefab;
 
             public int UpgradePrice => _upgradePrice;
+            public int SellPrice => _sellPrice;
 
             public int Damage => _damage;
             public float AttackCooldown => _attackCooldown;
@@ -26,6 +27,7 @@ namespace Data
             [SerializeField] private GameObject _projectilePrefab;
 
             [SerializeField] private int _upgradePrice;
+            [SerializeField] private int _sellPrice;
 
             [SerializeField] private int _damage;
             [SerializeField] private float _attackCooldown;
