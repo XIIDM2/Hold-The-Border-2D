@@ -1,8 +1,10 @@
+using Cysharp.Threading.Tasks;
 using Data;
-using System.Collections;
 using UnityEngine;
+
 
 public interface IWaveService
 {
-    IEnumerator WavesLogicRoutine(WaveData data, IPathProvider pathProvider);
+    void Init(Vector2 spawnPosition);
+    UniTask WavesLogicAsync(WaveData data, IPathProvider pathProvider);
 }

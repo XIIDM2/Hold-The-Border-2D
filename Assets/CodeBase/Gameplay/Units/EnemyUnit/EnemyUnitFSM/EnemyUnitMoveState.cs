@@ -29,7 +29,7 @@ namespace Gameplay.Units.FSM.Enemy
 
                 if (controller.Pathing.HasReachedEnd())
                 {
-                    Messenger<int>.Broadcast(Events.UnitReachedEnd, controller.PathEndDamage);
+                    controller._player.Health.TakeDamage(controller.PathEndDamage);
                     controller.DestroyUnit(controller.Damageable);
                     return;
                 }

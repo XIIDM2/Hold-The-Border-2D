@@ -25,7 +25,6 @@ namespace Gameplay.Towers
             _cooldown = cooldown;
         }
 
-
         public void Attack()
         {
             _attackCoroutine ??= StartCoroutine(AttackRoutine());

@@ -1,4 +1,5 @@
 using Data;
+using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
 
@@ -6,10 +7,13 @@ namespace Infrastructure.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [Header("Level Settings")]
+        [SerializeField] private Transform _unitSpawnPoint;
+
         [Header("Services")]
         private IPlayerController _playerController;
         private IPathProvider _pathService;
-        private IWaveService _waveManager;
+        private IWaveService _waveService;
 
         [Header("DATA")]
         private PlayerData _playerData;
@@ -20,25 +24,20 @@ namespace Infrastructure.Managers
         {
             _playerController = playerController;
             _pathService = pathService;
-            _waveManager = waveService;
+            _waveService = waveService;
 
             _playerData = playerData;
             _waveData = waveData;
 
         }
 
-        private void Start()
+        private async void Start()
         {
             _playerController.Init(_playerData);
-            Messenger<int>.AddListener(Events.UnitReachedEnd, _playerController.Health.TakeDamage);
+            _waveService.Init(_unitSpawnPoint.position);
 
-            StartCoroutine(_waveManager.WavesLogicRoutine(_waveData, _pathService));
+            await _waveService.WavesLogicAsync(_waveData, _pathService);
 
-        }
-
-        private void OnDestroy()
-        {
-            Messenger<int>.RemoveListener(Events.UnitReachedEnd, _playerController.Health.TakeDamage);
         }
 
         private void Update()

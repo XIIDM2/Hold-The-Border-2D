@@ -1,9 +1,19 @@
 using Gameplay.Towers;
+using Infrastructure.Services;
 using UnityEngine;
+using VContainer;
 
 public class TowerControllerUI : MonoBehaviour
 {
     private TowerController _tower;
+
+    private ITowerBuildService _towerBuildService;
+
+    [Inject]
+    public void Construct(ITowerBuildService towerBuildService)
+    {
+        _towerBuildService = towerBuildService;
+    }
 
     private void OnEnable()
     {
@@ -22,12 +32,12 @@ public class TowerControllerUI : MonoBehaviour
 
     public void Upgrade()
     {
-        if (_tower) Messenger<TowerController>.Broadcast(Events.TowerUpgradeRequested, _tower);
+        if (_tower) _towerBuildService.UpgradeTower(_tower);
     }
 
     public void Sell()
     {
-        if (_tower) Messenger<TowerController>.Broadcast(Events.TowerSellRequested, _tower);
+        if (_tower) _towerBuildService.SellTower(_tower);
     }
 
 }

@@ -19,6 +19,11 @@ namespace Gameplay.Towers.Units
             _unitSprite = GetComponent<SpriteRenderer>();
         }
 
+        private void OnEnable()
+        {
+            _unitAnimation.TowerUnitSpawn += SpawnUnitAnimation;
+        }
+
         private void Start()
         {
             _unitAnimation.enabled = false;
@@ -26,16 +31,22 @@ namespace Gameplay.Towers.Units
             Color color = _unitSprite.color;
             color.a = 0.0f;
             _unitSprite.color = color;
+        }
+        private void OnDisable()
+        {
+            _unitAnimation.TowerUnitSpawn -= SpawnUnitAnimation;
+            if (_unitSpawnTween != null) DOTween.Kill(_unitSpawnTween);
+        }
 
+        private void SpawnUnitAnimation()
+        {
             _unitSpawnTween = _unitSprite.DOFade(1.0f, _spawnDuration).OnComplete(() =>
             {
                 _unitAnimation.enabled = true;
+
+
             }).SetLink(gameObject);
         }
 
-        private void OnDisable()
-        {
-            if (_unitSpawnTween != null) DOTween.Kill(_unitSpawnTween);
-        }
     }
 }

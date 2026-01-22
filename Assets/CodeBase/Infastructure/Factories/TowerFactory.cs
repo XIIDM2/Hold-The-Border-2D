@@ -2,8 +2,8 @@ using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Towers;
+using Gameplay.Towers.BuildSite;
 using UnityEngine;
-using static UnityEngine.LowLevelPhysics2D.PhysicsShape;
 
 namespace Infrastructure.Factories
 {
@@ -18,36 +18,42 @@ namespace Infrastructure.Factories
             _dataCatalog = dataCatalog;
         }
 
-        public async UniTask CreateTower(TowerType type, Vector2 position)
+        public async UniTask<TowerController> CreateTower(TowerType type, Vector2 position)
         {
             TowerData towerData = _dataCatalog.GetTowerData(type);
 
             if (towerData == null)
             {
                 Debug.LogError($"Failed to create tower, {type} data is null");
-                return;
+                return null;
             }
 
-            GameObject tower = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference), position, Quaternion.identity);
+            GameObject towerObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference), position, Quaternion.identity);
 
-            if (tower == null)
+            if(!towerObject.TryGetComponent<TowerController>(out TowerController tower))
             {
-                Debug.LogError($"Failed to create tower, {type} prefab is null");
-                return;
+                Debug.LogError($"Failed to get TowerController component from tower game object");
+                Object.Destroy(towerObject);
+                return null;
             }
 
-            tower.GetComponent<TowerController>().Init(towerData);
+            tower.Init(towerData);
+            return tower;
+
         }
 
-        public async UniTask CreateBuildSite(Vector2 position)
+        public async UniTask<BuildSite> CreateBuildSite(Vector2 position)
         {
-            GameObject BuildSite = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference), position, Quaternion.identity);
+            GameObject siteObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference), position, Quaternion.identity);
 
-            if (BuildSite == null)
+            if (!siteObject.TryGetComponent<BuildSite>(out BuildSite site))
             {
-                Debug.LogError($"Failed to create tower, BuildSite prefab is null");
-                return;
+                Debug.LogError($"Failed to get Buildsite component from buildsite game object");
+                Object.Destroy(siteObject);
+                return null;
             }
+
+            return site;
         }
     }
 }

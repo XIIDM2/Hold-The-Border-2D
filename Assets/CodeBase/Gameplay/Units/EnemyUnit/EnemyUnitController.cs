@@ -4,6 +4,7 @@ using Data;
 using Gameplay.Units.FSM.Enemy;
 using Infrastructure.Interfaces;
 using UnityEngine;
+using VContainer;
 
 namespace Gameplay.Units.Enemy
 {
@@ -16,8 +17,17 @@ namespace Gameplay.Units.Enemy
 
         [SerializeField, ReadOnly] private int _currentHealth;
 
+        [Header("Dependencies")]
+        public IPlayerController _player {  get; private set; }
+
         [Header("FSM")]
         public EnemyUnitMoveState MoveState { get; private set; }
+
+        [Inject]
+        public void Construct(IPlayerController player)
+        {
+            _player = player;
+        }
 
         private void Start()
         {

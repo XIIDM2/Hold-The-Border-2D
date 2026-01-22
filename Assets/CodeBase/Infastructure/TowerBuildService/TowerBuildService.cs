@@ -3,13 +3,12 @@ using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using Infrastructure.Factories;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using VContainer.Unity;
 
 namespace Infrastructure.Services
 {
-    public class TowerBuildService : ITowerBuildService, IInitializable, IDisposable
+    public class TowerBuildService : ITowerBuildService
     {
         private IPlayerController _player;
         private GameplayRegistry _catalog;
@@ -23,19 +22,6 @@ namespace Infrastructure.Services
             _factory = factory;
         }
 
-        public void Initialize()
-        {
-            Messenger<TowerType, BuildSite>.AddListener(Events.TowerBuildRequested, BuildTower);
-            Messenger<TowerController>.AddListener(Events.TowerUpgradeRequested, UpgradeTower); 
-            Messenger<TowerController>.AddListener(Events.TowerSellRequested, SellTower);
-        }
-
-        public void Dispose()
-        {
-            Messenger<TowerType, BuildSite>.RemoveListener(Events.TowerBuildRequested, BuildTower);
-            Messenger<TowerController>.RemoveListener(Events.TowerUpgradeRequested, UpgradeTower);
-            Messenger<TowerController>.RemoveListener(Events.TowerSellRequested, SellTower);
-        }
 
         public async void BuildTower(TowerType type, BuildSite site)
         {
@@ -47,10 +33,16 @@ namespace Infrastructure.Services
                 return;
             }
 
+            TowerController tower = await _factory.CreateTower(type, site.transform.position);
+
+            if (!tower)
+            {
+                Debug.LogError("Failed to build tower");
+                return;
+            }
 
             UnityEngine.Object.Destroy(site.gameObject);
             _player.TrySpendGold(buildPrice);
-            await _factory.CreateTower(type, site.transform.position);
 
         }
 
@@ -63,6 +55,7 @@ namespace Infrastructure.Services
                 Debug.Log("Not enough gold");
                 return;
             }
+
             _player.TrySpendGold(upgradePrice);
             tower.UpgradeRequested?.Invoke();
         }
@@ -72,10 +65,16 @@ namespace Infrastructure.Services
             int sellPrice = tower.currentTierConfig.SellPrice;
             Vector2 position = tower.transform.position;
 
-            _player.GetGold(sellPrice);
+            BuildSite buildSite = await _factory.CreateBuildSite(position);
 
+            if (!buildSite)
+            {
+                Debug.LogError("Failed to sell tower");
+            }
+
+            _player.GetGold(sellPrice);
             UnityEngine.Object.Destroy(tower.gameObject);
-            await _factory.CreateBuildSite(position);
+
         }
     }
 }

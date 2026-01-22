@@ -37,6 +37,7 @@ namespace Gameplay.Towers.FSM
         private void OnUpgradeAnimationCompleted()
         {
             _upgradeAnimationCompleted = true;
+            
         }
 
     }

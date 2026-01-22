@@ -1,6 +1,8 @@
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
+using Infrastructure.Services;
 using UnityEngine;
+using VContainer;
 
 namespace Gameplay.UI
 {
@@ -9,6 +11,13 @@ namespace Gameplay.UI
         [SerializeField] private TowerType _type;
 
         private BuildSite _site;
+        private ITowerBuildService _towerBuildService;
+
+        [Inject]
+        public void Construct(ITowerBuildService towerBuildService)
+        {
+            _towerBuildService = towerBuildService;
+        }
 
         private void OnEnable()
         {
@@ -28,7 +37,7 @@ namespace Gameplay.UI
 
         public void Build()
         {
-            if (_site) Messenger<TowerType, BuildSite>.Broadcast(Events.TowerBuildRequested, _type, _site);
+            if (_site) _towerBuildService.BuildTower(_type, _site);
         }
 
     }

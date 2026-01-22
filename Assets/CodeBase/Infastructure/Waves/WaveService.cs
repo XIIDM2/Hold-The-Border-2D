@@ -1,28 +1,46 @@
+using Cysharp.Threading.Tasks;
 using Data;
-using Gameplay.Units.Enemy;
-using System.Collections;
+using Infrastructure.Factories;
+using System;
 using UnityEngine;
 
-public class WaveService : IWaveService
+namespace Infrastructure.Services
 {
-    public IEnumerator WavesLogicRoutine(WaveData data, IPathProvider pathProvider)
+    public class WaveService : IWaveService
     {
-        yield return new WaitForSeconds(data.WavesStartTimer);
-
-        foreach (WaveData.WaveConfig wave in data.Waves)
+        private Vector2 _spawnPosition;
+        private IUnitFactory _unitFactory;
+        public WaveService(IUnitFactory unitFactory)
         {
-            foreach (WaveData.WaveConfig.WaveUnitsConfig units in wave.Units)
-            {
-                for (int i = 0; i < units.Amount; i++)
-                {
-                    Messenger<EnemyUnitType, Waypoint>.Broadcast(Events.UnitSpawned, units.Type, pathProvider.GetWaypoint(units.Path));
-                    yield return new WaitForSeconds(units.IntervalCurrent);
-                }
-                yield return new WaitForSeconds(units.IntervalNext);
-            }
-            yield return new WaitForSeconds(wave.WaveInterval);
+            _unitFactory = unitFactory;
         }
 
-        Debug.Log("All Waves Finished");
+        public void Init(Vector2 spawnPosition)
+        {
+            _spawnPosition = spawnPosition;
+        }
+
+        public async UniTask WavesLogicAsync(WaveData data, IPathProvider pathProvider)
+        {
+           await UniTask.Delay(TimeSpan.FromSeconds(data.WavesStartTimer));
+
+            foreach (WaveData.WaveConfig wave in data.Waves)
+            {
+                foreach (WaveData.WaveConfig.WaveUnitsConfig units in wave.Units)
+                {
+                    for (int i = 0; i < units.Amount; i++)
+                    {
+                        await _unitFactory.CreateUnit(units.Type, pathProvider.GetWaypoint(units.Path), _spawnPosition);
+                        await UniTask.Delay(TimeSpan.FromSeconds(units.IntervalCurrent));
+                    }
+
+                    await UniTask.Delay(TimeSpan.FromSeconds(units.IntervalNext));
+                }
+
+                await UniTask.Delay(TimeSpan.FromSeconds(wave.WaveInterval));
+            }
+
+            Debug.Log("All Waves Finished");
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace Gameplay.Towers.Units
     {
         public Transform FirePoint => _firePoint;
         public event UnityAction<Transform> AttackAnimationEvent;
+        public UnityAction TowerUnitSpawn;
 
         [SerializeField] private Transform _firePoint;
         [SerializeField] private AnimationData _data;

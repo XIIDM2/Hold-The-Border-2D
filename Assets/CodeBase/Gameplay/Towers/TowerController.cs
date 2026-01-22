@@ -27,7 +27,6 @@ namespace Gameplay.Towers
         public TowerIdleState IdleState { get; private set; }
         public TowerAttackState AttackState { get; private set; }
 
-
         private TowerData _data;
 
         private void Awake()
