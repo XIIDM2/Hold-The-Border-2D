@@ -30,7 +30,6 @@ namespace Gameplay.Towers.FSM
         public override void Exit(TowerController controller)
         {
             base.Exit(controller);
-
             controller.Animation.UpgradeAnimationCompleted -= OnUpgradeAnimationCompleted;
         }
 

@@ -11,6 +11,7 @@ namespace Gameplay.Towers
 {
     public class TowerController : MonoBehaviour, IControllable, IPointerClickHandler
     {
+        public static event UnityAction<TowerController> TowerControllerClicked;
         public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
         public int MaxTier => _data.TierConfigs.Length - 1;
@@ -77,7 +78,7 @@ namespace Gameplay.Towers
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            Messenger<TowerController>.Broadcast(Events.TowerClicked, this);
+            TowerControllerClicked?.Invoke(this);
         }
 
         public void Init(TowerData data)

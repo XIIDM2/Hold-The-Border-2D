@@ -17,12 +17,12 @@ public class TowerControllerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Messenger<TowerController>.AddListener(Events.TowerClicked, SetTower);
+       TowerController.TowerControllerClicked += SetTower;
     }
 
     private void OnDisable()
     {
-        Messenger<TowerController>.RemoveListener(Events.TowerClicked, SetTower);
+        TowerController.TowerControllerClicked -= SetTower;
     }
 
     private void SetTower(TowerController tower)

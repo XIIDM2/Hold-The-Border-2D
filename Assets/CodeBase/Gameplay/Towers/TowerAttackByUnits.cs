@@ -16,13 +16,13 @@ namespace Gameplay.Towers
 
         private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
 
-        private TowerController _controller;
+        private TowerAnimation _animation;
 
         private WaitForSeconds _timerUnitsAttack;
 
         private void Awake()
         {
-            _controller = GetComponent<TowerController>();
+            _animation = GetComponentInChildren<TowerAnimation>();
         }
 
         public override void Init(int damage, float cooldown)
@@ -49,7 +49,7 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent -= InstantiateProjectile;
-                _controller.Animation.UpgradeAnimationCompleted -= attacker.TowerUnitSpawn;
+                _animation.UpgradeAnimationCompleted -= attacker.TowerUnitSpawn;
             }
 
             _attackers.Clear();
@@ -59,7 +59,7 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent += InstantiateProjectile;
-                _controller.Animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
+                _animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
             }
 
             _timerUnitsAttack = new WaitForSeconds(_cooldown / _attackers.Count);

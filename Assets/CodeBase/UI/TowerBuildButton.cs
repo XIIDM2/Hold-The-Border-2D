@@ -21,13 +21,13 @@ namespace Gameplay.UI
 
         private void OnEnable()
         {
-            Messenger<BuildSite>.AddListener(Events.BuildSiteClicked, SetBuildSite);
+            BuildSite.BuildSiteClicked += SetBuildSite;
 
         }
 
         private void OnDisable()
         {
-            Messenger<BuildSite>.RemoveListener(Events.BuildSiteClicked, SetBuildSite);
+            BuildSite.BuildSiteClicked -= SetBuildSite;
         }
 
         private void SetBuildSite(BuildSite site)
