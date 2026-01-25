@@ -41,3 +41,84 @@ MonoBehaviour:
       _intervalNext: 2
       _path: 0
     _waveInterval: 0
+  - _units:
+    - _unitType: 0
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 1
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 2
+      _amount: 3
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 3
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 1
+      _path: 0
+    - _unitType: 4
+      _amount: 2
+      _intervalCurrent: 2
+      _intervalNext: 2
+      _path: 0
+    _waveInterval: 0
+  - _units:
+    - _unitType: 0
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 1
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 2
+      _amount: 3
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 3
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 1
+      _path: 0
+    - _unitType: 4
+      _amount: 2
+      _intervalCurrent: 2
+      _intervalNext: 2
+      _path: 0
+    _waveInterval: 0
+  - _units:
+    - _unitType: 0
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 1
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 2
+      _amount: 3
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _unitType: 3
+      _amount: 2
+      _intervalCurrent: 1
+      _intervalNext: 1
+      _path: 0
+    - _unitType: 4
+      _amount: 2
+      _intervalCurrent: 2
+      _intervalNext: 2
+      _path: 0
+    _waveInterval: 0

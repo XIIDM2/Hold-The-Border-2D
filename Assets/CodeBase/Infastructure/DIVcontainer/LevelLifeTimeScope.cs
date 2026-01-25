@@ -27,8 +27,10 @@ namespace Infrastructure.DI
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 
 
-            builder.RegisterComponentInHierarchy<TowerControllerUI>();
-            builder.RegisterComponentInHierarchy<TowerBuildButton>();
+            builder.RegisterComponentInHierarchy<PlayerStatsUI>();
+            builder.RegisterComponentInHierarchy<WavesUI>();
+            builder.RegisterComponentInHierarchy<PauseUI>();
+
             builder.RegisterComponentInHierarchy<GameManager>();
         }
     }

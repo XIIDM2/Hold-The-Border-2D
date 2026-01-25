@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Archer Tower Data
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   _type: 0
-  _buildPrice: 0
+  _buildPrice: 50
   _prefabReference:
     m_AssetGUID: 6d0f1513c1bb7274b96b65a0b3a1556c
     m_SubObjectName: 
@@ -23,7 +23,8 @@ MonoBehaviour:
   _tiersConfigs:
   - _towerVisualPrefab: {fileID: 4042472692339305226, guid: 4396d5ee86b0e8b48ae000e55462b0af, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
-    _upgradePrice: 0
+    _upgradePrice: 20
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 2
     _attackRadius: 3.5
@@ -32,6 +33,7 @@ MonoBehaviour:
   - _towerVisualPrefab: {fileID: 5410235932242746450, guid: 6a854250c4f11eb4fbf8165696c80199, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradePrice: 0
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
@@ -40,6 +42,7 @@ MonoBehaviour:
   - _towerVisualPrefab: {fileID: 4402702260163873216, guid: 3f16b769918c60b4c809374be6b10ea8, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradePrice: 0
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
@@ -48,6 +51,7 @@ MonoBehaviour:
   - _towerVisualPrefab: {fileID: 1703070766824639569, guid: 37f751edb4eb46f4d8495e0a12f96aeb, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradePrice: 0
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
@@ -56,6 +60,7 @@ MonoBehaviour:
   - _towerVisualPrefab: {fileID: 2038025970584500082, guid: 097c64b4114e9424faff2b9df17e1b67, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradePrice: 0
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5
@@ -64,6 +69,7 @@ MonoBehaviour:
   - _towerVisualPrefab: {fileID: 4854221530917577242, guid: 5652266a426b4624b8178e498bed4120, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradePrice: 0
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 2
     _attackRadius: 3.5
@@ -72,6 +78,7 @@ MonoBehaviour:
   - _towerVisualPrefab: {fileID: 1929474823437188122, guid: c6984999b4985224fa76d3e512e3ab7c, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradePrice: 0
+    _sellPrice: 0
     _damage: 1
     _attackCooldown: 1
     _attackRadius: 3.5

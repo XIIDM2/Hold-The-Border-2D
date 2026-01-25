@@ -2,13 +2,15 @@ using Data;
 using Infrastructure.Interfaces;
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerController : IPlayerController
 {
+    public event UnityAction<int> OnGoldChanged;
     public IDamageable Health {  get; private set; }
     public int Gold { get; private set; }
 
-    public void Init(PlayerData _data)
+    public PlayerController(PlayerData _data)
     {
         Health = new Health();
         Health.Init(_data.MaxHeath);
@@ -24,6 +26,7 @@ public class PlayerController : IPlayerController
         }
 
         Gold -= amount;
+        OnGoldChanged?.Invoke(Gold);
         return true;
 
     }
