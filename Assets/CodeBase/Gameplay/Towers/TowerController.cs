@@ -6,21 +6,24 @@ using Infrastructure.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using VContainer;
 
 namespace Gameplay.Towers
 {
     public class TowerController : MonoBehaviour, IControllable, IPointerClickHandler
     {
-        public static event UnityAction<TowerController> TowerControllerClicked;
         public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
         public int MaxTier => _data.TierConfigs.Length - 1;
         public TowerData.TowerTierConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
 
+
         [Header("Components")]
         public TowerDetection Detection { get; private set; }
         public BaseTowerAttack Attack { get; private set; }
         public TowerAnimation Animation { get; private set; }
+
+        private ITowerSelectionService _selectionService;
 
         [Header("FSM")]
         public FiniteStateMachine<TowerController> ActionFSM { get; private set; }
@@ -29,6 +32,12 @@ namespace Gameplay.Towers
         public TowerAttackState AttackState { get; private set; }
 
         private TowerData _data;
+
+        [Inject]
+        public void Construct(ITowerSelectionService selectionService)
+        {
+            _selectionService = selectionService;
+        }
 
         private void Awake()
         {
@@ -78,7 +87,7 @@ namespace Gameplay.Towers
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            TowerControllerClicked?.Invoke(this);
+            _selectionService.SelectTower(this);
         }
 
         public void Init(TowerData data)

@@ -7,41 +7,26 @@ using VContainer;
 
 public class TowerControllerUI : MonoBehaviour
 {
-    private TowerController _tower;
 
+    private ITowerSelectionService _towerSelectionService;
     private ITowerBuildService _towerBuildService;
-    private GameManager _manager;
 
     [Inject]
-    public void Construct(ITowerBuildService towerBuildService, GameManager gameManager)
+    public void Construct(ITowerSelectionService towerSelectionService, ITowerBuildService towerBuildService)
     {
+        _towerSelectionService = towerSelectionService;
         _towerBuildService = towerBuildService;
-        _manager = gameManager;
     }
 
-    private void OnEnable()
-    {
-       TowerController.TowerControllerClicked += SetTower;
-    }
-
-    private void OnDisable()
-    {
-        TowerController.TowerControllerClicked -= SetTower;
-    }
-
-    private void SetTower(TowerController tower)
-    {
-        _tower = tower;
-    }
 
     public void Upgrade()
     {
-        if (_tower) _towerBuildService.UpgradeTower(_tower);
+        if (_towerSelectionService.Tower) _towerBuildService.UpgradeTower(_towerSelectionService.Tower);
     }
 
     public void Sell()
     {
-        if (_tower) _towerBuildService.SellTower(_tower, _manager.GetCancellationTokenOnDestroy());
+        if (_towerSelectionService.Tower) _towerBuildService.SellTower(_towerSelectionService.Tower);
     }
 
 }

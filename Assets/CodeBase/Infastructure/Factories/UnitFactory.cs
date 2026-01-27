@@ -22,7 +22,7 @@ namespace Infrastructure.Factories
             _objectResolver = objectResolver;
         }
 
-        public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken)
+        public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position)
         {
             EnemyUnitData unitData = _dataCatalog.GetUnitData(type);
 
@@ -32,7 +32,7 @@ namespace Infrastructure.Factories
                 return null;
             }
 
-            GameObject unit = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference, cancellationToken: cancellationToken), position, Quaternion.identity);
+            GameObject unit = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference), position, Quaternion.identity);
 
             if (!unit.TryGetComponent<EnemyUnitController>(out EnemyUnitController enemy))
             {

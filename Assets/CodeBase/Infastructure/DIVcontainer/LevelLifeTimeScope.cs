@@ -20,9 +20,12 @@ namespace Infrastructure.DI
             builder.Register<IPlayerController, PlayerController>(Lifetime.Scoped);
 
             builder.Register<IWaveService, WaveService>(Lifetime.Scoped);
+            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Scoped);
+            builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Scoped);
+
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Scoped);
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Scoped);
-            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Scoped);
+            builder.Register<IUIFactory, UIFactory>(Lifetime.Scoped);
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 
@@ -30,7 +33,7 @@ namespace Infrastructure.DI
             builder.RegisterComponentInHierarchy<PlayerStatsUI>();
             builder.RegisterComponentInHierarchy<WavesUI>();
             builder.RegisterComponentInHierarchy<PauseUI>();
-            builder.RegisterComponentInHierarchy<TowerBuildButton>();
+            builder.RegisterComponentInHierarchy<TowerBuildingControllerUI>();
 
             builder.RegisterComponentInHierarchy<GameManager>();
         }

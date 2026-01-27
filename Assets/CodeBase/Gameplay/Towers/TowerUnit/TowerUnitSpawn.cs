@@ -11,8 +11,6 @@ namespace Gameplay.Towers.Units
         private TowerUnitAnimation _unitAnimation;
         private SpriteRenderer _unitSprite;
 
-        private Tween _unitSpawnTween;
-
         private void Awake()
         {
             _unitAnimation = GetComponent<TowerUnitAnimation>();
@@ -35,17 +33,14 @@ namespace Gameplay.Towers.Units
         private void OnDisable()
         {
             _unitAnimation.TowerUnitSpawn -= SpawnUnitAnimation;
-            if (_unitSpawnTween != null) DOTween.Kill(_unitSpawnTween);
         }
 
         private void SpawnUnitAnimation()
         {
-            _unitSpawnTween = _unitSprite.DOFade(1.0f, _spawnDuration).OnComplete(() =>
+            _unitSprite.DOFade(1.0f, _spawnDuration).OnComplete(() =>
             {
                 _unitAnimation.enabled = true;
-
-
-            }).SetLink(gameObject);
+            }).SetLink(gameObject, LinkBehaviour.KillOnDisable);
         }
 
     }

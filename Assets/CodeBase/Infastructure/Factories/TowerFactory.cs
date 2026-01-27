@@ -5,6 +5,8 @@ using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using System.Threading;
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 namespace Infrastructure.Factories
 {
@@ -12,14 +14,16 @@ namespace Infrastructure.Factories
     {
         private readonly IAssetProvider _assetProvider;
         private readonly GameplayRegistry _dataCatalog;
+        private IObjectResolver _objectResolver;
 
-        public TowerFactory(IAssetProvider assetProvider, GameplayRegistry dataCatalog)
+        public TowerFactory(IAssetProvider assetProvider, GameplayRegistry dataCatalog, IObjectResolver objectResolver)
         {
             _assetProvider = assetProvider;
             _dataCatalog = dataCatalog;
+            _objectResolver = objectResolver;
         }
 
-        public async UniTask<TowerController> CreateTower(TowerType type, Vector2 position, CancellationToken cancellationToken)
+        public async UniTask<TowerController> CreateTower(TowerType type, Vector2 position)
         {
             TowerData towerData = _dataCatalog.GetTowerData(type);
 
@@ -29,9 +33,8 @@ namespace Infrastructure.Factories
                 return null;
             }
 
-            GameObject towerObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference, cancellationToken), position, Quaternion.identity);
-
-            if(!towerObject.TryGetComponent<TowerController>(out TowerController tower))
+            GameObject towerObject = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference), position, Quaternion.identity);
+            if (!towerObject.TryGetComponent<TowerController>(out TowerController tower))
             {
                 Debug.LogError($"Failed to get TowerController component from tower game object");
                 Object.Destroy(towerObject);
@@ -43,9 +46,9 @@ namespace Infrastructure.Factories
 
         }
 
-        public async UniTask<BuildSite> CreateBuildSite(Vector2 position, CancellationToken cancellationToken)
+        public async UniTask<BuildSite> CreateBuildSite(Vector2 position)
         {
-            GameObject siteObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference, cancellationToken), position, Quaternion.identity);
+            GameObject siteObject = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference), position, Quaternion.identity);
 
             if (!siteObject.TryGetComponent<BuildSite>(out BuildSite site))
             {

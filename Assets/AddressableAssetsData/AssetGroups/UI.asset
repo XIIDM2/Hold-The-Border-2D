@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Towers
+  m_Name: UI
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Towers
-  m_GUID: ec4695d680295f54a92df806a622829c
+  m_GroupName: UI
+  m_GUID: 9f9408bae5300ad4db21700605d30dcb
   m_SerializeEntries:
-  - m_GUID: 53c3f2dc6b1b8cb47b465b69750becdc
-    m_Address: BuildSite
+  - m_GUID: 3cef098fd72b1fe4ca348050f671a324
+    m_Address: Assets/Assets/Prefabs/UI/TowerPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Level 1
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6d0f1513c1bb7274b96b65a0b3a1556c
-    m_Address: ArcherTower
+  - m_GUID: 9186de22c9f8ba746a752b8580ec0b87
+    m_Address: DamagePopup
     m_ReadOnly: 0
     m_SerializedLabels:
     - Level 1
@@ -31,5 +31,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 8c88bc2a7bb8c7f45877252c9b43394e, type: 2}
-    - {fileID: 11400000, guid: 462c4d16bd22a2c44aa0e00115308570, type: 2}
+    - {fileID: 11400000, guid: 92008d0f99899c741b0419ac10cf501c, type: 2}
+    - {fileID: 11400000, guid: cd1de3d2d1e3c8047bac32344c888aaf, type: 2}

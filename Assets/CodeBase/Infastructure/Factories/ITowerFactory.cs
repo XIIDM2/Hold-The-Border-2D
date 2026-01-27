@@ -8,7 +8,7 @@ namespace Infrastructure.Factories
 {
     public interface ITowerFactory
     {
-        UniTask<TowerController> CreateTower(TowerType type, Vector2 position, CancellationToken cancellationToken);
-        UniTask<BuildSite> CreateBuildSite(Vector2 position, CancellationToken cancellationToken);
+        UniTask<TowerController> CreateTower(TowerType type, Vector2 position);
+        UniTask<BuildSite> CreateBuildSite(Vector2 position);
     }
 }

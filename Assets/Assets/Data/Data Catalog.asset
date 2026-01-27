@@ -18,6 +18,18 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  _damagePopupReference:
+    m_AssetGUID: 9186de22c9f8ba746a752b8580ec0b87
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _towerPanelReference:
+    m_AssetGUID: 3cef098fd72b1fe4ca348050f671a324
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _unitDatas:
   - {fileID: 11400000, guid: d5a2ec4ab05702145a12a0faa8813ba5, type: 2}
   - {fileID: 11400000, guid: c37ccf770a61dc549b3880414df6169d, type: 2}

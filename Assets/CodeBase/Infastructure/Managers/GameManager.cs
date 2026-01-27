@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Data;
+using Infrastructure.Factories;
 using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
@@ -10,20 +11,28 @@ namespace Infrastructure.Managers
     {
         [Header("Level Settings")]
         [SerializeField] private Transform _unitSpawnPoint;
+        [SerializeField] private Transform[] _buildsitePoints;
 
         [Header("Services")]
         private IWaveService _waveService;
+        private ITowerFactory _towerFactory;
 
 
         [Inject]
-        public void Construct(IWaveService waveService, WaveData waveData)
+        public void Construct(IWaveService waveService, ITowerFactory towerFactory)
         {
             _waveService = waveService;
+            _towerFactory = towerFactory;
         }
 
         private void Awake()
         {
             _waveService.Init(_unitSpawnPoint.position);
+
+            foreach (Transform point in _buildsitePoints)
+            {
+                _towerFactory.CreateBuildSite(point.position).Forget();
+            }
         }
 
         private async void Start()

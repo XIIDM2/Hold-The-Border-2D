@@ -4,44 +4,36 @@ using Gameplay.Towers.BuildSite;
 using Infrastructure.Managers;
 using Infrastructure.Services;
 using UnityEngine;
+using UnityEngine.Events;
 using VContainer;
 
 namespace Gameplay.UI
 {
     public class TowerBuildButton : MonoBehaviour
     {
-        [SerializeField] private TowerType _type;
+        public event UnityAction BuildButtonClicked;
 
-        private BuildSite _site;
+        private TowerType _type;
+
         private ITowerBuildService _towerBuildService;
-        private GameManager _manager;
+        private ITowerSelectionService _towerSelectionService;
 
         [Inject]
-        public void Construct(ITowerBuildService towerBuildService, GameManager gameManager)
+        public void Construct(ITowerSelectionService towerSelectionService, ITowerBuildService towerBuildService)
         {
+            _towerSelectionService = towerSelectionService;
             _towerBuildService = towerBuildService;
-            _manager = gameManager;
         }
 
-        private void OnEnable()
+        public void SetTowerType(TowerType type)
         {
-            BuildSite.BuildSiteClicked += SetBuildSite;
-
-        }
-
-        private void OnDisable()
-        {
-            BuildSite.BuildSiteClicked -= SetBuildSite;
-        }
-
-        private void SetBuildSite(BuildSite site)
-        {
-            _site = site;
+            _type = type;
         }
 
         public void Build()
         {
-            if (_site) _towerBuildService.BuildTower(_type, _site, _manager.GetCancellationTokenOnDestroy());
+            BuildButtonClicked?.Invoke();
+            if (_towerSelectionService.BuildSite) _towerBuildService.BuildTower(_type, _towerSelectionService.BuildSite);
         }
 
     }

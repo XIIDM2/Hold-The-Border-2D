@@ -1,6 +1,7 @@
 using Gameplay.Towers;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 namespace Data
 {
@@ -38,15 +39,21 @@ namespace Data
 
         }
 
-        [SerializeField] private TowerType _type;
+        [SerializeField] private Sprite _icon;
+        [SerializeField] private string _name;
+        [SerializeField] private string _description;
         [SerializeField] private int _buildPrice;
+        [SerializeField] private TowerType _type;
 
         [SerializeField] private AssetReferenceGameObject _prefabReference;
 
         [SerializeField] private TowerTierConfig[] _tiersConfigs;
 
-        public TowerType Type => _type;
+        public Sprite Icon => _icon;
+        public string Name => _name;
+        public string Description => _description;
         public int BuildPrice => _buildPrice;
+        public TowerType Type => _type;
         public AssetReferenceGameObject TowerPrefabReference => _prefabReference;
         public TowerTierConfig[] TierConfigs => _tiersConfigs;
     }

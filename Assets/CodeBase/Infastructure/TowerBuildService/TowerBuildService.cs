@@ -25,7 +25,7 @@ namespace Infrastructure.Services
         }
 
 
-        public async UniTaskVoid BuildTower(TowerType type, BuildSite site, CancellationToken cancellationToken)
+        public async UniTaskVoid BuildTower(TowerType type, BuildSite site)
         {
             int buildPrice = _catalog.GetTowerData(type).BuildPrice;
 
@@ -35,7 +35,7 @@ namespace Infrastructure.Services
                 return;
             }
 
-            TowerController tower = await _factory.CreateTower(type, site.transform.position, cancellationToken);
+            TowerController tower = await _factory.CreateTower(type, site.transform.position);
 
             if (!tower)
             {
@@ -62,12 +62,12 @@ namespace Infrastructure.Services
             tower.UpgradeRequested?.Invoke();
         }
 
-        public async UniTaskVoid SellTower(TowerController tower, CancellationToken cancellationToken)
+        public async UniTaskVoid SellTower(TowerController tower)
         {
             int sellPrice = tower.currentTierConfig.SellPrice;
             Vector2 position = tower.transform.position;
 
-            BuildSite buildSite = await _factory.CreateBuildSite(position, cancellationToken);
+            BuildSite buildSite = await _factory.CreateBuildSite(position);
 
             if (!buildSite)
             {

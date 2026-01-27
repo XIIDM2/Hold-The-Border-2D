@@ -44,7 +44,7 @@ namespace Infrastructure.Services
                 {
                     for (int i = 0; i < units.Amount; i++)
                     {
-                        await _unitFactory.CreateUnit(units.Type, _pathProvider.GetWaypoint(units.Path), _spawnPosition, cancellationToken: cancellationToken);
+                        await _unitFactory.CreateUnit(units.Type, _pathProvider.GetWaypoint(units.Path), _spawnPosition);
                         await UniTask.Delay(TimeSpan.FromSeconds(units.IntervalCurrent), cancellationToken : cancellationToken);
                     }
 
