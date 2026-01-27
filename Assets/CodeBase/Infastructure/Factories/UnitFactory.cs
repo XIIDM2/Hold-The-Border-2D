@@ -2,6 +2,7 @@ using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Units.Enemy;
+using System.Threading;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -21,7 +22,7 @@ namespace Infrastructure.Factories
             _objectResolver = objectResolver;
         }
 
-        public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position)
+        public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken)
         {
             EnemyUnitData unitData = _dataCatalog.GetUnitData(type);
 
@@ -31,7 +32,7 @@ namespace Infrastructure.Factories
                 return null;
             }
 
-            GameObject unit = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference), position, Quaternion.identity);
+            GameObject unit = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference, cancellationToken: cancellationToken), position, Quaternion.identity);
 
             if (!unit.TryGetComponent<EnemyUnitController>(out EnemyUnitController enemy))
             {

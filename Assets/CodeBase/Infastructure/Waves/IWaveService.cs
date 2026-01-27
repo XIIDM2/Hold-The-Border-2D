@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Data;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,5 +12,5 @@ public interface IWaveService
 
     public event UnityAction<int> NextWaveStarted;
     void Init(Vector2 spawnPosition);
-    UniTask WavesLogicAsync(IPathProvider pathProvider);
+    UniTask WavesLogicAsync(CancellationToken cancellationToken);
 }

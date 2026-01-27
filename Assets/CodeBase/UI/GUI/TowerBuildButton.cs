@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
+using Infrastructure.Managers;
 using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
@@ -12,11 +14,13 @@ namespace Gameplay.UI
 
         private BuildSite _site;
         private ITowerBuildService _towerBuildService;
+        private GameManager _manager;
 
         [Inject]
-        public void Construct(ITowerBuildService towerBuildService)
+        public void Construct(ITowerBuildService towerBuildService, GameManager gameManager)
         {
             _towerBuildService = towerBuildService;
+            _manager = gameManager;
         }
 
         private void OnEnable()
@@ -37,7 +41,7 @@ namespace Gameplay.UI
 
         public void Build()
         {
-            if (_site) _towerBuildService.BuildTower(_type, _site);
+            if (_site) _towerBuildService.BuildTower(_type, _site, _manager.GetCancellationTokenOnDestroy());
         }
 
     }

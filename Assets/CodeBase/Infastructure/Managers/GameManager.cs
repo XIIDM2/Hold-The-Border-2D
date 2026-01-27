@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using Infrastructure.Services;
 using UnityEngine;
@@ -11,14 +12,12 @@ namespace Infrastructure.Managers
         [SerializeField] private Transform _unitSpawnPoint;
 
         [Header("Services")]
-        private IPathProvider _pathService;
         private IWaveService _waveService;
 
 
         [Inject]
-        public void Construct(IPathProvider pathService, IWaveService waveService, WaveData waveData)
+        public void Construct(IWaveService waveService, WaveData waveData)
         {
-            _pathService = pathService;
             _waveService = waveService;
         }
 
@@ -29,7 +28,7 @@ namespace Infrastructure.Managers
 
         private async void Start()
         {
-            await _waveService.WavesLogicAsync(_pathService);
+            await _waveService.WavesLogicAsync(this.GetCancellationTokenOnDestroy());
         }
     }
 }

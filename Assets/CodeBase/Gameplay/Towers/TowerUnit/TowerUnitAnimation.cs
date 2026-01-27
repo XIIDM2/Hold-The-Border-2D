@@ -1,3 +1,4 @@
+using Core.Utilities;
 using Data;
 using Gameplay.Units;
 using Infrastructure.Interfaces;
@@ -16,15 +17,14 @@ namespace Gameplay.Towers.Units
         [SerializeField] private Transform _firePoint;
         [SerializeField] private AnimationData _data;
 
-        private ObjectDirection _direction;
-
         private GameObject _target;
+
+        private SpriteRenderer _sprite;
 
         protected override void Awake()
         {
             base.Awake();
-            _direction = new ObjectDirection();
-
+            _sprite = GetComponent<SpriteRenderer>();
             Init(_data);
         }
 
@@ -34,7 +34,7 @@ namespace Gameplay.Towers.Units
             if (_target)
             {
                 Vector2 direction = CalculateDirection();
-                _direction.FaceDirection(transform, direction.x);
+                Utilities.FlipSprite(_sprite, direction.x);
                 SetFloat(UnitAnimationParameter.Horizontal.ToString(), direction.x);
                 SetFloat(UnitAnimationParameter.Vertical.ToString(), direction.y);
             }

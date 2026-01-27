@@ -1,6 +1,7 @@
 using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -12,17 +13,17 @@ public class AssetProvider : IAssetProvider
     private readonly Dictionary<string, AsyncOperationHandle> _asyncOperations = new Dictionary<string, AsyncOperationHandle>();
     private readonly Dictionary<string, string> _addressDictionary = new Dictionary<string, string>();
 
-    public async UniTask LoadMultipleAssetsByLabel<T>(string label) where T : class
+    public async UniTask LoadMultipleAssetsByLabel<T>(string label, CancellationToken cancellationToken) where T : class
     {
         var loadResourceLocationsHandle = Addressables.LoadResourceLocationsAsync(label);
 
-        await loadResourceLocationsHandle.ToUniTask();
+        await loadResourceLocationsHandle.ToUniTask(cancellationToken: cancellationToken);
 
         foreach (IResourceLocation resourceLocation in loadResourceLocationsHandle.Result)
         {
             AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(resourceLocation);
 
-            await handle.ToUniTask();
+            await handle.ToUniTask(cancellationToken: cancellationToken);
 
             if (handle.Status != AsyncOperationStatus.Succeeded)
             {
@@ -40,9 +41,9 @@ public class AssetProvider : IAssetProvider
         Addressables.Release(loadResourceLocationsHandle);
     }
 
-    public async UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class
+    public async UniTask<T> LoadAssetByReference<T>(AssetReference reference, CancellationToken cancellationToken) where T : class
     {
-        string address = await LoadAssetAdress(reference);
+        string address = await LoadAssetAdress(reference, cancellationToken);
 
         if (_asyncOperations.TryGetValue(address, out AsyncOperationHandle cachedHandle))
         {
@@ -51,7 +52,7 @@ public class AssetProvider : IAssetProvider
 
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(address);
 
-        await handle.ToUniTask();
+        await handle.ToUniTask(cancellationToken: cancellationToken);
 
         if (handle.Status != AsyncOperationStatus.Succeeded)
         {
@@ -70,7 +71,7 @@ public class AssetProvider : IAssetProvider
 
     public async UniTask Release(AssetReference reference)
     {
-        string address = await LoadAssetAdress(reference);
+        string address = await LoadAssetAdress(reference, CancellationToken.None);
 
         if (_asyncOperations.TryGetValue(address, out var handle))
         {
@@ -90,7 +91,7 @@ public class AssetProvider : IAssetProvider
         _addressDictionary.Clear();
     }
 
-    private async UniTask<string> LoadAssetAdress(AssetReference assetReference)
+    private async UniTask<string> LoadAssetAdress(AssetReference assetReference, CancellationToken cancellationToken)
     {
         if (_addressDictionary.TryGetValue(assetReference.AssetGUID, out string cachedAdress))
         {
@@ -99,7 +100,7 @@ public class AssetProvider : IAssetProvider
 
         var opHandle = Addressables.LoadResourceLocationsAsync(assetReference);
 
-        await opHandle.ToUniTask();
+        await opHandle.ToUniTask(cancellationToken : cancellationToken);
 
         if (opHandle.Status != AsyncOperationStatus.Succeeded ||
             opHandle.Result == null ||

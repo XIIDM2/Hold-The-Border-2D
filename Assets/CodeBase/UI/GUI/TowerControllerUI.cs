@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
+using Infrastructure.Managers;
 using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
@@ -8,11 +10,13 @@ public class TowerControllerUI : MonoBehaviour
     private TowerController _tower;
 
     private ITowerBuildService _towerBuildService;
+    private GameManager _manager;
 
     [Inject]
-    public void Construct(ITowerBuildService towerBuildService)
+    public void Construct(ITowerBuildService towerBuildService, GameManager gameManager)
     {
         _towerBuildService = towerBuildService;
+        _manager = gameManager;
     }
 
     private void OnEnable()
@@ -37,7 +41,7 @@ public class TowerControllerUI : MonoBehaviour
 
     public void Sell()
     {
-        if (_tower) _towerBuildService.SellTower(_tower);
+        if (_tower) _towerBuildService.SellTower(_tower, _manager.GetCancellationTokenOnDestroy());
     }
 
 }

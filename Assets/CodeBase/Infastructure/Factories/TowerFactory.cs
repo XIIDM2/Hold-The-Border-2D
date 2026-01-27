@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
+using System.Threading;
 using UnityEngine;
 
 namespace Infrastructure.Factories
@@ -18,7 +19,7 @@ namespace Infrastructure.Factories
             _dataCatalog = dataCatalog;
         }
 
-        public async UniTask<TowerController> CreateTower(TowerType type, Vector2 position)
+        public async UniTask<TowerController> CreateTower(TowerType type, Vector2 position, CancellationToken cancellationToken)
         {
             TowerData towerData = _dataCatalog.GetTowerData(type);
 
@@ -28,7 +29,7 @@ namespace Infrastructure.Factories
                 return null;
             }
 
-            GameObject towerObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference), position, Quaternion.identity);
+            GameObject towerObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference, cancellationToken), position, Quaternion.identity);
 
             if(!towerObject.TryGetComponent<TowerController>(out TowerController tower))
             {
@@ -42,9 +43,9 @@ namespace Infrastructure.Factories
 
         }
 
-        public async UniTask<BuildSite> CreateBuildSite(Vector2 position)
+        public async UniTask<BuildSite> CreateBuildSite(Vector2 position, CancellationToken cancellationToken)
         {
-            GameObject siteObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference), position, Quaternion.identity);
+            GameObject siteObject = Object.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_dataCatalog.BuildSiteReference, cancellationToken), position, Quaternion.identity);
 
             if (!siteObject.TryGetComponent<BuildSite>(out BuildSite site))
             {

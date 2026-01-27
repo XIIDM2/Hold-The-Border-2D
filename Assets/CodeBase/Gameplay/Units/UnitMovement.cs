@@ -1,3 +1,4 @@
+using Core.Utilities;
 using Core.Utilities.CustomProperties;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Gameplay.Units
 
         private Rigidbody2D _rb;
 
-        private ObjectDirection _unitDirection;
+        private SpriteRenderer _sprite;
 
         private void Awake()
         {
@@ -20,7 +21,7 @@ namespace Gameplay.Units
 
         private void Start()
         {
-            _unitDirection = new ObjectDirection();
+            _sprite = GetComponentInChildren<SpriteRenderer>();
         }
 
         public void Init(float movementSpeed)
@@ -34,7 +35,7 @@ namespace Gameplay.Units
 
             _rb.MovePosition(_rb.position + Direction.normalized * Time.fixedDeltaTime * _movementSpeed);
 
-            _unitDirection.FaceDirection(transform, Direction.x);
+            Utilities.FlipSprite(_sprite, Direction.x);
         }
 
     }

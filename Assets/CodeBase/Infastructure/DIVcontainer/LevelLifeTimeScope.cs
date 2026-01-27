@@ -30,6 +30,7 @@ namespace Infrastructure.DI
             builder.RegisterComponentInHierarchy<PlayerStatsUI>();
             builder.RegisterComponentInHierarchy<WavesUI>();
             builder.RegisterComponentInHierarchy<PauseUI>();
+            builder.RegisterComponentInHierarchy<TowerBuildButton>();
 
             builder.RegisterComponentInHierarchy<GameManager>();
         }

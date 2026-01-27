@@ -14,5 +14,19 @@ namespace Core.Utilities
 
             return angle;
         }
+
+        public static void FlipSprite(SpriteRenderer sprite, float value)
+        {
+            const float THRESHOLD = 0.001f;
+
+            if (value < -THRESHOLD)
+            {
+                sprite.flipX = false;
+            }
+            else if (value > THRESHOLD)
+            {
+                sprite.flipX = true;
+            }
+        }
     }
 }
