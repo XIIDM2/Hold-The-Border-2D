@@ -9,8 +9,6 @@ public class TowerBuildingControllerUI : MonoBehaviour
 {
     [SerializeField] private GameObject _buildingPanel;
 
-    private List<TowerPanelUI> _towerPanelList = new List<TowerPanelUI>();
-
     private GameplayRegistry _registry;
     private SceneController _controller;
     private ITowerSelectionService _selectionService;
@@ -31,8 +29,6 @@ public class TowerBuildingControllerUI : MonoBehaviour
         {
             GameObject towerPanelUI = await _UIfactory.CreateTowerPanel(towerData.Type, towerData.Icon, towerData.Name, towerData.Description, towerData.TierConfigs[0].Damage.ToString(), towerData.TierConfigs[0].AttackCooldown.ToString(), towerData.TierConfigs[0].AttackRadius.ToString(), towerData.BuildPrice.ToString());
             towerPanelUI.transform.SetParent(_buildingPanel.transform);
-            towerPanelUI.GetComponent<TowerPanelUI>().BuildButton.BuildButtonClicked += HideBuildingPanel;
-            _towerPanelList.Add(towerPanelUI.GetComponent<TowerPanelUI>());
         }
     }
 
@@ -44,17 +40,15 @@ public class TowerBuildingControllerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _selectionService.BuildsiteClicked += ShowBuildingPanel;
+        _selectionService.BuildsiteSelected += ShowBuildingPanel;
+        _selectionService.BuildSiteDeselected += HideBuildingPanel;
     }
 
     private void OnDisable()
     {
-        _selectionService.BuildsiteClicked -= ShowBuildingPanel;
+        _selectionService.BuildsiteSelected -= ShowBuildingPanel;
+        _selectionService.BuildSiteDeselected -= HideBuildingPanel;
 
-        foreach (TowerPanelUI towerPanelUI in _towerPanelList)
-        {
-            towerPanelUI.BuildButton.BuildButtonClicked -= HideBuildingPanel;
-        }
     }  
 
     private void ShowBuildingPanel(BuildSite site)

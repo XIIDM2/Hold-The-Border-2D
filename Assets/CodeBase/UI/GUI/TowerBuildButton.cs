@@ -11,8 +11,6 @@ namespace Gameplay.UI
 {
     public class TowerBuildButton : MonoBehaviour
     {
-        public event UnityAction BuildButtonClicked;
-
         private TowerType _type;
 
         private ITowerBuildService _towerBuildService;
@@ -32,8 +30,8 @@ namespace Gameplay.UI
 
         public void Build()
         {
-            BuildButtonClicked?.Invoke();
             if (_towerSelectionService.BuildSite) _towerBuildService.BuildTower(_type, _towerSelectionService.BuildSite);
+            _towerSelectionService.ClearBuildSiteSelection();
         }
 
     }

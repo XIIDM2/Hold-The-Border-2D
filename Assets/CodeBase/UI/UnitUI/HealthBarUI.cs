@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class HealthBarUI : MonoBehaviour
 {
-    [SerializeField] private Image _healthBar;
+    [SerializeField] private Slider _healthBar;
 
     [Header("DamagedBar")]
     [SerializeField] private Image _damagedBar;
@@ -23,8 +23,12 @@ public class HealthBarUI : MonoBehaviour
 
     private void Start()
     {
-        SetHealthBarValue(_health.MaxHealth);
-        _damagedBar.fillAmount = _healthBar.fillAmount;
+        _healthBar.wholeNumbers = true;
+
+        _healthBar.maxValue = _health.MaxHealth;
+        _healthBar.value = _health.CurrentHealth;
+
+        _damagedBar.fillAmount = _health.CurrentHealth;
     }
 
     private void OnEnable()
@@ -39,9 +43,9 @@ public class HealthBarUI : MonoBehaviour
 
     private void SetHealthBarValue(int amount)
     {
-        _healthBar.fillAmount = (float) amount / _health.MaxHealth;
+        _healthBar.value = amount;
 
-        _damagedBar.DOFillAmount(_healthBar.fillAmount, _fillSpeed).SetDelay(_fillDelay).SetLink(gameObject, LinkBehaviour.KillOnDisable);
+        _damagedBar.DOFillAmount(_healthBar.value / _health.MaxHealth, _fillSpeed).SetDelay(_fillDelay).SetLink(gameObject, LinkBehaviour.KillOnDisable);
     }
 
 }

@@ -18,7 +18,7 @@ namespace Infrastructure.DI
             builder.RegisterInstance(_playerData);
 
             builder.Register<IAssetProvider, AssetProvider>(Lifetime.Singleton);
-            builder.Register<SceneController>(Lifetime.Singleton);
+            builder.Register<SceneController>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
         }
     }
 }

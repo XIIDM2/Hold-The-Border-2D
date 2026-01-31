@@ -17,23 +17,17 @@ namespace Infrastructure.DI
         {
             builder.RegisterInstance(_waveData);
 
-            builder.Register<IPlayerController, PlayerController>(Lifetime.Scoped);
+            builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
 
-            builder.Register<IWaveService, WaveService>(Lifetime.Scoped);
-            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Scoped);
-            builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Scoped);
+            builder.Register<IWaveService, WaveService>(Lifetime.Singleton);
+            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
+            builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);
 
-            builder.Register<IUnitFactory, UnitFactory>(Lifetime.Scoped);
-            builder.Register<ITowerFactory, TowerFactory>(Lifetime.Scoped);
-            builder.Register<IUIFactory, UIFactory>(Lifetime.Scoped);
+            builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
+            builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);
+            builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
-
-
-            builder.RegisterComponentInHierarchy<PlayerStatsUI>();
-            builder.RegisterComponentInHierarchy<WavesUI>();
-            builder.RegisterComponentInHierarchy<PauseUI>();
-            builder.RegisterComponentInHierarchy<TowerBuildingControllerUI>();
 
             builder.RegisterComponentInHierarchy<GameManager>();
         }

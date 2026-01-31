@@ -30,7 +30,7 @@ MonoBehaviour:
     _sellPrice: 0
     _damage: 1
     _attackCooldown: 2
-    _attackRadius: 3.5
+    _attackRadius: 4
     _upgradeAnimation: {fileID: 7400000, guid: 67964e5fbaec30b478283c9277be8aed, type: 2}
     _idleAnimation: {fileID: 7400000, guid: af364be1f82f0894690af9b87355ffca, type: 2}
   - _towerVisualPrefab: {fileID: 5410235932242746450, guid: 6a854250c4f11eb4fbf8165696c80199, type: 3}

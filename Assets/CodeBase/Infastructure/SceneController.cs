@@ -1,9 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer.Unity;
 
-public class SceneController
+public class SceneController : IInitializable
 {
-    private const int MAIN_MENU_INDEX = 0;
+    private const string MAIN_MENU_NAME = "Main Menu";
+    private const string HUD_NAME = "HUD";
+
+    public void Initialize()
+    {
+        if (SceneManager.GetActiveScene().name == MAIN_MENU_NAME) return;
+
+        SceneManager.LoadScene(HUD_NAME, LoadSceneMode.Additive);
+    }
+
+
     public void StartTime()
     {
         Time.timeScale = 1.0f;
@@ -21,11 +32,12 @@ public class SceneController
 
     public void LoadMainMenuScene()
     {
-        SceneManager.LoadScene(MAIN_MENU_INDEX);
+        SceneManager.LoadScene(MAIN_MENU_NAME);
     }
 
     public void Exit()
     {
         Application.Quit();
     }
+
 }
