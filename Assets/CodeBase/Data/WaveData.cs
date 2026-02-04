@@ -10,43 +10,38 @@ namespace Data
         [System.Serializable]
         public class WaveConfig
         {
-            public IReadOnlyList<WaveUnitsConfig> Units => _units;
+            public IReadOnlyList<WaveUnitsConfig> UnitsConfigs => _unitsConfigs;
             public float WaveInterval => _waveInterval;
 
-            [SerializeField] private WaveUnitsConfig[] _units;
+            [SerializeField] private WaveUnitsConfig[] _unitsConfigs;
 
-            [Header("Interval Between Next Wave")]
             [SerializeField] private float _waveInterval;
 
             [System.Serializable]
             public struct WaveUnitsConfig
             {
-                public EnemyUnitType Type => _unitType;
+                public EnemyUnitType Type => _type;
                 public int Amount => _amount;
                 public float IntervalCurrent => _intervalCurrent;
                 public float IntervalNext => _intervalNext;
 
                 public PathType Path => _path;
 
-                [SerializeField] private EnemyUnitType _unitType;
+                [SerializeField] private EnemyUnitType _type;
                 [SerializeField] private int _amount;
 
-                [Header("Interval Between Current Units")]
                 [SerializeField] private float _intervalCurrent;
-
-                [Header("Interval Between Next Units")]
                 [SerializeField] private float _intervalNext;
 
-                [Header("Start Waypoint")]
                 [SerializeField] private PathType _path;
 
             }
         }
 
         [SerializeField] private float _wavesStartTimer;
-        [SerializeField] private WaveConfig[] _waves;
+        [SerializeField] private WaveConfig[] _wavesConfigs;
 
         public float WavesStartTimer => _wavesStartTimer;
-        public WaveConfig[] Waves => _waves;
+        public WaveConfig[] WavesConfigs => _wavesConfigs;
     }
 }

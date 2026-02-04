@@ -2,35 +2,38 @@ using TMPro;
 using UnityEngine;
 using VContainer;
 
-public class WavesUI : MonoBehaviour
+namespace Gameplay.UI
 {
-    [SerializeField] private TMP_Text _wavesText;
-
-    private IWaveService _waveService;
-
-    [Inject]
-    public void Construct(IWaveService waveService)
+    public class WavesUI : MonoBehaviour
     {
-        _waveService = waveService;
-    }
+        [SerializeField] private TMP_Text _wavesText;
 
-    private void Start()
-    {
-        SetWave(_waveService.CurrentWaveIndex);
-    }
+        private IWaveControllerService _waveControllerService;
 
-    private void OnEnable()
-    {
-        _waveService.NextWaveStarted += SetWave;
-    }
+        [Inject]
+        public void Construct(IWaveControllerService waveControllerService)
+        {
+            _waveControllerService = waveControllerService;
+        }
 
-    private void OnDisable()
-    {
-        _waveService.NextWaveStarted -= SetWave;
-    }
+        private void Start()
+        {
+            OnNextWaveStarted(_waveControllerService.CurrentWaveIndex);
+        }
 
-    private void SetWave(int currentWaveIndex)
-    {
-        _wavesText.text = $"{currentWaveIndex}/{_waveService.WavesLength}";
+        private void OnEnable()
+        {
+            _waveControllerService.NextWaveStarted += OnNextWaveStarted;
+        }
+
+        private void OnDisable()
+        {
+            _waveControllerService.NextWaveStarted -= OnNextWaveStarted;
+        }
+
+        private void OnNextWaveStarted(int currentWaveIndex)
+        {
+            _wavesText.text = $"{currentWaveIndex}/{_waveControllerService.WavesLength}";
+        }
     }
 }

@@ -30,14 +30,14 @@ namespace Gameplay.Units
 
         }
 
-        public void Init<T>(T data) where T : AnimationData
+        public void Init<T>(T data) where T : AnimationOverrideData
         {
             _clipOverrides = new List<KeyValuePair<AnimationClip, AnimationClip>>(_animatorOverrideController.overridesCount);
             _animatorOverrideController.GetOverrides(_clipOverrides);
 
             for (int i = 0; i < _clipOverrides.Count; ++i)
             {
-                _clipOverrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(_clipOverrides[i].Key, data.GetClip(_clipOverrides[i].Key));
+                _clipOverrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(_clipOverrides[i].Key, data.GetOverrideClip(_clipOverrides[i].Key));
             }
 
             _animatorOverrideController.ApplyOverrides(_clipOverrides);

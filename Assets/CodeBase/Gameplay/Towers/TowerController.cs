@@ -15,7 +15,8 @@ namespace Gameplay.Towers
         public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
         public int MaxTier => _data.TierConfigs.Length - 1;
-        public TowerData.TowerTierConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
+        public TowerData.TowerTiersConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
+        public TowerData.TowerTiersConfig nextTierConfig => _data.TierConfigs[CurrentTierIndex + 1];
 
 
         [Header("Components")]
@@ -71,18 +72,18 @@ namespace Gameplay.Towers
 
         private void Update()
         {
-            ActionFSM.UpdateState(this);
+            ActionFSM.Update(this);
         }
 
         private void LateUpdate()
         {
-            ActionFSM.LateUpdateState(this);
+            ActionFSM.LateUpdate(this);
 
         }
 
         private void FixedUpdate()
         {
-            ActionFSM.FixedUpdateState(this);
+            ActionFSM.FixedUpdate(this);
         }
 
         public void OnPointerClick(PointerEventData eventData)

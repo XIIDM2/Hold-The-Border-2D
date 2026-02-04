@@ -1,44 +1,46 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 using VContainer;
 
-public class PauseUI : MonoBehaviour
+namespace Gameplay.UI
 {
-    [SerializeField] private GameObject _pausePanel;
-
-    private SceneController _controller;
-
-    [Inject]
-    public void Construct(SceneController sceneController)
+    public class PauseUI : MonoBehaviour
     {
-        _controller = sceneController;
-    }
+        [SerializeField] private GameObject _pausePanel;
 
-    private void Start()
-    {
-        _pausePanel.SetActive(false);
-    }
+        private SceneController _controller;
 
-    public void PauseGame()
-    {
-        _controller.StopTime();
-        _pausePanel.SetActive(true);
-    }
+        [Inject]
+        public void Construct(SceneController sceneController)
+        {
+            _controller = sceneController;
+        }
 
-    public void ContinueGame()
-    {
-        _controller.StartTime();
-        _pausePanel.SetActive(false);
-    }
+        private void Start()
+        {
+            _pausePanel.SetActive(false);
+        }
 
-    public void RestartLevel()
-    {
-        _controller.StartTime();
-        _controller.RestartScene();
-    }
+        public void PauseGame()
+        {
+            _controller.StopTime();
+            _pausePanel.SetActive(true);
+        }
 
-    public void ExitToMainMenu()
-    {
-        _controller.LoadMainMenuScene();
+        public void ContinueGame()
+        {
+            _controller.StartTime();
+            _pausePanel.SetActive(false);
+        }
+
+        public void RestartLevel()
+        {
+            _controller.StartTime();
+            _controller.RestartScene();
+        }
+
+        public void ExitToMainMenu()
+        {
+            _controller.LoadMainMenuScene();
+        }
     }
 }

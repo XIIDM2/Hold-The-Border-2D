@@ -9,23 +9,18 @@ namespace Data
     public class TowerData : ScriptableObject
     {
         [System.Serializable]
-        public class TowerTierConfig
+        public class TowerTiersConfig
         {
-            public GameObject TowerVisualPrefab => _towerVisualPrefab;
-            public GameObject ProjectilePrefab => _projectilePrefab;
-
             public int UpgradePrice => _upgradePrice;
             public int SellPrice => _sellPrice;
-
             public int Damage => _damage;
             public float AttackCooldown => _attackCooldown;
             public float AttackRadius => _attackRadius;
-
+            public GameObject TowerVisualPrefab => _towerVisualPrefab;
+            public GameObject ProjectilePrefab => _projectilePrefab;
             public AnimationClip UpgradeAnimation => _upgradeAnimation;
             public AnimationClip IdleAnimation => _idleAnimation;
 
-            [SerializeField] private GameObject _towerVisualPrefab;
-            [SerializeField] private GameObject _projectilePrefab;
 
             [SerializeField] private int _upgradePrice;
             [SerializeField] private int _sellPrice;
@@ -34,27 +29,30 @@ namespace Data
             [SerializeField] private float _attackCooldown;
             [SerializeField] private float _attackRadius;
 
+            [SerializeField] private GameObject _towerVisualPrefab;
+            [SerializeField] private GameObject _projectilePrefab;
             [SerializeField] private AnimationClip _upgradeAnimation;
             [SerializeField] private AnimationClip _idleAnimation;
 
         }
 
+        [Header("Tower Info")]
         [SerializeField] private Sprite _icon;
+        [SerializeField] private TowerType _type;
         [SerializeField] private string _name;
         [SerializeField] private string _description;
         [SerializeField] private int _buildPrice;
-        [SerializeField] private TowerType _type;
 
         [SerializeField] private AssetReferenceGameObject _prefabReference;
 
-        [SerializeField] private TowerTierConfig[] _tiersConfigs;
+        [SerializeField] private TowerTiersConfig[] _tiersConfigs;
 
         public Sprite Icon => _icon;
+        public TowerType Type => _type;
         public string Name => _name;
         public string Description => _description;
         public int BuildPrice => _buildPrice;
-        public TowerType Type => _type;
         public AssetReferenceGameObject TowerPrefabReference => _prefabReference;
-        public TowerTierConfig[] TierConfigs => _tiersConfigs;
+        public TowerTiersConfig[] TierConfigs => _tiersConfigs;
     }
 }

@@ -59,7 +59,7 @@ namespace Gameplay.Units.Enemy
 
             Damageable?.Init(data.MaxHealth);
 
-            if (Animation) Animation.Init(data.Animations);
+            if (Animation) Animation.Init(data.OverrideAnimations);
             if (Movement) Movement.Init(data.MovementSpeed);
             if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
             if (Pathing) Pathing.Init(start);

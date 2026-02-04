@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using System.Threading;
 using UnityEngine.AddressableAssets;
 
 namespace Core.Interfaces
@@ -8,7 +7,7 @@ namespace Core.Interfaces
     {
         UniTask LoadMultipleAssetsByLabel<T>(string label) where T : class;
         UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class;
-        UniTask Release(AssetReference reference);
-        void ReleaseAll();
+        UniTask ReleaseAsset(AssetReference reference);
+        void ReleaseAllAssets();
     }
 }

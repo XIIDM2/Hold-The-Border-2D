@@ -7,9 +7,9 @@ namespace Data
     public class UnitData : ScriptableObject
     {
         [SerializeField] private AssetReferenceGameObject _prefabReference;
-        [SerializeField] private AnimationData _animations;
+        [SerializeField] private AnimationOverrideData _overrideAnimations;
 
         public AssetReferenceGameObject PrefabReference => _prefabReference;
-        public AnimationData Animations => _animations;
+        public AnimationOverrideData OverrideAnimations => _overrideAnimations;
     }
 }

@@ -2,46 +2,49 @@ using TMPro;
 using UnityEngine;
 using VContainer;
 
-public class PlayerStatsUI : MonoBehaviour
+namespace Gameplay.UI
 {
-    private IPlayerController _player;
-
-    [SerializeField] private TMP_Text _healthText;
-    [SerializeField] private TMP_Text _goldText;
-
-    [Inject]
-    public void Contstruct(IPlayerController player)
+    public class PlayerStatsUI : MonoBehaviour
     {
-        _player = player;
+        private IPlayerController _player;
+
+        [SerializeField] private TMP_Text _healthText;
+        [SerializeField] private TMP_Text _goldText;
+
+        [Inject]
+        public void Contstruct(IPlayerController player)
+        {
+            _player = player;
+        }
+
+        private void Start()
+        {
+            OnHealthChanged(_player.Health.CurrentHealth);
+            OnGoldChanged(_player.Gold);
+        }
+
+        private void OnEnable()
+        {
+            _player.Health.OnHealthChanged += OnHealthChanged;
+            _player.OnGoldChanged += OnGoldChanged;
+        }
+
+        private void OnDisable()
+        {
+            _player.Health.OnHealthChanged -= OnHealthChanged;
+            _player.OnGoldChanged -= OnGoldChanged;
+        }
+
+        private void OnHealthChanged(int health)
+        {
+            _healthText.text = health.ToString();
+        }
+
+        private void OnGoldChanged(int gold)
+        {
+            _goldText.text = gold.ToString();
+        }
+
+
     }
-
-    private void Start()
-    {
-        SetHealthText(_player.Health.CurrentHealth);
-        SetGoldText(_player.Gold);
-    }
-
-    private void OnEnable()
-    {
-        _player.Health.OnHealthChanged += SetHealthText;
-        _player.OnGoldChanged += SetGoldText;
-    }
-
-    private void OnDisable()
-    {
-        _player.Health.OnHealthChanged -= SetHealthText;
-        _player.OnGoldChanged -= SetGoldText;
-    }
-
-    private void SetHealthText(int health)
-    {
-        _healthText.text = health.ToString();
-    }
-
-    private void SetGoldText(int gold)
-    {
-        _goldText.text = gold.ToString();
-    }
-
-
 }

@@ -1,78 +1,121 @@
-using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
-using Infrastructure.Managers;
 using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
 
-public class TowerControllerUI : MonoBehaviour
+namespace Gameplay.UI
 {
-    [SerializeField] private GameObject _panel;
-    [SerializeField] private TMP_Text _upgradeText;
-    [SerializeField] private TMP_Text _sellText;
-
-    private ITowerSelectionService _towerSelectionService;
-    private ITowerBuildService _towerBuildService;
-
-    [Inject]
-    public void Construct(ITowerSelectionService towerSelectionService, ITowerBuildService towerBuildService)
+    public class TowerControllerUI : MonoBehaviour
     {
-        _towerSelectionService = towerSelectionService;
-        _towerBuildService = towerBuildService;
-    }
+        [Header("Upgrade/Sell Panel")]
+        [SerializeField] private GameObject _controllerPanel;
+        [SerializeField] private Button _upgradeButton;
+        [SerializeField] private TMP_Text _upgradeText;
+        [SerializeField] private TMP_Text _sellText;
 
-    private void Start()
-    {
-        HideController();
-    }
+        [Header("UpgradeInformationPanel")]
+        [SerializeField] private GameObject _informationPanel;
 
-    private void OnEnable()
-    {
-        _towerSelectionService.TowerSelected += ShowController;
-        _towerSelectionService.TowerDeselected += HideController;
-    }
+        [SerializeField] private TMP_Text _damageOldText;
+        [SerializeField] private TMP_Text _damageNewText;
 
-    private void OnDisable()
-    {
-        _towerSelectionService.TowerSelected -= ShowController;
-        _towerSelectionService.TowerDeselected -= HideController;
-    }
+        [SerializeField] private TMP_Text _attackSpeedOldText;
+        [SerializeField] private TMP_Text _attackSpeedNewText;
 
+        [SerializeField] private TMP_Text _attackRangeOldText;
+        [SerializeField] private TMP_Text _attackRangeNewText;
 
-    private void ShowController(TowerController tower)
-    {
-        _upgradeText.text = tower.currentTierConfig.UpgradePrice.ToString();
-        _sellText.text = tower.currentTierConfig.SellPrice.ToString();
+        private TowerController _tower;
 
-        Vector3 position = Camera.main.WorldToScreenPoint(tower.transform.position);
-        _panel.transform.position = position;
+        private ITowerSelectionService _selectionService;
+        private ITowerBuildService _buildService;
 
-        _panel.SetActive(true);
-    }
-
-    private void HideController()
-    {
-        _panel.SetActive(false);
-    }
-
-    public void Upgrade()
-    {
-        if (_towerSelectionService.Tower)
+        [Inject]
+        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService)
         {
-            _towerBuildService.UpgradeTower(_towerSelectionService.Tower);
-            _towerSelectionService.ClearTowerSelection();
+            _selectionService = selectionService;
+            _buildService = buildService;
         }
-    }
 
-    public void Sell()
-    {
-        if (_towerSelectionService.Tower)
+        private void Start()
         {
-            _towerBuildService.SellTower(_towerSelectionService.Tower);
-            _towerSelectionService.ClearTowerSelection();
+            HideController();
+            HideUpgradePanel();
         }
-    }
 
+        private void OnEnable()
+        {
+            _selectionService.TowerSelected += ShowController;
+            _selectionService.TowerDeselected += HideController;
+            _selectionService.TowerDeselected += HideUpgradePanel;
+        }
+
+        private void OnDisable()
+        {
+            _selectionService.TowerSelected -= ShowController;
+            _selectionService.TowerDeselected -= HideController;
+            _selectionService.TowerDeselected -= HideUpgradePanel;
+        }
+
+
+        private void ShowController(TowerController tower)
+        {
+            _tower = tower;
+
+            _upgradeText.text = tower.currentTierConfig.UpgradePrice.ToString();
+            _sellText.text = tower.currentTierConfig.SellPrice.ToString();
+
+            if (tower.CurrentTierIndex >= tower.MaxTier) _upgradeButton.gameObject.SetActive(false);
+
+            Vector3 position = Camera.main.WorldToScreenPoint(tower.transform.position);
+            _controllerPanel.transform.position = position;
+
+            _controllerPanel.SetActive(true);
+        }
+
+        private void HideController()
+        {
+            _controllerPanel.SetActive(false);
+        }
+
+        public void ShowUpgradePanel()
+        {
+            _damageOldText.text = _tower.currentTierConfig.Damage.ToString();
+            _damageNewText.text = _tower.nextTierConfig.Damage.ToString();
+
+            _attackSpeedOldText.text = _tower.currentTierConfig.AttackCooldown.ToString();
+            _attackSpeedNewText.text = _tower.nextTierConfig.AttackCooldown.ToString();
+
+            _attackRangeOldText.text = _tower.currentTierConfig.AttackRadius.ToString();
+            _attackRangeNewText.text = _tower.nextTierConfig.AttackRadius.ToString();
+
+            _informationPanel.SetActive(true);
+        }
+
+        public void HideUpgradePanel()
+        {
+            _informationPanel.SetActive(false);
+        }
+
+        public void Upgrade()
+        {
+            if (_selectionService.Tower)
+            {
+                _buildService.UpgradeTower(_selectionService.Tower);
+                _selectionService.ClearTowerSelection();
+            }
+        }
+
+        public void Sell()
+        {
+            if (_selectionService.Tower)
+            {
+                _buildService.SellTower(_selectionService.Tower);
+                _selectionService.ClearTowerSelection();
+            }
+        }
+
+    }
 }

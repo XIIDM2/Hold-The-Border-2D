@@ -19,7 +19,7 @@ namespace Infrastructure.DI
 
             builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
 
-            builder.Register<IWaveService, WaveService>(Lifetime.Singleton);
+            builder.Register<IWaveControllerService, WaveControllerService>(Lifetime.Singleton);
             builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
             builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);
 

@@ -1,18 +1,16 @@
 using Gameplay.Towers.Units;
-using Core.Utilities.CustomProperties;
 using System.Collections;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using Infrastructure.Interfaces;
 
 namespace Gameplay.Towers
 {
     public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable, IProjectileRequireable
     {
-        [SerializeField, ReadOnly] private Projectile _projectilePrefab;
         private GameObject _towerUnitVisualPrefab;
         private GameObject towerUnitVisual;
+        private Projectile _projectilePrefab; 
 
         private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
 

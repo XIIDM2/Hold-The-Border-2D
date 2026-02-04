@@ -15,7 +15,7 @@ namespace Gameplay.Towers.Units
         public UnityAction TowerUnitSpawn;
 
         [SerializeField] private Transform _firePoint;
-        [SerializeField] private AnimationData _data;
+        [SerializeField] private AnimationOverrideData _data;
 
         private GameObject _target;
 

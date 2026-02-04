@@ -1,0 +1,2912 @@
+fileFormatVersion: 2
+guid: b8d068238b537b64abdc24560a0aca05
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6604117595343791143
+    second: PixelArtIconPackAtlas_0
+  - first:
+      213: -4377244330443372332
+    second: PixelArtIconPackAtlas_1
+  - first:
+      213: 1422856833246435260
+    second: PixelArtIconPackAtlas_2
+  - first:
+      213: 8019831218596594845
+    second: PixelArtIconPackAtlas_3
+  - first:
+      213: 484786890055856827
+    second: PixelArtIconPackAtlas_4
+  - first:
+      213: -1439522944307055470
+    second: PixelArtIconPackAtlas_5
+  - first:
+      213: -613499696426220605
+    second: PixelArtIconPackAtlas_6
+  - first:
+      213: -4108700810812951511
+    second: PixelArtIconPackAtlas_7
+  - first:
+      213: -8040700455918989553
+    second: PixelArtIconPackAtlas_8
+  - first:
+      213: 2615399507610001738
+    second: PixelArtIconPackAtlas_9
+  - first:
+      213: 7761752750975816577
+    second: PixelArtIconPackAtlas_10
+  - first:
+      213: 6609163528165558290
+    second: PixelArtIconPackAtlas_11
+  - first:
+      213: -6668440197815886637
+    second: PixelArtIconPackAtlas_12
+  - first:
+      213: 1985492426414619053
+    second: PixelArtIconPackAtlas_13
+  - first:
+      213: 5850448763052500981
+    second: PixelArtIconPackAtlas_14
+  - first:
+      213: -4258603229779608178
+    second: PixelArtIconPackAtlas_15
+  - first:
+      213: 5279324798199472281
+    second: PixelArtIconPackAtlas_16
+  - first:
+      213: 7551192597323669015
+    second: PixelArtIconPackAtlas_17
+  - first:
+      213: 7103233692036352856
+    second: PixelArtIconPackAtlas_18
+  - first:
+      213: 71469120959465037
+    second: PixelArtIconPackAtlas_19
+  - first:
+      213: -4510602427159397199
+    second: PixelArtIconPackAtlas_20
+  - first:
+      213: -4815109285864610407
+    second: PixelArtIconPackAtlas_21
+  - first:
+      213: -3173099756386212737
+    second: PixelArtIconPackAtlas_22
+  - first:
+      213: -8158852285101097220
+    second: PixelArtIconPackAtlas_23
+  - first:
+      213: -4343450786550894922
+    second: PixelArtIconPackAtlas_24
+  - first:
+      213: 6839472487103447162
+    second: PixelArtIconPackAtlas_25
+  - first:
+      213: -468534677936018712
+    second: PixelArtIconPackAtlas_26
+  - first:
+      213: 6054674049038731905
+    second: PixelArtIconPackAtlas_27
+  - first:
+      213: -8482435842220033129
+    second: PixelArtIconPackAtlas_28
+  - first:
+      213: -4012974913275272570
+    second: PixelArtIconPackAtlas_29
+  - first:
+      213: -6750233174039615222
+    second: PixelArtIconPackAtlas_30
+  - first:
+      213: 8518932249652460840
+    second: PixelArtIconPackAtlas_31
+  - first:
+      213: -8774351334241372599
+    second: PixelArtIconPackAtlas_32
+  - first:
+      213: -7606921466351220184
+    second: PixelArtIconPackAtlas_33
+  - first:
+      213: -1876438132607826445
+    second: PixelArtIconPackAtlas_34
+  - first:
+      213: 902578247912603903
+    second: PixelArtIconPackAtlas_35
+  - first:
+      213: 8563759770522017074
+    second: PixelArtIconPackAtlas_36
+  - first:
+      213: 7935727347510461817
+    second: PixelArtIconPackAtlas_37
+  - first:
+      213: 1072861588900126535
+    second: PixelArtIconPackAtlas_38
+  - first:
+      213: 7353021873270606398
+    second: PixelArtIconPackAtlas_39
+  - first:
+      213: 6725787132739978225
+    second: PixelArtIconPackAtlas_40
+  - first:
+      213: 5274558009328748383
+    second: PixelArtIconPackAtlas_41
+  - first:
+      213: -6748545275892273864
+    second: PixelArtIconPackAtlas_42
+  - first:
+      213: 8346446609313549712
+    second: PixelArtIconPackAtlas_43
+  - first:
+      213: 5571281705902396361
+    second: PixelArtIconPackAtlas_44
+  - first:
+      213: 4741208313728058050
+    second: PixelArtIconPackAtlas_45
+  - first:
+      213: -7114573803373956487
+    second: PixelArtIconPackAtlas_46
+  - first:
+      213: 6929413985010436281
+    second: PixelArtIconPackAtlas_47
+  - first:
+      213: 6307011066430924949
+    second: PixelArtIconPackAtlas_48
+  - first:
+      213: -1921503735701033599
+    second: PixelArtIconPackAtlas_49
+  - first:
+      213: 4435972727836542132
+    second: PixelArtIconPackAtlas_50
+  - first:
+      213: -5927248530695613014
+    second: PixelArtIconPackAtlas_51
+  - first:
+      213: 8014969595510461678
+    second: PixelArtIconPackAtlas_52
+  - first:
+      213: 316953627358377669
+    second: PixelArtIconPackAtlas_53
+  - first:
+      213: 6049608280794529690
+    second: PixelArtIconPackAtlas_54
+  - first:
+      213: 6681098485095881864
+    second: PixelArtIconPackAtlas_55
+  - first:
+      213: 1693306930468785695
+    second: PixelArtIconPackAtlas_56
+  - first:
+      213: 4843649874675726223
+    second: PixelArtIconPackAtlas_57
+  - first:
+      213: -5217876165733819420
+    second: PixelArtIconPackAtlas_58
+  - first:
+      213: 4253031082588089560
+    second: PixelArtIconPackAtlas_59
+  - first:
+      213: -610208966192124574
+    second: PixelArtIconPackAtlas_60
+  - first:
+      213: -4586611272711070142
+    second: PixelArtIconPackAtlas_61
+  - first:
+      213: -7957720723642093551
+    second: PixelArtIconPackAtlas_62
+  - first:
+      213: 4676448242468283274
+    second: PixelArtIconPackAtlas_63
+  - first:
+      213: -4315458388521008867
+    second: PixelArtIconPackAtlas_64
+  - first:
+      213: -1809661659193262665
+    second: PixelArtIconPackAtlas_65
+  - first:
+      213: 2408745907651695980
+    second: PixelArtIconPackAtlas_66
+  - first:
+      213: 5745764489387682648
+    second: PixelArtIconPackAtlas_67
+  - first:
+      213: 2145922844533222798
+    second: PixelArtIconPackAtlas_68
+  - first:
+      213: 7404311797446983699
+    second: PixelArtIconPackAtlas_69
+  - first:
+      213: 4512549470825041083
+    second: PixelArtIconPackAtlas_70
+  - first:
+      213: -5144754594125831433
+    second: PixelArtIconPackAtlas_71
+  - first:
+      213: 2493656514000147538
+    second: PixelArtIconPackAtlas_72
+  - first:
+      213: -8818702974598134504
+    second: PixelArtIconPackAtlas_73
+  - first:
+      213: -1168684917236406727
+    second: PixelArtIconPackAtlas_74
+  - first:
+      213: -6778833908702757719
+    second: PixelArtIconPackAtlas_75
+  - first:
+      213: -3924326563424788917
+    second: PixelArtIconPackAtlas_76
+  - first:
+      213: 235317099966927344
+    second: PixelArtIconPackAtlas_77
+  - first:
+      213: -2310994765278415626
+    second: PixelArtIconPackAtlas_78
+  - first:
+      213: -7787795039762892972
+    second: PixelArtIconPackAtlas_79
+  - first:
+      213: -5406487998001938057
+    second: PixelArtIconPackAtlas_80
+  - first:
+      213: 5621658521990101974
+    second: PixelArtIconPackAtlas_81
+  - first:
+      213: -7658191368589970661
+    second: PixelArtIconPackAtlas_82
+  - first:
+      213: -282171531900767283
+    second: PixelArtIconPackAtlas_83
+  - first:
+      213: 6072696104892742012
+    second: PixelArtIconPackAtlas_84
+  - first:
+      213: -5375355268128661722
+    second: PixelArtIconPackAtlas_85
+  - first:
+      213: 870224850381201631
+    second: PixelArtIconPackAtlas_86
+  - first:
+      213: 7935366635474711117
+    second: PixelArtIconPackAtlas_87
+  - first:
+      213: -3449598701978855800
+    second: PixelArtIconPackAtlas_88
+  - first:
+      213: 3392664848283474284
+    second: PixelArtIconPackAtlas_89
+  - first:
+      213: -2801810658088894428
+    second: PixelArtIconPackAtlas_90
+  - first:
+      213: -7065984143192956051
+    second: PixelArtIconPackAtlas_91
+  - first:
+      213: 246893326650460266
+    second: PixelArtIconPackAtlas_92
+  - first:
+      213: 7380260192338510249
+    second: PixelArtIconPackAtlas_93
+  - first:
+      213: 708346967020550612
+    second: PixelArtIconPackAtlas_94
+  - first:
+      213: 1052747551843147643
+    second: PixelArtIconPackAtlas_95
+  - first:
+      213: -8958574521226457958
+    second: PixelArtIconPackAtlas_96
+  - first:
+      213: 564395061994452244
+    second: PixelArtIconPackAtlas_97
+  - first:
+      213: 3763278552127172238
+    second: PixelArtIconPackAtlas_98
+  - first:
+      213: -1454719581703928813
+    second: PixelArtIconPackAtlas_99
+  - first:
+      213: 4981582474925094454
+    second: PixelArtIconPackAtlas_100
+  - first:
+      213: -7970146257112671118
+    second: PixelArtIconPackAtlas_101
+  - first:
+      213: 4380321228415744770
+    second: PixelArtIconPackAtlas_102
+  - first:
+      213: 5308243019420613845
+    second: PixelArtIconPackAtlas_103
+  - first:
+      213: -6111727606546111310
+    second: PixelArtIconPackAtlas_104
+  - first:
+      213: -2018285967416223707
+    second: PixelArtIconPackAtlas_105
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 724af5d76f986ab50800000000000000
+      internalID: 6604117595343791143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 256
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d884dc1977e043c0800000000000000
+      internalID: -4377244330443372332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 256
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb714ef40c00fb310800000000000000
+      internalID: 1422856833246435260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 224
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94c90f900a2c4f60800000000000000
+      internalID: 8019831218596594845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_4
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 256
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb2bb85ab1f4ab600800000000000000
+      internalID: 484786890055856827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 258
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 294bd825289c50ce0800000000000000
+      internalID: -1439522944307055470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c384bcc6496c77f0800000000000000
+      internalID: -613499696426220605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 256
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9247223a166faf6c0800000000000000
+      internalID: -4108700810812951511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_8
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 256
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0f80ab6981b96090800000000000000
+      internalID: -8040700455918989553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_9
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 256
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4163d4cef3cb4420800000000000000
+      internalID: 2615399507610001738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1831354e00947bb60800000000000000
+      internalID: 7761752750975816577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 256
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21886c6463778bb50800000000000000
+      internalID: 6609163528165558290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 225
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dc9f3398f0f473a0800000000000000
+      internalID: -6668440197815886637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_13
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 223
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da9fbac97d2ed8b10800000000000000
+      internalID: 1985492426414619053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_14
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 225
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f72e5a2728f03150800000000000000
+      internalID: 5850448763052500981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_15
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 225
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8db7a1fce666e4c0800000000000000
+      internalID: -4258603229779608178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_16
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 223
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9902792deede34940800000000000000
+      internalID: 5279324798199472281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_17
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 227
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71e590ac8a93bc860800000000000000
+      internalID: 7551192597323669015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_18
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 226
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85bc96a8861c39260800000000000000
+      internalID: 7103233692036352856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_19
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 225
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46c23f69c8edf000800000000000000
+      internalID: 71469120959465037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_20
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 228
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc362e9dfe1761c0800000000000000
+      internalID: -4510602427159397199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_21
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 223
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 995ea55bd9b4d2db0800000000000000
+      internalID: -4815109285864610407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_22
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 225
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f74a8b75592e6f3d0800000000000000
+      internalID: -3173099756386212737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_23
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 192
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfe3aabf21fe5ce80800000000000000
+      internalID: -8158852285101097220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_24
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 193
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be2e30b586f8b3c0800000000000000
+      internalID: -4343450786550894922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_25
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 192
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a70cbdc6dffaaee50800000000000000
+      internalID: 6839472487103447162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_26
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 192
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8eaebac513e6f79f0800000000000000
+      internalID: -468534677936018712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_27
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 194
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18acab3f7f5860450800000000000000
+      internalID: 6054674049038731905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_28
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 194
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79bfe6a1b85584a80800000000000000
+      internalID: -8482435842220033129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_29
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6826ca9f39c0f48c0800000000000000
+      internalID: -4012974913275272570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_30
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 192
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a09af4641ba5252a0800000000000000
+      internalID: -6750233174039615222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_31
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 191
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82d772eeeb3593670800000000000000
+      internalID: 8518932249652460840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_32
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 193
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 946711433fd3b3680800000000000000
+      internalID: -8774351334241372599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_33
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 193
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a87d3ca39ce6690800000000000000
+      internalID: -7606921466351220184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_34
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 193
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5c9eec57d85f5e0800000000000000
+      internalID: -1876438132607826445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 159
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff043d8622a968c00800000000000000
+      internalID: 902578247912603903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 161
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23ddeb7732698d670800000000000000
+      internalID: 8563759770522017074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_37
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 164
+        width: 31
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 975c6be2afd512e60800000000000000
+      internalID: 7935727347510461817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_38
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 162
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f9d8b4ee193ee00800000000000000
+      internalID: 1072861588900126535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_39
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 161
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3ac8fd8f6e2b0660800000000000000
+      internalID: 7353021873270606398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_40
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 159
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f30cd133cbc65d50800000000000000
+      internalID: 6725787132739978225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_41
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 160
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f574b3d409ef23940800000000000000
+      internalID: 5274558009328748383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_42
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 160
+        width: 28
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83deccfa3d95852a0800000000000000
+      internalID: -6748545275892273864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_43
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 160
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09dc5e448f884d370800000000000000
+      internalID: 8346446609313549712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_44
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 160
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c3d1ff813b215d40800000000000000
+      internalID: 5571281705902396361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_45
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 160
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2c3e167d72cc140800000000000000
+      internalID: 4741208313728058050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_46
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 163
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 972789902d4f34d90800000000000000
+      internalID: -7114573803373956487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_47
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 128
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b8cb264e493a2060800000000000000
+      internalID: 6929413985010436281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_48
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 129
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 598a2112621078750800000000000000
+      internalID: 6307011066430924949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_49
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 127
+        width: 26
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18d24fe68827555e0800000000000000
+      internalID: -1921503735701033599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_50
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 31
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4840471bdbf8d30800000000000000
+      internalID: 4435972727836542132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_51
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa59e608dde2ebda0800000000000000
+      internalID: -5927248530695613014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_52
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 128
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee415f9c164ea3f60800000000000000
+      internalID: 8014969595510461678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_53
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 127
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c6b7f015ab066400800000000000000
+      internalID: 316953627358377669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_54
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 127
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9ff40fdda684f350800000000000000
+      internalID: 6049608280794529690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_55
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 128
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88c5a899ca708bc50800000000000000
+      internalID: 6681098485095881864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_56
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 128
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1e8c468ea5df7710800000000000000
+      internalID: 1693306930468785695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_57
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 128
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f877964f5e9183340800000000000000
+      internalID: 4843649874675726223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_58
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 127
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb5573d5416697b0800000000000000
+      internalID: -5217876165733819420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_59
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 127
+        width: 27
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dcab507c3dc50b30800000000000000
+      internalID: 4253031082588089560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_60
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 96
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26d2c53ad2a1887f0800000000000000
+      internalID: -610208966192124574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_61
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 95
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24e114f29551950c0800000000000000
+      internalID: -4586611272711070142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_62
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1107c85e92f709190800000000000000
+      internalID: -7957720723642093551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_63
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 98
+        width: 31
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8362de46e416e040800000000000000
+      internalID: 4676448242468283274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_64
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 97
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d11c93db5796c14c0800000000000000
+      internalID: -4315458388521008867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_65
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 96
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bd34281f4ac2e6e0800000000000000
+      internalID: -1809661659193262665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_66
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 98
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6551c314a59d6120800000000000000
+      internalID: 2408745907651695980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_67
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 97
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85ba1095c5e0dbf40800000000000000
+      internalID: 5745764489387682648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_68
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 96
+        width: 28
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8d6ccf1579d7cd10800000000000000
+      internalID: 2145922844533222798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_69
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 96
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 310cf0d995661c660800000000000000
+      internalID: 7404311797446983699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_70
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 96
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbc47efc5dbcf9e30800000000000000
+      internalID: 4512549470825041083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_71
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 67
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f2229864f82a98b0800000000000000
+      internalID: -5144754594125831433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_72
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 64
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25451d4336f3b9220800000000000000
+      internalID: 2493656514000147538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_73
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 815c56b3e5cad9580800000000000000
+      internalID: -8818702974598134504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_74
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93664cd724ff7cfe0800000000000000
+      internalID: -1168684917236406727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_75
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 64
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ac3660d97ebce1a0800000000000000
+      internalID: -6778833908702757719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_76
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4e9f6458cdf989c0800000000000000
+      internalID: -3924326563424788917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_77
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 63
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f19a19d7a3044300800000000000000
+      internalID: 235317099966927344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_78
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 66
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f4fac15182bdefd0800000000000000
+      internalID: -2310994765278415626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_79
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 66
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457326f3ca13ce390800000000000000
+      internalID: -7787795039762892972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_80
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 63
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7718ea48fcb48f4b0800000000000000
+      internalID: -5406487998001938057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_81
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 66
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6db74c314a4240e40800000000000000
+      internalID: 5621658521990101974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_82
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 63
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b137b3d6683a8b590800000000000000
+      internalID: -7658191368589970661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_83
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 32
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc3b35b9c76851cf0800000000000000
+      internalID: -282171531900767283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_84
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 34
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c79b701deec864450800000000000000
+      internalID: 6072696104892742012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_85
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 33
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62f9aad0dd6e665b0800000000000000
+      internalID: -5375355268128661722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_86
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 31
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd060b904e8a31c00800000000000000
+      internalID: 870224850381201631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_87
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 36
+        width: 30
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42f4fd59e5102e60800000000000000
+      internalID: 7935366635474711117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_88
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 32
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 886d6eed1409020d0800000000000000
+      internalID: -3449598701978855800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_89
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 34
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6914e354ba251f20800000000000000
+      internalID: 3392664848283474284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_90
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 33
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42045b41d08fd19d0800000000000000
+      internalID: -2801810658088894428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_91
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 33
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d63e074ebd490fd90800000000000000
+      internalID: -7065984143192956051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_92
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 31
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a684a682c242d6300800000000000000
+      internalID: 246893326650460266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_93
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 33
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a10b4aea83fb6660800000000000000
+      internalID: 7380260192338510249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_94
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 31
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d93cf240dd84d900800000000000000
+      internalID: 708346967020550612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_95
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7fd5c9125c1c9e00800000000000000
+      internalID: 1052747551843147643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_96
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9c8e6000ffbca380800000000000000
+      internalID: -8958574521226457958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_97
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 0
+        width: 30
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 415f92f815225d700800000000000000
+      internalID: 564395061994452244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_98
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 0
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8ee26a87e9d93430800000000000000
+      internalID: 3763278552127172238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_99
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 0
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3148bb47f3ccfcbe0800000000000000
+      internalID: -1454719581703928813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_100
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 636b83d0ed2222540800000000000000
+      internalID: 4981582474925094454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_101
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 1
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27cd3e0f43a546190800000000000000
+      internalID: -7970146257112671118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_102
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20bb2d503f60acc30800000000000000
+      internalID: 4380321228415744770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_103
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc3302e6eaaaa940800000000000000
+      internalID: 5308243019420613845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_104
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b4eed78f18ce2ba0800000000000000
+      internalID: -6111727606546111310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PixelArtIconPackAtlas_105
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 2
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52810012b9b9df3e0800000000000000
+      internalID: -2018285967416223707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PixelArtIconPackAtlas_0: 6604117595343791143
+      PixelArtIconPackAtlas_1: -4377244330443372332
+      PixelArtIconPackAtlas_10: 7761752750975816577
+      PixelArtIconPackAtlas_100: 4981582474925094454
+      PixelArtIconPackAtlas_101: -7970146257112671118
+      PixelArtIconPackAtlas_102: 4380321228415744770
+      PixelArtIconPackAtlas_103: 5308243019420613845
+      PixelArtIconPackAtlas_104: -6111727606546111310
+      PixelArtIconPackAtlas_105: -2018285967416223707
+      PixelArtIconPackAtlas_11: 6609163528165558290
+      PixelArtIconPackAtlas_12: -6668440197815886637
+      PixelArtIconPackAtlas_13: 1985492426414619053
+      PixelArtIconPackAtlas_14: 5850448763052500981
+      PixelArtIconPackAtlas_15: -4258603229779608178
+      PixelArtIconPackAtlas_16: 5279324798199472281
+      PixelArtIconPackAtlas_17: 7551192597323669015
+      PixelArtIconPackAtlas_18: 7103233692036352856
+      PixelArtIconPackAtlas_19: 71469120959465037
+      PixelArtIconPackAtlas_2: 1422856833246435260
+      PixelArtIconPackAtlas_20: -4510602427159397199
+      PixelArtIconPackAtlas_21: -4815109285864610407
+      PixelArtIconPackAtlas_22: -3173099756386212737
+      PixelArtIconPackAtlas_23: -8158852285101097220
+      PixelArtIconPackAtlas_24: -4343450786550894922
+      PixelArtIconPackAtlas_25: 6839472487103447162
+      PixelArtIconPackAtlas_26: -468534677936018712
+      PixelArtIconPackAtlas_27: 6054674049038731905
+      PixelArtIconPackAtlas_28: -8482435842220033129
+      PixelArtIconPackAtlas_29: -4012974913275272570
+      PixelArtIconPackAtlas_3: 8019831218596594845
+      PixelArtIconPackAtlas_30: -6750233174039615222
+      PixelArtIconPackAtlas_31: 8518932249652460840
+      PixelArtIconPackAtlas_32: -8774351334241372599
+      PixelArtIconPackAtlas_33: -7606921466351220184
+      PixelArtIconPackAtlas_34: -1876438132607826445
+      PixelArtIconPackAtlas_35: 902578247912603903
+      PixelArtIconPackAtlas_36: 8563759770522017074
+      PixelArtIconPackAtlas_37: 7935727347510461817
+      PixelArtIconPackAtlas_38: 1072861588900126535
+      PixelArtIconPackAtlas_39: 7353021873270606398
+      PixelArtIconPackAtlas_4: 484786890055856827
+      PixelArtIconPackAtlas_40: 6725787132739978225
+      PixelArtIconPackAtlas_41: 5274558009328748383
+      PixelArtIconPackAtlas_42: -6748545275892273864
+      PixelArtIconPackAtlas_43: 8346446609313549712
+      PixelArtIconPackAtlas_44: 5571281705902396361
+      PixelArtIconPackAtlas_45: 4741208313728058050
+      PixelArtIconPackAtlas_46: -7114573803373956487
+      PixelArtIconPackAtlas_47: 6929413985010436281
+      PixelArtIconPackAtlas_48: 6307011066430924949
+      PixelArtIconPackAtlas_49: -1921503735701033599
+      PixelArtIconPackAtlas_5: -1439522944307055470
+      PixelArtIconPackAtlas_50: 4435972727836542132
+      PixelArtIconPackAtlas_51: -5927248530695613014
+      PixelArtIconPackAtlas_52: 8014969595510461678
+      PixelArtIconPackAtlas_53: 316953627358377669
+      PixelArtIconPackAtlas_54: 6049608280794529690
+      PixelArtIconPackAtlas_55: 6681098485095881864
+      PixelArtIconPackAtlas_56: 1693306930468785695
+      PixelArtIconPackAtlas_57: 4843649874675726223
+      PixelArtIconPackAtlas_58: -5217876165733819420
+      PixelArtIconPackAtlas_59: 4253031082588089560
+      PixelArtIconPackAtlas_6: -613499696426220605
+      PixelArtIconPackAtlas_60: -610208966192124574
+      PixelArtIconPackAtlas_61: -4586611272711070142
+      PixelArtIconPackAtlas_62: -7957720723642093551
+      PixelArtIconPackAtlas_63: 4676448242468283274
+      PixelArtIconPackAtlas_64: -4315458388521008867
+      PixelArtIconPackAtlas_65: -1809661659193262665
+      PixelArtIconPackAtlas_66: 2408745907651695980
+      PixelArtIconPackAtlas_67: 5745764489387682648
+      PixelArtIconPackAtlas_68: 2145922844533222798
+      PixelArtIconPackAtlas_69: 7404311797446983699
+      PixelArtIconPackAtlas_7: -4108700810812951511
+      PixelArtIconPackAtlas_70: 4512549470825041083
+      PixelArtIconPackAtlas_71: -5144754594125831433
+      PixelArtIconPackAtlas_72: 2493656514000147538
+      PixelArtIconPackAtlas_73: -8818702974598134504
+      PixelArtIconPackAtlas_74: -1168684917236406727
+      PixelArtIconPackAtlas_75: -6778833908702757719
+      PixelArtIconPackAtlas_76: -3924326563424788917
+      PixelArtIconPackAtlas_77: 235317099966927344
+      PixelArtIconPackAtlas_78: -2310994765278415626
+      PixelArtIconPackAtlas_79: -7787795039762892972
+      PixelArtIconPackAtlas_8: -8040700455918989553
+      PixelArtIconPackAtlas_80: -5406487998001938057
+      PixelArtIconPackAtlas_81: 5621658521990101974
+      PixelArtIconPackAtlas_82: -7658191368589970661
+      PixelArtIconPackAtlas_83: -282171531900767283
+      PixelArtIconPackAtlas_84: 6072696104892742012
+      PixelArtIconPackAtlas_85: -5375355268128661722
+      PixelArtIconPackAtlas_86: 870224850381201631
+      PixelArtIconPackAtlas_87: 7935366635474711117
+      PixelArtIconPackAtlas_88: -3449598701978855800
+      PixelArtIconPackAtlas_89: 3392664848283474284
+      PixelArtIconPackAtlas_9: 2615399507610001738
+      PixelArtIconPackAtlas_90: -2801810658088894428
+      PixelArtIconPackAtlas_91: -7065984143192956051
+      PixelArtIconPackAtlas_92: 246893326650460266
+      PixelArtIconPackAtlas_93: 7380260192338510249
+      PixelArtIconPackAtlas_94: 708346967020550612
+      PixelArtIconPackAtlas_95: 1052747551843147643
+      PixelArtIconPackAtlas_96: -8958574521226457958
+      PixelArtIconPackAtlas_97: 564395061994452244
+      PixelArtIconPackAtlas_98: 3763278552127172238
+      PixelArtIconPackAtlas_99: -1454719581703928813
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

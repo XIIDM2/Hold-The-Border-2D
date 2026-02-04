@@ -11,7 +11,7 @@ namespace Gameplay.Towers
         public event UnityAction<ITargetable> TargetEntered;
         public event UnityAction<ITargetable> TargetExited;
 
-        [SerializeField, ReadOnly] private float _attackRadius;
+        [SerializeField,ReadOnly] private float _attackRadius;
 
         private CircleCollider2D _collider;
 

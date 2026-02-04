@@ -1,10 +1,6 @@
-using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
-using Gameplay.Towers.BuildSite;
-using Infrastructure.Managers;
 using Infrastructure.Services;
 using UnityEngine;
-using UnityEngine.Events;
 using VContainer;
 
 namespace Gameplay.UI
@@ -13,14 +9,14 @@ namespace Gameplay.UI
     {
         private TowerType _type;
 
-        private ITowerBuildService _towerBuildService;
-        private ITowerSelectionService _towerSelectionService;
+        private ITowerBuildService _buildService;
+        private ITowerSelectionService _selectionService;
 
         [Inject]
-        public void Construct(ITowerSelectionService towerSelectionService, ITowerBuildService towerBuildService)
+        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService)
         {
-            _towerSelectionService = towerSelectionService;
-            _towerBuildService = towerBuildService;
+            _selectionService = selectionService;
+            _buildService = buildService;
         }
 
         public void SetTowerType(TowerType type)
@@ -30,8 +26,8 @@ namespace Gameplay.UI
 
         public void Build()
         {
-            if (_towerSelectionService.BuildSite) _towerBuildService.BuildTower(_type, _towerSelectionService.BuildSite);
-            _towerSelectionService.ClearBuildSiteSelection();
+            if (_selectionService.BuildSite) _buildService.BuildTower(_type, _selectionService.BuildSite);
+            _selectionService.ClearBuildSiteSelection();
         }
 
     }

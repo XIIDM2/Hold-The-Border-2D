@@ -29,18 +29,18 @@ namespace Gameplay.Units
 
         protected virtual void Update()
         {
-            ActionFSM.UpdateState((T)this);
+            ActionFSM.Update((T)this);
         }
 
         protected virtual void LateUpdate()
         {
-            ActionFSM.LateUpdateState((T)this);
+            ActionFSM.LateUpdate((T)this);
 
         }
 
         protected virtual void FixedUpdate()
         {
-            ActionFSM.FixedUpdateState((T)this);
+            ActionFSM.FixedUpdate((T)this);
         }
     }
 }

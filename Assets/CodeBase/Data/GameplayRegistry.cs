@@ -12,7 +12,6 @@ namespace Data
         public AssetReferenceGameObject BuildSiteReference => _buildSiteReference;
         public AssetReferenceGameObject DamagePopupReference => _damagePopupReference;
         public AssetReferenceGameObject TowerPanelReference => _towerPanelReference;
-
         public TowerData[] TowerDatas => _towerDatas;
 
         [SerializeField] private AssetReferenceGameObject _buildSiteReference;
@@ -73,12 +72,6 @@ namespace Data
 
         public EnemyUnitData GetUnitData(EnemyUnitType type)
         {
-            if (_unitDataDict == null)
-            {
-                Debug.LogWarning("Unit dictionary is null, initializing dictionary...");
-                UnitDictionaryInit();
-            }
-
             if (_unitDataDict.TryGetValue(type, out EnemyUnitData data))
             {
                 return data;
@@ -90,11 +83,6 @@ namespace Data
 
         public TowerData GetTowerData(TowerType type)
         {
-            if (_towerDataDict == null)
-            {
-                Debug.LogWarning("Tower dictionary is null, initializing dictionary...");
-                UnitDictionaryInit();
-            }
 
             if (_towerDataDict.TryGetValue(type, out TowerData data))
             {

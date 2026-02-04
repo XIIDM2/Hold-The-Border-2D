@@ -1,6 +1,6 @@
 using Core.Utilities;
-using Core.Utilities.CustomProperties;
 using Infrastructure.Interfaces;
+using Core.Utilities.CustomProperties;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour

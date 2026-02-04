@@ -44,7 +44,7 @@ public class AssetProvider : IAssetProvider
 
     public async UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class
     {
-        string address = await LoadAssetAdress(reference);
+        string address = await LoadAssetAddress(reference);
 
         if (_asyncOperations.TryGetValue(address, out AsyncOperationHandle cachedHandle))
         {
@@ -59,7 +59,7 @@ public class AssetProvider : IAssetProvider
         {
             Debug.LogError($"Failed to download asset from {reference} adress");
             Addressables.Release(handle);
-            return null;
+            return default;
         }
 
         if (!_asyncOperations.TryAdd(address, handle))
@@ -70,9 +70,9 @@ public class AssetProvider : IAssetProvider
         return handle.Result;
     }
 
-    public async UniTask Release(AssetReference reference)
+    public async UniTask ReleaseAsset(AssetReference reference)
     {
-        string address = await LoadAssetAdress(reference);
+        string address = await LoadAssetAddress(reference);
 
         if (_asyncOperations.TryGetValue(address, out var handle))
         {
@@ -81,7 +81,7 @@ public class AssetProvider : IAssetProvider
         }
     }
 
-    public void ReleaseAll()
+    public void ReleaseAllAssets()
     {
         foreach (AsyncOperationHandle handle in _asyncOperations.Values)
         {
@@ -92,7 +92,7 @@ public class AssetProvider : IAssetProvider
         _addressDictionary.Clear();
     }
 
-    private async UniTask<string> LoadAssetAdress(AssetReference assetReference)
+    private async UniTask<string> LoadAssetAddress(AssetReference assetReference)
     {
         if (_addressDictionary.TryGetValue(assetReference.AssetGUID, out string cachedAdress))
         {

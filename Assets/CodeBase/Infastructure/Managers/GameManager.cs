@@ -14,12 +14,12 @@ namespace Infrastructure.Managers
         [SerializeField] private Transform[] _buildsitePoints;
 
         [Header("Services")]
-        private IWaveService _waveService;
+        private IWaveControllerService _waveService;
         private ITowerFactory _towerFactory;
 
 
         [Inject]
-        public void Construct(IWaveService waveService, ITowerFactory towerFactory)
+        public void Construct(IWaveControllerService waveService, ITowerFactory towerFactory)
         {
             _waveService = waveService;
             _towerFactory = towerFactory;

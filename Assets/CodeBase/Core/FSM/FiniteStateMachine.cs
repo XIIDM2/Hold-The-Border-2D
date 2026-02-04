@@ -12,7 +12,7 @@ namespace Core.FSM
             _currentState.Enter(controller);
         }
 
-        public void UpdateState(T controller)
+        public void Update(T controller)
         {
             State<T> newState = _currentState.HandleTransitions(controller);
 
@@ -26,12 +26,12 @@ namespace Core.FSM
             }
         }
 
-        public void LateUpdateState(T controller)
+        public void LateUpdate(T controller)
         {
             _currentState.LateUpdate(controller);
         }
 
-        public void FixedUpdateState(T controller)
+        public void FixedUpdate(T controller)
         {
             _currentState.FixedUpdate(controller);
         }
