@@ -30,8 +30,8 @@ namespace Gameplay.UI
         {
             foreach (TowerData towerData in _registry.TowerDatas)
             {
-                GameObject towerPanelUI = await _UIfactory.CreateTowerPanel(towerData.Type, towerData.Icon, towerData.Name, towerData.Description, towerData.TierConfigs[0].Damage.ToString(), towerData.TierConfigs[0].AttackCooldown.ToString(), towerData.TierConfigs[0].AttackRadius.ToString(), towerData.BuildPrice.ToString());
-                towerPanelUI.transform.SetParent(_buildingPanel.transform);
+                TowerPanelUI towerPanelUI = await _UIfactory.CreateTowerPanel(towerData.Type, towerData.Icon, towerData.Name, towerData.Description, towerData.TierConfigs[0].Damage.ToString(), towerData.TierConfigs[0].AttackCooldown.ToString(), towerData.TierConfigs[0].AttackRadius.ToString(), towerData.BuildPrice.ToString());
+                towerPanelUI.gameObject.transform.SetParent(_buildingPanel.transform);
             }
         }
 

@@ -5,21 +5,16 @@ using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace Infrastructure.Factories
 {
-    public class TowerFactory : ITowerFactory
+    public class TowerFactory : BaseFactory, ITowerFactory
     {
-        private readonly IAssetProviderService _assetProvider;
         private readonly GameplayRegistry _gameplayRegistry;
-        private IObjectResolver _objectResolver;
 
-        public TowerFactory(IAssetProviderService assetProvider, GameplayRegistry gameplayRegistry, IObjectResolver objectResolver)
+        public TowerFactory(IAssetProviderService assetProvider, IObjectResolver objectResolver, GameplayRegistry gameplayRegistry) : base(assetProvider, objectResolver)
         {
-            _assetProvider = assetProvider;
             _gameplayRegistry = gameplayRegistry;
-            _objectResolver = objectResolver;
         }
 
         public async UniTask<TowerController> CreateTower(TowerType type, Vector2 position)
@@ -32,14 +27,7 @@ namespace Infrastructure.Factories
                 return null;
             }
 
-            GameObject towerObject = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(towerData.TowerPrefabReference), position, Quaternion.identity);
-
-            if (!towerObject.TryGetComponent<TowerController>(out TowerController tower))
-            {
-                Debug.LogError($"Failed to get TowerController component from tower game object");
-                Object.Destroy(towerObject);
-                return null;
-            }
+            TowerController tower = await Create<TowerController>(towerData.TowerPrefabReference, position);
 
             tower.Initialize(towerData);
             return tower;
@@ -48,14 +36,7 @@ namespace Infrastructure.Factories
 
         public async UniTask<BuildSite> CreateBuildSite(Vector2 position)
         {
-            GameObject siteObject = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(_gameplayRegistry.BuildSiteReference), position, Quaternion.identity);
-
-            if (!siteObject.TryGetComponent<BuildSite>(out BuildSite site))
-            {
-                Debug.LogError($"Failed to get Buildsite component from buildsite game object");
-                Object.Destroy(siteObject);
-                return null;
-            }
+            BuildSite site = await Create<BuildSite>(_gameplayRegistry.BuildSiteReference, position);
 
             return site;
         }

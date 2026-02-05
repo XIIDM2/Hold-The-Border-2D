@@ -5,21 +5,16 @@ using Gameplay.Path;
 using Gameplay.Units.Enemy;
 using UnityEngine;
 using VContainer;
-using VContainer.Unity;
 
 namespace Infrastructure.Factories
 {
-    public class UnitFactory : IUnitFactory
+    public class UnitFactory : BaseFactory, IUnitFactory
     {
-        private readonly IAssetProviderService _assetProvider;
         private readonly GameplayRegistry _gameplayRegistry;
-        private IObjectResolver _objectResolver;
 
-        public UnitFactory(IAssetProviderService assetProvider, GameplayRegistry gameplayRegistry, IObjectResolver objectResolver)
+        public UnitFactory(IAssetProviderService assetProvider, IObjectResolver objectResolver, GameplayRegistry gameplayRegistry) : base(assetProvider, objectResolver)
         {
-            _assetProvider = assetProvider;
             _gameplayRegistry = gameplayRegistry;
-            _objectResolver = objectResolver;
         }
 
         public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position)
@@ -32,13 +27,7 @@ namespace Infrastructure.Factories
                 return null;
             }
 
-            GameObject unit = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(unitData.PrefabReference), position, Quaternion.identity);
-
-            if (!unit.TryGetComponent<EnemyUnitController>(out EnemyUnitController enemy))
-            {
-                Debug.LogError($"Failed to get EnemyUnitController component from unit");
-                return null;
-            }
+            EnemyUnitController enemy = await Create<EnemyUnitController>(unitData.PrefabReference, position);
 
             enemy.Initialize(unitData, start);
 
