@@ -2,7 +2,6 @@ using Core.Utilities;
 using Data;
 using Gameplay.Units;
 using Infrastructure.Interfaces;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +9,6 @@ namespace Gameplay.Towers.Units
 {
     public class TowerUnitAnimation : UnitAnimation
     {
-        public Transform FirePoint => _firePoint;
         public event UnityAction<Transform> AttackAnimationEvent;
         public UnityAction TowerUnitSpawn;
 
@@ -19,13 +17,11 @@ namespace Gameplay.Towers.Units
 
         private GameObject _target;
 
-        private SpriteRenderer _sprite;
-
         protected override void Awake()
         {
             base.Awake();
-            _sprite = GetComponent<SpriteRenderer>();
-            Init(_data);
+
+            Initialize(_data);
         }
 
 
@@ -34,7 +30,7 @@ namespace Gameplay.Towers.Units
             if (_target)
             {
                 Vector2 direction = CalculateDirection();
-                Utilities.FlipSprite(_sprite, direction.x);
+                Utilities.FlipTransform(gameObject.transform, direction.x);
                 SetFloat(UnitAnimationParameter.Horizontal.ToString(), direction.x);
                 SetFloat(UnitAnimationParameter.Vertical.ToString(), direction.y);
             }

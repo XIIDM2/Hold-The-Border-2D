@@ -1,5 +1,4 @@
 using Core.FSM;
-using UnityEngine;
 
 namespace Gameplay.Towers.FSM
 {
@@ -7,7 +6,7 @@ namespace Gameplay.Towers.FSM
     {
         public override State<TowerController> HandleTransitions(TowerController controller)
         {
-            if (controller.Attack.UnitsToAttack.Count > 0)
+            if (controller.Attack.UnitsInRange.Count > 0)
             {
                 return controller.AttackState;
             }

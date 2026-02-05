@@ -1,4 +1,6 @@
+using Gameplay.Projectiles;
 using Gameplay.Towers.Units;
+using Infrastructure.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,40 +10,37 @@ namespace Gameplay.Towers
 {
     public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable, IProjectileRequireable
     {
-        private GameObject _towerUnitVisualPrefab;
-        private GameObject towerUnitVisual;
+        private GameObject _unitsVisualPrefab;
         private Projectile _projectilePrefab; 
 
         private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
 
         private TowerAnimation _animation;
 
-        private WaitForSeconds _timerUnitsAttack;
+        private WaitForSeconds _unitsSharedAttackCooldown;
 
         private void Awake()
         {
             _animation = GetComponentInChildren<TowerAnimation>();
         }
 
-        public override void Init(int damage, float cooldown)
+        public override void Initialize(int damage, float cooldown)
         {
-            base.Init(damage, cooldown);
+            base.Initialize(damage, cooldown);
 
-            InitAttackers();
+            InitializeAttackers();
 
         }
 
-        public void InitTowerUnitVisualPrefab(GameObject prefab)
+        public void InitializeUnitVisualPrefab(GameObject prefab)
         {
-            Destroy(towerUnitVisual);
+            Destroy(_unitsVisualPrefab);
 
-            _towerUnitVisualPrefab = prefab;
-
-            towerUnitVisual = Instantiate(_towerUnitVisualPrefab, gameObject.transform);
+            _unitsVisualPrefab = Instantiate(prefab, gameObject.transform);
         }
 
 
-        public void InitAttackers()
+        public void InitializeAttackers()
         {
 
             foreach (TowerUnitAnimation attacker in _attackers)
@@ -52,7 +51,7 @@ namespace Gameplay.Towers
 
             _attackers.Clear();
 
-            _attackers = towerUnitVisual.GetComponentsInChildren<TowerUnitAnimation>().ToList();
+            _attackers = _unitsVisualPrefab.GetComponentsInChildren<TowerUnitAnimation>().ToList();
 
             foreach (TowerUnitAnimation attacker in _attackers)
             {
@@ -60,21 +59,21 @@ namespace Gameplay.Towers
                 _animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
             }
 
-            _timerUnitsAttack = new WaitForSeconds(_cooldown / _attackers.Count);
+            _unitsSharedAttackCooldown = new WaitForSeconds(_cooldown / _attackers.Count);
         }
 
         public void InitProjectile(GameObject projectilePrefab)
         {
             _projectilePrefab = projectilePrefab.GetComponent<Projectile>();
-            _projectilePrefab.Init(_damage);
+            _projectilePrefab.Initialize(_damage);
         }
 
         private void InstantiateProjectile(Transform _firePoint)
         {
-            if (_unitsToAttack.Count == 0) return;
+            if (_unitsInRange.Count == 0) return;
 
             Projectile projectile = Instantiate(_projectilePrefab, _firePoint.transform.position, Quaternion.identity);
-            projectile.SetTarget(_unitsToAttack[0]);
+            projectile.SetTarget(_unitsInRange[0]);
 
         }
 
@@ -82,16 +81,16 @@ namespace Gameplay.Towers
         {
             if (_attackers.Count == 0) yield break;
 
-            while (_unitsToAttack.Count > 0)
+            while (_unitsInRange.Count > 0)
             {
                 foreach (TowerUnitAnimation attacker in _attackers)
                 {
-                    if (_unitsToAttack.Count == 0) yield break;
+                    if (_unitsInRange.Count == 0) yield break;
 
-                    attacker.SetTarget(_unitsToAttack[0]);
+                    attacker.SetTarget(_unitsInRange[0]);
                     attacker.PlayAttackAnimation();
 
-                    yield return _timerUnitsAttack;
+                    yield return _unitsSharedAttackCooldown;
                 }
             }
         }

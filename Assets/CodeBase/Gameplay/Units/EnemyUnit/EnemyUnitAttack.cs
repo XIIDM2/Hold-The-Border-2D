@@ -1,6 +1,4 @@
-using Gameplay.Units;
 using Infrastructure.Interfaces;
-using UnityEngine;
 
 namespace Gameplay.Units.Enemy
 {

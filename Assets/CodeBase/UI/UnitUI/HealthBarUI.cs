@@ -19,7 +19,7 @@ namespace Gameplay.UI
 
         private void Awake()
         {
-            _health = transform.root.GetComponent<EnemyUnitController>().Damageable;
+            _health = transform.root.GetComponent<EnemyUnitController>().Health;
         }
 
         private void Start()
@@ -34,12 +34,12 @@ namespace Gameplay.UI
 
         private void OnEnable()
         {
-            _health.OnHealthChanged += OnHealthChanged;
+            _health.HealthChanged += OnHealthChanged;
         }
 
         private void OnDisable()
         {
-            _health.OnHealthChanged -= OnHealthChanged;
+            _health.HealthChanged -= OnHealthChanged;
         }
 
         private void OnHealthChanged(int amount)

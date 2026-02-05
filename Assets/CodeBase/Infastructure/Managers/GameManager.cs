@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using Data;
 using Infrastructure.Factories;
 using Infrastructure.Services;
 using UnityEngine;
@@ -27,7 +26,7 @@ namespace Infrastructure.Managers
 
         private void Awake()
         {
-            _waveService.Init(_unitSpawnPoint.position);
+            _waveService.Initialize(_unitSpawnPoint.position);
 
             foreach (Transform point in _buildsitePoints)
             {

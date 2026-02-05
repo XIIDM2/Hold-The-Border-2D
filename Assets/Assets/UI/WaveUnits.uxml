@@ -1,11 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:Label text="Unit Details" name="UnitsHeader" style="-unity-font-style: bold; -unity-text-align: upper-center; font-size: 14px; -unity-text-outline-width: 0.5px; letter-spacing: 5px; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 4px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;" />
-    <ui:EnumField label="Unit`s Path" value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" binding-path="_path" />
-    <ui:EnumField label="Unit`s Type" value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" binding-path="_unitType" />
-    <ui:IntegerField label="Unit`s Amount" value="0" binding-path="_amount" />
-    <ui:Label text="Timers&#10;" style="-unity-text-align: upper-center; -unity-font-style: bold; padding-top: 2px; padding-bottom: 2px;" />
+    <ui:Label text="Unit Details" name="UnitsHeader" style="-unity-font-style: bold; -unity-text-align: upper-center; font-size: 14px; -unity-text-outline-width: 0.5px; letter-spacing: 5px; padding-top: 4px; padding-right: 4px; padding-bottom: 4px; padding-left: 4px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; margin-left: 2px;"/>
+    <ui:EnumField label="Unit`s Path" value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" binding-path="_path"/>
+    <ui:EnumField label="Unit`s Type" value="Center" type="UnityEngine.TextAlignment, UnityEngine.TextRenderingModule" binding-path="_type"/>
+    <ui:IntegerField label="Unit`s Amount" value="0" binding-path="_amount"/>
+    <ui:Label text="Timers&#10;" style="-unity-text-align: upper-center; -unity-font-style: bold; padding-top: 2px; padding-bottom: 2px;"/>
     <ui:VisualElement style="flex-grow: 1; flex-direction: row; padding-right: 2px;">
-        <ui:FloatField label="Interval between units" value="0" binding-path="_intervalCurrent" style="width: 50%;" />
-        <ui:FloatField label="Time for next units" value="0" binding-path="_intervalNext" style="width: 50%; padding-left: 2px;" />
+        <ui:FloatField label="Interval between units" value="0" binding-path="_intervalCurrent" style="width: 50%;"/>
+        <ui:FloatField label="Time for next units" value="0" binding-path="_intervalNext" style="width: 50%; padding-left: 2px;"/>
     </ui:VisualElement>
 </ui:UXML>

@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c452acce4821754297f9fe08fa447b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthBarUI
-  _healthBar: {fileID: 741714443314224604}
+  _healthSlider: {fileID: 741714443314224604}
   _damagedBar: {fileID: 6521847510378320415}
   _fillSpeed: 0.2
   _fillDelay: 0.2

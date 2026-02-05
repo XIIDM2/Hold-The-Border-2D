@@ -1,7 +1,10 @@
 using Core.FSM;
 using Cysharp.Threading.Tasks;
 using Data;
-using Gameplay.Units.FSM.Enemy;
+using Gameplay.Path;
+using Gameplay.Player;
+using Gameplay.Units.Enemy.FSM;
+using Infrastructure.Factories;
 using Infrastructure.Interfaces;
 using UnityEngine;
 using VContainer;
@@ -22,7 +25,7 @@ namespace Gameplay.Units.Enemy
         [Header("FSM")]
         public EnemyUnitMoveState MoveState { get; private set; }
 
-        private int _currentHealth;
+        private int _currentHealth; // For DamagePopup
 
         [Inject]
         public void Construct(IPlayerController player, IUIFactory UIFactory)
@@ -38,31 +41,31 @@ namespace Gameplay.Units.Enemy
             ActionFSM = new FiniteStateMachine<EnemyUnitController>();
             ActionFSM.StateInit(MoveState, this);
 
-            _currentHealth = Damageable.CurrentHealth;
+            _currentHealth = Health.CurrentHealth;
         }
 
         private void OnEnable()
         {
-            Damageable.OnDeath += DestroyUnit;
-            Damageable.OnHealthChanged += OnDamageRecieved;
+            Health.Death += DestroyUnit;
+            Health.HealthChanged += OnDamageRecieved;
         }
 
         private void OnDisable()
         {
-            Damageable.OnDeath -= DestroyUnit;
-            Damageable.OnHealthChanged -= OnDamageRecieved;
+            Health.Death -= DestroyUnit;
+            Health.HealthChanged -= OnDamageRecieved;
         }
 
-        public void Init(EnemyUnitData data, Waypoint start)
+        public void Initialize(EnemyUnitData data, Waypoint start)
         {
             PathEndDamage = data.PathEndDamage;
 
-            Damageable?.Init(data.MaxHealth);
+            Health?.Initialize(data.MaxHealth);
 
-            if (Animation) Animation.Init(data.OverrideAnimations);
-            if (Movement) Movement.Init(data.MovementSpeed);
-            if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
-            if (Pathing) Pathing.Init(start);
+            if (Pathing) Pathing.Initialize(start);
+            if (Movement) Movement.Initialize(data.MovementSpeed);
+            if (Attack) Attack.Initialize(data.AttackDamage, data.AttackCooldown);
+            if (Animation) Animation.Initialize(data.OverrideAnimations);
         }
 
         private void OnDamageRecieved(int healthAfterDamage)

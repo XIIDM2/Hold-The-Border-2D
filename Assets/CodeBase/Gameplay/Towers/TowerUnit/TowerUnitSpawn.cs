@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Gameplay.Units;
 using UnityEngine;
 
 namespace Gameplay.Towers.Units
@@ -9,35 +8,29 @@ namespace Gameplay.Towers.Units
         [SerializeField] private float _spawnDuration = 1.0f;
 
         private TowerUnitAnimation _unitAnimation;
-        private SpriteRenderer _unitSprite;
+        private SpriteRenderer _sprite;
 
         private void Awake()
         {
             _unitAnimation = GetComponent<TowerUnitAnimation>();
-            _unitSprite = GetComponent<SpriteRenderer>();
+            _sprite = GetComponent<SpriteRenderer>();
         }
 
-        private void OnEnable()
-        {
-            _unitAnimation.TowerUnitSpawn += SpawnUnitAnimation;
-        }
+        private void OnEnable() => _unitAnimation.TowerUnitSpawn += SpawnUnitAnimation;
+        private void OnDisable() => _unitAnimation.TowerUnitSpawn -= SpawnUnitAnimation;
 
         private void Start()
         {
             _unitAnimation.enabled = false;
 
-            Color color = _unitSprite.color;
+            Color color = _sprite.color;
             color.a = 0.0f;
-            _unitSprite.color = color;
-        }
-        private void OnDisable()
-        {
-            _unitAnimation.TowerUnitSpawn -= SpawnUnitAnimation;
+            _sprite.color = color;
         }
 
         private void SpawnUnitAnimation()
         {
-            _unitSprite.DOFade(1.0f, _spawnDuration).OnComplete(() =>
+            _sprite.DOFade(1.0f, _spawnDuration).OnComplete(() =>
             {
                 _unitAnimation.enabled = true;
             }).SetLink(gameObject, LinkBehaviour.KillOnDisable);

@@ -18,7 +18,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  _animations: {fileID: 11400000, guid: ce94fa83593542a4cb234268ef8309f6, type: 2}
+  _overrideAnimations: {fileID: 11400000, guid: ce94fa83593542a4cb234268ef8309f6, type: 2}
   _type: 4
   _maxHealth: 1
   _movementSpeed: 1

@@ -64,8 +64,8 @@ namespace Gameplay.UI
         {
             _tower = tower;
 
-            _upgradeText.text = tower.currentTierConfig.UpgradePrice.ToString();
-            _sellText.text = tower.currentTierConfig.SellPrice.ToString();
+            _upgradeText.text = tower.CurrentTierConfig.UpgradePrice.ToString();
+            _sellText.text = tower.CurrentTierConfig.SellPrice.ToString();
 
             if (tower.CurrentTierIndex >= tower.MaxTier) _upgradeButton.gameObject.SetActive(false);
 
@@ -82,14 +82,14 @@ namespace Gameplay.UI
 
         public void ShowUpgradePanel()
         {
-            _damageOldText.text = _tower.currentTierConfig.Damage.ToString();
-            _damageNewText.text = _tower.nextTierConfig.Damage.ToString();
+            _damageOldText.text = _tower.CurrentTierConfig.Damage.ToString();
+            _damageNewText.text = _tower.NextTierConfig.Damage.ToString();
 
-            _attackSpeedOldText.text = _tower.currentTierConfig.AttackCooldown.ToString();
-            _attackSpeedNewText.text = _tower.nextTierConfig.AttackCooldown.ToString();
+            _attackSpeedOldText.text = _tower.CurrentTierConfig.AttackCooldown.ToString();
+            _attackSpeedNewText.text = _tower.NextTierConfig.AttackCooldown.ToString();
 
-            _attackRangeOldText.text = _tower.currentTierConfig.AttackRadius.ToString();
-            _attackRangeNewText.text = _tower.nextTierConfig.AttackRadius.ToString();
+            _attackRangeOldText.text = _tower.CurrentTierConfig.AttackRadius.ToString();
+            _attackRangeNewText.text = _tower.NextTierConfig.AttackRadius.ToString();
 
             _informationPanel.SetActive(true);
         }

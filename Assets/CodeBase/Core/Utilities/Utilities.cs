@@ -30,5 +30,22 @@ namespace Core.Utilities
                 sprite.flipX = true;
             }
         }
+
+        public static void FlipTransform(Transform transform, float value)
+        {
+            const float THRESHOLD = 0.001f;
+            Vector3 localScale = transform.localScale;
+
+            if (value < -THRESHOLD)
+            {
+                localScale.x = Mathf.Abs(localScale.x);
+            }
+            else if (value > THRESHOLD)
+            {
+                localScale.x = -Mathf.Abs(localScale.x);
+            }
+
+            transform.localScale = localScale;
+        }
     }
 }

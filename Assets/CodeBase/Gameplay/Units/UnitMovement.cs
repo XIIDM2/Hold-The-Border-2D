@@ -11,20 +11,15 @@ namespace Gameplay.Units
         [SerializeField, ReadOnly] private float _movementSpeed;
 
         private Rigidbody2D _rb;
-
         private SpriteRenderer _sprite;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-        }
-
-        private void Start()
-        {
             _sprite = GetComponentInChildren<SpriteRenderer>();
         }
 
-        public void Init(float movementSpeed)
+        public void Initialize(float movementSpeed)
         {
             _movementSpeed = movementSpeed;
         }
@@ -33,10 +28,9 @@ namespace Gameplay.Units
         {
             Direction = target - _rb.position;
 
-            _rb.MovePosition(_rb.position + Direction.normalized * Time.fixedDeltaTime * _movementSpeed);
+            _rb.MovePosition(_rb.position + _movementSpeed * Time.fixedDeltaTime * Direction.normalized);
 
             Utilities.FlipSprite(_sprite, Direction.x);
         }
-
     }
 }

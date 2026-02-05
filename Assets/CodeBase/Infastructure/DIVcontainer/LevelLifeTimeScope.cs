@@ -1,9 +1,9 @@
 using Data;
-using Gameplay.UI;
+using Gameplay.Path;
+using Gameplay.Player;
 using Infrastructure.Factories;
 using Infrastructure.Managers;
 using Infrastructure.Services;
-using System;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -17,15 +17,15 @@ namespace Infrastructure.DI
         {
             builder.RegisterInstance(_waveData);
 
-            builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
-
-            builder.Register<IWaveControllerService, WaveControllerService>(Lifetime.Singleton);
-            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
-            builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);
-
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);
             builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
+
+            builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
+            builder.Register<IWaveControllerService, WaveControllerService>(Lifetime.Singleton);
+
+            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
+            builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 

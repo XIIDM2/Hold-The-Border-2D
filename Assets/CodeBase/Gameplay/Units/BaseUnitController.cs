@@ -1,15 +1,15 @@
-using Core.Interfaces;
 using Core.FSM;
+using Core.Interfaces;
+using Gameplay.Units.Enemy;
 using Infrastructure.Interfaces;
 using UnityEngine;
-using Gameplay.Units.Enemy;
 
 namespace Gameplay.Units
 {
     public abstract class BaseUnitController<T> : MonoBehaviour, IControllable where T : BaseUnitController<T>
     {
         [Header("Components")]
-        public IDamageable Damageable { get; protected set; }
+        public IDamageable Health { get; protected set; }
         public UnitMovement Movement { get; protected set; }
         public EnemyUnitPathing Pathing { get; protected set; }
         public BaseUnitAttack Attack { get; protected set; }
@@ -20,7 +20,7 @@ namespace Gameplay.Units
 
         protected virtual void Awake()
         {
-            Damageable = new Health();
+            Health = new Health();
             Attack = GetComponent<BaseUnitAttack>();
             Movement = GetComponent<UnitMovement>();
             Pathing = GetComponent<EnemyUnitPathing>();

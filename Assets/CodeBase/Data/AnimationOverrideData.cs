@@ -29,7 +29,7 @@ namespace Data
         {
             if (_configs == null || _configs.Length == 0)
             {
-                Debug.LogWarning("Animations array is empty, cannot initialize Dictionary");
+                Debug.LogError("Animations array is empty, cannot initialize Dictionary");
                 return;
             }
 
@@ -39,7 +39,7 @@ namespace Data
             {
                 if (!_overrideAnimations.TryAdd(config.BaseClip, config.OverrideClip))
                 {
-                    Debug.LogWarning($"Failed to add {config.OverrideClip} for {config.BaseClip}");
+                    Debug.LogError($"Failed to add {config.OverrideClip} for {config.BaseClip}");
                 }
             }
         }

@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public enum PathType
+namespace Gameplay.Path
 {
-    Ground,
+    public enum PathType
+    {
+        Ground,
+    }
 }

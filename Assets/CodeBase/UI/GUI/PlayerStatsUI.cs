@@ -1,3 +1,4 @@
+using Gameplay.Player;
 using TMPro;
 using UnityEngine;
 using VContainer;
@@ -25,14 +26,14 @@ namespace Gameplay.UI
 
         private void OnEnable()
         {
-            _player.Health.OnHealthChanged += OnHealthChanged;
-            _player.OnGoldChanged += OnGoldChanged;
+            _player.Health.HealthChanged += OnHealthChanged;
+            _player.GoldChanged += OnGoldChanged;
         }
 
         private void OnDisable()
         {
-            _player.Health.OnHealthChanged -= OnHealthChanged;
-            _player.OnGoldChanged -= OnGoldChanged;
+            _player.Health.HealthChanged -= OnHealthChanged;
+            _player.GoldChanged -= OnGoldChanged;
         }
 
         private void OnHealthChanged(int health)

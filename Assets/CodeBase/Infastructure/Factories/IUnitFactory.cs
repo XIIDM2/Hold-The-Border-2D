@@ -1,6 +1,6 @@
 using Cysharp.Threading.Tasks;
+using Gameplay.Path;
 using Gameplay.Units.Enemy;
-using System.Threading;
 using UnityEngine;
 
 namespace Infrastructure.Factories

@@ -8,18 +8,18 @@ namespace Gameplay.Towers
 {
     public abstract class BaseTowerAttack : MonoBehaviour
     {
-        public IReadOnlyList<ITargetable> UnitsToAttack => _unitsToAttack;
+        public IReadOnlyList<ITargetable> UnitsInRange => _unitsInRange;
 
         [SerializeField, ReadOnly] protected int _damage;
         [SerializeField, ReadOnly] protected float _cooldown;
 
-        protected List<ITargetable> _unitsToAttack = new List<ITargetable>();
+        protected List<ITargetable> _unitsInRange = new List<ITargetable>();
 
-        protected Dictionary<IDamageable, ITargetable> _targets = new Dictionary<IDamageable, ITargetable>();
+        protected Dictionary<IDamageable, ITargetable> _targetsInRange = new Dictionary<IDamageable, ITargetable>();
 
         protected Coroutine _attackCoroutine;
 
-        public virtual void Init(int damage, float cooldown)
+        public virtual void Initialize(int damage, float cooldown)
         {
             _damage = damage;
             _cooldown = cooldown;
@@ -41,28 +41,28 @@ namespace Gameplay.Towers
 
         public void AddToAttackList(ITargetable target)
         {
-            if (!_unitsToAttack.Contains(target))
+            if (!_unitsInRange.Contains(target))
             {
-                _unitsToAttack.Add(target);
+                _unitsInRange.Add(target);
             }
 
-            _targets.TryAdd(target.Damageable, target);
+            _targetsInRange.TryAdd(target.Health, target);
 
-            target.Damageable.OnDeath += OnTargetDeath;
+            target.Health.Death += OnTargetDeath;
         }
 
         public void RemoveFromAttackList(ITargetable target)
         {
-            target.Damageable.OnDeath -= OnTargetDeath;
-            _targets.Remove(target.Damageable);
-            _unitsToAttack.Remove(target);
+            target.Health.Death -= OnTargetDeath;
+            _targetsInRange.Remove(target.Health);
+            _unitsInRange.Remove(target);
         }
 
         protected abstract IEnumerator AttackRoutine();
 
         protected void OnTargetDeath(IDamageable damageable)
         {
-            if (_targets.TryGetValue(damageable, out ITargetable target))
+            if (_targetsInRange.TryGetValue(damageable, out ITargetable target))
             {
                 RemoveFromAttackList(target);
             }

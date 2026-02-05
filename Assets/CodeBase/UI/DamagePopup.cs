@@ -33,7 +33,7 @@ namespace Gameplay.UI
                 .SetLink(gameObject, LinkBehaviour.KillOnDisable);
         }
 
-        public void Init(int damage)
+        public void Initialize(int damage)
         {
             _text.text = damage.ToString();
         }

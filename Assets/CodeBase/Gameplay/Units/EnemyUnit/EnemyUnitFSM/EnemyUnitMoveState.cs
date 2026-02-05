@@ -1,15 +1,9 @@
-using Core.FSM;
-using Gameplay.Units.Enemy;
+using Gameplay.Units.FSM;
 
-namespace Gameplay.Units.FSM.Enemy
+namespace Gameplay.Units.Enemy.FSM
 {
     public class EnemyUnitMoveState : UnitState<EnemyUnitController>
     {
-        public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
-        {
-            return base.HandleTransitions(controller);
-        }
-
         public override void Enter(EnemyUnitController controller)
         {
             base.Enter(controller);
@@ -30,7 +24,7 @@ namespace Gameplay.Units.FSM.Enemy
                 if (controller.Pathing.HasReachedEnd())
                 {
                     controller.Player.Health.TakeDamage(controller.PathEndDamage);
-                    controller.DestroyUnit(controller.Damageable);
+                    controller.DestroyUnit(controller.Health);
                     return;
                 }
 
@@ -41,7 +35,7 @@ namespace Gameplay.Units.FSM.Enemy
         {
             base.FixedUpdate(controller);
 
-            controller.Movement.Move(controller.Pathing.CurrentPosition);
+            controller.Movement.Move(controller.Pathing.WaypointPosition);
         }
 
         public override void Exit(EnemyUnitController controller)

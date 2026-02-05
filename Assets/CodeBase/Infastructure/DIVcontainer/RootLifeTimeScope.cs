@@ -1,3 +1,4 @@
+using Assets.CodeBase.Infastructure.Services;
 using Core.Interfaces;
 using Data;
 using UnityEngine;
@@ -13,11 +14,10 @@ namespace Infrastructure.DI
 
         protected override void Configure(IContainerBuilder builder)
         {
-
             builder.RegisterInstance(_dataCatalog);
             builder.RegisterInstance(_playerData);
 
-            builder.Register<IAssetProvider, AssetProvider>(Lifetime.Singleton);
+            builder.Register<IAssetProviderService, AssetProviderService>(Lifetime.Singleton);
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
         }
     }

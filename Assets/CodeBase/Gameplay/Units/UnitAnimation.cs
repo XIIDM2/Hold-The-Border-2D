@@ -30,7 +30,7 @@ namespace Gameplay.Units
 
         }
 
-        public void Init<T>(T data) where T : AnimationOverrideData
+        public void Initialize<T>(T data) where T : AnimationOverrideData
         {
             _clipOverrides = new List<KeyValuePair<AnimationClip, AnimationClip>>(_animatorOverrideController.overridesCount);
             _animatorOverrideController.GetOverrides(_clipOverrides);

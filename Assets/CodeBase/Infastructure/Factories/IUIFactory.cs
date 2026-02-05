@@ -1,12 +1,13 @@
 using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
 using Gameplay.UI;
-using System.Threading;
 using UnityEngine;
-using UnityEngine.UI;
 
-public interface IUIFactory
+namespace Infrastructure.Factories
 {
-    UniTask<DamagePopup> CreateDamagePopup(Vector2 position, int damage);
-    UniTask<GameObject> CreateTowerPanel(TowerType type, Sprite icon, string name, string description, string damage, string attackCooldown, string attackRadius, string price);
+    public interface IUIFactory
+    {
+        UniTask<DamagePopup> CreateDamagePopup(Vector2 position, int damage);
+        UniTask<GameObject> CreateTowerPanel(TowerType type, Sprite icon, string name, string description, string damage, string attackCooldown, string attackRadius, string price);
+    }
 }

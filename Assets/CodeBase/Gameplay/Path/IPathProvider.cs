@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface IPathProvider
+namespace Gameplay.Path
 {
-    Waypoint GetWaypoint(PathType path);
+    public interface IPathProvider
+    {
+        Waypoint GetWaypoint(PathType path);
+    }
 }

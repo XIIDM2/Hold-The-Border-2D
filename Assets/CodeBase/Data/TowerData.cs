@@ -1,7 +1,6 @@
 using Gameplay.Towers;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.UI;
 
 namespace Data
 {
@@ -16,7 +15,7 @@ namespace Data
             public int Damage => _damage;
             public float AttackCooldown => _attackCooldown;
             public float AttackRadius => _attackRadius;
-            public GameObject TowerVisualPrefab => _towerVisualPrefab;
+            public GameObject AtackersModulePrefab => _attackersModulePrefab;
             public GameObject ProjectilePrefab => _projectilePrefab;
             public AnimationClip UpgradeAnimation => _upgradeAnimation;
             public AnimationClip IdleAnimation => _idleAnimation;
@@ -29,7 +28,7 @@ namespace Data
             [SerializeField] private float _attackCooldown;
             [SerializeField] private float _attackRadius;
 
-            [SerializeField] private GameObject _towerVisualPrefab;
+            [SerializeField] private GameObject _attackersModulePrefab;
             [SerializeField] private GameObject _projectilePrefab;
             [SerializeField] private AnimationClip _upgradeAnimation;
             [SerializeField] private AnimationClip _idleAnimation;

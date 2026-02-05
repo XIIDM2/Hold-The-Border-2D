@@ -3,6 +3,7 @@ using Core.Interfaces;
 using Data;
 using Gameplay.Towers.FSM;
 using Infrastructure.Interfaces;
+using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -15,8 +16,8 @@ namespace Gameplay.Towers
         public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
         public int MaxTier => _data.TierConfigs.Length - 1;
-        public TowerData.TowerTiersConfig currentTierConfig => _data.TierConfigs[CurrentTierIndex];
-        public TowerData.TowerTiersConfig nextTierConfig => _data.TierConfigs[CurrentTierIndex + 1];
+        public TowerData.TowerTiersConfig CurrentTierConfig => _data.TierConfigs[CurrentTierIndex];
+        public TowerData.TowerTiersConfig NextTierConfig => _data.TierConfigs[CurrentTierIndex + 1];
 
 
         [Header("Components")]
@@ -24,7 +25,6 @@ namespace Gameplay.Towers
         public BaseTowerAttack Attack { get; private set; }
         public TowerAnimation Animation { get; private set; }
 
-        private ITowerSelectionService _selectionService;
 
         [Header("FSM")]
         public FiniteStateMachine<TowerController> ActionFSM { get; private set; }
@@ -32,6 +32,8 @@ namespace Gameplay.Towers
         public TowerIdleState IdleState { get; private set; }
         public TowerAttackState AttackState { get; private set; }
 
+
+        private ITowerSelectionService _selectionService;
         private TowerData _data;
 
         [Inject]
@@ -91,7 +93,7 @@ namespace Gameplay.Towers
             _selectionService.SelectTower(this);
         }
 
-        public void Init(TowerData data)
+        public void Initialize(TowerData data)
         {
             _data = data;
 
@@ -101,19 +103,19 @@ namespace Gameplay.Towers
 
         public void ApplyCurrentTier()
         {
-            Animation.Init(currentTierConfig.UpgradeAnimation, currentTierConfig.IdleAnimation);
-            Detection.Init(currentTierConfig.AttackRadius);
+            Animation.Initialize(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
+            Detection.Initialize(CurrentTierConfig.AttackRadius);
 
             if (Attack is TowerAttackByUnits attackByUnits)
             {
-                attackByUnits.InitTowerUnitVisualPrefab(currentTierConfig.TowerVisualPrefab);
+                attackByUnits.InitializeUnitVisualPrefab(CurrentTierConfig.AtackersModulePrefab);
             }
 
-            if (Attack) Attack.Init(currentTierConfig.Damage, currentTierConfig.AttackCooldown);
+            if (Attack) Attack.Initialize(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
 
             if (Attack is IProjectileRequireable projectileRequireable)
             {
-                projectileRequireable.InitProjectile(currentTierConfig.ProjectilePrefab);
+                projectileRequireable.InitProjectile(CurrentTierConfig.ProjectilePrefab);
             }
 
             // назначение данных

@@ -1,39 +1,41 @@
 using Data;
 using Infrastructure.Interfaces;
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : IPlayerController
+namespace Gameplay.Player
 {
-    public event UnityAction<int> OnGoldChanged;
-    public IDamageable Health {  get; private set; }
-    public int Gold { get; private set; }
-
-    public PlayerController(PlayerData _data)
+    public class PlayerController : IPlayerController
     {
-        Health = new Health();
-        Health.Init(_data.MaxHeath);
-        Gold = _data.StartGold;
-    }
+        public event UnityAction<int> GoldChanged;
+        public IDamageable Health { get; private set; }
+        public int Gold { get; private set; }
 
-    public bool TrySpendGold(int amount)
-    {
-        if (Gold < amount)
+        public PlayerController(PlayerData _data)
         {
-            Debug.LogWarning("Not Enough Gold");
-            return false;
+            Health = new Health();
+            Health.Initialize(_data.MaxHeath);
+            Gold = _data.StartGold;
         }
 
-        Gold -= amount;
-        OnGoldChanged?.Invoke(Gold);
-        return true;
+        public bool TrySpendGold(int amount)
+        {
+            if (Gold < amount)
+            {
+                Debug.LogWarning("Not Enough Gold");
+                return false;
+            }
+
+            Gold -= amount;
+            GoldChanged?.Invoke(Gold);
+            return true;
+
+        }
+
+        public void AddGold(int amount)
+        {
+            Gold += amount;
+        }
 
     }
-
-    public void GetGold(int amount)
-    {
-        Gold += amount;
-    }
-
 }

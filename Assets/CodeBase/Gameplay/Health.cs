@@ -2,51 +2,53 @@ using Infrastructure.Interfaces;
 using System;
 using UnityEngine.Events;
 
-public class Health : IDamageable
+namespace Gameplay
 {
-    public event UnityAction<int> OnHealthChanged;
-    public event UnityAction<IDamageable> OnDeath;
-
-    public int MaxHealth {  get; private set; }
-
-    private int _currentHealth;
-
-    public int CurrentHealth
+    public class Health : IDamageable
     {
-        get 
-        { 
-            return _currentHealth; 
-        }
-        private set
+        public event UnityAction<int> HealthChanged;
+        public event UnityAction<IDamageable> Death;
+
+        public int MaxHealth { get; private set; }
+
+        private int _currentHealth;
+
+        public int CurrentHealth
         {
-            _currentHealth = Math.Clamp(value, 0, MaxHealth);
-            OnHealthChanged?.Invoke(_currentHealth);
+            get
+            {
+                return _currentHealth;
+            }
+            private set
+            {
+                _currentHealth = Math.Clamp(value, 0, MaxHealth);
+                HealthChanged?.Invoke(_currentHealth);
+            }
         }
-    }
 
-    public void Init(int maxHealth)
-    {
-        MaxHealth = maxHealth;
-        _currentHealth = MaxHealth;
-        OnHealthChanged?.Invoke(_currentHealth);
-    }
-
-    public void TakeDamage(int amount)
-    {
-        if (CurrentHealth <= 0) return;
-
-        CurrentHealth -= amount;
-
-        if (CurrentHealth <= 0)
+        public void Initialize(int maxHealth)
         {
-            OnDeath?.Invoke(this);
+            MaxHealth = maxHealth;
+            _currentHealth = MaxHealth;
         }
-    }
 
-    public void HealDamage(int amount)
-    {
-        if (CurrentHealth <= 0 || CurrentHealth >= MaxHealth) return;
+        public void TakeDamage(int amount)
+        {
+            if (CurrentHealth <= 0) return;
 
-        CurrentHealth += amount;       
+            CurrentHealth -= amount;
+
+            if (CurrentHealth <= 0)
+            {
+                Death?.Invoke(this);
+            }
+        }
+
+        public void HealDamage(int amount)
+        {
+            if (CurrentHealth <= 0 || CurrentHealth >= MaxHealth) return;
+
+            CurrentHealth += amount;
+        }
     }
 }

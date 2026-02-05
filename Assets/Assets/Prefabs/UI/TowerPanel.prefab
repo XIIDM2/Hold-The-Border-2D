@@ -766,13 +766,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db696a8230495e458ab9b737f641533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerBuildingControllerUI
-  _towerIcon: {fileID: 8460840875101057786}
-  _towerNameText: {fileID: 1614644522036786128}
+  _icon: {fileID: 8460840875101057786}
+  _nameText: {fileID: 1614644522036786128}
   _descriptionText: {fileID: 2954605776577254337}
   _damageText: {fileID: 8930770705581909202}
   _attackCooldownText: {fileID: 6645401332418982272}
   _attackRadiusText: {fileID: 6618426274865079654}
-  _priceText: {fileID: 3672016072857616971}
+  _buildPriceText: {fileID: 3672016072857616971}
   _buildButton: {fileID: 928402244707907571}
 --- !u!1 &2852267910362796396
 GameObject:
