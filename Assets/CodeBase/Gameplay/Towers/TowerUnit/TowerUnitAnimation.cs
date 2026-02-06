@@ -31,8 +31,8 @@ namespace Gameplay.Towers.Units
             {
                 Vector2 direction = CalculateDirection();
                 Utilities.FlipTransform(gameObject.transform, direction.x);
-                SetFloat(UnitAnimationParameter.Horizontal.ToString(), direction.x);
-                SetFloat(UnitAnimationParameter.Vertical.ToString(), direction.y);
+                SetFloat(HorizontalHash, direction.x);
+                SetFloat(VerticalHash, direction.y);
             }
         }
 
@@ -48,7 +48,7 @@ namespace Gameplay.Towers.Units
         {
             if (!enabled) return; 
 
-            SetTrigger(UnitAnimationParameter.IsAttacking.ToString());
+            SetTrigger(IsAttackingHash);
         }
 
         public void AEAttack()

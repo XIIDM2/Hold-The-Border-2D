@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
 using Infrastructure.Services;
@@ -32,9 +33,11 @@ namespace Infrastructure.Managers
             {
                 _towerFactory.CreateBuildSite(point.position).Forget();
             }
+
+            StartWavesLogic().Forget();
         }
 
-        private async void Start()
+        private async UniTaskVoid StartWavesLogic()
         {
             await _waveService.WavesLogicAsync(this.GetCancellationTokenOnDestroy());
         }

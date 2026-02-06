@@ -4,17 +4,13 @@ using UnityEngine;
 
 namespace Gameplay.Units
 {
-    public enum UnitAnimationParameter
-    {
-        IsMoving,
-        Horizontal,
-        Vertical,
-        IsAttacking,
-    }
-
-
     public class UnitAnimation : MonoBehaviour
     {
+        public readonly int IsMovingHash = Animator.StringToHash("IsMoving");
+        public readonly int IsAttackingHash = Animator.StringToHash("IsAttacking");
+        public readonly int HorizontalHash = Animator.StringToHash("Horizontal");
+        public readonly int VerticalHash = Animator.StringToHash("Vertical");
+
         private Animator _animator;
 
         private AnimatorOverrideController _animatorOverrideController;
@@ -44,20 +40,20 @@ namespace Gameplay.Units
         }
 
 
-        public void SetFloat(string parameterName, float value)
+        public void SetFloat(int parameterHash, float value)
         {
-            _animator.SetFloat(parameterName, value);
+            _animator.SetFloat(parameterHash, value);
 
         }
 
-        public void SetBool(string parameterName, bool value)
+        public void SetBool(int parameterHash, bool value)
         {
-            _animator.SetBool(parameterName, value);
+            _animator.SetBool(parameterHash, value);
         }
 
-        public void SetTrigger(string parameterName)
+        public void SetTrigger(int parameterHash)
         {
-            _animator.SetTrigger(parameterName);
+            _animator.SetTrigger(parameterHash);
         }
 
     }

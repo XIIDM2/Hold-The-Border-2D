@@ -5,7 +5,7 @@ namespace Core.Interfaces
 {
     public interface IAssetProviderService
     {
-        UniTask LoadMultipleAssetsByLabel<T>(string label) where T : class;
+        UniTask LoadMultipleAssetsByLabel(string label);
         UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class;
         UniTask ReleaseAsset(AssetReference reference);
         void ReleaseAllAssets();

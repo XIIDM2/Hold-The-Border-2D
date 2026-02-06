@@ -20,11 +20,20 @@ namespace Infrastructure.Factories
 
         public async UniTask<T> Create<T>(AssetReference reference, Vector2 position) where T : class 
         {
-            GameObject prefab = _objectResolver.Instantiate(await _assetProvider.LoadAssetByReference<GameObject>(reference), position, Quaternion.identity);
+            GameObject prefab = await _assetProvider.LoadAssetByReference<GameObject>(reference);
 
             if (prefab == null)
             {
                 Debug.LogError($"Failed to download prefab for {typeof(T)} from Addressables");
+                return default;
+            }
+
+            prefab = _objectResolver.Instantiate(prefab, position, Quaternion.identity);
+
+            if (prefab == null)
+            {
+                Debug.LogError($"Failed to instantiate prefab for {typeof(T)}");
+                return default;
             }
 
             if (!prefab.TryGetComponent<T>(out T component))

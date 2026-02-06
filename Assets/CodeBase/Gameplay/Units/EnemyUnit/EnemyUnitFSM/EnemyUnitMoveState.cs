@@ -7,15 +7,15 @@ namespace Gameplay.Units.Enemy.FSM
         public override void Enter(EnemyUnitController controller)
         {
             base.Enter(controller);
-            controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), true);
+            controller.Animation.SetBool(controller.Animation.IsMovingHash, true);
         }
 
         public override void Update(EnemyUnitController controller)
         {
             base.Update(controller);
 
-            controller.Animation.SetFloat(UnitAnimationParameter.Horizontal.ToString(), controller.Movement.Direction.x);
-            controller.Animation.SetFloat(UnitAnimationParameter.Vertical.ToString(), controller.Movement.Direction.y);
+            controller.Animation.SetFloat(controller.Animation.HorizontalHash, controller.Movement.Direction.x);
+            controller.Animation.SetFloat(controller.Animation.VerticalHash, controller.Movement.Direction.y);
 
             if (controller.Pathing.CheckWaypointReached())
             {
@@ -42,7 +42,7 @@ namespace Gameplay.Units.Enemy.FSM
         {
             base.Exit(controller);
 
-            controller.Animation.SetBool(UnitAnimationParameter.IsMoving.ToString(), false);
+            controller.Animation.SetBool(controller.Animation.IsMovingHash, false);
         }
     }
 }

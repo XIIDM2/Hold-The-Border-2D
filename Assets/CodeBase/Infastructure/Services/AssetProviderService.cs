@@ -14,32 +14,51 @@ namespace Assets.CodeBase.Infastructure.Services
         private readonly Dictionary<string, AsyncOperationHandle> _asyncOperationsDict = new Dictionary<string, AsyncOperationHandle>();
         private readonly Dictionary<string, string> _addressDictionary = new Dictionary<string, string>();
 
-        public async UniTask LoadMultipleAssetsByLabel<T>(string label) where T : class
+        public async UniTask LoadMultipleAssetsByLabel(string label)
         {
             var loadResourceLocationsHandle = Addressables.LoadResourceLocationsAsync(label);
 
             await loadResourceLocationsHandle.ToUniTask();
 
+            List<UniTask> tasks = new List<UniTask>();
+            Dictionary<string, AsyncOperationHandle> currentAsyncOperationsDict = new Dictionary<string, AsyncOperationHandle>();
+
             foreach (IResourceLocation resourceLocation in loadResourceLocationsHandle.Result)
             {
-                AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(resourceLocation);
-
-                await handle.ToUniTask();
-
-                if (handle.Status != AsyncOperationStatus.Succeeded)
-                {
-                    Debug.LogError($"Failed to download asset from {resourceLocation}");
-                    Addressables.Release(handle);
-                    continue;
-                }
+                AsyncOperationHandle handle = Addressables.LoadAssetAsync<Object>(resourceLocation);
 
                 if (!_asyncOperationsDict.TryAdd(resourceLocation.PrimaryKey, handle))
                 {
                     Addressables.Release(handle);
+                    continue; 
                 }
+                currentAsyncOperationsDict.Add(resourceLocation.PrimaryKey, handle);
+                tasks.Add(handle.ToUniTask());
+
             }
 
             Addressables.Release(loadResourceLocationsHandle);
+
+            try
+            {
+                await UniTask.WhenAll(tasks);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError("Failed to download asset with following exception: " + ex);
+            }
+
+
+            foreach (KeyValuePair<string, AsyncOperationHandle> pair in currentAsyncOperationsDict)
+            {
+                if (pair.Value.Status != AsyncOperationStatus.Succeeded)
+                {
+                    Debug.LogError($"Failed to download asset from {pair.Key}");
+                    Addressables.Release(pair.Value);
+                    _asyncOperationsDict.Remove(pair.Key);
+                    continue;
+                }          
+            }
         }
 
         public async UniTask<T> LoadAssetByReference<T>(AssetReference reference) where T : class
