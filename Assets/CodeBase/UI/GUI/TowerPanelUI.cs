@@ -21,7 +21,7 @@ namespace Gameplay.UI
 
         [SerializeField] private TowerBuildButton _buildButton;
 
-        public void Initialize(TowerType type, Sprite icon, string name, string description, string damage, string attackCooldown, string attackRadius, string price)
+        public void Init(TowerType type, Sprite icon, string name, string description, string damage, string attackCooldown, string attackRadius, string price)
         {
             _icon.sprite = icon;
             _nameText.text = name;

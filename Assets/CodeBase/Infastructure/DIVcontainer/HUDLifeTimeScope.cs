@@ -13,6 +13,8 @@ namespace Infrastructure.DI
             builder.RegisterComponentInHierarchy<PauseUI>();
             builder.RegisterComponentInHierarchy<TowerBuildingControllerUI>();
             builder.RegisterComponentInHierarchy<TowerControllerUI>();
+
+            builder.Register<HUDEntryPoint>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
 }

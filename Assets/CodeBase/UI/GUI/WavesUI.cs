@@ -1,7 +1,5 @@
-using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
-using VContainer;
 
 namespace Gameplay.UI
 {
@@ -9,32 +7,17 @@ namespace Gameplay.UI
     {
         [SerializeField] private TMP_Text _wavesText;
 
-        private IWaveControllerService _waveControllerService;
+        private int _maxWavesLength;
 
-        [Inject]
-        public void Construct(IWaveControllerService waveControllerService)
+        public void Init(int currentWaveIndex, int maxWavesLength)
         {
-            _waveControllerService = waveControllerService;
+            _maxWavesLength = maxWavesLength;
+            OnNextWaveStarted(currentWaveIndex);
         }
 
-        private void Start()
+        public void OnNextWaveStarted(int currentWaveIndex)
         {
-            OnNextWaveStarted(_waveControllerService.CurrentWaveIndex);
-        }
-
-        private void OnEnable()
-        {
-            _waveControllerService.NextWaveStarted += OnNextWaveStarted;
-        }
-
-        private void OnDisable()
-        {
-            _waveControllerService.NextWaveStarted -= OnNextWaveStarted;
-        }
-
-        private void OnNextWaveStarted(int currentWaveIndex)
-        {
-            _wavesText.text = $"{currentWaveIndex}/{_waveControllerService.WavesLength}";
+            _wavesText.text = $"{currentWaveIndex}/{_maxWavesLength}";
         }
     }
 }

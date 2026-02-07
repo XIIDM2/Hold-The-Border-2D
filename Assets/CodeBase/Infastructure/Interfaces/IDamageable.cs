@@ -10,7 +10,7 @@ namespace Infrastructure.Interfaces
         public int MaxHealth { get; }
         public int CurrentHealth { get; }
 
-        void Initialize(int maxHealth);
+        void Init(int maxHealth);
         void TakeDamage(int amount);
         void HealDamage(int amount);
 

@@ -26,7 +26,7 @@ namespace Gameplay
             }
         }
 
-        public void Initialize(int maxHealth)
+        public void Init(int maxHealth)
         {
             MaxHealth = maxHealth;
             _currentHealth = MaxHealth;

@@ -18,7 +18,7 @@ namespace Gameplay.Towers
 
         protected Coroutine _attackCoroutine;
 
-        public virtual void Initialize(int damage, float cooldown)
+        public virtual void Init(int damage, float cooldown)
         {
             _damage = damage;
             _cooldown = cooldown;

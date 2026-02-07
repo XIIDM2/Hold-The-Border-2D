@@ -41,7 +41,7 @@ namespace Gameplay.Towers
             }
         }
 
-        public void Initialize(float radius)
+        public void Init(float radius)
         { 
             _attackRadius = radius;
             _collider.radius = _attackRadius;

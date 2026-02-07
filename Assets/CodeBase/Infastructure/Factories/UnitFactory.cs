@@ -30,7 +30,7 @@ namespace Infrastructure.Factories
 
             EnemyUnitController enemy = await Create<EnemyUnitController>(unitData.PrefabReference, position, cancellationToken);
 
-            enemy.Initialize(unitData, start);
+            enemy.Init(unitData, start);
 
             return enemy;
         }

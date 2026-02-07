@@ -22,7 +22,7 @@ namespace Infrastructure.Factories
         {
             DamagePopup popup = await Create<DamagePopup>(_gameplayRegistry.DamagePopupReference, position, cancellationToken);
 
-            popup.Initialize(damage);
+            popup.Init(damage);
 
             return popup;
         }
@@ -31,7 +31,7 @@ namespace Infrastructure.Factories
         {
             TowerPanelUI towerPanel = await Create<TowerPanelUI>(_gameplayRegistry.TowerPanelReference, Vector2.zero, cancellationToken);
 
-            towerPanel.Initialize(type, icon, name, description, damage, attackCooldown, attackRadius, price);
+            towerPanel.Init(type, icon, name, description, damage, attackCooldown, attackRadius, price);
 
             return towerPanel;
         }

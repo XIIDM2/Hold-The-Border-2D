@@ -24,15 +24,15 @@ namespace Gameplay.Towers
             _animation = GetComponentInChildren<TowerAnimation>();
         }
 
-        public override void Initialize(int damage, float cooldown)
+        public override void Init(int damage, float cooldown)
         {
-            base.Initialize(damage, cooldown);
+            base.Init(damage, cooldown);
 
-            InitializeAttackers();
+            InitAttackers();
 
         }
 
-        public void InitializeUnitVisualPrefab(GameObject prefab)
+        public void InitUnitVisualPrefab(GameObject prefab)
         {
             Destroy(_unitsVisualPrefab);
 
@@ -40,7 +40,7 @@ namespace Gameplay.Towers
         }
 
 
-        public void InitializeAttackers()
+        public void InitAttackers()
         {
 
             foreach (TowerUnitAnimation attacker in _attackers)
@@ -65,7 +65,7 @@ namespace Gameplay.Towers
         public void InitProjectile(GameObject projectilePrefab)
         {
             _projectilePrefab = projectilePrefab.GetComponent<Projectile>();
-            _projectilePrefab.Initialize(_damage);
+            _projectilePrefab.Init(_damage);
         }
 
         private void InstantiateProjectile(Transform _firePoint)

@@ -12,9 +12,11 @@ namespace Infrastructure.DI
 {
     public class LevelLifeTimeScope : LifetimeScope
     {
+        [SerializeField] private LevelsLabels _levelLabel;
         [SerializeField] private WaveData _waveData;
         protected override void Configure(IContainerBuilder builder)
         {
+            builder.RegisterInstance(_levelLabel);
             builder.RegisterInstance(_waveData);
 
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
@@ -29,7 +31,7 @@ namespace Infrastructure.DI
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 
-            builder.RegisterComponentInHierarchy<GameManager>();
+            builder.RegisterComponentInHierarchy<LevelEntryPoint>();
         }
     }
 }

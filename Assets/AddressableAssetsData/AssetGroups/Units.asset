@@ -19,31 +19,31 @@ MonoBehaviour:
     m_Address: Slime
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8e13f4f59f86fde44b1b0d626252237b
     m_Address: BabySlime
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a112f57e9c06b8042b4aecf8b3d3bbc4
     m_Address: Goblin
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a99674239b3ea4642ba469ab6b1617da
     m_Address: Wolf
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ac728aa173f0cdc46a42e84189496560
     m_Address: Bee
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}

@@ -19,7 +19,7 @@ namespace Gameplay.Units
             _sprite = GetComponentInChildren<SpriteRenderer>();
         }
 
-        public void Initialize(float movementSpeed)
+        public void Init(float movementSpeed)
         {
             _movementSpeed = movementSpeed;
         }

@@ -53,7 +53,7 @@ namespace Infrastructure.Services
 
             if (upgradePrice > _player.Gold)
             {
-                Debug.Log("Not enough gold");
+                Debug.Log($"Not enough gold: Player Gold:{_player.Gold}, Required Gold: {tower.CurrentTierConfig.UpgradePrice}");
                 return;
             }
 

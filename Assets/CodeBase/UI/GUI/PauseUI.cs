@@ -1,6 +1,5 @@
 using Infrastructure;
 using UnityEngine;
-using VContainer;
 
 namespace Gameplay.UI
 {
@@ -9,15 +8,10 @@ namespace Gameplay.UI
         [SerializeField] private GameObject _pausePanel;
 
         private SceneController _controller;
-
-        [Inject]
-        public void Construct(SceneController sceneController)
+       
+        public void Init(SceneController controller)
         {
-            _controller = sceneController;
-        }
-
-        private void Start()
-        {
+            _controller = controller;
             _pausePanel.SetActive(false);
         }
 

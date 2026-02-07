@@ -30,7 +30,7 @@ namespace Infrastructure.Factories
 
             TowerController tower = await Create<TowerController>(towerData.TowerPrefabReference, position, cancellationToken);
 
-            tower.Initialize(towerData);
+            tower.Init(towerData);
             return tower;
 
         }

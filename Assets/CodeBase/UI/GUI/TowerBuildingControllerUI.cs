@@ -3,10 +3,8 @@ using Data;
 using Gameplay.Towers.BuildSite;
 using Infrastructure;
 using Infrastructure.Factories;
-using Infrastructure.Managers;
-using Infrastructure.Services;
+using System.Threading;
 using UnityEngine;
-using VContainer;
 
 namespace Gameplay.UI
 {
@@ -14,60 +12,30 @@ namespace Gameplay.UI
     {
         [SerializeField] private GameObject _buildingPanel;
 
-        private GameplayRegistry _registry;
         private SceneController _controller;
-        private ITowerSelectionService _selectionService;
-        private IUIFactory _UIfactory;
-        private GameManager _manager;
 
-        [Inject]
-        public void Construct(GameplayRegistry registry, SceneController controller, ITowerSelectionService selectionService, IUIFactory UIFactory, GameManager manager)
+        public void Init(SceneController controller)
         {
-            _registry = registry;
             _controller = controller;
-            _selectionService = selectionService;
-            _UIfactory = UIFactory;
-            _manager = manager;
-        }
-
-        private async void Awake()
-        {
-            foreach (TowerData towerData in _registry.TowerDatas)
-            {
-                TowerPanelUI towerPanelUI = await _UIfactory.CreateTowerPanel
-                (
-                    towerData.Type, towerData.Icon, towerData.Name, towerData.Description, 
-                    towerData.TierConfigs[0].Damage.ToString(), 
-                    towerData.TierConfigs[0].AttackCooldown.ToString(), 
-                    towerData.TierConfigs[0].AttackRadius.ToString(), 
-                    towerData.BuildPrice.ToString(), 
-                    _manager.GetCancellationTokenOnDestroy()
-                );
-
-                towerPanelUI.gameObject.transform.SetParent(_buildingPanel.transform);
-            }
-        }
-
-
-        private void Start()
-        {
             HideBuildingPanel();
         }
 
-        private void OnEnable()
+        public async UniTask CreateTowerPanels(TowerData towerData, IUIFactory UIFactory, CancellationToken cancellationToken)
         {
-            _selectionService.BuildsiteSelected += ShowBuildingPanel;
-            _selectionService.BuildSiteDeselected += HideBuildingPanel;
+            TowerPanelUI towerPanelUI = await UIFactory.CreateTowerPanel
+            (
+                towerData.Type, towerData.Icon, towerData.Name, towerData.Description,
+                towerData.TierConfigs[0].Damage.ToString(),
+                towerData.TierConfigs[0].AttackCooldown.ToString(),
+                towerData.TierConfigs[0].AttackRadius.ToString(),
+                towerData.BuildPrice.ToString(),
+                cancellationToken
+            );
+
+            towerPanelUI.gameObject.transform.SetParent(_buildingPanel.transform);
         }
 
-        private void OnDisable()
-        {
-            _selectionService.BuildsiteSelected -= ShowBuildingPanel;
-            _selectionService.BuildSiteDeselected -= HideBuildingPanel;
-
-        }
-
-        private void ShowBuildingPanel(BuildSite site)
+        public void ShowBuildingPanel(BuildSite site)
         {
             _buildingPanel.SetActive(true);
             _controller.StopTime();

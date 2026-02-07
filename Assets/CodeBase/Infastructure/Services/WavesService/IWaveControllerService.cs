@@ -11,7 +11,7 @@ namespace Infrastructure.Services
         public int WavesLength { get; }
 
         public event UnityAction<int> NextWaveStarted;
-        void Initialize(Vector2 spawnPosition);
+        void Init(Vector2 spawnPosition);
         UniTask WavesLogicAsync(CancellationToken cancellationToken);
     }
 }

@@ -1,16 +1,16 @@
-using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
-using Infrastructure.Managers;
-using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
-using VContainer;
 
 namespace Gameplay.UI
 {
     public class TowerControllerUI : MonoBehaviour
     {
+        public event UnityAction<TowerController> UpgradeRequested;
+        public event UnityAction<TowerController> SellRequested;
+
         [Header("Upgrade/Sell Panel")]
         [SerializeField] private GameObject _controllerPanel;
         [SerializeField] private Button _upgradeButton;
@@ -31,40 +31,13 @@ namespace Gameplay.UI
 
         private TowerController _tower;
 
-        private ITowerBuildService _buildService;
-        private ITowerSelectionService _selectionService;
-        private GameManager _manager;
-
-        [Inject]
-        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService, GameManager manager)
-        {
-            _selectionService = selectionService;
-            _buildService = buildService;
-            _manager = manager;
-        }
-
-        private void Start()
+        public void Init()
         {
             HideController();
             HideUpgradePanel();
         }
 
-        private void OnEnable()
-        {
-            _selectionService.TowerSelected += ShowController;
-            _selectionService.TowerDeselected += HideController;
-            _selectionService.TowerDeselected += HideUpgradePanel;
-        }
-
-        private void OnDisable()
-        {
-            _selectionService.TowerSelected -= ShowController;
-            _selectionService.TowerDeselected -= HideController;
-            _selectionService.TowerDeselected -= HideUpgradePanel;
-        }
-
-
-        private void ShowController(TowerController tower)
+        public void ShowController(TowerController tower)
         {
             _tower = tower;
 
@@ -79,7 +52,7 @@ namespace Gameplay.UI
             _controllerPanel.SetActive(true);
         }
 
-        private void HideController()
+        public void HideController()
         {
             _controllerPanel.SetActive(false);
         }
@@ -105,20 +78,12 @@ namespace Gameplay.UI
 
         public void Upgrade()
         {
-            if (_selectionService.Tower)
-            {
-                _buildService.UpgradeTower(_selectionService.Tower);
-                _selectionService.ClearTowerSelection();
-            }
+            UpgradeRequested?.Invoke(_tower);
         }
 
         public void Sell()
         {
-            if (_selectionService.Tower)
-            {
-                _buildService.SellTower(_selectionService.Tower, _manager.GetCancellationTokenOnDestroy());
-                _selectionService.ClearTowerSelection();
-            }
+            SellRequested?.Invoke(_tower);
         }
 
     }

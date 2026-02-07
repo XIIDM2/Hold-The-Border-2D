@@ -102,7 +102,7 @@ MonoBehaviour:
     m_ProfileVersion: 1
   m_LabelTable:
     m_LabelNames:
-    - Level 1
+    - Level_1
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: ec3a06d2311b03c418ff7a945c8eec86, type: 2}

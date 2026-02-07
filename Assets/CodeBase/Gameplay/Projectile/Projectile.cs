@@ -28,7 +28,7 @@ namespace Gameplay.Projectiles
             Rotate();
         }
 
-        public void Initialize(int damage)
+        public void Init(int damage)
         {
             _damage = damage;
         }

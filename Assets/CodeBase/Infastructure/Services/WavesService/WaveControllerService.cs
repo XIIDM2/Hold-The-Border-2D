@@ -28,7 +28,7 @@ namespace Infrastructure.Services
             _wavesData = wavesData;
         }   
 
-        public void Initialize(Vector2 spawnPosition)
+        public void Init(Vector2 spawnPosition)
         {
             _spawnPosition = spawnPosition;
         }

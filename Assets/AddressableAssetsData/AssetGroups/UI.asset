@@ -16,16 +16,16 @@ MonoBehaviour:
   m_GUID: 9f9408bae5300ad4db21700605d30dcb
   m_SerializeEntries:
   - m_GUID: 3cef098fd72b1fe4ca348050f671a324
-    m_Address: Assets/Assets/Prefabs/UI/TowerPanel.prefab
+    m_Address: TowerPanel
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9186de22c9f8ba746a752b8580ec0b87
     m_Address: DamagePopup
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Level 1
+    - Level_1
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}

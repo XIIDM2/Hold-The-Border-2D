@@ -13,10 +13,10 @@ namespace Gameplay.UI
 
         private ITowerBuildService _buildService;
         private ITowerSelectionService _selectionService;
-        private GameManager _manager;
+        private LevelEntryPoint _manager;
 
         [Inject]
-        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService, GameManager manager)
+        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService, LevelEntryPoint manager)
         {
             _selectionService = selectionService;
             _buildService = buildService;

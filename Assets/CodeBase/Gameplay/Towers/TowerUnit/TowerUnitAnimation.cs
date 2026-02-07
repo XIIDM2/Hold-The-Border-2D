@@ -21,7 +21,7 @@ namespace Gameplay.Towers.Units
         {
             base.Awake();
 
-            Initialize(_data);
+            Init(_data);
         }
 
 

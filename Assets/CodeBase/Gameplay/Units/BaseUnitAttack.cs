@@ -12,7 +12,7 @@ namespace Gameplay.Units
         [SerializeField, ReadOnly] protected int _damage;
         [SerializeField, ReadOnly] protected float _cooldown;
 
-        public virtual void Initialize(int damage, float coolDown)
+        public virtual void Init(int damage, float coolDown)
         {
             _damage = damage;
             _cooldown = coolDown;

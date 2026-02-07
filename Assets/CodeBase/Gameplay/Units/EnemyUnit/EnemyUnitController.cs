@@ -56,16 +56,16 @@ namespace Gameplay.Units.Enemy
             Health.HealthChanged -= OnDamageRecieved;
         }
 
-        public void Initialize(EnemyUnitData data, Waypoint start)
+        public void Init(EnemyUnitData data, Waypoint start)
         {
             PathEndDamage = data.PathEndDamage;
 
-            Health?.Initialize(data.MaxHealth);
+            Health?.Init(data.MaxHealth);
 
-            if (Pathing) Pathing.Initialize(start);
-            if (Movement) Movement.Initialize(data.MovementSpeed);
-            if (Attack) Attack.Initialize(data.AttackDamage, data.AttackCooldown);
-            if (Animation) Animation.Initialize(data.OverrideAnimations);
+            if (Pathing) Pathing.Init(start);
+            if (Movement) Movement.Init(data.MovementSpeed);
+            if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
+            if (Animation) Animation.Init(data.OverrideAnimations);
         }
 
         private void OnDamageRecieved(int healthAfterDamage)

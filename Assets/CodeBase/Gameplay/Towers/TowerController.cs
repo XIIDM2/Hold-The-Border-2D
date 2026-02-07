@@ -93,7 +93,7 @@ namespace Gameplay.Towers
             _selectionService.SelectTower(this);
         }
 
-        public void Initialize(TowerData data)
+        public void Init(TowerData data)
         {
             _data = data;
 
@@ -103,15 +103,15 @@ namespace Gameplay.Towers
 
         public void ApplyCurrentTier()
         {
-            Animation.Initialize(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
-            Detection.Initialize(CurrentTierConfig.AttackRadius);
+            Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
+            Detection.Init(CurrentTierConfig.AttackRadius);
 
             if (Attack is TowerAttackByUnits attackByUnits)
             {
-                attackByUnits.InitializeUnitVisualPrefab(CurrentTierConfig.AtackersModulePrefab);
+                attackByUnits.InitUnitVisualPrefab(CurrentTierConfig.AtackersModulePrefab);
             }
 
-            if (Attack) Attack.Initialize(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
+            if (Attack) Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
 
             if (Attack is IProjectileRequireable projectileRequireable)
             {

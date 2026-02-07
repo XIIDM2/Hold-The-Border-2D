@@ -12,7 +12,7 @@ namespace Gameplay.Units.Enemy
 
         private Waypoint _currentWaypoint;
 
-        public void Initialize(Waypoint startWaypoint)
+        public void Init(Waypoint startWaypoint)
         {
             _currentWaypoint = startWaypoint;
             AddRandomOffset();

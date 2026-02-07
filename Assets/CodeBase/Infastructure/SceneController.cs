@@ -51,6 +51,5 @@ namespace Infrastructure
 
             SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
         }
-
     }
 }

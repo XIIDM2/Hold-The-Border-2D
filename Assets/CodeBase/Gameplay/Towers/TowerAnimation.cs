@@ -24,7 +24,7 @@ namespace Gameplay.Towers
             _animator.runtimeAnimatorController = _overrideController;
         }
 
-        public void Initialize(AnimationClip upgradeClip, AnimationClip idleClip)
+        public void Init(AnimationClip upgradeClip, AnimationClip idleClip)
         {
             _overrideController[UPGRADE_DEFAULT_CLIP_NAME] = upgradeClip;
             _overrideController[IDLE_DEFAULT_CLIP_NAME] = idleClip;

@@ -14,7 +14,7 @@ namespace Gameplay.Player
         public PlayerController(PlayerData _data)
         {
             Health = new Health();
-            Health.Initialize(_data.MaxHeath);
+            Health.Init(_data.MaxHeath);
             Gold = _data.StartGold;
         }
 
@@ -35,6 +35,7 @@ namespace Gameplay.Player
         public void AddGold(int amount)
         {
             Gold += amount;
+            GoldChanged?.Invoke(Gold);
         }
 
     }
