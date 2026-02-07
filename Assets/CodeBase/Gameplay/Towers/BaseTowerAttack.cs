@@ -14,7 +14,6 @@ namespace Gameplay.Towers
         [SerializeField, ReadOnly] protected float _cooldown;
 
         protected List<ITargetable> _unitsInRange = new List<ITargetable>();
-
         protected Dictionary<IDamageable, ITargetable> _targetsInRange = new Dictionary<IDamageable, ITargetable>();
 
         protected Coroutine _attackCoroutine;

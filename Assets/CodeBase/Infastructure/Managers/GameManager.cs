@@ -1,4 +1,3 @@
-using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
 using Infrastructure.Services;
@@ -31,7 +30,7 @@ namespace Infrastructure.Managers
 
             foreach (Transform point in _buildsitePoints)
             {
-                _towerFactory.CreateBuildSite(point.position).Forget();
+                _towerFactory.CreateBuildSite(point.position, this.GetCancellationTokenOnDestroy()).Forget();
             }
 
             StartWavesLogic().Forget();

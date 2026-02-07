@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using VContainer;
@@ -18,9 +19,9 @@ namespace Infrastructure.Factories
             _objectResolver = objectResolver;
         }
 
-        public async UniTask<T> Create<T>(AssetReference reference, Vector2 position) where T : class 
+        public async UniTask<T> Create<T>(AssetReference reference, Vector2 position, CancellationToken cancellationToken) where T : class 
         {
-            GameObject prefab = await _assetProvider.LoadAssetByReference<GameObject>(reference);
+            GameObject prefab = await _assetProvider.LoadAssetByReference<GameObject>(reference, cancellationToken);
 
             if (prefab == null)
             {

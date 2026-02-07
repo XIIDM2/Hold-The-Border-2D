@@ -70,7 +70,7 @@ namespace Gameplay.Units.Enemy
 
         private void OnDamageRecieved(int healthAfterDamage)
         {
-            _UIFactory.CreateDamagePopup(gameObject.transform.position, _currentHealth - healthAfterDamage).Forget();
+            _UIFactory.CreateDamagePopup(gameObject.transform.position, _currentHealth - healthAfterDamage, this.GetCancellationTokenOnDestroy()).Forget();
             _currentHealth = healthAfterDamage;
         }
 

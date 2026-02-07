@@ -4,6 +4,7 @@ using Gameplay.Player;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using Infrastructure.Factories;
+using System.Threading;
 using UnityEngine;
 
 namespace Infrastructure.Services
@@ -23,7 +24,7 @@ namespace Infrastructure.Services
         }
 
 
-        public async UniTaskVoid BuildTower(TowerType type, BuildSite site)
+        public async UniTaskVoid BuildTower(TowerType type, BuildSite site, CancellationToken cancellationToken)
         {
             int buildPrice = _gameplayRegistry.GetTowerData(type).BuildPrice;
 
@@ -33,7 +34,7 @@ namespace Infrastructure.Services
                 return;
             }
 
-            TowerController tower = await _factory.CreateTower(type, site.transform.position);
+            TowerController tower = await _factory.CreateTower(type, site.transform.position, cancellationToken);
 
             if (!tower)
             {
@@ -60,12 +61,12 @@ namespace Infrastructure.Services
             tower.UpgradeRequested?.Invoke();
         }
 
-        public async UniTaskVoid SellTower(TowerController tower)
+        public async UniTaskVoid SellTower(TowerController tower, CancellationToken cancellationToken)
         {
             int sellPrice = tower.CurrentTierConfig.SellPrice;
             Vector2 position = tower.transform.position;
 
-            BuildSite buildSite = await _factory.CreateBuildSite(position);
+            BuildSite buildSite = await _factory.CreateBuildSite(position, cancellationToken);
 
             if (!buildSite)
             {

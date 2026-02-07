@@ -1,7 +1,9 @@
+using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Towers.BuildSite;
 using Infrastructure;
 using Infrastructure.Factories;
+using Infrastructure.Managers;
 using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
@@ -16,21 +18,32 @@ namespace Gameplay.UI
         private SceneController _controller;
         private ITowerSelectionService _selectionService;
         private IUIFactory _UIfactory;
+        private GameManager _manager;
 
         [Inject]
-        public void Construct(GameplayRegistry registry, SceneController controller, ITowerSelectionService selectionService, IUIFactory UIFactory)
+        public void Construct(GameplayRegistry registry, SceneController controller, ITowerSelectionService selectionService, IUIFactory UIFactory, GameManager manager)
         {
             _registry = registry;
             _controller = controller;
             _selectionService = selectionService;
             _UIfactory = UIFactory;
+            _manager = manager;
         }
 
         private async void Awake()
         {
             foreach (TowerData towerData in _registry.TowerDatas)
             {
-                TowerPanelUI towerPanelUI = await _UIfactory.CreateTowerPanel(towerData.Type, towerData.Icon, towerData.Name, towerData.Description, towerData.TierConfigs[0].Damage.ToString(), towerData.TierConfigs[0].AttackCooldown.ToString(), towerData.TierConfigs[0].AttackRadius.ToString(), towerData.BuildPrice.ToString());
+                TowerPanelUI towerPanelUI = await _UIfactory.CreateTowerPanel
+                (
+                    towerData.Type, towerData.Icon, towerData.Name, towerData.Description, 
+                    towerData.TierConfigs[0].Damage.ToString(), 
+                    towerData.TierConfigs[0].AttackCooldown.ToString(), 
+                    towerData.TierConfigs[0].AttackRadius.ToString(), 
+                    towerData.BuildPrice.ToString(), 
+                    _manager.GetCancellationTokenOnDestroy()
+                );
+
                 towerPanelUI.gameObject.transform.SetParent(_buildingPanel.transform);
             }
         }

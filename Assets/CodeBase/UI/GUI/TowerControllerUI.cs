@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
+using Infrastructure.Managers;
 using Infrastructure.Services;
 using TMPro;
 using UnityEngine;
@@ -29,14 +31,16 @@ namespace Gameplay.UI
 
         private TowerController _tower;
 
-        private ITowerSelectionService _selectionService;
         private ITowerBuildService _buildService;
+        private ITowerSelectionService _selectionService;
+        private GameManager _manager;
 
         [Inject]
-        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService)
+        public void Construct(ITowerSelectionService selectionService, ITowerBuildService buildService, GameManager manager)
         {
             _selectionService = selectionService;
             _buildService = buildService;
+            _manager = manager;
         }
 
         private void Start()
@@ -112,7 +116,7 @@ namespace Gameplay.UI
         {
             if (_selectionService.Tower)
             {
-                _buildService.SellTower(_selectionService.Tower);
+                _buildService.SellTower(_selectionService.Tower, _manager.GetCancellationTokenOnDestroy());
                 _selectionService.ClearTowerSelection();
             }
         }
