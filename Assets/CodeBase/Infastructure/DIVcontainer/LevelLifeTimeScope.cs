@@ -31,7 +31,7 @@ namespace Infrastructure.DI
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 
-            builder.RegisterComponentInHierarchy<LevelEntryPoint>();
+            builder.RegisterComponentInHierarchy<LevelManager>();
         }
     }
 }

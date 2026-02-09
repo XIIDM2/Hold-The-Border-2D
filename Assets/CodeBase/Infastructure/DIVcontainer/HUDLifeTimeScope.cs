@@ -8,13 +8,17 @@ namespace Infrastructure.DI
     {
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponentInHierarchy<PlayerStatsUI>();
-            builder.RegisterComponentInHierarchy<WavesUI>();
-            builder.RegisterComponentInHierarchy<PauseUI>();
-            builder.RegisterComponentInHierarchy<TowerBuildingControllerUI>();
-            builder.RegisterComponentInHierarchy<TowerControllerUI>();
+            builder.RegisterComponentInHierarchy<PauseView>();
+            builder.RegisterComponentInHierarchy<WavesView>();
+            builder.RegisterComponentInHierarchy<PlayerStatsView>();
+            builder.RegisterComponentInHierarchy<TowerBuildingView>();
+            builder.RegisterComponentInHierarchy<TowerView>();
 
-            builder.Register<HUDEntryPoint>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<PausePresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<WavesPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<PlayerStatsPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<TowerBuildingPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<TowerPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }

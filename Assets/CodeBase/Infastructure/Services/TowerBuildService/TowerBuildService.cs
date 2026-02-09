@@ -24,7 +24,7 @@ namespace Infrastructure.Services
         }
 
 
-        public async UniTaskVoid BuildTower(TowerType type, BuildSite site, CancellationToken cancellationToken)
+        public async UniTask BuildTower(TowerType type, BuildSite site, CancellationToken cancellationToken)
         {
             int buildPrice = _gameplayRegistry.GetTowerData(type).BuildPrice;
 
@@ -61,7 +61,7 @@ namespace Infrastructure.Services
             tower.UpgradeRequested?.Invoke();
         }
 
-        public async UniTaskVoid SellTower(TowerController tower, CancellationToken cancellationToken)
+        public async UniTask SellTower(TowerController tower, CancellationToken cancellationToken)
         {
             int sellPrice = tower.CurrentTierConfig.SellPrice;
             Vector2 position = tower.transform.position;

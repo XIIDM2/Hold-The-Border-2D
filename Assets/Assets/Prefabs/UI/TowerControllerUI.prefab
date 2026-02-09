@@ -1227,19 +1227,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6492535423089151081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2818377241393274956}
-        m_TargetAssemblyTypeName: TowerControllerUI, Assembly-CSharp
-        m_MethodName: Upgrade
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &7824145408897947380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1258,8 +1246,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2818377241393274956}
-          m_TargetAssemblyTypeName: TowerControllerUI, Assembly-CSharp
-          m_MethodName: ShowUpgradePanel
+          m_TargetAssemblyTypeName: Gameplay.UI.TowerView, Assembly-CSharp
+          m_MethodName: OnUpgradeButtonHovered
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1373,11 +1361,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6502081740046122616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 528cddfa873562849a24db0e7914474d, type: 3}
+  m_Script: {fileID: 11500000, guid: c49e5b4c2de87ba46b954ad46720a098, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerControllerUI
   _controllerPanel: {fileID: 8692304548629776456}
   _upgradeButton: {fileID: 4718739898917492226}
+  _sellButton: {fileID: 412686790198536610}
   _upgradeText: {fileID: 3898398295628833511}
   _sellText: {fileID: 9003919327850770839}
   _informationPanel: {fileID: 6887813012683310236}
@@ -1637,7 +1626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
   m_Padding:
-    m_Left: 50
+    m_Left: 0
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
@@ -2626,16 +2615,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8107888782671857080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2818377241393274956}
-        m_TargetAssemblyTypeName: TowerControllerUI, Assembly-CSharp
-        m_MethodName: Sell
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

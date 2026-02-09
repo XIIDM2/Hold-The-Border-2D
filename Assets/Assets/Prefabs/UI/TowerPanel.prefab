@@ -224,7 +224,6 @@ GameObject:
   - component: {fileID: 2786329332534754018}
   - component: {fileID: 5399379315138746634}
   - component: {fileID: 4072480135471848899}
-  - component: {fileID: 928402244707907571}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -334,7 +333,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 928402244707907571}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Gameplay.UI.TowerBuildButton, Assembly-CSharp
         m_MethodName: Build
         m_Mode: 1
@@ -346,18 +345,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &928402244707907571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505625141753881680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23b0be61c626d9343a819681d4664768, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.UI.TowerBuildButton
 --- !u!1 &1598003841012598161
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +750,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2744736395063841144}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0db696a8230495e458ab9b737f641533, type: 3}
+  m_Script: {fileID: 11500000, guid: 73b55b49d336b8440b155264dddde64c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerBuildingControllerUI
   _icon: {fileID: 8460840875101057786}
@@ -773,7 +760,7 @@ MonoBehaviour:
   _attackCooldownText: {fileID: 6645401332418982272}
   _attackRadiusText: {fileID: 6618426274865079654}
   _buildPriceText: {fileID: 3672016072857616971}
-  _buildButton: {fileID: 928402244707907571}
+  _buildButton: {fileID: 4072480135471848899}
 --- !u!1 &2852267910362796396
 GameObject:
   m_ObjectHideFlags: 0

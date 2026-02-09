@@ -11618,7 +11618,7 @@ GameObject:
   - component: {fileID: 2059559397}
   - component: {fileID: 2059559398}
   m_Layer: 0
-  m_Name: LevelEntryPoint
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11649,7 +11649,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059559396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451413f549133d24eb475e13f6c677b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 89e39942e5ab2a24d96db22c2ac8b7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Infrastructure.Managers.LevelEntryPoint
   _unitSpawnPoint: {fileID: 1932785520}

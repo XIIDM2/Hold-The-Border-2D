@@ -27,9 +27,9 @@ namespace Infrastructure.Factories
             return popup;
         }
 
-        public async UniTask<TowerPanelUI> CreateTowerPanel(TowerType type, Sprite icon, string name, string description, string damage, string attackCooldown, string attackRadius, string price, CancellationToken cancellationToken)
+        public async UniTask<TowerBuildingStatsView> CreateTowerPanel(TowerType type, Sprite icon, string name, string description, string damage, string attackCooldown, string attackRadius, string price, CancellationToken cancellationToken)
         {
-            TowerPanelUI towerPanel = await Create<TowerPanelUI>(_gameplayRegistry.TowerPanelReference, Vector2.zero, cancellationToken);
+            TowerBuildingStatsView towerPanel = await Create<TowerBuildingStatsView>(_gameplayRegistry.TowerPanelReference, Vector2.zero, cancellationToken);
 
             towerPanel.Init(type, icon, name, description, damage, attackCooldown, attackRadius, price);
 

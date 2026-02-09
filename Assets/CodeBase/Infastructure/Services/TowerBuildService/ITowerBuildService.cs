@@ -7,9 +7,9 @@ namespace Infrastructure.Services
 {
     public interface ITowerBuildService
     {
-        UniTaskVoid BuildTower(TowerType type, BuildSite position, CancellationToken cancellationToken);
+        UniTask BuildTower(TowerType type, BuildSite position, CancellationToken cancellationToken);
         void UpgradeTower(TowerController tower);
-        UniTaskVoid SellTower(TowerController tower, CancellationToken cancellationToken);
+        UniTask SellTower(TowerController tower, CancellationToken cancellationToken);
 
     }
 }
