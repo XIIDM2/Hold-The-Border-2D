@@ -1,5 +1,7 @@
+using Cysharp.Threading.Tasks;
 using Infrastructure;
 using System;
+using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
 namespace Gameplay.UI
@@ -46,7 +48,7 @@ namespace Gameplay.UI
         private void RestartLevel()
         {
             _controller.StartTime();
-            _controller.RestartScene();
+            _controller.ChangeScene(SceneManager.GetActiveScene().buildIndex).Forget();
         }
 
         private void ExitToMainMenu()

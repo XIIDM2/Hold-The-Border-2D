@@ -1,23 +1,28 @@
-using System;
+using Core.Interfaces;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
 namespace Infrastructure
 {
-    public class SceneController : IInitializable, IDisposable
+    public class SceneController : IAsyncStartable
     {
         private const string MAIN_MENU_SCENE_NAME = "Main Menu";
+        private const string LOADING_SCENE_NAME = "Loading";
         private const string HUD_SCENE_NAME = "HUD";
 
-        public void Initialize()
+        private readonly IAssetProviderService _providerService;
+
+        public SceneController(IAssetProviderService providerService)
         {
-            SceneManager.sceneLoaded += InitializeHUDScene;
+            _providerService = providerService;
         }
 
-        public void Dispose()
+        public async UniTask StartAsync(CancellationToken cancellation = default)
         {
-            SceneManager.sceneLoaded -= InitializeHUDScene;
+            await ChangeScene(1, cancellation);
         }
 
         public void StartTime()
@@ -30,9 +35,17 @@ namespace Infrastructure
             Time.timeScale = 0.0f;
         }
 
-        public void RestartScene()
+        public async UniTask ChangeScene(int sceneBuildIndex, CancellationToken token=default)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            await SceneManager.LoadSceneAsync(LOADING_SCENE_NAME);
+
+            _providerService.ReleaseAllAssets();
+
+            await _providerService.LoadMultipleAssetsByLabel("Level_1", token);
+
+            await SceneManager.LoadSceneAsync(sceneBuildIndex, LoadSceneMode.Single);
+
+            SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
         }
 
         public void LoadMainMenuScene()
@@ -43,13 +56,6 @@ namespace Infrastructure
         public void Exit()
         {
             Application.Quit();
-        }
-
-        private void InitializeHUDScene(Scene scene, LoadSceneMode loadMode)
-        {
-            if (scene.name == MAIN_MENU_SCENE_NAME || scene.name == HUD_SCENE_NAME) return;
-
-            SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
         }
     }
 }
