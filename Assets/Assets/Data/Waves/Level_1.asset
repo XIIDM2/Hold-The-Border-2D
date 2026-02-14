@@ -16,23 +16,8 @@ MonoBehaviour:
   _wavesConfigs:
   - _unitsConfigs:
     - _type: 0
-      _amount: 2
-      _intervalCurrent: 1
-      _intervalNext: 2
-      _path: 0
-    - _type: 1
-      _amount: 2
-      _intervalCurrent: 1
-      _intervalNext: 2
-      _path: 0
-    - _type: 2
-      _amount: 3
+      _amount: 1
       _intervalCurrent: 0
-      _intervalNext: 1
-      _path: 0
-    - _type: 4
-      _amount: 2
-      _intervalCurrent: 4
       _intervalNext: 0
       _path: 0
     _waveInterval: 0

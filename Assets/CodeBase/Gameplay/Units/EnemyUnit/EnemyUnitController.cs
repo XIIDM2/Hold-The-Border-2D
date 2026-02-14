@@ -4,6 +4,7 @@ using Data;
 using Gameplay.Path;
 using Gameplay.Player;
 using Gameplay.Units.Enemy.FSM;
+using Gameplay.Units.FSM;
 using Infrastructure.Factories;
 using Infrastructure.Interfaces;
 using UnityEngine;
@@ -24,6 +25,8 @@ namespace Gameplay.Units.Enemy
 
         [Header("FSM")]
         public EnemyUnitMoveState MoveState { get; private set; }
+        public EnemyUnitDeathState DeathState { get; private set; }
+        public EnemyUnitDissolveState DissolveState { get; private set; }
 
         private int _currentHealth; // For DamagePopup
 
@@ -38,6 +41,10 @@ namespace Gameplay.Units.Enemy
         {
             MoveState = new EnemyUnitMoveState();
 
+            DeathState = new EnemyUnitDeathState();
+
+            DissolveState = new EnemyUnitDissolveState();
+
             ActionFSM = new FiniteStateMachine<EnemyUnitController>();
             ActionFSM.StateInit(MoveState, this);
 
@@ -46,13 +53,11 @@ namespace Gameplay.Units.Enemy
 
         private void OnEnable()
         {
-            Health.Death += DestroyUnit;
             Health.HealthChanged += OnDamageRecieved;
         }
 
         private void OnDisable()
         {
-            Health.Death -= DestroyUnit;
             Health.HealthChanged -= OnDamageRecieved;
         }
 
@@ -74,7 +79,7 @@ namespace Gameplay.Units.Enemy
             _currentHealth = healthAfterDamage;
         }
 
-        public void DestroyUnit(IDamageable damageable)
+        public void DestroyUnit()
         {
             Destroy(gameObject);
         }

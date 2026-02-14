@@ -1,5 +1,6 @@
 using Core.Interfaces;
 
+
 namespace Core.FSM
 {
     public class FiniteStateMachine<T> where T : IControllable

@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67196708af5835946a440b395aac93ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitController
-  _currentHealth: 0
 --- !u!1 &4644839957556240327
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a58887dd9a3dad4dbc5579a75c3bba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitAnimation
+  _canDissolve: 1
 --- !u!1001 &503866568792958481
 PrefabInstance:
   m_ObjectHideFlags: 0

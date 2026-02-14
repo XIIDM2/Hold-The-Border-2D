@@ -35,11 +35,13 @@ namespace Gameplay.UI
         private void OnEnable()
         {
             _health.HealthChanged += OnHealthChanged;
+            _health.Death += OnDeath;
         }
 
         private void OnDisable()
         {
             _health.HealthChanged -= OnHealthChanged;
+            _health.Death -= OnDeath;
         }
 
         private void OnHealthChanged(int amount)
@@ -47,6 +49,11 @@ namespace Gameplay.UI
             _healthSlider.value = amount;
 
             _damagedBar.DOFillAmount(_healthSlider.value / _health.MaxHealth, _fillSpeed).SetDelay(_fillDelay).SetLink(gameObject, LinkBehaviour.KillOnDisable);
+        }
+
+        private void OnDeath(IDamageable damageable)
+        {
+            gameObject.SetActive(false);
         }
 
     }

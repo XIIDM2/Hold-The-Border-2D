@@ -1,12 +1,26 @@
+using Core.FSM;
 using Gameplay.Units.FSM;
+using Infrastructure.Interfaces;
 
 namespace Gameplay.Units.Enemy.FSM
 {
     public class EnemyUnitMoveState : UnitState<EnemyUnitController>
     {
+        private bool isDead = false;
+
+        public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
+        {
+            if (isDead) return controller.DeathState;
+
+            return base.HandleTransitions(controller);
+        }
+
         public override void Enter(EnemyUnitController controller)
         {
             base.Enter(controller);
+
+            controller.Health.Death += OnDeath;
+
             controller.Animation.SetBool(controller.Animation.IsMovingHash, true);
         }
 
@@ -24,7 +38,7 @@ namespace Gameplay.Units.Enemy.FSM
                 if (controller.Pathing.HasReachedEnd())
                 {
                     controller.Player.Health.TakeDamage(controller.PathEndDamage);
-                    controller.DestroyUnit(controller.Health);
+                    controller.DestroyUnit();
                     return;
                 }
 
@@ -42,7 +56,14 @@ namespace Gameplay.Units.Enemy.FSM
         {
             base.Exit(controller);
 
+            controller.Health.Death -= OnDeath;
+
             controller.Animation.SetBool(controller.Animation.IsMovingHash, false);
+        }
+
+        private void OnDeath(IDamageable damageable)
+        {
+            isDead = true;
         }
     }
 }

@@ -292,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a58887dd9a3dad4dbc5579a75c3bba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitAnimation
+  _canDissolve: 1
 --- !u!1001 &2188964242343002703
 PrefabInstance:
   m_ObjectHideFlags: 0
