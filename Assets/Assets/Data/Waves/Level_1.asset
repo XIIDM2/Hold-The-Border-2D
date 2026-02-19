@@ -15,9 +15,9 @@ MonoBehaviour:
   _wavesStartTimer: 0
   _wavesConfigs:
   - _unitsConfigs:
-    - _type: 0
+    - _type: 3
       _amount: 1
-      _intervalCurrent: 0
+      _intervalCurrent: 1
       _intervalNext: 0
       _path: 0
     _waveInterval: 0

@@ -51,12 +51,12 @@ namespace Gameplay.Units.Enemy
             _currentHealth = Health.CurrentHealth;
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             Health.HealthChanged += OnDamageRecieved;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             Health.HealthChanged -= OnDamageRecieved;
         }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &481578899114936050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1642663163766561856}
+  m_Layer: 0
+  m_Name: SecondSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642663163766561856
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481578899114936050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.12, y: -0.324, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7006279119600490094}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2422115259116329252
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +44,7 @@ GameObject:
   - component: {fileID: 4875361252986551951}
   - component: {fileID: -6773740713251604946}
   - component: {fileID: 8688920723153410881}
-  - component: {fileID: 6722440969848927301}
+  - component: {fileID: 8200262927107672511}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -36,6 +67,8 @@ Transform:
   m_Children:
   - {fileID: 5135215501413132458}
   - {fileID: 1503512461771122202}
+  - {fileID: 5129856056979965011}
+  - {fileID: 1642663163766561856}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6251746102875843322
@@ -106,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UnitPathing
   _offset: 1
   _distance: 0.2
---- !u!114 &6722440969848927301
+--- !u!114 &8200262927107672511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,10 +148,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2422115259116329252}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67196708af5835946a440b395aac93ad, type: 3}
+  m_Script: {fileID: 11500000, guid: de599cb7e3682794888326314a0e81e1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::UnitController
-  _currentHealth: 0
+  m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Units.Enemy.SlimeController
+  _firstSpawnPosition: {fileID: 5129856056979965011}
+  _secondSpawnPosition: {fileID: 1642663163766561856}
 --- !u!1 &4644839957556240327
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,6 +327,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a58887dd9a3dad4dbc5579a75c3bba9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UnitAnimation
+  _canDissolve: 0
+--- !u!1 &7384224315227785205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5129856056979965011}
+  m_Layer: 0
+  m_Name: FirstSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5129856056979965011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7384224315227785205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.12, y: -0.324, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7006279119600490094}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4331328576006713618
 PrefabInstance:
   m_ObjectHideFlags: 0

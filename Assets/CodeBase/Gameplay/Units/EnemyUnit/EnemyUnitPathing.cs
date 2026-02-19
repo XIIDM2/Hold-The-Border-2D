@@ -6,15 +6,15 @@ namespace Gameplay.Units.Enemy
     public class EnemyUnitPathing : MonoBehaviour
     {
         public Vector2 WaypointPosition { get; private set; }
+        public Waypoint CurrentWaypoint { get; private set; }
 
         [SerializeField] private float _offset = 1.0f;
         [SerializeField] private float _distance = 0.2f;
 
-        private Waypoint _currentWaypoint;
 
         public void Init(Waypoint startWaypoint)
         {
-            _currentWaypoint = startWaypoint;
+            CurrentWaypoint = startWaypoint;
             AddRandomOffset();
         }
 
@@ -25,19 +25,19 @@ namespace Gameplay.Units.Enemy
 
         public void SetNextWaypoint()
         {
-            _currentWaypoint = _currentWaypoint.Next;
+            CurrentWaypoint = CurrentWaypoint.Next;
 
             AddRandomOffset();
         }
 
         public bool HasReachedEnd()
         {
-            return _currentWaypoint == null;
+            return CurrentWaypoint == null;
         }
 
         private void AddRandomOffset()
         {
-            if (_currentWaypoint != null) WaypointPosition = Random.insideUnitCircle * _offset + (Vector2)_currentWaypoint.transform.position;
+            if (CurrentWaypoint != null) WaypointPosition = Random.insideUnitCircle * _offset + (Vector2)CurrentWaypoint.transform.position;
         }
 
     }
