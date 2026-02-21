@@ -22,7 +22,7 @@ namespace Gameplay.UI
             _health = transform.root.GetComponent<EnemyUnitController>().Health;
         }
 
-        private void Start()
+        public void Init()
         {
             _healthSlider.wholeNumbers = true;
 
@@ -30,6 +30,8 @@ namespace Gameplay.UI
             _healthSlider.value = _health.CurrentHealth;
 
             _damagedBar.fillAmount = _health.CurrentHealth;
+
+            gameObject.SetActive(true);
         }
 
         private void OnEnable()

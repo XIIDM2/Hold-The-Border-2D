@@ -2,6 +2,7 @@ using Core.Utilities;
 using Core.Utilities.CustomProperties;
 using Infrastructure.Interfaces;
 using UnityEngine;
+using UnityEngine.Pool;
 
 namespace Gameplay.Projectiles
 {
@@ -14,6 +15,8 @@ namespace Gameplay.Projectiles
         private ITargetable _target;
         private Vector2 _lastTargetPosition;
         private Vector2 _oldPosition;
+
+        private IObjectPool<Projectile> _pool;
 
 
         private void Update()
@@ -33,6 +36,11 @@ namespace Gameplay.Projectiles
             _damage = damage;
         }
 
+        public void InitPool(IObjectPool<Projectile> pool)
+        {
+            _pool = pool;
+        }
+
         public void SetTarget(ITargetable target)
         {
             _target = target;
@@ -45,6 +53,7 @@ namespace Gameplay.Projectiles
             if (Vector2.Distance(transform.position, _lastTargetPosition) < _minAttackDistance)
             {
                 ApplyDamageToTarget();
+                _pool.Release(this);
             }
         }
 
@@ -61,7 +70,6 @@ namespace Gameplay.Projectiles
         private void ApplyDamageToTarget()
         {
             _target?.Health.TakeDamage(_damage);
-            Destroy(gameObject);
         }
 
     }

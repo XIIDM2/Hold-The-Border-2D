@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Path;
 using Gameplay.Player;
+using Gameplay.UI;
 using Gameplay.Units.Enemy.FSM;
 using Gameplay.Units.FSM;
 using Infrastructure.Factories;
@@ -16,12 +17,17 @@ namespace Gameplay.Units.Enemy
     [RequireComponent(typeof(EnemyUnitPathing))]
     public class EnemyUnitController : BaseUnitController<EnemyUnitController>, ITargetable
     {
+        public EnemyUnitType Type {  get; private set; }
         public Vector2 Position => transform.position;
         public int PathEndDamage { get; private set; }
 
         [Header("Dependencies")]
         public IPlayerController Player {  get; private set; }
+        public UnitFactory UnitFactory { get; private set; }
+
         private IUIFactory _UIFactory;
+
+        private HealthBarUI _healthUI;
 
         [Header("FSM")]
         public EnemyUnitMoveState MoveState { get; private set; }
@@ -37,6 +43,14 @@ namespace Gameplay.Units.Enemy
             _UIFactory = UIFactory;
         }
 
+        protected override void Awake()
+        {
+            base.Awake();
+
+            _healthUI = GetComponentInChildren<HealthBarUI>();
+        }
+
+
         private void Start()
         {
             MoveState = new EnemyUnitMoveState();
@@ -47,8 +61,6 @@ namespace Gameplay.Units.Enemy
 
             ActionFSM = new FiniteStateMachine<EnemyUnitController>();
             ActionFSM.StateInit(MoveState, this);
-
-            _currentHealth = Health.CurrentHealth;
         }
 
         protected virtual void OnEnable()
@@ -63,14 +75,26 @@ namespace Gameplay.Units.Enemy
 
         public void Init(EnemyUnitData data, Waypoint start)
         {
+
             PathEndDamage = data.PathEndDamage;
 
             Health?.Init(data.MaxHealth);
+            _currentHealth = Health.CurrentHealth;
 
             if (Pathing) Pathing.Init(start);
             if (Movement) Movement.Init(data.MovementSpeed);
             if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
             if (Animation) Animation.Init(data.OverrideAnimations);
+
+            if(_healthUI) _healthUI.Init();
+
+            ActionFSM?.ChangeState(MoveState, this);
+        }
+
+        public void InitPool(EnemyUnitType type, UnitFactory unitFactory)
+        {
+            Type = type;
+            UnitFactory = unitFactory;
         }
 
         private void OnDamageRecieved(int healthAfterDamage)
@@ -83,6 +107,7 @@ namespace Gameplay.Units.Enemy
         {
             Destroy(gameObject);
         }
+
 
     }
 }

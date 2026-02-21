@@ -17,7 +17,7 @@ namespace Gameplay.Units.FSM
                 }
                 else
                 {
-                    controller.DestroyUnit();
+                    controller.UnitFactory.ReturnToPool(controller.Type, controller);
                 }
             }
 
@@ -26,6 +26,8 @@ namespace Gameplay.Units.FSM
 
         public override void Enter(EnemyUnitController controller)
         {
+            _isAnimationComplete = false;
+
             controller.Animation.DeathAnimationComplete += OnAnimationComplete;
 
             controller.Pathing.enabled = false;

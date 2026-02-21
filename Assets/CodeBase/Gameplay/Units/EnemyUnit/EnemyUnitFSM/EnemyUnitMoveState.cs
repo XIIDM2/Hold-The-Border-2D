@@ -19,6 +19,8 @@ namespace Gameplay.Units.Enemy.FSM
         {
             base.Enter(controller);
 
+            isDead = false;
+
             controller.Health.Death += OnDeath;
 
             controller.Animation.SetBool(controller.Animation.IsMovingHash, true);

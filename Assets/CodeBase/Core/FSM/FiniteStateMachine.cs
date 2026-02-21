@@ -37,7 +37,7 @@ namespace Core.FSM
             _currentState.FixedUpdate(controller);
         }
 
-        private void ChangeState(State<T> state, T controller)
+        public void ChangeState(State<T> state, T controller)
         {
             if (state != null && state != _currentState)
             {

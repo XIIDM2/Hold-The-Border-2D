@@ -13,7 +13,7 @@ namespace Gameplay.Units.FSM
 
         public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
         {
-            if (_isAnimationComplete) controller.DestroyUnit();
+            if (_isAnimationComplete) controller.UnitFactory.ReturnToPool(controller.Type, controller);
 
             return base.HandleTransitions(controller);
         }
@@ -21,6 +21,12 @@ namespace Gameplay.Units.FSM
         public override void Enter(EnemyUnitController controller)
         {
             base.Enter(controller);
+
+            _isAnimationComplete = false;
+
+            controller.Pathing.enabled = true;
+            controller.Attack.enabled = true;
+            controller.Movement.enabled = true;
 
             controller.Animation.DissolveAnimationComplete += OnAnimationComplete;
 
@@ -31,7 +37,10 @@ namespace Gameplay.Units.FSM
         {
             base.Exit(controller);
 
+
             controller.Animation.DissolveAnimationComplete -= OnAnimationComplete;
+
+            controller.Animation.SetBool(controller.Animation.IsDissolvingHash, false);
         }
 
         private async UniTaskVoid WaitBeforeDissolve(EnemyUnitController controller)
