@@ -15,11 +15,13 @@ namespace Infrastructure.Factories
         private readonly GameplayRegistry _gameplayRegistry;
         private readonly Dictionary<EnemyUnitType, Queue<EnemyUnitController>> _pools = new Dictionary<EnemyUnitType, Queue<EnemyUnitController>>();
 
+        private const int MAX_POOL_SIZE = 10;
 
         public UnitFactory(IAssetProviderService assetProvider, IObjectResolver objectResolver, GameplayRegistry gameplayRegistry) : base(assetProvider, objectResolver)
         {
             _gameplayRegistry = gameplayRegistry;
         }
+
 
         public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken)
         {
@@ -51,8 +53,23 @@ namespace Infrastructure.Factories
 
             return enemy;
         }
-        public void ReturnToPool(EnemyUnitType type, EnemyUnitController enemy)
+
+        public async UniTask InitPool(EnemyUnitType type, CancellationToken cancellationToken)
         {
+            for (int i = 0; i < MAX_POOL_SIZE; i++)
+            {
+                EnemyUnitData unitData = _gameplayRegistry.GetUnitData(type);
+
+                EnemyUnitController enemy = await Create<EnemyUnitController>(unitData.PrefabReference, Vector2.zero, cancellationToken);
+
+                enemy.InitPool(type, this);
+
+                ReturnToPool(type, enemy);
+            }
+        }
+
+        public void ReturnToPool(EnemyUnitType type, EnemyUnitController enemy)
+        { 
             enemy.gameObject.SetActive(false);
 
             if (!_pools.TryGetValue(type, out var pool))
@@ -62,7 +79,15 @@ namespace Infrastructure.Factories
 
             }
 
-            pool.Enqueue(enemy);
+            if (pool.Count >= MAX_POOL_SIZE)
+            {
+                Object.Destroy(enemy.gameObject);
+            }
+            else
+            {
+                pool.Enqueue(enemy);
+            }
+
         }
 
     }

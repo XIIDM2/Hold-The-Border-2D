@@ -1,8 +1,6 @@
-using Core.Interfaces;
 using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
 using Infrastructure.Services;
-using System.Threading;
 using UnityEngine;
 using VContainer;
 
@@ -18,19 +16,19 @@ namespace Infrastructure.Managers
         private IWaveControllerService _waveService;
         private ITowerFactory _towerFactory;
 
-        private LevelsLabels _levelLabel;
-
+ 
         [Inject]
-        public void Construct(IWaveControllerService waveService, ITowerFactory towerFactory, LevelsLabels levelLabel)
+        public void Construct(IWaveControllerService waveService, ITowerFactory towerFactory)
         {
             _waveService = waveService;
             _towerFactory = towerFactory;
-            _levelLabel = levelLabel;
         }
 
         public async void Awake()
         {
             _waveService.Init(_unitSpawnPoint.position);
+
+            await _waveService.InitUnitsPools(this.GetCancellationTokenOnDestroy());
 
             foreach (Transform point in _buildsitePoints)
             {

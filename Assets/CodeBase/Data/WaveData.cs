@@ -28,6 +28,7 @@ namespace Data
 
                 public PathType Path => _path;
 
+
                 [SerializeField] private EnemyUnitType _type;
                 [SerializeField] private int _amount;
 
@@ -39,10 +40,31 @@ namespace Data
             }
         }
 
-        [SerializeField] private float _wavesStartTimer;
-        [SerializeField] private WaveConfig[] _wavesConfigs;
-
         public float WavesStartTimer => _wavesStartTimer;
         public WaveConfig[] WavesConfigs => _wavesConfigs;
+        public List<EnemyUnitType> LevelUnitTypes  => _levelUnitTypes;
+
+        [SerializeField] private float _wavesStartTimer;
+        [SerializeField] private WaveConfig[] _wavesConfigs;
+        [SerializeField] private List<EnemyUnitType> _levelUnitTypes  = new List<EnemyUnitType>();
+
+        private void OnValidate()
+        {
+            _levelUnitTypes.Clear();
+
+            HashSet<EnemyUnitType> uniqueUnitTypes = new HashSet<EnemyUnitType>();
+
+            foreach (var waveConfig in _wavesConfigs)
+            {
+                foreach (var unitsConfig in waveConfig.UnitsConfigs)
+                {
+                    if (uniqueUnitTypes.Add(unitsConfig.Type))
+                    {
+                        _levelUnitTypes.Add(unitsConfig.Type);
+                    }
+                }
+            }
+        }
+
     }
 }

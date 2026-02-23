@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Path;
+using Gameplay.Units.Enemy;
 using Infrastructure.Factories;
 using System;
 using System.Threading;
@@ -11,15 +12,18 @@ namespace Infrastructure.Services
 {
     public class WaveControllerService : IWaveControllerService
     {
+
         public event UnityAction<int> NextWaveStarted;
         public int CurrentWaveIndex { get; private set; } = 1;
         public int WavesLength => _wavesData.WavesConfigs.Length;
 
         private Vector2 _spawnPosition;
-        private IUnitFactory _unitFactory;
-        private IPathProvider _pathProvider;
 
-        private WaveData _wavesData;
+
+        private readonly IUnitFactory _unitFactory;
+        private readonly IPathProvider _pathProvider;
+        private readonly WaveData _wavesData;
+
 
         public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, WaveData wavesData)
         {
@@ -33,15 +37,23 @@ namespace Infrastructure.Services
             _spawnPosition = spawnPosition;
         }
 
+        public async UniTask InitUnitsPools(CancellationToken cancellationToken)
+        {
+            foreach (EnemyUnitType type in _wavesData.LevelUnitTypes)
+            {
+                await _unitFactory.InitPool(type, cancellationToken);
+            }
+        }
+
         public async UniTask WavesLogicAsync(CancellationToken cancellationToken)
         {
            await UniTask.Delay(TimeSpan.FromSeconds(_wavesData.WavesStartTimer), cancellationToken: cancellationToken);
 
-            foreach (WaveData.WaveConfig wave in _wavesData.WavesConfigs)
+            foreach (var wave in _wavesData.WavesConfigs)
             {
                 NextWaveStarted?.Invoke(CurrentWaveIndex);
 
-                foreach (WaveData.WaveConfig.WaveUnitsConfig units in wave.UnitsConfigs)
+                foreach (var units in wave.UnitsConfigs)
                 {
                     for (int i = 0; i < units.Amount; i++)
                     {

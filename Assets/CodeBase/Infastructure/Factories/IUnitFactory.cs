@@ -8,6 +8,8 @@ namespace Infrastructure.Factories
 {
     public interface IUnitFactory
     {
-        UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken);   
+        UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken);
+        UniTask InitPool(EnemyUnitType type, CancellationToken cancellationToken);
+        void ReturnToPool(EnemyUnitType type, EnemyUnitController enemy);
     }
 }
