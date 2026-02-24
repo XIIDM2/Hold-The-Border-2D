@@ -108,7 +108,7 @@ namespace Gameplay.Towers
 
             Projectile projectile = _pool.Get();
             projectile.transform.position = _firePoint.transform.position;
-            projectile.SetTarget(_unitsInRange[0]);
+            projectile.SetTarget(_currentTarget);
 
             projectile.InitPool(_pool);
 
@@ -124,7 +124,7 @@ namespace Gameplay.Towers
                 {
                     if (_unitsInRange.Count == 0) yield break;
 
-                    attacker.SetTarget(_unitsInRange[0]);
+                    attacker.SetTarget(_currentTarget);
                     attacker.PlayAttackAnimation();
 
                     yield return _unitsSharedAttackCooldown;

@@ -259,6 +259,7 @@ MonoBehaviour:
   autoInjectGameObjects: []
   _levelLabel: 0
   _waveData: {fileID: 11400000, guid: 557ac4c51c4f577408cd4e7c006decb4, type: 2}
+  _baseTransform: {fileID: 1210103816}
 --- !u!1 &205286203
 GameObject:
   m_ObjectHideFlags: 0

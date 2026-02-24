@@ -1,15 +1,22 @@
 using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
+using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Managers;
 using Infrastructure.Services;
 using System;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Gameplay.UI
 {
     public class TowerPresenter : IStartable, IDisposable
     {
+        private const int CLOSEST_TO_TOWER_STRATEGY_INDEX = 1;
+        private const int CLOSEST_TO_BASE_STRATEGY_INDEX = 2;
+        private const int LOWEST_HEALTH_STRATEGY_INDEX = 3;
+
         private TowerController _tower;
+        private Transform _baseTransform;
 
         private TowerView _view;
 
@@ -18,8 +25,9 @@ namespace Gameplay.UI
 
         private LevelManager _manager;
 
-        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, LevelManager manager)
+        public TowerPresenter(Transform baseTransform, TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, LevelManager manager)
         {
+            _baseTransform = baseTransform;
             _view = view;
             _selectionService = selectionService;
             _buildService = buildService;
@@ -34,6 +42,8 @@ namespace Gameplay.UI
 
             _view.UpgradeRequested += Upgrade;
             _view.SellRequested += Sell;
+
+            _view.StrategyChanged += OnStrategyChanged;
         }
 
         public void Dispose()
@@ -44,6 +54,8 @@ namespace Gameplay.UI
 
             _view.UpgradeRequested -= Upgrade;
             _view.SellRequested -= Sell;
+
+            _view.StrategyChanged -= OnStrategyChanged;
         }
 
         private void ShowTowerView(TowerController tower)
@@ -78,6 +90,25 @@ namespace Gameplay.UI
             {
                 _buildService.SellTower(_tower, _manager.GetCancellationTokenOnDestroy()).Forget();
                 _selectionService.ClearTowerSelection();
+            }
+        }
+
+        private void OnStrategyChanged(int strategyIndex)
+        {
+            if (_selectionService.Tower)
+            {
+                switch (strategyIndex)
+                {
+                    case CLOSEST_TO_TOWER_STRATEGY_INDEX:
+                        _tower.Attack.SelectStrategy(new ClosestToTowerStrategy(_tower.transform.position));
+                        break;
+                    case CLOSEST_TO_BASE_STRATEGY_INDEX:
+                        _tower.Attack.SelectStrategy(new ClosestToBaseStrategy(_baseTransform.position));
+                        break;
+                    case LOWEST_HEALTH_STRATEGY_INDEX:
+                        _tower.Attack.SelectStrategy(new LowestHealthStrategy());
+                        break;
+                }
             }
         }
 

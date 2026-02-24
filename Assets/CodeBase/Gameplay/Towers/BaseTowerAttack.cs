@@ -1,4 +1,5 @@
 using Core.Utilities.CustomProperties;
+using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ namespace Gameplay.Towers
 {
     public abstract class BaseTowerAttack : MonoBehaviour
     {
+        private const float TIME_TO_UPDATE_STRATEGY = 0.5f;
         public IReadOnlyList<ITargetable> UnitsInRange => _unitsInRange;
 
         [SerializeField, ReadOnly] protected int _damage;
@@ -16,12 +18,39 @@ namespace Gameplay.Towers
         protected List<ITargetable> _unitsInRange = new List<ITargetable>();
         protected Dictionary<IDamageable, ITargetable> _targetsInRange = new Dictionary<IDamageable, ITargetable>();
 
+        protected ITargetable _currentTarget;
+
         protected Coroutine _attackCoroutine;
+
+        private ITowerSelectionTargetStrategy _currentStrategy;
+        private float _updateStrategyTimer;
+
+        private void Update()
+        {
+            _updateStrategyTimer += Time.deltaTime;
+
+            if (_updateStrategyTimer > TIME_TO_UPDATE_STRATEGY)
+            {
+                _currentTarget = _currentStrategy.SelectTarget(_unitsInRange);
+                _updateStrategyTimer = 0;
+                Debug.Log(_currentStrategy);
+            }
+
+            
+        }
 
         public virtual void Init(int damage, float cooldown)
         {
             _damage = damage;
             _cooldown = cooldown;
+
+            SelectStrategy(new ClosestToTowerStrategy(transform.position));
+            _currentStrategy.SelectTarget(_unitsInRange);
+        }
+
+        public void SelectStrategy(ITowerSelectionTargetStrategy strategy)
+        {
+            _currentStrategy = strategy;
         }
 
         public void Attack()

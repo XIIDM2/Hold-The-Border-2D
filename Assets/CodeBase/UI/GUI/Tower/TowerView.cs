@@ -10,6 +10,7 @@ namespace Gameplay.UI
         public event UnityAction UpgradeRequested;
         public event UnityAction SellRequested;
         public event UnityAction UpgradeButtonHowevered;
+        public event UnityAction<int> StrategyChanged;
 
         public Button UpgradeButton => _upgradeButton;
         public Button SellButton => _sellButton;
@@ -32,7 +33,6 @@ namespace Gameplay.UI
 
         [SerializeField] private TMP_Text _attackRangeOldText;
         [SerializeField] private TMP_Text _attackRangeNewText;
-
 
         private void Start()
         {
@@ -102,5 +102,9 @@ namespace Gameplay.UI
             UpgradeButtonHowevered?.Invoke();
         }
 
+        public void OnStrategyButtonClicked(int strategyIndex)
+        {
+            StrategyChanged?.Invoke(strategyIndex);
+        }
     }
 }
