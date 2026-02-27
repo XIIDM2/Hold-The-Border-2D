@@ -33,10 +33,7 @@ namespace Gameplay.Towers
             {
                 _currentTarget = _currentStrategy.SelectTarget(_unitsInRange);
                 _updateStrategyTimer = 0;
-                Debug.Log(_currentStrategy);
-            }
-
-            
+            }      
         }
 
         public virtual void Init(int damage, float cooldown)

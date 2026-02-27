@@ -7,6 +7,7 @@ namespace Gameplay.Units.Enemy
     {
         public Vector2 WaypointPosition { get; private set; }
         public Waypoint CurrentWaypoint { get; private set; }
+        public int CurrentWaypointIndex { get; private set; } = 0;
 
         [SerializeField] private float _offset = 1.0f;
         [SerializeField] private float _distance = 0.2f;
@@ -26,6 +27,8 @@ namespace Gameplay.Units.Enemy
         public void SetNextWaypoint()
         {
             CurrentWaypoint = CurrentWaypoint.Next;
+
+            CurrentWaypointIndex++;
 
             AddRandomOffset();
         }

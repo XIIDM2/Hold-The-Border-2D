@@ -1,3 +1,4 @@
+using Gameplay.Units.Enemy;
 using Infrastructure.Interfaces;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,13 +19,24 @@ namespace Gameplay.Towers.TargetSelectionStrategies
             if (targetables.Count == 0) return null;
 
             ITargetable target = targetables[0];
+            int closestWaypointIndex = -1;
 
             foreach (ITargetable targetable in targetables)
             {
-                if (Vector2.Distance(target.Position, _basePosition) > Vector2.Distance(targetable.Position, _basePosition))
+                if (targetable is EnemyUnitController enemy)
                 {
-                    target = targetable;
+                    if (closestWaypointIndex < enemy.Pathing.CurrentWaypointIndex)
+                    {
+                        closestWaypointIndex = enemy.Pathing.CurrentWaypointIndex;
+                        target = targetable;
+                    }
                 }
+                else
+                {
+                    // TODO: When neutural objects will be added, need to add logic here
+                    continue;
+                }
+ 
             }
 
             return target;
