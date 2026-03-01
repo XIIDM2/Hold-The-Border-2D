@@ -7,18 +7,11 @@ namespace Gameplay.Towers.TargetSelectionStrategies
 {
     public class ClosestToBaseStrategy : ITowerSelectionTargetStrategy
     {
-        private Vector2 _basePosition;
-
-        public ClosestToBaseStrategy(Vector2 basePosition)
-        {
-            _basePosition = basePosition;
-        }
-
         public ITargetable SelectTarget(List<ITargetable> targetables)
         {
             if (targetables.Count == 0) return null;
 
-            ITargetable target = targetables[0];
+            ITargetable target = null;
             int closestWaypointIndex = -1;
 
             foreach (ITargetable targetable in targetables)
@@ -30,6 +23,13 @@ namespace Gameplay.Towers.TargetSelectionStrategies
                         closestWaypointIndex = enemy.Pathing.CurrentWaypointIndex;
                         target = targetable;
                     }
+                    else if (closestWaypointIndex == enemy.Pathing.CurrentWaypointIndex)
+                    {
+                        float currentDist = Vector2.Distance(target.Position, enemy.Pathing.CurrentWaypoint.transform.position);
+                        float targetDist = Vector2.Distance(enemy.transform.position, enemy.Pathing.CurrentWaypoint.transform.position);
+
+                        target = currentDist >= targetDist ? target : enemy;
+                    }
                 }
                 else
                 {
@@ -38,7 +38,7 @@ namespace Gameplay.Towers.TargetSelectionStrategies
                 }
  
             }
-
+            Debug.Log($"Selected: ID={target.GetHashCode()} waypoint={closestWaypointIndex} pos={target.Position}");
             return target;
         }
     }

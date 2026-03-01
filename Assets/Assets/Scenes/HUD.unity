@@ -4332,6 +4332,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7824145408897947380, guid: 8cfed3177cbc1f14a971adb7c5fafed7, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnUpgradeButtonPointerEnter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824145408897947380, guid: 8cfed3177cbc1f14a971adb7c5fafed7, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnUpgradeButtonPointerExit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7824145408897947380, guid: 8cfed3177cbc1f14a971adb7c5fafed7, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Gameplay.UI.TowerView, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8758667806613914201, guid: 8cfed3177cbc1f14a971adb7c5fafed7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

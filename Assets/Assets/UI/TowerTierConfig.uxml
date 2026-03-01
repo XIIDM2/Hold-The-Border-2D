@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:Label name="TowerTierHeader" text="Tower Tier Details" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 14px; letter-spacing: 5px; -unity-text-outline-width: 0.5px; padding-top: 5px;"/>
+    <ui:Label name="TowerTierHeader" text="Tower Tier Details" style="-unity-text-align: upper-center; -unity-font-style: bold; font-size: 18px; letter-spacing: 5px; -unity-text-outline-width: 1px; padding-top: 5px; margin-bottom: 10px; padding-bottom: 5px; text-shadow: 0 0 0 rgba(0, 0, 0, 0); word-spacing: 5px; background-color: rgb(51, 47, 47); border-left-color: rgb(255, 249, 249); border-right-color: rgb(255, 249, 249); border-top-color: rgb(255, 249, 249); border-bottom-color: rgb(255, 249, 249);"/>
     <uie:PropertyField label="Projectile Prefab" binding-path="_projectilePrefab"/>
     <ui:Foldout text="Stats&#10;" name="Foldout" style="-unity-text-align: upper-left;">
         <ui:IntegerField label="Damage" value="0" binding-path="_damage"/>
@@ -8,7 +8,7 @@
         <ui:IntegerField label="Upgrade Price" value="0" binding-path="_upgradePrice" name="IntegerField"/>
         <ui:IntegerField label="Sell Price" value="0" binding-path="_sellPrice" name="IntegerField"/>
     </ui:Foldout>
-    <ui:Foldout text="Visuals&#10;">
+    <ui:Foldout text="Visuals&#10;" style="margin-bottom: 0; padding-bottom: 20px;">
         <uie:PropertyField label="Attackers Module Prefab" binding-path="_attackersModulePrefab"/>
         <uie:PropertyField label="Upgrade Animation" binding-path="_upgradeAnimation" name="PropertyField"/>
         <uie:PropertyField label="Idle Animation" binding-path="_idleAnimation"/>

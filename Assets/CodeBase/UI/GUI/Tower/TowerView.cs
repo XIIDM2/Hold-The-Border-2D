@@ -9,7 +9,8 @@ namespace Gameplay.UI
     {
         public event UnityAction UpgradeRequested;
         public event UnityAction SellRequested;
-        public event UnityAction UpgradeButtonHowevered;
+        public event UnityAction UpgradeButtonPointerEnter;
+        public event UnityAction UpgradeButtonPointerExit;
         public event UnityAction<int> StrategyChanged;
 
         public Button UpgradeButton => _upgradeButton;
@@ -97,9 +98,14 @@ namespace Gameplay.UI
             SellRequested?.Invoke();
         }
 
-        public void OnUpgradeButtonHovered()
+        public void OnUpgradeButtonPointerEnter()
         {
-            UpgradeButtonHowevered?.Invoke();
+            UpgradeButtonPointerEnter?.Invoke();
+        }
+
+        public void OnUpgradeButtonPointerExit()
+        {
+            UpgradeButtonPointerExit?.Invoke();
         }
 
         public void OnStrategyButtonClicked(int strategyIndex)

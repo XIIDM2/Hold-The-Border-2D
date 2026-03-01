@@ -20,5 +20,17 @@ MonoBehaviour:
       _intervalCurrent: 2
       _intervalNext: 0
       _path: 0
+    - _type: 0
+      _amount: 20
+      _intervalCurrent: 2
+      _intervalNext: 0
+      _path: 0
+    _waveInterval: 0
+  - _unitsConfigs:
+    - _type: 0
+      _amount: 20
+      _intervalCurrent: 2
+      _intervalNext: 0
+      _path: 0
     _waveInterval: 0
   _levelUnitTypes: 00000000

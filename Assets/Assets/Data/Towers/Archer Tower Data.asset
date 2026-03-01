@@ -28,7 +28,7 @@ MonoBehaviour:
     _sellPrice: 50
     _damage: 1
     _attackCooldown: 2
-    _attackRadius: 10
+    _attackRadius: 3
     _attackersModulePrefab: {fileID: 4042472692339305226, guid: 4396d5ee86b0e8b48ae000e55462b0af, type: 3}
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: 67964e5fbaec30b478283c9277be8aed, type: 2}

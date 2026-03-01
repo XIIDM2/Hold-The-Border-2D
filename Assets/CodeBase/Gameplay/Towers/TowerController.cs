@@ -11,7 +11,7 @@ using VContainer;
 
 namespace Gameplay.Towers
 {
-    public class TowerController : MonoBehaviour, IControllable, IPointerClickHandler
+    public class TowerController : MonoBehaviour, IControllable, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
     {
         public UnityAction UpgradeRequested;
         public int CurrentTierIndex { get; private set; }
@@ -34,12 +34,14 @@ namespace Gameplay.Towers
 
 
         private ITowerSelectionService _selectionService;
+        private RadiusVisualizerService _radiusVisualizerService;
         private TowerData _data;
 
         [Inject]
-        public void Construct(ITowerSelectionService selectionService)
+        public void Construct(ITowerSelectionService selectionService, RadiusVisualizerService radiusVisualizerService)
         {
             _selectionService = selectionService;
+            _radiusVisualizerService = radiusVisualizerService;
         }
 
         private void Awake()
@@ -93,6 +95,16 @@ namespace Gameplay.Towers
             _selectionService.SelectTower(this);
         }
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _radiusVisualizerService.ShowVisualizer(this, CurrentTierConfig.AttackRadius);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _radiusVisualizerService.HideVisualizer();
+        }
+
         public void Init(TowerData data)
         {
             _data = data;
@@ -127,7 +139,5 @@ namespace Gameplay.Towers
 
             CurrentTierIndex++;
         }
-
-
     }
 }

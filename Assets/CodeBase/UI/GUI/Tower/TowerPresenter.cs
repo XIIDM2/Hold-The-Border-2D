@@ -23,22 +23,26 @@ namespace Gameplay.UI
         private ITowerSelectionService _selectionService;
         private ITowerBuildService _buildService;
 
+        private RadiusVisualizerService _radiusVisualizerService;
         private LevelManager _manager;
 
-        public TowerPresenter(Transform baseTransform, TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, LevelManager manager)
+        public TowerPresenter(Transform baseTransform, TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, RadiusVisualizerService radiusVisualizerService, LevelManager manager)
         {
             _baseTransform = baseTransform;
             _view = view;
             _selectionService = selectionService;
             _buildService = buildService;
+            _radiusVisualizerService = radiusVisualizerService;
             _manager = manager;
         }
 
         public void Start()
         {
             _selectionService.TowerSelected += ShowTowerView;
-            _selectionService.TowerDeselected += _view.HideTowerPanel;
-            _view.UpgradeButtonHowevered += ShowUpgradePanel;
+            _selectionService.TowerDeselected += HideTowerView;
+
+            _view.UpgradeButtonPointerEnter += ShowUpgradePanel;
+            _view.UpgradeButtonPointerExit += HideUpgradePanel;
 
             _view.UpgradeRequested += Upgrade;
             _view.SellRequested += Sell;
@@ -49,8 +53,10 @@ namespace Gameplay.UI
         public void Dispose()
         {
             _selectionService.TowerSelected -= ShowTowerView;
-            _selectionService.TowerDeselected -= _view.HideTowerPanel;
-            _view.UpgradeButtonHowevered -= ShowUpgradePanel;
+            _selectionService.TowerDeselected -= HideTowerView;
+
+            _view.UpgradeButtonPointerEnter -= ShowUpgradePanel;
+            _view.UpgradeButtonPointerExit -= HideUpgradePanel;
 
             _view.UpgradeRequested -= Upgrade;
             _view.SellRequested -= Sell;
@@ -65,6 +71,14 @@ namespace Gameplay.UI
             if (tower.CurrentTierIndex >= tower.MaxTier) _view.UpgradeButton.gameObject.SetActive(false);
 
             _view.ShowTowerPanel(tower.CurrentTierConfig.UpgradePrice.ToString(), tower.CurrentTierConfig.SellPrice.ToString(), tower.transform.position);
+
+            _radiusVisualizerService.ShowVisualizer(_tower, _tower.CurrentTierConfig.AttackRadius);
+        }
+
+        private void HideTowerView()
+        {
+            _view.HideTowerPanel();
+            _radiusVisualizerService.HideVisualizer();
         }
 
         private void ShowUpgradePanel()
@@ -73,6 +87,15 @@ namespace Gameplay.UI
                 _tower.CurrentTierConfig.Damage.ToString(), _tower.NextTierConfig.Damage.ToString(),
                 _tower.CurrentTierConfig.AttackCooldown.ToString(), _tower.NextTierConfig.AttackCooldown.ToString(),
                 _tower.CurrentTierConfig.AttackRadius.ToString(), _tower.NextTierConfig.AttackRadius.ToString());
+
+            _radiusVisualizerService.ShowVisualizer(_tower, _tower.NextTierConfig.AttackRadius);
+        }
+
+        private void HideUpgradePanel()
+        {
+            _view.HideUpgradePanel();
+
+            _radiusVisualizerService.ShowVisualizer(_tower, _tower.CurrentTierConfig.AttackRadius);
         }
 
         private void Upgrade()
@@ -81,6 +104,7 @@ namespace Gameplay.UI
             {
                 _buildService.UpgradeTower(_tower);
                 _selectionService.ClearTowerSelection();
+                _radiusVisualizerService.HideVisualizer();
             }
         }
 
@@ -103,7 +127,7 @@ namespace Gameplay.UI
                         _tower.Attack.SelectStrategy(new ClosestToTowerStrategy(_tower.transform.position));
                         break;
                     case CLOSEST_TO_BASE_STRATEGY_INDEX:
-                        _tower.Attack.SelectStrategy(new ClosestToBaseStrategy(_baseTransform.position));
+                        _tower.Attack.SelectStrategy(new ClosestToBaseStrategy());
                         break;
                     case LOWEST_HEALTH_STRATEGY_INDEX:
                         _tower.Attack.SelectStrategy(new LowestHealthStrategy());
