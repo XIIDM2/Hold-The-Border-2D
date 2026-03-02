@@ -7,17 +7,22 @@ namespace Gameplay.UI
 {
     public class TowerView : MonoBehaviour
     {
+        public event UnityAction ControllerPointerExit;
+
         public event UnityAction UpgradeRequested;
         public event UnityAction SellRequested;
+
         public event UnityAction UpgradeButtonPointerEnter;
         public event UnityAction UpgradeButtonPointerExit;
+
         public event UnityAction<int> StrategyChanged;
 
         public Button UpgradeButton => _upgradeButton;
         public Button SellButton => _sellButton;
 
-        [Header("Upgrade/Sell Panel")]
         [SerializeField] private GameObject _controllerPanel;
+
+        [Header("Upgrade/Sell Panel")]
         [SerializeField] private Button _upgradeButton;
         [SerializeField] private Button _sellButton;
         [SerializeField] private TMP_Text _upgradeText;
@@ -86,6 +91,12 @@ namespace Gameplay.UI
         public void HideUpgradePanel()
         {
             _informationPanel.SetActive(false);
+        }
+
+        public void OnControllerPointerExit()
+        {
+            Debug.Log("Exited");
+            ControllerPointerExit?.Invoke();
         }
 
         public void OnUpgradeClicked()

@@ -1,6 +1,7 @@
 using Core.FSM;
 using Core.Interfaces;
 using Data;
+using DG.Tweening;
 using Gameplay.Towers.FSM;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
@@ -34,14 +35,16 @@ namespace Gameplay.Towers
 
 
         private ITowerSelectionService _selectionService;
-        private RadiusVisualizerService _radiusVisualizerService;
         private TowerData _data;
 
+        private Tween _highlightTween;
+        private float _highlightSize = 1.3f;
+        private float _highlightDuration = 0.5f;
+
         [Inject]
-        public void Construct(ITowerSelectionService selectionService, RadiusVisualizerService radiusVisualizerService)
+        public void Construct(ITowerSelectionService selectionService)
         {
             _selectionService = selectionService;
-            _radiusVisualizerService = radiusVisualizerService;
         }
 
         private void Awake()
@@ -60,6 +63,8 @@ namespace Gameplay.Towers
 
             ActionFSM = new FiniteStateMachine<TowerController>();
             ActionFSM.StateInit(IdleState, this);
+
+            _highlightTween = transform.DOScale(_highlightSize, _highlightDuration).SetAutoKill(false).SetLink(gameObject, LinkBehaviour.KillOnDestroy).Pause();
         }
 
         private void OnEnable()
@@ -97,12 +102,12 @@ namespace Gameplay.Towers
 
         public void OnPointerEnter(PointerEventData eventData)
         {
-            _radiusVisualizerService.ShowVisualizer(this, CurrentTierConfig.AttackRadius);
+            _highlightTween.PlayForward();
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
-            _radiusVisualizerService.HideVisualizer();
+            _highlightTween.PlayBackwards();
         }
 
         public void Init(TowerData data)

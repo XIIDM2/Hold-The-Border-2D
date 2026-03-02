@@ -41,6 +41,8 @@ namespace Gameplay.UI
             _selectionService.TowerSelected += ShowTowerView;
             _selectionService.TowerDeselected += HideTowerView;
 
+            _view.ControllerPointerExit += HideTowerView;
+
             _view.UpgradeButtonPointerEnter += ShowUpgradePanel;
             _view.UpgradeButtonPointerExit += HideUpgradePanel;
 
@@ -54,6 +56,8 @@ namespace Gameplay.UI
         {
             _selectionService.TowerSelected -= ShowTowerView;
             _selectionService.TowerDeselected -= HideTowerView;
+
+            _view.ControllerPointerExit -= HideTowerView;
 
             _view.UpgradeButtonPointerEnter -= ShowUpgradePanel;
             _view.UpgradeButtonPointerExit -= HideUpgradePanel;
