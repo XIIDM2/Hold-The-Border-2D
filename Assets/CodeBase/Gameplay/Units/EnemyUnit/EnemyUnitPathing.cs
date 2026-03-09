@@ -11,8 +11,6 @@ namespace Gameplay.Units.Enemy
 
         [SerializeField] private float _offset = 1.0f;
         [SerializeField] private float _distance = 0.2f;
-
-
         public void Init(Waypoint startWaypoint)
         {
             CurrentWaypoint = startWaypoint;

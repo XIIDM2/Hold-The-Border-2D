@@ -19,11 +19,9 @@ namespace Infrastructure.Services
 
         private Vector2 _spawnPosition;
 
-
         private readonly IUnitFactory _unitFactory;
         private readonly IPathProvider _pathProvider;
         private readonly WaveData _wavesData;
-
 
         public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, WaveData wavesData)
         {

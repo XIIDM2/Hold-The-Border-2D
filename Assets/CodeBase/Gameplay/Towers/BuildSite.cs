@@ -19,6 +19,7 @@ namespace Gameplay.Towers.BuildSite
         {
             _selectionService = selectionService;
         }
+
         private void Start()
         {
             _highlightTween = transform.DOScale(_highlightSize, _highlightDuration).SetAutoKill(false).SetLink(gameObject, LinkBehaviour.KillOnDestroy).Pause();

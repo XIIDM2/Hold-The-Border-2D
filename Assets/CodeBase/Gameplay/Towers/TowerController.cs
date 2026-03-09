@@ -53,15 +53,16 @@ namespace Gameplay.Towers
             Attack = GetComponent<BaseTowerAttack>();
 
             Animation = GetComponentInChildren<TowerAnimation>();
-        }
 
-        private void Start()
-        {
             UpgradeState = new TowerUpgradeState();
             IdleState = new TowerIdleState();
             AttackState = new TowerAttackState();
 
             ActionFSM = new FiniteStateMachine<TowerController>();
+        }
+
+        private void Start()
+        {
             ActionFSM.StateInit(IdleState, this);
 
             _highlightTween = transform.DOScale(_highlightSize, _highlightDuration).SetAutoKill(false).SetLink(gameObject, LinkBehaviour.KillOnDestroy).Pause();

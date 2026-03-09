@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Infrastructure.Services
 {
-    public class RadiusVisualizerService : MonoBehaviour
+    public class RadiusVisualizerService : MonoBehaviour, IRadiusVisualizerService
     {
         [SerializeField] private GameObject _radiusVisualizerPrefab;
 

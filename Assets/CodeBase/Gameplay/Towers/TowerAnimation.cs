@@ -20,7 +20,10 @@ namespace Gameplay.Towers
         {
             _animator = GetComponent<Animator>();
             _overrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
+        }
 
+        private void Start()
+        {
             _animator.runtimeAnimatorController = _overrideController;
         }
 

@@ -32,8 +32,12 @@ namespace Gameplay.Units
             _animator = GetComponent<Animator>();
 
             _animatorOverrideController = new AnimatorOverrideController(_animator.runtimeAnimatorController);
-            _animator.runtimeAnimatorController = _animatorOverrideController;
 
+        }
+
+        private void Start()
+        {
+            _animator.runtimeAnimatorController = _animatorOverrideController;
         }
 
         public void Init<T>(T data) where T : AnimationOverrideData

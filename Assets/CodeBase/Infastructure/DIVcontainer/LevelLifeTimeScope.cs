@@ -32,9 +32,9 @@ namespace Infrastructure.DI
             builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);
 
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
-            builder.RegisterComponentInHierarchy<RadiusVisualizerService>();
+            builder.RegisterComponentInHierarchy<RadiusVisualizerService>().AsImplementedInterfaces();
 
-            builder.RegisterComponentInHierarchy<LevelManager>();
+            builder.RegisterComponentInHierarchy<LevelManager>().AsImplementedInterfaces();
         }
     }
 }

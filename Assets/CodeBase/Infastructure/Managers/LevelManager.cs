@@ -6,7 +6,7 @@ using VContainer;
 
 namespace Infrastructure.Managers
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : MonoBehaviour, ILevelManager
     {
         [Header("Level Settings")]
         [SerializeField] private Transform _unitSpawnPoint;
@@ -16,7 +16,8 @@ namespace Infrastructure.Managers
         private IWaveControllerService _waveService;
         private ITowerFactory _towerFactory;
 
- 
+        public GameObject GameObject => this.gameObject;
+
         [Inject]
         public void Construct(IWaveControllerService waveService, ITowerFactory towerFactory)
         {

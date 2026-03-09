@@ -11,9 +11,9 @@ namespace Infrastructure.Services
 
         public event UnityAction BuildSiteDeselected;
         public event UnityAction TowerDeselected;
+
         public BuildSite BuildSite { get; private set; }
         public TowerController Tower { get; private set; }
-
 
         public void SelectBuildSite(BuildSite site)
         {

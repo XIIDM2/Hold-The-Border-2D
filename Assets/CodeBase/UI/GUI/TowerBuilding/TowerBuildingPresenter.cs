@@ -16,6 +16,7 @@ namespace Gameplay.UI
     public class TowerBuildingPresenter : IAsyncStartable, IDisposable
     {
         private List<TowerBuildingStatsView> _towerStatsViews = new List<TowerBuildingStatsView>();
+
         private readonly TowerBuildingView _view;
 
         private readonly IUIFactory _UIFactory;
@@ -24,9 +25,9 @@ namespace Gameplay.UI
 
         private readonly SceneController _controller;
         private readonly GameplayRegistry _registry;
-        private readonly LevelManager _manager;
+        private readonly ILevelManager _manager;
 
-        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, SceneController controller, GameplayRegistry registry, LevelManager manager)
+        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, SceneController controller, GameplayRegistry registry, ILevelManager manager)
         {
             _view = view;
             _UIFactory = uIFactory;
@@ -94,7 +95,7 @@ namespace Gameplay.UI
 
         private void Build(TowerType type)
         {
-            if (_selectionService.BuildSite) _buildService.BuildTower(type, _selectionService.BuildSite, _manager.GetCancellationTokenOnDestroy()).Forget();
+            if (_selectionService.BuildSite) _buildService.BuildTower(type, _selectionService.BuildSite, _manager.GameObject.GetCancellationTokenOnDestroy()).Forget();
             _selectionService.ClearBuildSiteSelection();
         }
     }

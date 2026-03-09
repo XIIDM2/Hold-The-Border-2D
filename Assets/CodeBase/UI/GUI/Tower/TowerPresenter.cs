@@ -23,10 +23,10 @@ namespace Gameplay.UI
         private ITowerSelectionService _selectionService;
         private ITowerBuildService _buildService;
 
-        private RadiusVisualizerService _radiusVisualizerService;
-        private LevelManager _manager;
+        private IRadiusVisualizerService _radiusVisualizerService;
+        private ILevelManager _manager;
 
-        public TowerPresenter(Transform baseTransform, TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, RadiusVisualizerService radiusVisualizerService, LevelManager manager)
+        public TowerPresenter(Transform baseTransform, TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IRadiusVisualizerService radiusVisualizerService, ILevelManager manager)
         {
             _baseTransform = baseTransform;
             _view = view;
@@ -116,7 +116,7 @@ namespace Gameplay.UI
         {
             if (_selectionService.Tower)
             {
-                _buildService.SellTower(_tower, _manager.GetCancellationTokenOnDestroy()).Forget();
+                _buildService.SellTower(_tower, _manager.GameObject.GetCancellationTokenOnDestroy()).Forget();
                 _selectionService.ClearTowerSelection();
             }
         }

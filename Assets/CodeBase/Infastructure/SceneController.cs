@@ -22,7 +22,7 @@ namespace Infrastructure
 
         public async UniTask StartAsync(CancellationToken cancellation = default)
         {
-            await ChangeScene(1, cancellation);
+            await ChangeScene(3, cancellation);
         }
 
         public void StartTime()

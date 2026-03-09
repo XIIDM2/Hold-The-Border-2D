@@ -12,15 +12,15 @@ namespace Infrastructure.Services
     public class TowerBuildService : ITowerBuildService
     {
         private IPlayerController _player;
-        private GameplayRegistry _gameplayRegistry;
-
         private ITowerFactory _factory;
 
-        public TowerBuildService(IPlayerController player, GameplayRegistry gameplayRegistry, ITowerFactory factory)
+        private GameplayRegistry _gameplayRegistry;
+
+        public TowerBuildService(IPlayerController player, ITowerFactory factory, GameplayRegistry gameplayRegistry)
         {
             _player = player;
-            _gameplayRegistry = gameplayRegistry;
             _factory = factory;
+            _gameplayRegistry = gameplayRegistry;
         }
 
 

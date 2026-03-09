@@ -13,16 +13,14 @@ namespace Gameplay.Units.Enemy
         [SerializeField] private Transform _secondSpawnPosition;
 
         private IUnitFactory _unitFactory;
-        private GameplayRegistry _registry;
+
         private LevelManager _manager;
 
         [Inject]
-        public void Construct(IUnitFactory unitFactory, GameplayRegistry registry,  LevelManager manager)
+        public void Construct(IUnitFactory unitFactory,  LevelManager manager)
         {
             _unitFactory = unitFactory;
-            _registry = registry;
             _manager = manager;
-
         }
 
         protected override void OnEnable()
