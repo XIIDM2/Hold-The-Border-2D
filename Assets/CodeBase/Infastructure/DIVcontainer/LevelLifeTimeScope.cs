@@ -26,7 +26,7 @@ namespace Infrastructure.DI
             builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
 
             builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
-            builder.Register<IWaveControllerService, WaveControllerService>(Lifetime.Singleton);
+            builder.Register<WaveControllerService>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
             builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);

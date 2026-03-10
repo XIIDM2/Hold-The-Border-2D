@@ -23,5 +23,5 @@ MonoBehaviour:
   _maxHealth: 5
   _movementSpeed: 1
   _attackDamage: 1
-  _pathEndDamage: 1
+  _pathEndDamage: 10
   _attackCooldown: 1

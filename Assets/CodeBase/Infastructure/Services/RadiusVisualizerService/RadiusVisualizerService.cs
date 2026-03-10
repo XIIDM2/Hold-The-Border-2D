@@ -20,7 +20,6 @@ namespace Infrastructure.Services
             HideVisualizer();
 
             _radiusVisualizer.transform.position =  tower.transform.position;
-            _radiusVisualizer.transform.SetParent(tower.transform);
             _radiusVisualizer.transform.localScale = 2f * radius * Vector3.one;
 
             _radiusVisualizer.SetActive(true);

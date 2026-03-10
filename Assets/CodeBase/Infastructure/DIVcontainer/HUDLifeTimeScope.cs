@@ -8,12 +8,14 @@ namespace Infrastructure.DI
     {
         protected override void Configure(IContainerBuilder builder)
         {
+            builder.RegisterComponentInHierarchy<ResultView>();
             builder.RegisterComponentInHierarchy<PauseView>();
             builder.RegisterComponentInHierarchy<WavesView>();
             builder.RegisterComponentInHierarchy<PlayerStatsView>();
             builder.RegisterComponentInHierarchy<TowerBuildingView>();
             builder.RegisterComponentInHierarchy<TowerView>();
 
+            builder.Register<ResultPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<PausePresenter>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<WavesPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<PlayerStatsPresenter>(Lifetime.Scoped).AsImplementedInterfaces();

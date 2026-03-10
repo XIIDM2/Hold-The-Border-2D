@@ -7,10 +7,11 @@ namespace Infrastructure.Services
 {
     public interface IWaveControllerService
     {
-        public int CurrentWaveIndex { get; }
-        public int WavesLength { get; }
+        int CurrentWaveIndex { get; }
+        int WavesLength { get; }
 
-        public event UnityAction<int> NextWaveStarted;
+        event UnityAction<int> NextWaveStarted;
+        event UnityAction WaveFinished;
         void Init(Vector2 spawnPosition);
 
         UniTask InitUnitsPools(CancellationToken cancellationToken);

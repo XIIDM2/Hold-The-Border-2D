@@ -6,12 +6,14 @@ using Gameplay.Units.Enemy;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 using VContainer;
 
 namespace Infrastructure.Factories
 {
     public class UnitFactory : BaseFactory, IUnitFactory
     {
+        public event UnityAction<EnemyUnitController> UnitCreated;
         private readonly GameplayRegistry _gameplayRegistry;
         private readonly Dictionary<EnemyUnitType, Queue<EnemyUnitController>> _pools = new Dictionary<EnemyUnitType, Queue<EnemyUnitController>>();
 
@@ -50,6 +52,8 @@ namespace Infrastructure.Factories
             }
 
             enemy.Init(unitData, start);
+
+            UnitCreated?.Invoke(enemy);
 
             return enemy;
         }

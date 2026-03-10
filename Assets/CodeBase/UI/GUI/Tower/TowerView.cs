@@ -95,7 +95,6 @@ namespace Gameplay.UI
 
         public void OnControllerPointerExit()
         {
-            Debug.Log("Exited");
             ControllerPointerExit?.Invoke();
         }
 

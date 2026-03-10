@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using Data;
 using Infrastructure.Factories;
 using Infrastructure.Managers;
 using UnityEngine;
@@ -14,10 +13,10 @@ namespace Gameplay.Units.Enemy
 
         private IUnitFactory _unitFactory;
 
-        private LevelManager _manager;
+        private ILevelManager _manager;
 
         [Inject]
-        public void Construct(IUnitFactory unitFactory,  LevelManager manager)
+        public void Construct(IUnitFactory unitFactory,  ILevelManager manager)
         {
             _unitFactory = unitFactory;
             _manager = manager;
@@ -39,8 +38,8 @@ namespace Gameplay.Units.Enemy
 
         private void OnDeath()
         {
-            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _firstSpawnPosition.transform.position, _manager.GetCancellationTokenOnDestroy());
-            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _secondSpawnPosition.transform.position, _manager.GetCancellationTokenOnDestroy());
+            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _firstSpawnPosition.transform.position, _manager.GameObject.GetCancellationTokenOnDestroy());
+            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _secondSpawnPosition.transform.position, _manager.GameObject.GetCancellationTokenOnDestroy());
         }
     }
 }

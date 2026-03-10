@@ -42,15 +42,20 @@ namespace Data
 
         public float WavesStartTimer => _wavesStartTimer;
         public WaveConfig[] WavesConfigs => _wavesConfigs;
+        public int WaveUnitsAmount => _waveUnitsAmount;
         public List<EnemyUnitType> LevelUnitTypes  => _levelUnitTypes;
+
+        private const int SLIME_SPLIT_UNIT_AMOUNT = 2;
 
         [SerializeField] private float _wavesStartTimer;
         [SerializeField] private WaveConfig[] _wavesConfigs;
+        [SerializeField] private int _waveUnitsAmount;
         [SerializeField] private List<EnemyUnitType> _levelUnitTypes  = new List<EnemyUnitType>();
 
         private void OnValidate()
         {
             _levelUnitTypes.Clear();
+            _waveUnitsAmount = 0;
 
             HashSet<EnemyUnitType> uniqueUnitTypes = new HashSet<EnemyUnitType>();
 
@@ -61,6 +66,13 @@ namespace Data
                     if (uniqueUnitTypes.Add(unitsConfig.Type))
                     {
                         _levelUnitTypes.Add(unitsConfig.Type);
+                    }
+
+                    _waveUnitsAmount += unitsConfig.Amount;
+
+                    if (unitsConfig.Type == EnemyUnitType.Slime)
+                    {
+                        _waveUnitsAmount += unitsConfig.Amount * SLIME_SPLIT_UNIT_AMOUNT;
                     }
                 }
             }
