@@ -1,7 +1,6 @@
 using Gameplay.Units.Enemy;
 using Infrastructure.Interfaces;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Gameplay.Towers.TargetSelectionStrategies
 {
@@ -11,35 +10,36 @@ namespace Gameplay.Towers.TargetSelectionStrategies
         {
             if (targetables.Count == 0) return null;
 
-            ITargetable target = null;
-            int closestWaypointIndex = -1;
+            ITargetable currentTarget = targetables[0];
+            int higestWaypointIndex = -1;
+            float closestDistanceWaypoint = float.MaxValue;
 
-            foreach (ITargetable targetable in targetables)
+            foreach (ITargetable potentialTarget in targetables)
             {
-                if (targetable is EnemyUnitController enemy)
+                if (potentialTarget is EnemyUnitController potentialEnemy)
                 {
-                    if (closestWaypointIndex < enemy.Pathing.CurrentWaypointIndex)
-                    {
-                        closestWaypointIndex = enemy.Pathing.CurrentWaypointIndex;
-                        target = targetable;
-                    }
-                    else if (closestWaypointIndex == enemy.Pathing.CurrentWaypointIndex)
-                    {
-                        float currentDist = Vector2.Distance(target.Position, enemy.Pathing.CurrentWaypoint.transform.position);
-                        float targetDist = Vector2.Distance(enemy.transform.position, enemy.Pathing.CurrentWaypoint.transform.position);
+                    int currentWaypointIndex = potentialEnemy.Pathing.CurrentWaypointIndex;
+                    float currentDistanceWaypoint = (potentialEnemy.transform.position - potentialEnemy.Pathing.CurrentWaypoint.transform.position).sqrMagnitude;
 
-                        target = currentDist >= targetDist ? target : enemy;
+                    if (higestWaypointIndex < currentWaypointIndex)
+                    {
+                        higestWaypointIndex = currentWaypointIndex;
+                        closestDistanceWaypoint = currentDistanceWaypoint;
+                        currentTarget = potentialTarget;
+                    }
+                    else if (higestWaypointIndex == currentWaypointIndex)
+                    {
+                        if (closestDistanceWaypoint > currentDistanceWaypoint)
+                        {
+                            closestDistanceWaypoint = currentDistanceWaypoint;
+                            currentTarget = potentialTarget;
+                        }
                     }
                 }
-                else
-                {
-                    // TODO: When neutural objects will be added, need to add logic here
-                    continue;
-                }
- 
             }
-            Debug.Log($"Selected: ID={target.GetHashCode()} waypoint={closestWaypointIndex} pos={target.Position}");
-            return target;
+
+            return currentTarget;
         }
     }
+
 }

@@ -16,7 +16,6 @@ namespace Gameplay.UI
         private const int LOWEST_HEALTH_STRATEGY_INDEX = 3;
 
         private TowerController _tower;
-        private Transform _baseTransform;
 
         private TowerView _view;
 
@@ -26,9 +25,8 @@ namespace Gameplay.UI
         private IRadiusVisualizerService _radiusVisualizerService;
         private ILevelManager _manager;
 
-        public TowerPresenter(Transform baseTransform, TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IRadiusVisualizerService radiusVisualizerService, ILevelManager manager)
+        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IRadiusVisualizerService radiusVisualizerService, ILevelManager manager)
         {
-            _baseTransform = baseTransform;
             _view = view;
             _selectionService = selectionService;
             _buildService = buildService;

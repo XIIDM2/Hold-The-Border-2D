@@ -14,12 +14,10 @@ namespace Infrastructure.DI
     {
         [SerializeField] private LevelsLabels _levelLabel;
         [SerializeField] private WaveData _waveData;
-        [SerializeField] private Transform _baseTransform;
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_levelLabel);
             builder.RegisterInstance(_waveData);
-            builder.RegisterInstance(_baseTransform);
 
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);
