@@ -18,6 +18,7 @@ namespace Gameplay.Units.Enemy
     public class EnemyUnitController : BaseUnitController<EnemyUnitController>, ITargetable
     {
         public EnemyUnitType Type {  get; private set; }
+        public int GoldOnDeath { get; private set; }
         public Vector2 Position => transform.position;
         public int PathEndDamage { get; private set; }
 
@@ -75,6 +76,7 @@ namespace Gameplay.Units.Enemy
 
         public void Init(EnemyUnitData data, Waypoint start)
         {
+            GoldOnDeath = data.GoldOnDeath;
 
             PathEndDamage = data.PathEndDamage;
 

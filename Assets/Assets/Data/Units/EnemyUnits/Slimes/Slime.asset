@@ -20,6 +20,7 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _overrideAnimations: {fileID: 11400000, guid: 7603dadfeb89b4f4a843cf11440910fe, type: 2}
   _type: 3
+  _goldOnDeath: 100
   _maxHealth: 2
   _movementSpeed: 1
   _attackDamage: 0

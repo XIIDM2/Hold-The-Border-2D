@@ -7,6 +7,7 @@ namespace Data
     public class EnemyUnitData : UnitData
     {
         [SerializeField] private EnemyUnitType _type;
+        [SerializeField] private int _goldOnDeath;
 
         [SerializeField] private int _maxHealth;
         [SerializeField] private float _movementSpeed;
@@ -15,6 +16,7 @@ namespace Data
         [SerializeField] private float _attackCooldown;
 
         public EnemyUnitType Type => _type;
+        public int GoldOnDeath => _goldOnDeath;
         public int MaxHealth => _maxHealth;
         public float MovementSpeed => _movementSpeed;
         public int AttackDamage => _attackDamage;

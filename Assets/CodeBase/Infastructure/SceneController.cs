@@ -48,6 +48,13 @@ namespace Infrastructure
             SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
         }
 
+        public void RestartScene()
+        {
+            StartTime();
+            ChangeScene(SceneManager.GetActiveScene().buildIndex).Forget();
+
+        }
+
         public void LoadMainMenuScene()
         {
             SceneManager.LoadScene(MAIN_MENU_SCENE_NAME);

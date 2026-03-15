@@ -1,9 +1,6 @@
-using Cysharp.Threading.Tasks;
 using Infrastructure;
 using Infrastructure.Managers;
 using System;
-using UnityEngine.InputSystem.XR;
-using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
 namespace Gameplay.UI
@@ -27,8 +24,8 @@ namespace Gameplay.UI
             _manager.Victory += _view.ShowVictoryPanel;
             _manager.Defeat += _view.ShowDefeatPanel;
 
-            _view.RestartButton.onClick.AddListener(RestartLevel);    
-            _view.MainMenuButton.onClick.AddListener(ExitToMainMenu);    
+            _view.RestartButton.onClick.AddListener(_controller.RestartScene);    
+            _view.MainMenuButton.onClick.AddListener(_controller.LoadMainMenuScene);    
         }
 
         public void Dispose()
@@ -36,19 +33,9 @@ namespace Gameplay.UI
             _manager.Victory -= _view.ShowVictoryPanel;
             _manager.Defeat -= _view.ShowDefeatPanel;
 
-            _view.RestartButton.onClick.RemoveListener(RestartLevel);
-            _view.MainMenuButton.onClick.RemoveListener(ExitToMainMenu);
+            _view.RestartButton.onClick.RemoveListener(_controller.RestartScene);
+            _view.MainMenuButton.onClick.RemoveListener(_controller.LoadMainMenuScene);
         }
 
-        private void RestartLevel()
-        {
-            _controller.StartTime();
-            _controller.ChangeScene(SceneManager.GetActiveScene().buildIndex).Forget();
-        }
-
-        private void ExitToMainMenu()
-        {
-            _controller.LoadMainMenuScene();
-        }
     }
 }

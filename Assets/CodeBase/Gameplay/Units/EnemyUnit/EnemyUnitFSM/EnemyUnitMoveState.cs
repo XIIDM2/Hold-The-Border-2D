@@ -10,7 +10,11 @@ namespace Gameplay.Units.Enemy.FSM
 
         public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
         {
-            if (isDead) return controller.DeathState;
+            if (isDead)
+            {
+                controller.Player.AddGold(controller.GoldOnDeath);
+                return controller.DeathState;
+            }
 
             return base.HandleTransitions(controller);
         }

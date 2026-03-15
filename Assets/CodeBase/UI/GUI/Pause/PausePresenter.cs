@@ -1,7 +1,5 @@
-using Cysharp.Threading.Tasks;
 using Infrastructure;
 using System;
-using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
 namespace Gameplay.UI
@@ -21,16 +19,16 @@ namespace Gameplay.UI
         {
             _view.PauseButton.onClick.AddListener(PauseGame);
             _view.ContinueButton.onClick.AddListener(ContinueGame);
-            _view.RestartButton.onClick.AddListener(RestartLevel);
-            _view.MainMenuButton.onClick.AddListener(ExitToMainMenu);
+            _view.RestartButton.onClick.AddListener(_controller.RestartScene);
+            _view.MainMenuButton.onClick.AddListener(_controller.LoadMainMenuScene);
         }
 
         public void Dispose()
         {
             _view.PauseButton.onClick.RemoveListener(PauseGame);
             _view.ContinueButton.onClick.RemoveListener(ContinueGame);
-            _view.RestartButton.onClick.RemoveListener(RestartLevel);
-            _view.MainMenuButton.onClick.RemoveListener(ExitToMainMenu);
+            _view.RestartButton.onClick.RemoveListener(_controller.RestartScene);
+            _view.MainMenuButton.onClick.RemoveListener(_controller.LoadMainMenuScene);
         }
 
         private void PauseGame()
@@ -43,17 +41,6 @@ namespace Gameplay.UI
         {
             _controller.StartTime();
             _view.HidePanel();
-        }
-
-        private void RestartLevel()
-        {
-            _controller.StartTime();
-            _controller.ChangeScene(SceneManager.GetActiveScene().buildIndex).Forget();
-        }
-
-        private void ExitToMainMenu()
-        {
-            _controller.LoadMainMenuScene();
         }
     }
 }
