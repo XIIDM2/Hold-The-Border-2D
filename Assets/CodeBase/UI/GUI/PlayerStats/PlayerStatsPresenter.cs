@@ -19,14 +19,24 @@ namespace Gameplay.UI
         {
             _view.Init(_player.Health.CurrentHealth, _player.Gold);
 
-            _player.Health.HealthChanged += _view.OnHealthChanged;
-            _player.GoldChanged += _view.OnGoldChanged;
+            _player.Health.HealthChanged += OnHealthChanged;
+            _player.GoldChanged += OnGoldChanged;
         }
 
         public void Dispose()
         {
-            _player.Health.HealthChanged -= _view.OnHealthChanged;
-            _player.GoldChanged -= _view.OnGoldChanged;
+            _player.Health.HealthChanged -= OnHealthChanged;
+            _player.GoldChanged -= OnGoldChanged;
+        }
+
+        private void OnHealthChanged(int amount)
+        {
+            _view.OnHealthChanged(amount);
+        }
+
+        private void OnGoldChanged(int amount)
+        {
+            _view.OnGoldChanged(amount);
         }
     }
 }

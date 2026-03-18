@@ -39,15 +39,12 @@ namespace Data
 
             }
         }
-
-        public float WavesStartTimer => _wavesStartTimer;
         public WaveConfig[] WavesConfigs => _wavesConfigs;
         public int WaveUnitsAmount => _waveUnitsAmount;
         public List<EnemyUnitType> LevelUnitTypes  => _levelUnitTypes;
 
         private const int SLIME_SPLIT_UNIT_AMOUNT = 2;
 
-        [SerializeField] private float _wavesStartTimer;
         [SerializeField] private WaveConfig[] _wavesConfigs;
         [SerializeField] private int _waveUnitsAmount;
         [SerializeField] private List<EnemyUnitType> _levelUnitTypes  = new List<EnemyUnitType>();

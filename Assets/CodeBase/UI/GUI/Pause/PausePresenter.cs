@@ -17,30 +17,41 @@ namespace Gameplay.UI
 
         public void Start()
         {
-            _view.PauseButton.onClick.AddListener(PauseGame);
-            _view.ContinueButton.onClick.AddListener(ContinueGame);
-            _view.RestartButton.onClick.AddListener(_controller.RestartScene);
-            _view.MainMenuButton.onClick.AddListener(_controller.LoadMainMenuScene);
+            _view.PauseRequested += OnPauseRequested;
+            _view.ContinueRequested += OnContinueRequested;
+            _view.RestartRequested += OnRestartRequested;
+            _view.MainMenuRequested += OnMainMenuRequested;
+
         }
 
         public void Dispose()
         {
-            _view.PauseButton.onClick.RemoveListener(PauseGame);
-            _view.ContinueButton.onClick.RemoveListener(ContinueGame);
-            _view.RestartButton.onClick.RemoveListener(_controller.RestartScene);
-            _view.MainMenuButton.onClick.RemoveListener(_controller.LoadMainMenuScene);
+            _view.PauseRequested -= OnPauseRequested;
+            _view.ContinueRequested -= OnContinueRequested;
+            _view.RestartRequested -= OnRestartRequested;
+            _view.MainMenuRequested -= OnMainMenuRequested;
         }
 
-        private void PauseGame()
+        private void OnPauseRequested()
         {
             _controller.StopTime();
             _view.ShowPanel();
         }
 
-        private void ContinueGame()
+        private void OnContinueRequested()
         {
             _controller.StartTime();
             _view.HidePanel();
+        }
+
+        private void OnRestartRequested()
+        {
+            _controller.RestartScene();
+        }
+
+        private void OnMainMenuRequested()
+        {
+            _controller.LoadMainMenuScene();
         }
     }
 }

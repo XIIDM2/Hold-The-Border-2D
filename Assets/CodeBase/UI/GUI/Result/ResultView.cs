@@ -1,14 +1,14 @@
-using Infrastructure.Interfaces;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
     public class ResultView : MonoBehaviour
     {
-        public Button RestartButton => _restartButton;
-        public Button MainMenuButton => _maiMenuButton;
+        public event UnityAction RestartRequested;
+        public event UnityAction MainMenuRequested;
 
         [SerializeField] private GameObject _resultPanel;
 
@@ -20,6 +20,18 @@ namespace Gameplay.UI
         private void Start()
         {
             _resultPanel.SetActive(false);
+        }
+
+        private void OnEnable()
+        {
+            _restartButton.onClick.AddListener(OnRestartButtonClicked);
+            _maiMenuButton.onClick.AddListener(OnMainMenuBUttonClicked);
+        }
+
+        private void OnDisable()
+        {
+            _restartButton.onClick.RemoveListener(OnRestartButtonClicked);
+            _maiMenuButton.onClick.RemoveListener(OnMainMenuBUttonClicked);
         }
 
         public void ShowVictoryPanel()
@@ -37,6 +49,16 @@ namespace Gameplay.UI
         public void HidePanel()
         {
             _resultPanel.SetActive(false);
+        }
+
+        private void OnRestartButtonClicked()
+        {
+            RestartRequested?.Invoke(); 
+        }
+
+        private void OnMainMenuBUttonClicked()
+        {
+            MainMenuRequested?.Invoke();
         }
     }
 }

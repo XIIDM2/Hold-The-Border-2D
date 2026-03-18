@@ -54,17 +54,15 @@ namespace Gameplay.UI
 
                 towerPanelView.gameObject.transform.SetParent(_view.BuildingPanel.transform);
 
-                towerPanelView.BuildRequested += Build;
+                towerPanelView.BuildRequested += BuildRequested;
 
                 _towerStatsViews.Add(towerPanelView);
             }
 
-
-
             _selectionService.BuildsiteSelected += ShowBuildingPanel;
             _selectionService.BuildSiteDeselected += HideBuildingPanel;
 
-            _view.ClosePanelButton.onClick.AddListener(HideBuildingPanel);
+            _view.PanelCloseRequested += HideBuildingPanel;
 
         }
 
@@ -73,11 +71,11 @@ namespace Gameplay.UI
             _selectionService.BuildsiteSelected -= ShowBuildingPanel;
             _selectionService.BuildSiteDeselected -= HideBuildingPanel;
 
-            _view.ClosePanelButton.onClick.RemoveListener(HideBuildingPanel);
+            _view.PanelCloseRequested -= HideBuildingPanel;
 
             foreach (TowerBuildingStatsView towerPanelView in _towerStatsViews)
             {
-                towerPanelView.BuildRequested -= Build;
+                towerPanelView.BuildRequested -= BuildRequested;
             }
         }
 
@@ -93,7 +91,7 @@ namespace Gameplay.UI
             _controller.StartTime();
         }
 
-        private void Build(TowerType type)
+        private void BuildRequested(TowerType type)
         {
             if (_selectionService.BuildSite) _buildService.BuildTower(type, _selectionService.BuildSite, _manager.GameObject.GetCancellationTokenOnDestroy()).Forget();
             _selectionService.ClearBuildSiteSelection();

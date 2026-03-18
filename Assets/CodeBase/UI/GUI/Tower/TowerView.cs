@@ -18,7 +18,7 @@ namespace Gameplay.UI
         public event UnityAction<int> StrategyChanged;
 
         public Button UpgradeButton => _upgradeButton;
-        public Button SellButton => _sellButton;
+
 
         [SerializeField] private GameObject _controllerPanel;
 
@@ -48,14 +48,14 @@ namespace Gameplay.UI
 
         private void OnEnable()
         {
-            _upgradeButton.onClick.AddListener(OnUpgradeClicked);
-            _sellButton.onClick.AddListener(OnSellClicked);
+            _upgradeButton.onClick.AddListener(OnUpgradeButtonClicked);
+            _sellButton.onClick.AddListener(OnSellButtonClicked);
         }
 
         private void OnDisable()
         {
-            _upgradeButton.onClick.RemoveListener(OnUpgradeClicked);
-            _sellButton.onClick.RemoveListener(OnSellClicked);
+            _upgradeButton.onClick.RemoveListener(OnUpgradeButtonClicked);
+            _sellButton.onClick.RemoveListener(OnSellButtonClicked);
         }
 
         public void ShowTowerPanel(string upgradePrice, string sellPrice, Vector2 displayPosition)
@@ -98,12 +98,12 @@ namespace Gameplay.UI
             ControllerPointerExit?.Invoke();
         }
 
-        public void OnUpgradeClicked()
+        public void OnUpgradeButtonClicked()
         {
             UpgradeRequested?.Invoke();
         }
 
-        public void OnSellClicked()
+        public void OnSellButtonClicked()
         {
             SellRequested?.Invoke();
         }

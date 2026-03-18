@@ -1,15 +1,16 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
     public class PauseView : MonoBehaviour
     {
-        public Button PauseButton => _pauseButton;
-        public Button ContinueButton => _continueButton;
-        public Button RestartButton => _restartButton;
-        public Button SettingsButton => _settingsButton;
-        public Button MainMenuButton => _mainMenuButton;
+        public event UnityAction PauseRequested;
+        public event UnityAction ContinueRequested;
+        public event UnityAction RestartRequested;
+        public event UnityAction SettingsRequested;
+        public event UnityAction MainMenuRequested;
 
         [SerializeField] private GameObject _pausePanel;
 
@@ -18,7 +19,25 @@ namespace Gameplay.UI
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private Button _mainMenuButton;
-   
+
+        private void OnEnable()
+        {
+            _pauseButton.onClick.AddListener(OnPauseButtonClicked);
+            _continueButton.onClick.AddListener(OnContinueButtonClicked);
+            _restartButton.onClick.AddListener(OnRestartButtonClicked);
+            _settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+            _mainMenuButton.onClick.AddListener(OnMainMenuButtonClicked);
+        }
+
+        private void OnDisable()
+        {
+            _pauseButton.onClick.RemoveListener(OnPauseButtonClicked);
+            _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+            _restartButton.onClick.RemoveListener(OnRestartButtonClicked);
+            _settingsButton.onClick.RemoveListener(OnSettingsButtonClicked);
+            _mainMenuButton.onClick.RemoveListener(OnMainMenuButtonClicked);
+        }
+
         private void Start()
         {
             _pausePanel.SetActive(false);
@@ -32,6 +51,31 @@ namespace Gameplay.UI
         public void HidePanel()
         {
             _pausePanel.SetActive(false);
+        }
+
+        private void OnPauseButtonClicked()
+        {
+            PauseRequested?.Invoke();
+        }
+
+        private void OnContinueButtonClicked()
+        {
+            ContinueRequested?.Invoke();
+        }
+
+        private void OnRestartButtonClicked()
+        {
+            RestartRequested?.Invoke();
+        }
+
+        private void OnSettingsButtonClicked()
+        {
+            SettingsRequested?.Invoke();
+        }
+
+        private void OnMainMenuButtonClicked()
+        {
+            MainMenuRequested?.Invoke();
         }
     }
 }

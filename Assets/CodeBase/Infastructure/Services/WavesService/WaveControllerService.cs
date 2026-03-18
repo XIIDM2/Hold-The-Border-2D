@@ -9,13 +9,18 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer.Unity;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Infrastructure.Services
 {
     public class WaveControllerService : IWaveControllerService, IStartable, IDisposable
     {
         public event UnityAction<int> NextWaveStarted;
+        public event UnityAction<float> NextWaveTimerTicked;
         public event UnityAction WaveFinished;
+        public event UnityAction WavesCleared;
+
+        public bool IsLastWave => CurrentWaveIndex >= WavesLength;
         public int CurrentWaveIndex { get; private set; } = 1;
         public int WavesLength => _wavesData.WavesConfigs.Length;
 
@@ -25,7 +30,7 @@ namespace Infrastructure.Services
         private readonly IPathProvider _pathProvider;
         private readonly WaveData _wavesData;
 
-        private int UnitsAmount;
+        private int _unitsAmount;
 
         public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, WaveData wavesData)
         {
@@ -33,7 +38,7 @@ namespace Infrastructure.Services
             _pathProvider = pathProvider;
             _wavesData = wavesData;
 
-            UnitsAmount = _wavesData.WaveUnitsAmount;
+            _unitsAmount = _wavesData.WaveUnitsAmount;
         }
 
         public void Start()
@@ -61,8 +66,6 @@ namespace Infrastructure.Services
 
         public async UniTask WavesLogicAsync(CancellationToken cancellationToken)
         {
-           await UniTask.Delay(TimeSpan.FromSeconds(_wavesData.WavesStartTimer), cancellationToken: cancellationToken);
-
             foreach (var wave in _wavesData.WavesConfigs)
             {
                 NextWaveStarted?.Invoke(CurrentWaveIndex);
@@ -79,9 +82,21 @@ namespace Infrastructure.Services
                     await UniTask.Delay(TimeSpan.FromSeconds(units.IntervalNext), cancellationToken: cancellationToken);
                 }
 
+                WaveFinished?.Invoke();
+
                 CurrentWaveIndex++;
 
-                await UniTask.Delay(TimeSpan.FromSeconds(wave.WaveInterval), cancellationToken: cancellationToken);
+                float timeLeft = wave.WaveInterval;
+
+                while (timeLeft > 0)
+                {
+                    NextWaveTimerTicked?.Invoke(timeLeft);
+
+                    await UniTask.Delay(1000, cancellationToken: cancellationToken);
+
+                    timeLeft--;
+                }
+               
             }
 
             Debug.Log("All Waves Finished");
@@ -89,16 +104,16 @@ namespace Infrastructure.Services
 
         private void OnUnitCreated(EnemyUnitController enemy)
         {
-            enemy.Health.Death += OnUnitDeath;
+            enemy.Removed += OnUnitRemove;
         }
 
-        private void OnUnitDeath(IDamageable damageable)
+        private void OnUnitRemove(EnemyUnitController enemy)
         {
-            damageable.Death -= OnUnitDeath;
+            enemy.Removed += OnUnitRemove;
 
-            UnitsAmount--;
+            _unitsAmount--;
 
-            if (UnitsAmount == 0) WaveFinished?.Invoke();
+            if (_unitsAmount == 0) WavesCleared?.Invoke();
         }
 
     }

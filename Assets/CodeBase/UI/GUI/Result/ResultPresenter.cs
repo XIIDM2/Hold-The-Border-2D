@@ -21,20 +21,40 @@ namespace Gameplay.UI
 
         public void Start()
         {
-            _manager.Victory += _view.ShowVictoryPanel;
-            _manager.Defeat += _view.ShowDefeatPanel;
+            _manager.Victory += OnVictory;
+            _manager.Defeat += OnDefeat;
 
-            _view.RestartButton.onClick.AddListener(_controller.RestartScene);    
-            _view.MainMenuButton.onClick.AddListener(_controller.LoadMainMenuScene);    
+            _view.RestartRequested += OnRestartRequested;
+            _view.MainMenuRequested += OnMainMenuRequested;
         }
 
         public void Dispose()
         {
-            _manager.Victory -= _view.ShowVictoryPanel;
-            _manager.Defeat -= _view.ShowDefeatPanel;
+            _manager.Victory -= OnVictory;
+            _manager.Defeat -= OnDefeat;
 
-            _view.RestartButton.onClick.RemoveListener(_controller.RestartScene);
-            _view.MainMenuButton.onClick.RemoveListener(_controller.LoadMainMenuScene);
+            _view.RestartRequested -= OnRestartRequested;
+            _view.MainMenuRequested -= OnMainMenuRequested;
+        }
+
+        private void OnVictory()
+        {
+            _view.ShowVictoryPanel();
+        }
+
+        private void OnDefeat()
+        {
+            _view.ShowDefeatPanel();
+        }
+
+        private void OnRestartRequested()
+        {
+            _controller.RestartScene();
+        }
+
+        private void OnMainMenuRequested()
+        {
+            _controller.LoadMainMenuScene();
         }
 
     }

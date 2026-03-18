@@ -4,7 +4,6 @@ using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Managers;
 using Infrastructure.Services;
 using System;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace Gameplay.UI
@@ -44,8 +43,8 @@ namespace Gameplay.UI
             _view.UpgradeButtonPointerEnter += ShowUpgradePanel;
             _view.UpgradeButtonPointerExit += HideUpgradePanel;
 
-            _view.UpgradeRequested += Upgrade;
-            _view.SellRequested += Sell;
+            _view.UpgradeRequested += OnUpgradeRequested;
+            _view.SellRequested += OnSellRequested;
 
             _view.StrategyChanged += OnStrategyChanged;
         }
@@ -60,8 +59,8 @@ namespace Gameplay.UI
             _view.UpgradeButtonPointerEnter -= ShowUpgradePanel;
             _view.UpgradeButtonPointerExit -= HideUpgradePanel;
 
-            _view.UpgradeRequested -= Upgrade;
-            _view.SellRequested -= Sell;
+            _view.UpgradeRequested -= OnUpgradeRequested;
+            _view.SellRequested -= OnSellRequested;
 
             _view.StrategyChanged -= OnStrategyChanged;
         }
@@ -100,7 +99,7 @@ namespace Gameplay.UI
             _radiusVisualizerService.ShowVisualizer(_tower, _tower.CurrentTierConfig.AttackRadius);
         }
 
-        private void Upgrade()
+        private void OnUpgradeRequested()
         {
             if (_selectionService.Tower)
             {
@@ -110,7 +109,7 @@ namespace Gameplay.UI
             }
         }
 
-        private void Sell()
+        private void OnSellRequested()
         {
             if (_selectionService.Tower)
             {

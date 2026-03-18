@@ -8,5 +8,7 @@ namespace Infrastructure.Managers
         event UnityAction Victory;
         event UnityAction Defeat;
         GameObject GameObject { get; }
+
+        void StartWaves();
     }
 }

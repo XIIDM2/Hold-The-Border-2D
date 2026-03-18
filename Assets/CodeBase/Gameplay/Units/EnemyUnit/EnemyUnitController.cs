@@ -9,6 +9,8 @@ using Gameplay.Units.FSM;
 using Infrastructure.Factories;
 using Infrastructure.Interfaces;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.tvOS;
 using VContainer;
 
 namespace Gameplay.Units.Enemy
@@ -17,6 +19,7 @@ namespace Gameplay.Units.Enemy
     [RequireComponent(typeof(EnemyUnitPathing))]
     public class EnemyUnitController : BaseUnitController<EnemyUnitController>, ITargetable
     {
+        public event UnityAction<EnemyUnitController> Removed;
         public EnemyUnitType Type {  get; private set; }
         public int GoldOnDeath { get; private set; }
         public Vector2 Position => transform.position;
@@ -67,11 +70,13 @@ namespace Gameplay.Units.Enemy
         protected virtual void OnEnable()
         {
             Health.HealthChanged += OnDamageRecieved;
+            Health.Death += OnDeath;
         }
 
         protected virtual void OnDisable()
         {
             Health.HealthChanged -= OnDamageRecieved;
+            Health.Death -= OnDeath;
         }
 
         public void Init(EnemyUnitData data, Waypoint start)
@@ -105,8 +110,14 @@ namespace Gameplay.Units.Enemy
             _currentHealth = healthAfterDamage;
         }
 
+        private void OnDeath(IDamageable damageable)
+        {
+            Removed?.Invoke(this);
+        }
+
         public void DestroyUnit()
         {
+            Removed?.Invoke(this);
             Destroy(gameObject);
         }
 

@@ -49,20 +49,19 @@ namespace Infrastructure.Managers
                 await _towerFactory.CreateBuildSite(point.position, this.GetCancellationTokenOnDestroy());
             }
 
-            _waveService.WavesLogicAsync(this.GetCancellationTokenOnDestroy()).Forget();
         }
 
 
         void IStartable.Start()
         {
             _player.Health.Death += OnPlayerDeath;
-            _waveService.WaveFinished += OnWaveFinished;
+            _waveService.WavesCleared += OnWaveFinished;
         }
 
         public void Dispose()
         {
             _player.Health.Death -= OnPlayerDeath;
-            _waveService.WaveFinished -= OnWaveFinished;
+            _waveService.WavesCleared -= OnWaveFinished;
         }
 
         private void OnPlayerDeath(IDamageable _)
@@ -75,6 +74,11 @@ namespace Infrastructure.Managers
         {
             _sceneController.StopTime();
             Victory?.Invoke();
+        }
+
+        public void StartWaves()
+        {
+            _waveService.WavesLogicAsync(this.GetCancellationTokenOnDestroy()).Forget();
         }
     }
 }
