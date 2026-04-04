@@ -11,6 +11,8 @@ namespace Infrastructure.Services
         int CurrentWaveIndex { get; }
         int WavesLength { get; }
 
+        float TimerForNextWave { get; }
+
         event UnityAction<int> NextWaveStarted;
         event UnityAction<float> NextWaveTimerTicked;
         event UnityAction WaveFinished;
@@ -19,5 +21,7 @@ namespace Infrastructure.Services
 
         UniTask InitUnitsPools(CancellationToken cancellationToken);
         UniTask WavesLogicAsync(CancellationToken cancellationToken);
+
+        void SkipWaveTimer();
     }
 }

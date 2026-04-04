@@ -1,6 +1,7 @@
 using Gameplay.Player;
 using Infrastructure.Managers;
 using Infrastructure.Services;
+using NUnit.Framework.Internal.Commands;
 using System;
 using VContainer.Unity;
 
@@ -8,16 +9,17 @@ namespace Gameplay.UI
 {
     public class WavesPresenter : IStartable, IDisposable
     {
-
         private readonly WavesView _view;
-        private readonly IWaveControllerService _service;
 
+        private readonly IWaveControllerService _service;
+        private IPlayerController _player;
         private readonly ILevelManager _manager;
 
         public WavesPresenter(WavesView view, IWaveControllerService service, IPlayerController player, ILevelManager manager)
         {
             _view = view;
             _service = service;
+            _player = player;
             _manager = manager;
         }
 
@@ -26,6 +28,8 @@ namespace Gameplay.UI
             _view.Init(_service.CurrentWaveIndex, _service.WavesLength);
 
             _view.WavesStartRequested += OnWavesStartRequested;
+            _view.WavesTimerSkipRequested += OnWaveTimerSkipRequested;
+
             _service.NextWaveStarted += OnNextWaveStarted;
             _service.NextWaveTimerTicked += OnNextWaveTimerTicked;
             _service.WaveFinished += OnWaveFinished;
@@ -34,6 +38,8 @@ namespace Gameplay.UI
         public void Dispose()
         {
             _view.WavesStartRequested -= OnWavesStartRequested;
+            _view.WavesTimerSkipRequested -= OnWaveTimerSkipRequested;
+
             _service.NextWaveStarted -= OnNextWaveStarted;
             _service.NextWaveTimerTicked -= OnNextWaveTimerTicked;
             _service.WaveFinished -= OnWaveFinished;
@@ -42,6 +48,12 @@ namespace Gameplay.UI
         private void OnWavesStartRequested()
         {
             _manager.StartWaves();
+        }
+
+        private void OnWaveTimerSkipRequested()
+        {
+            _service.SkipWaveTimer();
+            _player.AddGold((int)_service.TimerForNextWave * _player.SkipWaveTimerGoldMultiplier);
         }
 
         private void OnNextWaveTimerTicked(float timeLeft)

@@ -10,6 +10,9 @@ namespace Gameplay.Player
         public event UnityAction<int> GoldChanged;
         public IDamageable Health { get; private set; }
         public int Gold { get; private set; }
+        public int Timer { get; private set; }
+
+        public int SkipWaveTimerGoldMultiplier { get; private set; } = 3;
 
         public PlayerController(PlayerData _data)
         {

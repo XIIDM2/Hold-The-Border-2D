@@ -8,6 +8,8 @@ namespace Gameplay.Player
         IDamageable Health { get; }
         int Gold { get; }
 
+        int SkipWaveTimerGoldMultiplier { get; }
+
         event UnityAction<int> GoldChanged;
         public bool TrySpendGold(int amount);
         public void AddGold(int amount);

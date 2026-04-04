@@ -24,6 +24,8 @@ namespace Infrastructure.Services
         public int CurrentWaveIndex { get; private set; } = 1;
         public int WavesLength => _wavesData.WavesConfigs.Length;
 
+        public float TimerForNextWave {  get; private set; }
+
         private Vector2 _spawnPosition;
 
         private readonly IUnitFactory _unitFactory;
@@ -31,6 +33,8 @@ namespace Infrastructure.Services
         private readonly WaveData _wavesData;
 
         private int _unitsAmount;
+
+        private CancellationTokenSource _skipWaveTimerTokenSource;
 
         public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, WaveData wavesData)
         {
@@ -86,20 +90,41 @@ namespace Infrastructure.Services
 
                 CurrentWaveIndex++;
 
-                float timeLeft = wave.WaveInterval;
+                _skipWaveTimerTokenSource = new CancellationTokenSource();
 
-                while (timeLeft > 0)
+                TimerForNextWave = wave.WaveInterval;
+
+                using (CancellationTokenSource linkedCtc = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, _skipWaveTimerTokenSource.Token))
                 {
-                    NextWaveTimerTicked?.Invoke(timeLeft);
+                    while (TimerForNextWave > 0)
+                    {
+                        NextWaveTimerTicked?.Invoke(TimerForNextWave);
 
-                    await UniTask.Delay(1000, cancellationToken: cancellationToken);
+                        bool isCancelled = await UniTask.Delay(1000, cancellationToken: linkedCtc.Token).SuppressCancellationThrow();
 
-                    timeLeft--;
+                        if (isCancelled)
+                        {
+                            if (cancellationToken.IsCancellationRequested) return;
+                            break;
+                        }
+
+                        TimerForNextWave--;
+                    }
                 }
-               
+
+
+                _skipWaveTimerTokenSource.Dispose();
+                _skipWaveTimerTokenSource = null;
+
+
             }
 
             Debug.Log("All Waves Finished");
+        }
+
+        public void SkipWaveTimer()
+        {
+            _skipWaveTimerTokenSource?.Cancel();
         }
 
         private void OnUnitCreated(EnemyUnitController enemy)
@@ -109,7 +134,7 @@ namespace Infrastructure.Services
 
         private void OnUnitRemove(EnemyUnitController enemy)
         {
-            enemy.Removed += OnUnitRemove;
+            enemy.Removed -= OnUnitRemove;
 
             _unitsAmount--;
 

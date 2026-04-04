@@ -15,39 +15,183 @@ MonoBehaviour:
   _wavesConfigs:
   - _unitsConfigs:
     - _type: 0
-      _amount: 2
-      _intervalCurrent: 0
-      _intervalNext: 5
-      _path: 0
-    - _type: 0
-      _amount: 4
-      _intervalCurrent: 1
+      _amount: 5
+      _intervalCurrent: 1.5
       _intervalNext: 0
       _path: 0
-    _waveInterval: 10
+    _waveInterval: 15
   - _unitsConfigs:
-    - _type: 1
-      _amount: 4
-      _intervalCurrent: 0
+    - _type: 0
+      _amount: 3
+      _intervalCurrent: 1.2
       _intervalNext: 3
       _path: 0
-    - _type: 0
-      _amount: 2
-      _intervalCurrent: 0
+    - _type: 1
+      _amount: 4
+      _intervalCurrent: 0.8
       _intervalNext: 0
       _path: 0
     _waveInterval: 15
   - _unitsConfigs:
     - _type: 2
+      _amount: 6
+      _intervalCurrent: 0.5
+      _intervalNext: 2
+      _path: 0
+    - _type: 0
       _amount: 3
-      _intervalCurrent: 0
+      _intervalCurrent: 1
+      _intervalNext: 0
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 3
+      _amount: 1
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _type: 0
+      _amount: 4
+      _intervalCurrent: 1
+      _intervalNext: 2
+      _path: 0
+    - _type: 1
+      _amount: 2
+      _intervalCurrent: 0.5
+      _intervalNext: 2
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 3
+      _amount: 1
+      _intervalCurrent: 1
+      _intervalNext: 1
+      _path: 0
+    - _type: 2
+      _amount: 5
+      _intervalCurrent: 0.5
       _intervalNext: 3
+      _path: 0
+    - _type: 3
+      _amount: 1
+      _intervalCurrent: 0.5
+      _intervalNext: 1
+      _path: 0
+    - _type: 1
+      _amount: 5
+      _intervalCurrent: 0.8
+      _intervalNext: 1
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 0
+      _amount: 5
+      _intervalCurrent: 0.8
+      _intervalNext: 0
+      _path: 0
+    - _type: 1
+      _amount: 4
+      _intervalCurrent: 0.5
+      _intervalNext: 0
+      _path: 0
+    - _type: 0
+      _amount: 10
+      _intervalCurrent: 0.8
+      _intervalNext: 0
+      _path: 0
+    - _type: 1
+      _amount: 4
+      _intervalCurrent: 0.5
+      _intervalNext: 1
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 3
+      _amount: 2
+      _intervalCurrent: 3
+      _intervalNext: 0
+      _path: 0
+    - _type: 2
+      _amount: 10
+      _intervalCurrent: 0.4
+      _intervalNext: 0
+      _path: 0
+    - _type: 3
+      _amount: 2
+      _intervalCurrent: 3
+      _intervalNext: 0
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 3
+      _amount: 1
+      _intervalCurrent: 0
+      _intervalNext: 0
+      _path: 0
+    - _type: 1
+      _amount: 15
+      _intervalCurrent: 0.5
+      _intervalNext: 0
       _path: 0
     - _type: 3
       _amount: 1
       _intervalCurrent: 0
       _intervalNext: 0
       _path: 0
-    _waveInterval: 5
-  _waveUnitsAmount: 18
+    - _type: 0
+      _amount: 5
+      _intervalCurrent: 1
+      _intervalNext: 1
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 0
+      _amount: 10
+      _intervalCurrent: 0.5
+      _intervalNext: 0
+      _path: 0
+    - _type: 2
+      _amount: 15
+      _intervalCurrent: 0.3
+      _intervalNext: 0
+      _path: 0
+    - _type: 0
+      _amount: 10
+      _intervalCurrent: 0.5
+      _intervalNext: 0
+      _path: 0
+    - _type: 1
+      _amount: 10
+      _intervalCurrent: 0.5
+      _intervalNext: 1
+      _path: 0
+    _waveInterval: 15
+  - _unitsConfigs:
+    - _type: 3
+      _amount: 3
+      _intervalCurrent: 2
+      _intervalNext: 0
+      _path: 0
+    - _type: 1
+      _amount: 10
+      _intervalCurrent: 0.5
+      _intervalNext: 4
+      _path: 0
+    - _type: 2
+      _amount: 10
+      _intervalCurrent: 0.2
+      _intervalNext: 3
+      _path: 0
+    - _type: 3
+      _amount: 5
+      _intervalCurrent: 3
+      _intervalNext: 0
+      _path: 0
+    - _type: 1
+      _amount: 10
+      _intervalCurrent: 0.5
+      _intervalNext: 0
+      _path: 0
+    _waveInterval: 15
+  _waveUnitsAmount: 216
   _levelUnitTypes: 00000000010000000200000003000000

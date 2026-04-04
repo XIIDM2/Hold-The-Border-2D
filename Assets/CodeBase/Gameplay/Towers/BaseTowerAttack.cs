@@ -33,7 +33,7 @@ namespace Gameplay.Towers
             {
                 _currentTarget = _currentStrategy.SelectTarget(_unitsInRange);
                 _updateStrategyTimer = 0;
-            }      
+            }  
         }
 
         public virtual void Init(int damage, float cooldown)
@@ -41,8 +41,11 @@ namespace Gameplay.Towers
             _damage = damage;
             _cooldown = cooldown;
 
-            SelectStrategy(new ClosestToTowerStrategy(transform.position));
-            _currentStrategy.SelectTarget(_unitsInRange);
+            if (_currentStrategy == null)
+            {
+                SelectStrategy(new ClosestToTowerStrategy(transform.position));
+                _currentStrategy.SelectTarget(_unitsInRange);
+            }
         }
 
         public void SelectStrategy(ITowerSelectionTargetStrategy strategy)

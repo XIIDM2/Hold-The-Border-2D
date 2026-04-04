@@ -99,7 +99,6 @@ namespace Gameplay.Towers
         public void InitProjectile(GameObject projectilePrefab)
         {
             _projectilePrefab = projectilePrefab.GetComponent<Projectile>();
-            _projectilePrefab.Init(_damage);
         }
 
         private void InstantiateProjectile(Transform _firePoint)
@@ -107,6 +106,8 @@ namespace Gameplay.Towers
             if (_unitsInRange.Count == 0) return;
 
             Projectile projectile = _pool.Get();
+
+            projectile.Init(_damage);
             projectile.transform.position = _firePoint.transform.position;
             projectile.SetTarget(_currentTarget);
 

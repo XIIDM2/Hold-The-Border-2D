@@ -9,6 +9,7 @@ namespace Gameplay.UI
     public class WavesView : MonoBehaviour
     {
         public event UnityAction WavesStartRequested;
+        public event UnityAction WavesTimerSkipRequested;
 
         [SerializeField] private TMP_Text _wavesText;
 
@@ -23,11 +24,13 @@ namespace Gameplay.UI
         private void OnEnable()
         {
             _startWavesButton.onClick.AddListener(OnStartWaveButtonClicked);
+            _skipTimerButton.onClick.AddListener(OnWaveTimerSkipButtonClicked);
         }
 
         private void OnDisable()
         {
             _startWavesButton.onClick.RemoveListener(OnStartWaveButtonClicked);
+            _skipTimerButton.onClick.RemoveListener(OnWaveTimerSkipButtonClicked);
         }
 
         public void Init(int currentWaveIndex, int maxWavesLength)
@@ -75,6 +78,12 @@ namespace Gameplay.UI
         {
             WavesStartRequested?.Invoke();
             _startWavesButton.gameObject.SetActive(false);
+        }
+
+        public void OnWaveTimerSkipButtonClicked()
+        {
+            WavesTimerSkipRequested?.Invoke();
+            _skipTimerButton.gameObject.SetActive(false);
         }
 
     }
