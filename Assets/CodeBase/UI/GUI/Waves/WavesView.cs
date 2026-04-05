@@ -19,7 +19,12 @@ namespace Gameplay.UI
         private Image _skipTimerImage;
 
         private int _maxWavesLength;
-        private Sequence _sequence = DOTween.Sequence();
+        private Sequence _sequence;
+
+        private void Awake()
+        {
+            _sequence = DOTween.Sequence();
+        }
 
         private void OnEnable()
         {
