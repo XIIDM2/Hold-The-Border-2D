@@ -12,6 +12,7 @@ namespace Gameplay.UI
         public event UnityAction SettingsRequested;
         public event UnityAction MainMenuRequested;
 
+        [SerializeField] private GameObject _dimmingPanel;
         [SerializeField] private GameObject _pausePanel;
 
         [SerializeField] private Button _pauseButton;
@@ -45,11 +46,13 @@ namespace Gameplay.UI
 
         public void ShowPanel()
         {
+            _dimmingPanel.SetActive(true);
             _pausePanel.SetActive(true);
         }
 
         public void HidePanel()
         {
+            _dimmingPanel.SetActive(false);
             _pausePanel.SetActive(false);
         }
 
