@@ -10,6 +10,7 @@ namespace Gameplay.UI
         public event UnityAction RestartRequested;
         public event UnityAction MainMenuRequested;
 
+        [SerializeField] private GameObject _dimmingPanel;
         [SerializeField] private GameObject _resultPanel;
 
         [SerializeField] private TMP_Text _resultText;
@@ -36,18 +37,21 @@ namespace Gameplay.UI
 
         public void ShowVictoryPanel()
         {
+            _dimmingPanel.SetActive(true);
             _resultText.text = "Victory!";
             _resultPanel.SetActive(true);
         }
 
         public void ShowDefeatPanel()
         {
+            _dimmingPanel.SetActive(true);
             _resultText.text = "Defeat!";
             _resultPanel.SetActive(true);
         }
 
         public void HidePanel()
         {
+            _dimmingPanel.SetActive(false);
             _resultPanel.SetActive(false);
         }
 
