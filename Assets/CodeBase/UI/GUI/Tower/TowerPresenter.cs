@@ -4,6 +4,7 @@ using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Managers;
 using Infrastructure.Services;
 using System;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Gameplay.UI
@@ -107,6 +108,8 @@ namespace Gameplay.UI
                 _selectionService.ClearTowerSelection();
                 _radiusVisualizerService.HideVisualizer();
             }
+
+            HideUpgradePanel();
         }
 
         private void OnSellRequested()
@@ -132,6 +135,9 @@ namespace Gameplay.UI
                         break;
                     case LOWEST_HEALTH_STRATEGY_INDEX:
                         _tower.Attack.SelectStrategy(new LowestHealthStrategy());
+                        break;
+                    default:
+                        Debug.Log("Strategy Index Not Found");
                         break;
                 }
             }

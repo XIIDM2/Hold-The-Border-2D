@@ -28,6 +28,9 @@ namespace Gameplay.UI
         [SerializeField] private TMP_Text _upgradeText;
         [SerializeField] private TMP_Text _sellText;
 
+        [SerializeField] private GameObject _toolTip;
+        [SerializeField] private TMP_Text _toolTipText;
+
         [Header("UpgradeInformationPanel")]
         [SerializeField] private GameObject _informationPanel;
 
@@ -44,6 +47,7 @@ namespace Gameplay.UI
         {
             HideTowerPanel();
             HideUpgradePanel();
+            HideToolTip();
         }
 
         private void OnEnable()
@@ -91,6 +95,17 @@ namespace Gameplay.UI
         public void HideUpgradePanel()
         {
             _informationPanel.SetActive(false);
+        }
+
+        public void ShowToolTip(string text)
+        {
+            _toolTipText.text = text;
+            _toolTip.SetActive(true);
+        }
+
+        public void HideToolTip()
+        {
+            _toolTip.SetActive(false);
         }
 
         public void OnControllerPointerExit()
