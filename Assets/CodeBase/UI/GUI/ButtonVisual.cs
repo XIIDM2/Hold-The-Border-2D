@@ -24,6 +24,11 @@ namespace Gameplay.UI
             _highlightTween = _button.transform.DOScale(_sizeIncrease, _increaseDuration).SetLink(gameObject, LinkBehaviour.KillOnDestroy).SetAutoKill(false).SetUpdate(true).Pause();
         }
 
+        private void OnDisable()
+        {
+            _highlightTween.Rewind();
+        }
+
         public void OnPointerEnter(PointerEventData eventData)
         {
             _highlightTween.PlayForward();

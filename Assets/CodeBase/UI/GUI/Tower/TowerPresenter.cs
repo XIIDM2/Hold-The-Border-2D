@@ -106,10 +106,10 @@ namespace Gameplay.UI
             {
                 _buildService.UpgradeTower(_tower);
                 _selectionService.ClearTowerSelection();
-                _radiusVisualizerService.HideVisualizer();
             }
 
-            HideUpgradePanel();
+            _view.HideUpgradePanel();
+            _radiusVisualizerService.HideVisualizer();
         }
 
         private void OnSellRequested()

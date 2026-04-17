@@ -3,13 +3,11 @@ using Data;
 using Gameplay.Path;
 using Gameplay.Units.Enemy;
 using Infrastructure.Factories;
-using Infrastructure.Interfaces;
 using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer.Unity;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Infrastructure.Services
 {
@@ -25,6 +23,8 @@ namespace Infrastructure.Services
         public int WavesLength => _wavesData.WavesConfigs.Length;
 
         public float TimerForNextWave {  get; private set; }
+
+        private const int TIMER_TICK = 1;
 
         private Vector2 _spawnPosition;
 
@@ -80,10 +80,10 @@ namespace Infrastructure.Services
                     {
                         await _unitFactory.CreateUnit(units.Type, _pathProvider.GetWaypoint(units.Path), _spawnPosition, cancellationToken);
 
-                        await UniTask.Delay(TimeSpan.FromSeconds(units.IntervalCurrent), cancellationToken : cancellationToken);
+                        await UniTask.WaitForSeconds(units.IntervalCurrent, cancellationToken : cancellationToken);
                     }
 
-                    await UniTask.Delay(TimeSpan.FromSeconds(units.IntervalNext), cancellationToken: cancellationToken);
+                    await UniTask.WaitForSeconds(units.IntervalNext, cancellationToken: cancellationToken);
                 }
 
                 WaveFinished?.Invoke();
@@ -100,7 +100,7 @@ namespace Infrastructure.Services
                     {
                         NextWaveTimerTicked?.Invoke(TimerForNextWave);
 
-                        bool isCancelled = await UniTask.Delay(1000, cancellationToken: linkedCtc.Token).SuppressCancellationThrow();
+                        bool isCancelled = await UniTask.WaitForSeconds(TIMER_TICK, cancellationToken: linkedCtc.Token).SuppressCancellationThrow();
 
                         if (isCancelled)
                         {
