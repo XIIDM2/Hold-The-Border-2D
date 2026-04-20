@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Cysharp.Threading.Tasks;
+using Gameplay.UI;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,9 +18,12 @@ namespace Infrastructure
 
         private readonly IAssetProviderService _providerService;
 
-        public SceneController(IAssetProviderService providerService)
+        private Fader _faderPrefab;
+
+        public SceneController(IAssetProviderService providerService, Fader faderPrefab)
         {
             _providerService = providerService;
+            _faderPrefab = faderPrefab;
         }
 
         public void StartTime()
@@ -34,7 +38,13 @@ namespace Infrastructure
 
         public async UniTask ChangeScene(int sceneBuildIndex, CancellationToken token=default)
         {
+            Fader fader = GameObject.Instantiate(_faderPrefab);
+
+            await fader.FadeSceen();
+
             await SceneManager.LoadSceneAsync(LOADING_SCENE_NAME);
+
+            await fader.UnFadeScreen();
 
             _providerService.ReleaseAllAssets();
 
@@ -42,9 +52,15 @@ namespace Infrastructure
 
             await UniTask.WaitForSeconds(FAKE_LOADING_TIME);
 
+            await fader.FadeSceen();
+
             await SceneManager.LoadSceneAsync(sceneBuildIndex, LoadSceneMode.Single);
 
+            await fader.UnFadeScreen();
+
             SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
+
+            GameObject.Destroy(fader);
         }
 
         public void RestartScene()
