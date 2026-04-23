@@ -19,10 +19,12 @@ namespace Infrastructure.DI
         {
             builder.RegisterInstance(_dataCatalog);
             builder.RegisterInstance(_playerData);
+
             builder.RegisterInstance(_faderPrefab);
 
             builder.Register<IAssetProviderService, AssetProviderService>(Lifetime.Singleton);
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf();
+            builder.Register<AudioService>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
 }

@@ -11,26 +11,19 @@ namespace Gameplay.UI
 
         [SerializeField] private Image _faderImage;
 
-        private Tween _fadeTween;
-
         private void Awake()
         {
-
-            _fadeTween = _faderImage.DOFade(1, _fadeDuration).SetAutoKill(false).SetLink(gameObject, LinkBehaviour.KillOnDisable).SetUpdate(true).Pause();
-
             DontDestroyOnLoad(gameObject);
         }
 
         public async UniTask FadeSceen()
         {
-            _fadeTween.PlayForward();
-            await _fadeTween.AsyncWaitForCompletion();
+            await _faderImage.DOFade(1, _fadeDuration).SetUpdate(true).ToUniTask();
         }
 
         public async UniTask UnFadeScreen()
         {
-            _fadeTween.PlayBackwards();
-            await _fadeTween.AsyncWaitForCompletion();
+            await _faderImage.DOFade(0, _fadeDuration).SetUpdate(true).ToUniTask();
         }
     }
 }

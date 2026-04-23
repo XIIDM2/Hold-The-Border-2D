@@ -56,9 +56,9 @@ namespace Infrastructure
 
             await SceneManager.LoadSceneAsync(sceneBuildIndex, LoadSceneMode.Single);
 
-            await fader.UnFadeScreen();
-
             SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
+
+            await fader.UnFadeScreen();
 
             GameObject.Destroy(fader);
         }

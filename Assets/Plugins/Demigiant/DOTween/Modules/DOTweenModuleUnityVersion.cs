@@ -213,7 +213,7 @@ namespace DG.Tweening
         /// It can be used inside an async operation.
         /// <para>Example usage:</para><code>await myTween.WaitForCompletion();</code>
         /// </summary>
-        public static async System.Threading.Tasks.Task AsyncWaitForCompletion(this Tween t)
+        public static async System.Threading.Tasks.Task ToUniTaskAsyncWaitForCompletion(this Tween t)
         {
             if (!t.active) {
                 if (Debugger.logPriority > 0) Debugger.LogInvalidTween(t);
