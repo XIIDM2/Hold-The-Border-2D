@@ -17,14 +17,18 @@ namespace Gameplay.Towers
         private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
 
         private TowerAnimation _animation;
+        private TowerAudio _audio;
 
         private WaitForSeconds _unitsSharedAttackCooldown;
 
         private ObjectPool<Projectile> _pool;
 
+
         private void Awake()
         {
             _animation = GetComponentInChildren<TowerAnimation>();
+            _audio = GetComponent<TowerAudio>();
+
             _pool = new ObjectPool<Projectile>
             (
                 createFunc: CreateProjectile,
@@ -80,6 +84,7 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent -= InstantiateProjectile;
+                attacker.AttackAnimationEvent -= _audio.PlayAttackSound;
                 _animation.UpgradeAnimationCompleted -= attacker.TowerUnitSpawn;
             }
 
@@ -90,6 +95,7 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent += InstantiateProjectile;
+                attacker.AttackAnimationEvent += _audio.PlayAttackSound;
                 _animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
             }
 

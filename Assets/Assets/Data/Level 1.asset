@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31336bb0ed27082469f5e20fd5daa4ce, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: Assembly-CSharp::Data.LevelData
+  _ambienceSound: {fileID: 8300000, guid: 0e5fe067e1c9f08479dcb47aa298fa8f, type: 3}
+  _music: {fileID: 8300000, guid: 286620917b9d65749bbe3680aa627ac3, type: 3}

@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Data;
 using Gameplay.Player;
 using Infrastructure.Factories;
 using Infrastructure.Interfaces;
@@ -21,8 +22,10 @@ namespace Infrastructure.Managers
         private IPlayerController _player;
         private IWaveControllerService _waveService;
         private ITowerFactory _towerFactory;
+        private IAudioService _audioService;
 
         private SceneController _sceneController;
+        private LevelData _data;
 
         public GameObject GameObject => this.gameObject;
 
@@ -30,25 +33,19 @@ namespace Infrastructure.Managers
         public event UnityAction Defeat;
 
         [Inject]
-        public void Construct(IPlayerController player, IWaveControllerService waveService, ITowerFactory towerFactory, SceneController sceneController)
+        public void Construct(IPlayerController player, IWaveControllerService waveService, ITowerFactory towerFactory, IAudioService audioService, SceneController sceneController, LevelData data)
         {
             _player = player;
             _waveService = waveService;
             _towerFactory = towerFactory;
+            _audioService = audioService;
             _sceneController = sceneController;
+            _data = data;
         }
 
         public async void Awake()
         {
-            _waveService.Init(_unitSpawnPoint.position);
-
-            await _waveService.InitUnitsPools(this.GetCancellationTokenOnDestroy());
-
-            foreach (Transform point in _buildsitePoints)
-            {
-                await _towerFactory.CreateBuildSite(point.position, this.GetCancellationTokenOnDestroy());
-            }
-
+            await InitLevel();
         }
 
 
@@ -64,6 +61,27 @@ namespace Infrastructure.Managers
             _waveService.WavesCleared -= OnWaveFinished;
         }
 
+        public void StartWaves()
+        {
+            _waveService.WavesLogicAsync(this.GetCancellationTokenOnDestroy()).Forget();
+        }
+
+        private async UniTask InitLevel()
+        {
+            _waveService.Init(_unitSpawnPoint.position);
+
+            await _waveService.InitUnitsPools(this.GetCancellationTokenOnDestroy());
+
+            foreach (Transform point in _buildsitePoints)
+            {
+                await _towerFactory.CreateBuildSite(point.position, this.GetCancellationTokenOnDestroy());
+            }
+
+            _audioService.PlayMusic(_data.Music);
+            _audioService.PlayAmbience(_data.AmbienceSound);
+
+        }
+
         private void OnPlayerDeath(IDamageable _)
         {
             _sceneController.StopTime();
@@ -76,9 +94,7 @@ namespace Infrastructure.Managers
             Victory?.Invoke();
         }
 
-        public void StartWaves()
-        {
-            _waveService.WavesLogicAsync(this.GetCancellationTokenOnDestroy()).Forget();
-        }
+
+
     }
 }

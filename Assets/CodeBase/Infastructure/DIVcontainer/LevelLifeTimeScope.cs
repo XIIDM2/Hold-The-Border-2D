@@ -13,10 +13,12 @@ namespace Infrastructure.DI
     public class LevelLifeTimeScope : LifetimeScope
     {
         [SerializeField] private LevelsLabels _levelLabel;
+        [SerializeField] private LevelData _LevelData;
         [SerializeField] private WaveData _waveData;
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_levelLabel);
+            builder.RegisterInstance(_LevelData);
             builder.RegisterInstance(_waveData);
 
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);

@@ -25,6 +25,7 @@ namespace Gameplay.Towers
         public TowerDetection Detection { get; private set; }
         public BaseTowerAttack Attack { get; private set; }
         public TowerAnimation Animation { get; private set; }
+        public TowerAudio Audio { get; private set; }
 
 
         [Header("FSM")]
@@ -53,6 +54,7 @@ namespace Gameplay.Towers
             Attack = GetComponent<BaseTowerAttack>();
 
             Animation = GetComponentInChildren<TowerAnimation>();
+            Audio = GetComponent<TowerAudio>();
 
             UpgradeState = new TowerUpgradeState();
             IdleState = new TowerIdleState();
@@ -123,6 +125,7 @@ namespace Gameplay.Towers
         {
             Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
             Detection.Init(CurrentTierConfig.AttackRadius);
+            Audio.Init(CurrentTierConfig.AttackSound);
 
             if (Attack is TowerAttackByUnits attackByUnits)
             {

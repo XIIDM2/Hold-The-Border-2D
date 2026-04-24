@@ -11472,6 +11472,10 @@ PrefabInstance:
       value: Setup
       objectReference: {fileID: 0}
     - target: {fileID: 7910981230413337783, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: _LevelData
+      value: 
+      objectReference: {fileID: 11400000, guid: 53b24ff196e37c54da399573b3697860, type: 2}
+    - target: {fileID: 7910981230413337783, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
       propertyPath: _baseTransform
       value: 
       objectReference: {fileID: 1210103816}

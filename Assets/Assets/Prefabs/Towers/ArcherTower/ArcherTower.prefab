@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 5564246304581366704}
   - component: {fileID: 3738287823587563431}
   - component: {fileID: 8452731921587783088}
+  - component: {fileID: 4922884071310378367}
   - component: {fileID: 2798986763045696664}
   m_Layer: 0
   m_Name: ArcherTower
@@ -305,6 +306,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerAttackByUnits
   _damage: 0
   _cooldown: 0
+--- !u!114 &4922884071310378367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514210107518247970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dcebad53d50a4748ad05c46cd1a3880, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerAudio
 --- !u!114 &2798986763045696664
 MonoBehaviour:
   m_ObjectHideFlags: 0

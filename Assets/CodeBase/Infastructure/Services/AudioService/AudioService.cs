@@ -1,8 +1,10 @@
+using Gameplay.UI;
 using Infrastructure.Services;
+using System;
 using UnityEngine;
 using VContainer.Unity;
 
-public class AudioService : IAudioService, IStartable
+public class AudioService : IAudioService, IStartable, IDisposable
 {
     private const string AUDIO_GAMEOBJECT_NAME = "AudioSystem";
     private const string SFX_GAMEOBJECT_NAME = "SFX";
@@ -17,6 +19,15 @@ public class AudioService : IAudioService, IStartable
     {
         CreateAudioSystem();
         InitAudioSystem();
+
+        CustomButton.ButtonClicked += PlaySound;
+        CustomButton.ButtonHovered += PlaySound;
+    }
+
+    public void Dispose()
+    {
+        CustomButton.ButtonClicked -= PlaySound;
+        CustomButton.ButtonHovered -= PlaySound;
     }
 
     public void PlaySound(AudioClip clip)

@@ -19,7 +19,7 @@ namespace Data
             public GameObject ProjectilePrefab => _projectilePrefab;
             public AnimationClip UpgradeAnimation => _upgradeAnimation;
             public AnimationClip IdleAnimation => _idleAnimation;
-
+            public AudioClip AttackSound => _attackSound;
 
             [SerializeField] private int _upgradePrice;
             [SerializeField] private int _sellPrice;
@@ -32,6 +32,7 @@ namespace Data
             [SerializeField] private GameObject _projectilePrefab;
             [SerializeField] private AnimationClip _upgradeAnimation;
             [SerializeField] private AnimationClip _idleAnimation;
+            [SerializeField] private AudioClip _attackSound;
 
         }
 

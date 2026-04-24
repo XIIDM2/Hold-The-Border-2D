@@ -9,8 +9,10 @@
         <ui:IntegerField label="Sell Price" value="0" binding-path="_sellPrice" name="IntegerField"/>
     </ui:Foldout>
     <ui:Foldout text="Visuals&#10;" style="margin-bottom: 0; padding-bottom: 20px;">
-        <uie:PropertyField label="Attackers Module Prefab" binding-path="_attackersModulePrefab"/>
         <uie:PropertyField label="Upgrade Animation" binding-path="_upgradeAnimation" name="PropertyField"/>
         <uie:PropertyField label="Idle Animation" binding-path="_idleAnimation"/>
+    </ui:Foldout>
+    <ui:Foldout text="Audio&#10;" style="margin-bottom: 0; padding-bottom: 20px;">
+        <uie:PropertyField label="Attackers  Attack Sound" binding-path="_attackSound"/>
     </ui:Foldout>
 </ui:UXML>

@@ -9,10 +9,13 @@ namespace Data
     [CreateAssetMenu(fileName = "Gameplay Registry", menuName = "Scriptable Objects/Catalogs/GameplayRegistry")]
     public class GameplayRegistry : ScriptableObject
     {
+        public SFXRegistry SFXRegistry => _SFXRegistry;
         public AssetReferenceGameObject BuildSiteReference => _buildSiteReference;
         public AssetReferenceGameObject DamagePopupReference => _damagePopupReference;
         public AssetReferenceGameObject TowerPanelReference => _towerPanelReference;
         public TowerData[] TowerDatas => _towerDatas;
+
+        [SerializeField] private SFXRegistry _SFXRegistry;
 
         [SerializeField] private AssetReferenceGameObject _buildSiteReference;
 

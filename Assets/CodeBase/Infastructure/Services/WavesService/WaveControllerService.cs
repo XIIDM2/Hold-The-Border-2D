@@ -30,29 +30,37 @@ namespace Infrastructure.Services
 
         private readonly IUnitFactory _unitFactory;
         private readonly IPathProvider _pathProvider;
+        private readonly IAudioService _audioService;
         private readonly WaveData _wavesData;
 
         private int _unitsAmount;
+        private AudioClip _nextWaveStartedSound;
 
         private CancellationTokenSource _skipWaveTimerTokenSource;
 
-        public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, WaveData wavesData)
+
+        public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, IAudioService audioService, WaveData wavesData, GameplayRegistry gameplayRegistry)
         {
             _unitFactory = unitFactory;
             _pathProvider = pathProvider;
+            _audioService = audioService;
             _wavesData = wavesData;
 
             _unitsAmount = _wavesData.WaveUnitsAmount;
+            _nextWaveStartedSound = gameplayRegistry.SFXRegistry.StartWaveSound;
+
         }
 
         public void Start()
         {
             _unitFactory.UnitCreated += OnUnitCreated;
+            NextWaveStarted += OnNextWaveStarted;
         }
 
         public void Dispose()
         {
             _unitFactory.UnitCreated -= OnUnitCreated;
+            NextWaveStarted -= OnNextWaveStarted;
         }
 
         public void Init(Vector2 spawnPosition)
@@ -125,6 +133,11 @@ namespace Infrastructure.Services
         public void SkipWaveTimer()
         {
             _skipWaveTimerTokenSource?.Cancel();
+        }
+
+        public void OnNextWaveStarted(int _)
+        {
+            _audioService.PlaySound(_nextWaveStartedSound);
         }
 
         private void OnUnitCreated(EnemyUnitController enemy)

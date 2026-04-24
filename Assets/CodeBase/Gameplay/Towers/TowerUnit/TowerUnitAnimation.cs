@@ -17,11 +17,13 @@ namespace Gameplay.Towers.Units
 
         private GameObject _target;
 
+
         protected override void Awake()
         {
             base.Awake();
 
             Init(_data);
+
         }
 
 
@@ -46,8 +48,7 @@ namespace Gameplay.Towers.Units
 
         public void PlayAttackAnimation()
         {
-            if (!enabled) return; 
-
+            if (!enabled) return;
             SetTrigger(IsAttackingHash);
         }
 

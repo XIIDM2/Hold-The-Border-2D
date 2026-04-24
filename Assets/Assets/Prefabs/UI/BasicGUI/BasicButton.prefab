@@ -278,6 +278,8 @@ MonoBehaviour:
   _text: {fileID: 5073919677855863101}
   _sizeIncrease: 1.1
   _increaseDuration: 0.2
+  _clickSound: {fileID: 8300000, guid: c230389cdba1a4d47bda71c4d0e2b6f9, type: 3}
+  _hoverSound: {fileID: 8300000, guid: f44b7388dcf5dd14a981e85a3aa5a9f6, type: 3}
 --- !u!114 &1007315364398892894
 MonoBehaviour:
   m_ObjectHideFlags: 0

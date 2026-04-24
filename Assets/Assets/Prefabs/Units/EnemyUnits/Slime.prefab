@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: -6773740713251604946}
   - component: {fileID: 8688920723153410881}
   - component: {fileID: 8200262927107672511}
+  - component: {fileID: 4755099967823759035}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Untagged
@@ -153,6 +154,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gameplay.Units.Enemy.SlimeController
   _firstSpawnPosition: {fileID: 5129856056979965011}
   _secondSpawnPosition: {fileID: 1642663163766561856}
+--- !u!114 &4755099967823759035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422115259116329252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc1725e5ac41c7e4e8b665ad40888246, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyUnitAudio
 --- !u!1 &4644839957556240327
 GameObject:
   m_ObjectHideFlags: 0

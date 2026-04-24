@@ -25,6 +25,8 @@ namespace Gameplay.Units.Enemy
         public Vector2 Position => transform.position;
         public int PathEndDamage { get; private set; }
 
+        public EnemyUnitAudio Audio { get; private set; }
+
         [Header("Dependencies")]
         public IPlayerController Player {  get; private set; }
         public UnitFactory UnitFactory { get; private set; }
@@ -38,6 +40,7 @@ namespace Gameplay.Units.Enemy
         public EnemyUnitDeathState DeathState { get; private set; }
         public EnemyUnitDissolveState DissolveState { get; private set; }
 
+
         private int _currentHealth; // For DamagePopup
 
         [Inject]
@@ -50,6 +53,8 @@ namespace Gameplay.Units.Enemy
         protected override void Awake()
         {
             base.Awake();
+
+            Audio = GetComponent<EnemyUnitAudio>();
 
             _healthUI = GetComponentInChildren<HealthBarUI>();
         }
@@ -92,6 +97,7 @@ namespace Gameplay.Units.Enemy
             if (Movement) Movement.Init(data.MovementSpeed);
             if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
             if (Animation) Animation.Init(data.OverrideAnimations);
+            if (Audio) Audio.Init(data.HitSound, data.DeathSound);
 
             if(_healthUI) _healthUI.Init();
 

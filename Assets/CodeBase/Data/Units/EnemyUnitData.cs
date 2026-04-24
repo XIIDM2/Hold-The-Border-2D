@@ -15,6 +15,9 @@ namespace Data
         [SerializeField] private int _pathEndDamage;
         [SerializeField] private float _attackCooldown;
 
+        [SerializeField] private AudioClip _deathSound;
+        [SerializeField] private AudioClip _hitSound;
+
         public EnemyUnitType Type => _type;
         public int GoldOnDeath => _goldOnDeath;
         public int MaxHealth => _maxHealth;
@@ -22,5 +25,7 @@ namespace Data
         public int AttackDamage => _attackDamage;
         public int PathEndDamage => _pathEndDamage;
         public float AttackCooldown => _attackCooldown;
+        public AudioClip DeathSound => _deathSound;
+        public AudioClip HitSound => _hitSound;
     }
 }

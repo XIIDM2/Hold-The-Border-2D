@@ -26,3 +26,5 @@ MonoBehaviour:
   _attackDamage: 15
   _pathEndDamage: 2
   _attackCooldown: 1.5
+  _deathSound: {fileID: 8300000, guid: bc5962dc152a89a40ab2de8b1618fdad, type: 3}
+  _hitSound: {fileID: 8300000, guid: d2085eb5b4fe0964cab0e83db2751bfc, type: 3}

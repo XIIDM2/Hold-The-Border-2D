@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 188e61a3e27285746940560a29bc0515, type: 3}
   m_Name: Data Catalog
   m_EditorClassIdentifier: Assembly-CSharp::DataCatalog
+  _SFXRegistry: {fileID: 11400000, guid: d45c4100d7b0ce34384563631325434c, type: 2}
   _buildSiteReference:
     m_AssetGUID: 53c3f2dc6b1b8cb47b465b69750becdc
     m_SubObjectName: 

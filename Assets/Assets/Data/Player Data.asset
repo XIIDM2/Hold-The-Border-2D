@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   _maxHeath: 20
   _startGold: 1000
+  _hitSound: {fileID: 8300000, guid: 3c954e405161fe140b51a3f781225840, type: 3}
