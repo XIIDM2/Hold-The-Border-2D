@@ -2,6 +2,7 @@ using Assets.CodeBase.Infastructure.Services;
 using Core.Interfaces;
 using Data;
 using Gameplay.UI;
+using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -25,6 +26,7 @@ namespace Infrastructure.DI
             builder.Register<IAssetProviderService, AssetProviderService>(Lifetime.Singleton);
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf();
             builder.Register<AudioService>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<EventBus>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
 }

@@ -1,4 +1,5 @@
 using Gameplay.UI;
+using Infrastructure.Events;
 using Infrastructure.Services;
 using System;
 using UnityEngine;
@@ -15,6 +16,13 @@ public class AudioService : IAudioService, IStartable, IDisposable
     private AudioSource _music;
     private AudioSource _ambience;
 
+    private IEventBus _eventBus;
+
+    public AudioService(IEventBus eventBus)
+    {
+        _eventBus = eventBus;
+    }
+
     public void Start()
     {
         CreateAudioSystem();
@@ -22,12 +30,16 @@ public class AudioService : IAudioService, IStartable, IDisposable
 
         CustomButton.ButtonClicked += PlaySound;
         CustomButton.ButtonHovered += PlaySound;
+
+        _eventBus.Subscribe<LevelStartedEvent>(OnLevelStarted);
     }
 
     public void Dispose()
     {
         CustomButton.ButtonClicked -= PlaySound;
         CustomButton.ButtonHovered -= PlaySound;
+
+        _eventBus.Unsubscribe<LevelStartedEvent>(OnLevelStarted);
     }
 
     public void PlaySound(AudioClip clip)
@@ -93,6 +105,12 @@ public class AudioService : IAudioService, IStartable, IDisposable
         _SFX.volume = 0.5f;
         _music.volume = 0.5f;
         _ambience.volume = 0.5f;
+    }
+
+    private void OnLevelStarted(LevelStartedEvent levelClips)
+    {
+       if (levelClips.Music) PlayMusic(levelClips.Music);   
+       if (levelClips.Ambience) PlayAmbience(levelClips.Ambience);
     }
 
 }

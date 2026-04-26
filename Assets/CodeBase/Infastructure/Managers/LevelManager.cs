@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Player;
+using Infrastructure.Events;
 using Infrastructure.Factories;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
@@ -22,7 +23,7 @@ namespace Infrastructure.Managers
         private IPlayerController _player;
         private IWaveControllerService _waveService;
         private ITowerFactory _towerFactory;
-        private IAudioService _audioService;
+        private IEventBus _eventBus;
 
         private SceneController _sceneController;
         private LevelData _data;
@@ -33,12 +34,12 @@ namespace Infrastructure.Managers
         public event UnityAction Defeat;
 
         [Inject]
-        public void Construct(IPlayerController player, IWaveControllerService waveService, ITowerFactory towerFactory, IAudioService audioService, SceneController sceneController, LevelData data)
+        public void Construct(IPlayerController player, IWaveControllerService waveService, ITowerFactory towerFactory, IEventBus eventBus, SceneController sceneController, LevelData data)
         {
             _player = player;
             _waveService = waveService;
             _towerFactory = towerFactory;
-            _audioService = audioService;
+            _eventBus = eventBus;
             _sceneController = sceneController;
             _data = data;
         }
@@ -77,8 +78,7 @@ namespace Infrastructure.Managers
                 await _towerFactory.CreateBuildSite(point.position, this.GetCancellationTokenOnDestroy());
             }
 
-            _audioService.PlayMusic(_data.Music);
-            _audioService.PlayAmbience(_data.AmbienceSound);
+            _eventBus.Publish(new LevelStartedEvent(_data.Music, _data.AmbienceSound));
 
         }
 
