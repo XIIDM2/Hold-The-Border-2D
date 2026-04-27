@@ -1,17 +1,18 @@
 using Infrastructure.Services;
 using UnityEngine;
 using VContainer;
+using Infrastructure.Events;
 
 public class TowerAudio : MonoBehaviour
 {
     private AudioClip _attackSound;
 
-    private IAudioService _audioService;
+    private IEventBus _eventBus;
 
     [Inject]
-    public void Construct(IAudioService audioService)
+    public void Construct(IEventBus eventBus)
     {
-        _audioService = audioService;
+        _eventBus = eventBus;
     }
 
     public void Init(AudioClip attackSound)
@@ -19,8 +20,8 @@ public class TowerAudio : MonoBehaviour
         _attackSound = attackSound;
     }
 
-    public void PlayAttackSound(Transform _)
+    public void OnAttack(Transform _)
     {
-        _audioService.PlaySound(_attackSound);
+        _eventBus.Publish(new InvokeSFX(_attackSound));
     }
 }

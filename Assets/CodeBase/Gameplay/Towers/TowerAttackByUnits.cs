@@ -84,7 +84,7 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent -= InstantiateProjectile;
-                attacker.AttackAnimationEvent -= _audio.PlayAttackSound;
+                attacker.AttackAnimationEvent -= _audio.OnAttack;
                 _animation.UpgradeAnimationCompleted -= attacker.TowerUnitSpawn;
             }
 
@@ -95,7 +95,7 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent += InstantiateProjectile;
-                attacker.AttackAnimationEvent += _audio.PlayAttackSound;
+                attacker.AttackAnimationEvent += _audio.OnAttack;
                 _animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
             }
 

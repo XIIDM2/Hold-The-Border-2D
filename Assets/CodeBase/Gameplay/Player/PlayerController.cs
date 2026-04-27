@@ -1,4 +1,5 @@
 using Data;
+using Infrastructure.Events;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using System;
@@ -13,17 +14,15 @@ namespace Gameplay.Player
         public event UnityAction<int> GoldChanged;
         public IDamageable Health { get; private set; }
         public int Gold { get; private set; }
-        public int Timer { get; private set; }
-
         public int SkipWaveTimerGoldMultiplier { get; private set; } = 3;
 
         private AudioClip _onDamageSound;
 
-        private IAudioService _audioService;
+        private IEventBus _eventBus;
 
-        public PlayerController(IAudioService audioService, PlayerData _data)
+        public PlayerController(IEventBus eventBus, PlayerData _data)
         {
-            _audioService = audioService;
+            _eventBus = eventBus;
 
             Health = new Health();
             Health.Init(_data.MaxHeath);
@@ -33,18 +32,16 @@ namespace Gameplay.Player
 
         public void Start()
         {
-            Health.HealthChanged += playHitSound;
+            Health.HealthChanged += OnHealthChanged;
+            Health.Death += OnDeath;
         }
 
         public void Dispose()
         {
-            Health.HealthChanged -= playHitSound;
+            Health.HealthChanged -= OnHealthChanged;
+            Health.Death -= OnDeath;
         }
 
-        private void playHitSound(int _)
-        {
-            _audioService.PlaySound(_onDamageSound);
-        }
 
         public bool TrySpendGold(int amount)
         {
@@ -59,11 +56,20 @@ namespace Gameplay.Player
             return true;
 
         }
-
         public void AddGold(int amount)
         {
             Gold += amount;
             GoldChanged?.Invoke(Gold);
+        }
+
+        private void OnHealthChanged(int _)
+        {
+            _eventBus.Publish(new InvokeSFX(_onDamageSound));
+        }
+
+        private void OnDeath(IDamageable _)
+        {
+            _eventBus.Publish(new PlayerDiedEvent());
         }
 
     }

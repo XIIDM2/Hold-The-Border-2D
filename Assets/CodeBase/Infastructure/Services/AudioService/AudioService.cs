@@ -32,6 +32,7 @@ public class AudioService : IAudioService, IStartable, IDisposable
         CustomButton.ButtonHovered += PlaySound;
 
         _eventBus.Subscribe<LevelStartedEvent>(OnLevelStarted);
+        _eventBus.Subscribe<InvokeSFX>(OnSFX);
     }
 
     public void Dispose()
@@ -40,6 +41,7 @@ public class AudioService : IAudioService, IStartable, IDisposable
         CustomButton.ButtonHovered -= PlaySound;
 
         _eventBus.Unsubscribe<LevelStartedEvent>(OnLevelStarted);
+        _eventBus.Unsubscribe<InvokeSFX>(OnSFX);
     }
 
     public void PlaySound(AudioClip clip)
@@ -105,6 +107,11 @@ public class AudioService : IAudioService, IStartable, IDisposable
         _SFX.volume = 0.5f;
         _music.volume = 0.5f;
         _ambience.volume = 0.5f;
+    }
+
+    private void OnSFX(InvokeSFX SFX)
+    {
+        PlaySound(SFX.Sound);
     }
 
     private void OnLevelStarted(LevelStartedEvent levelClips)

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5d19d4b41564c4da8b784b28c83668, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  _maxHeath: 20
+  _maxHeath: 1
   _startGold: 1000
   _hitSound: {fileID: 8300000, guid: 3c954e405161fe140b51a3f781225840, type: 3}

@@ -4,7 +4,6 @@ using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using Infrastructure;
 using Infrastructure.Factories;
-using Infrastructure.Managers;
 using Infrastructure.Services;
 using System;
 using System.Collections.Generic;
@@ -25,9 +24,9 @@ namespace Gameplay.UI
 
         private readonly SceneController _controller;
         private readonly GameplayRegistry _registry;
-        private readonly ILevelManager _manager;
+        private readonly CancellationToken _ctc;
 
-        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, SceneController controller, GameplayRegistry registry, ILevelManager manager)
+        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, SceneController controller, GameplayRegistry registry, CancellationToken ctc)
         {
             _view = view;
             _UIFactory = uIFactory;
@@ -35,7 +34,7 @@ namespace Gameplay.UI
             _buildService = buildService;
             _controller = controller;
             _registry = registry;
-            _manager = manager;
+            _ctc = ctc;
         }
 
         public async UniTask StartAsync(CancellationToken cancellation = default)
@@ -93,7 +92,7 @@ namespace Gameplay.UI
 
         private void BuildRequested(TowerType type)
         {
-            if (_selectionService.BuildSite) _buildService.BuildTower(type, _selectionService.BuildSite, _manager.GameObject.GetCancellationTokenOnDestroy()).Forget();
+            if (_selectionService.BuildSite) _buildService.BuildTower(type, _selectionService.BuildSite, _ctc).Forget();
             _selectionService.ClearBuildSiteSelection();
         }
     }

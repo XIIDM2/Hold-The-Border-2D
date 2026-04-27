@@ -3,6 +3,18 @@ using UnityEngine;
 
 namespace Infrastructure.Events
 {
-    public record LevelStartedEvent(AudioClip Music, AudioClip Ambience) : IEvent;
+    public readonly struct LevelStartedEvent : IEvent
+    {
+        public readonly AudioClip Music;
+        public readonly AudioClip Ambience;
+
+        public LevelStartedEvent(AudioClip Music = null, AudioClip Ambience = null)
+        {
+            this.Music = Music;
+            this.Ambience = Ambience;
+        }
+
+    }
+
 
 }

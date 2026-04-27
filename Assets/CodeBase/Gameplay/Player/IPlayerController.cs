@@ -5,14 +5,12 @@ namespace Gameplay.Player
 {
     public interface IPlayerController
     {
+        event UnityAction<int> GoldChanged;
         IDamageable Health { get; }
         int Gold { get; }
-
         int SkipWaveTimerGoldMultiplier { get; }
-
-        event UnityAction<int> GoldChanged;
-        public bool TrySpendGold(int amount);
-        public void AddGold(int amount);
+        bool TrySpendGold(int amount);
+        void AddGold(int amount);
 
     }
 }

@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.UI;
 using Infrastructure;
+using Infrastructure.Events;
 using Infrastructure.Services;
 using System;
 using UnityEngine;
@@ -11,15 +12,15 @@ public class MainMenuPresenter : IStartable, IDisposable
 {
     private MainMenuView _view;
     private SceneController _sceneController;
-    private IAudioService _audioService;
+    private IEventBus _eventBus;
 
     private AudioClip _music;
 
-    public MainMenuPresenter(MainMenuView view, SceneController sceneController, IAudioService audioService, GameplayRegistry gameplayRegistry)
+    public MainMenuPresenter(MainMenuView view, SceneController sceneController, IEventBus eventBus, GameplayRegistry gameplayRegistry)
     {
         _view = view;
         _sceneController = sceneController;
-        _audioService = audioService;
+        _eventBus = eventBus;
         _music = gameplayRegistry.SFXRegistry.MainMenuMusic;
     }
 
@@ -28,7 +29,7 @@ public class MainMenuPresenter : IStartable, IDisposable
         _view.StartRequested += OnStartRequested;
         _view.ExitRequested += OnExitRequested;
 
-        _audioService.PlayMusic(_music);
+        _eventBus.Publish(new LevelStartedEvent(_music));
     }
 
     public void Dispose()

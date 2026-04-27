@@ -1,4 +1,5 @@
 using Gameplay.Units.Enemy;
+using Infrastructure.Events;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using UnityEngine;
@@ -6,16 +7,17 @@ using VContainer;
 
 public class EnemyUnitAudio : MonoBehaviour
 {
-    private IAudioService _audioService;
     private IDamageable _health;
 
     private AudioClip _hitSound;
     private AudioClip _deathSound;
 
+    private IEventBus _eventBus;
+
     [Inject]
-    public void Construct(IAudioService audioService)
+    public void Construct(IEventBus eventBus)
     {
-        _audioService = audioService;
+        _eventBus = eventBus;
     }
 
     private void Awake()
@@ -26,16 +28,15 @@ public class EnemyUnitAudio : MonoBehaviour
 
     private void OnEnable()
     {
-        _health.HealthChanged += PlayHitSound;
-        _health.Death += PlayDeathSound;
+        _health.HealthChanged += OnHealthChanged;
+        _health.Death += OnDeath;
 
     }
 
-
     private void OnDisable()
     {
-        _health.HealthChanged -= PlayHitSound;
-        _health.Death -= PlayDeathSound;
+        _health.HealthChanged -= OnHealthChanged;
+        _health.Death -= OnDeath;
     }
 
     public void Init(AudioClip hitSound, AudioClip deathSound)
@@ -45,14 +46,14 @@ public class EnemyUnitAudio : MonoBehaviour
 
     }
 
-    private void PlayHitSound(int _)
+    private void OnHealthChanged(int _)
     {
-        _audioService.PlaySound(_hitSound);
+        _eventBus.Publish(new InvokeSFX(_hitSound));
     }
 
-    private void PlayDeathSound(IDamageable _)
+    private void OnDeath(IDamageable _)
     {
-        _audioService.PlaySound(_deathSound);
+        _eventBus.Publish(new InvokeSFX(_deathSound));
     }
 
 

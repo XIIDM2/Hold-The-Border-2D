@@ -4,6 +4,7 @@ using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Managers;
 using Infrastructure.Services;
 using System;
+using System.Threading;
 using UnityEngine;
 using VContainer.Unity;
 
@@ -23,15 +24,15 @@ namespace Gameplay.UI
         private ITowerBuildService _buildService;
 
         private IRadiusVisualizerService _radiusVisualizerService;
-        private ILevelManager _manager;
+        private CancellationToken _ctc;
 
-        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IRadiusVisualizerService radiusVisualizerService, ILevelManager manager)
+        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IRadiusVisualizerService radiusVisualizerService, CancellationToken ctc)
         {
             _view = view;
             _selectionService = selectionService;
             _buildService = buildService;
             _radiusVisualizerService = radiusVisualizerService;
-            _manager = manager;
+            _ctc = ctc;
         }
 
         public void Start()
@@ -116,7 +117,7 @@ namespace Gameplay.UI
         {
             if (_selectionService.Tower)
             {
-                _buildService.SellTower(_tower, _manager.GameObject.GetCancellationTokenOnDestroy()).Forget();
+                _buildService.SellTower(_tower, _ctc).Forget();
                 _selectionService.ClearTowerSelection();
             }
         }

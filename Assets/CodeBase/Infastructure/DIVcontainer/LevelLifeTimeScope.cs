@@ -15,6 +15,7 @@ namespace Infrastructure.DI
         [SerializeField] private LevelsLabels _levelLabel;
         [SerializeField] private LevelData _LevelData;
         [SerializeField] private WaveData _waveData;
+
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterInstance(_levelLabel);
@@ -25,7 +26,7 @@ namespace Infrastructure.DI
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);
             builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
 
-            builder.Register<IPlayerController, PlayerController>(Lifetime.Singleton);
+            builder.Register<PlayerController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<WaveControllerService>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
@@ -35,6 +36,8 @@ namespace Infrastructure.DI
             builder.RegisterComponentInHierarchy<RadiusVisualizerService>().AsImplementedInterfaces();
 
             builder.RegisterComponentInHierarchy<LevelManager>().AsImplementedInterfaces();
+
+            builder.RegisterInstance(this.destroyCancellationToken);
         }
     }
 }

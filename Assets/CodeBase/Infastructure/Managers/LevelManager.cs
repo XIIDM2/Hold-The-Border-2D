@@ -3,9 +3,9 @@ using Data;
 using Gameplay.Player;
 using Infrastructure.Events;
 using Infrastructure.Factories;
-using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using System;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer;
@@ -13,14 +13,13 @@ using VContainer.Unity;
 
 namespace Infrastructure.Managers
 {
-    public class LevelManager : MonoBehaviour, ILevelManager, IStartable, IDisposable
+    public class LevelManager : MonoBehaviour, ILevelManager, IAsyncStartable, IDisposable
     {
         [Header("Level Settings")]
         [SerializeField] private Transform _unitSpawnPoint;
         [SerializeField] private Transform[] _buildsitePoints;
 
         [Header("Dependencies")]
-        private IPlayerController _player;
         private IWaveControllerService _waveService;
         private ITowerFactory _towerFactory;
         private IEventBus _eventBus;
@@ -34,31 +33,26 @@ namespace Infrastructure.Managers
         public event UnityAction Defeat;
 
         [Inject]
-        public void Construct(IPlayerController player, IWaveControllerService waveService, ITowerFactory towerFactory, IEventBus eventBus, SceneController sceneController, LevelData data)
+        public void Construct(IWaveControllerService waveService, ITowerFactory towerFactory, IEventBus eventBus, SceneController sceneController, LevelData data)
         {
-            _player = player;
+            _eventBus = eventBus;
             _waveService = waveService;
             _towerFactory = towerFactory;
-            _eventBus = eventBus;
             _sceneController = sceneController;
             _data = data;
         }
 
-        public async void Awake()
+        public async UniTask StartAsync(CancellationToken cancellation = default)
         {
-            await InitLevel();
-        }
-
-
-        void IStartable.Start()
-        {
-            _player.Health.Death += OnPlayerDeath;
+            _eventBus.Subscribe<PlayerDiedEvent>(OnPlayerDeath);
             _waveService.WavesCleared += OnWaveFinished;
+
+            await InitLevel();
         }
 
         public void Dispose()
         {
-            _player.Health.Death -= OnPlayerDeath;
+            _eventBus.Unsubscribe<PlayerDiedEvent>(OnPlayerDeath);
             _waveService.WavesCleared -= OnWaveFinished;
         }
 
@@ -82,7 +76,7 @@ namespace Infrastructure.Managers
 
         }
 
-        private void OnPlayerDeath(IDamageable _)
+        private void OnPlayerDeath(PlayerDiedEvent _)
         {
             _sceneController.StopTime();
             Defeat?.Invoke();
@@ -93,8 +87,5 @@ namespace Infrastructure.Managers
             _sceneController.StopTime();
             Victory?.Invoke();
         }
-
-
-
     }
 }

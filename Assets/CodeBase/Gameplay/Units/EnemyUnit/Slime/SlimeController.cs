@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
 using Infrastructure.Managers;
+using System.Threading;
 using UnityEngine;
 using VContainer;
 
@@ -13,13 +14,13 @@ namespace Gameplay.Units.Enemy
 
         private IUnitFactory _unitFactory;
 
-        private ILevelManager _manager;
+        private CancellationToken _ctc;
 
         [Inject]
-        public void Construct(IUnitFactory unitFactory,  ILevelManager manager)
+        public void Construct(IUnitFactory unitFactory, CancellationToken ctc)
         {
             _unitFactory = unitFactory;
-            _manager = manager;
+            _ctc = ctc;
         }
 
         protected override void OnEnable()
@@ -38,8 +39,8 @@ namespace Gameplay.Units.Enemy
 
         private void OnDeath()
         {
-            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _firstSpawnPosition.transform.position, _manager.GameObject.GetCancellationTokenOnDestroy());
-            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _secondSpawnPosition.transform.position, _manager.GameObject.GetCancellationTokenOnDestroy());
+            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _firstSpawnPosition.transform.position, _ctc);
+            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _secondSpawnPosition.transform.position, _ctc);
         }
     }
 }

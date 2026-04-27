@@ -1,16 +1,6 @@
-using UnityEngine;
+using Infrastructure.Interfaces;
 
-public class GameplayEvents : MonoBehaviour
+namespace Infrastructure.Events
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public readonly struct PlayerDiedEvent : IEvent { }
 }

@@ -17,7 +17,6 @@ namespace Gameplay.Towers.Units
 
         private GameObject _target;
 
-
         protected override void Awake()
         {
             base.Awake();
@@ -25,7 +24,6 @@ namespace Gameplay.Towers.Units
             Init(_data);
 
         }
-
 
         private void Update()
         {
