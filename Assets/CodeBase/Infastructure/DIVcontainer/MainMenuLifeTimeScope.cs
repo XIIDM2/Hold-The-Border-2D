@@ -9,8 +9,10 @@ namespace Infrastructure.DI
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponentInHierarchy<MainMenuView>();
+            builder.RegisterComponentInHierarchy<SettingsView>();
 
             builder.Register<MainMenuPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<SettingsPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }

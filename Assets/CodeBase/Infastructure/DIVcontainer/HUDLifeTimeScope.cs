@@ -14,6 +14,7 @@ namespace Infrastructure.DI
             builder.RegisterComponentInHierarchy<PlayerStatsView>();
             builder.RegisterComponentInHierarchy<TowerBuildingView>();
             builder.RegisterComponentInHierarchy<TowerView>();
+            builder.RegisterComponentInHierarchy<SettingsView>();
 
             builder.Register<ResultPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<PausePresenter>(Lifetime.Scoped).AsImplementedInterfaces();
@@ -21,6 +22,7 @@ namespace Infrastructure.DI
             builder.Register<PlayerStatsPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<TowerBuildingPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
             builder.Register<TowerPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
+            builder.Register<SettingsPresenter>(Lifetime.Scoped).AsImplementedInterfaces();
         }
     }
 }

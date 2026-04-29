@@ -7,6 +7,43 @@ using VContainer.Unity;
 
 public class AudioService : IAudioService, IStartable, IDisposable
 {
+    public float SFXVolume
+    {
+        get
+        {
+            return _SFX.volume;
+        }
+        set
+        {
+            _SFX.volume = value;
+        }
+    }
+
+    public float AmbienceVolume
+    {
+        get
+        {
+            return _ambience.volume;
+        }
+        set
+        {
+            _ambience.volume = value;
+        }
+    }
+
+    public float MusicVolume
+    {
+        get
+        {
+            return _music.volume;
+        }
+        set
+        {
+            _music.volume = value;
+        }
+    }
+
+
     private const string AUDIO_GAMEOBJECT_NAME = "AudioSystem";
     private const string SFX_GAMEOBJECT_NAME = "SFX";
     private const string MUSIC_GAMEOBJECT_NAME = "Music";
@@ -59,21 +96,6 @@ public class AudioService : IAudioService, IStartable, IDisposable
     {
         _ambience.clip = clip;
         _ambience.Play();
-    }
-
-    public void SetSFXVolume(float volume)
-    {
-        _SFX.volume = volume;
-    }
-
-    public void SetMusicVolume(float volume)
-    {
-        _music.volume = volume;
-    }
-
-    public void SetAmbienceVolume(float volume)
-    {
-        _ambience.volume = volume;
     }
 
     private void CreateAudioSystem()

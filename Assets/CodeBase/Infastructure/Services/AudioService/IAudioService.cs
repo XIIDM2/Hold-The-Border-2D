@@ -8,9 +8,9 @@ namespace Infrastructure.Services
         public void PlayMusic(AudioClip clip);
         public void PlayAmbience(AudioClip clip);
 
-        public void SetSFXVolume(float volume);
-        public void SetMusicVolume(float volume);
-        public void SetAmbienceVolume(float volume);
+        float SFXVolume { get; set; }
+        float AmbienceVolume {  get; set; }
+        float MusicVolume { get; set; }
 
     }
 }

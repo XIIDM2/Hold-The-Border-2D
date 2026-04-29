@@ -26,6 +26,8 @@ namespace Infrastructure.DI
             builder.Register<IAssetProviderService, AssetProviderService>(Lifetime.Singleton);
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf();
             builder.Register<AudioService>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<SettingsService>(Lifetime.Singleton).AsImplementedInterfaces();
+
             builder.Register<EventBus>(Lifetime.Singleton).AsImplementedInterfaces();
         }
     }
