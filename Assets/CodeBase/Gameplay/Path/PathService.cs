@@ -19,7 +19,7 @@ namespace Gameplay.Path
 
         [SerializeField] private Path[] _paths;
 
-        private void Awake()
+        public void Init()
         {
             foreach (Path path in _paths)
             {

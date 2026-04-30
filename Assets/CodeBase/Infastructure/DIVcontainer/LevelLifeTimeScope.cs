@@ -1,9 +1,10 @@
 using Data;
+using Gameplay.Level;
 using Gameplay.Path;
 using Gameplay.Player;
 using Infrastructure.Factories;
-using Infrastructure.Managers;
 using Infrastructure.Services;
+using Infrastructure.Services.Bootstrappers;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -21,6 +22,7 @@ namespace Infrastructure.DI
             builder.RegisterInstance(_levelLabel);
             builder.RegisterInstance(_LevelData);
             builder.RegisterInstance(_waveData);
+            builder.RegisterComponentInHierarchy<LevelConfig>();
 
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);
@@ -29,15 +31,17 @@ namespace Infrastructure.DI
             builder.Register<PlayerController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<WaveControllerService>(Lifetime.Singleton).AsImplementedInterfaces();
 
-            builder.Register<ITowerBuildService, TowerBuildService>(Lifetime.Singleton);
-            builder.Register<ITowerSelectionService, TowerSelectionService>(Lifetime.Singleton);
+            builder.Register<TowerBuildService>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<TowerSelectionService>(Lifetime.Singleton).AsImplementedInterfaces();
 
-            builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
             builder.RegisterComponentInHierarchy<RadiusVisualizerService>().AsImplementedInterfaces();
+            builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
 
-            builder.RegisterComponentInHierarchy<LevelManager>().AsImplementedInterfaces();
+            builder.Register<LevelService>(Lifetime.Singleton).AsImplementedInterfaces();
 
-            builder.RegisterInstance(this.destroyCancellationToken);
+            builder.RegisterInstance(destroyCancellationToken);
+
+            builder.RegisterEntryPoint<LevelBootsTrapper>();
         }
     }
 }

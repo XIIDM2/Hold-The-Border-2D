@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Gameplay.Towers;
 using Gameplay.Towers.TargetSelectionStrategies;
-using Infrastructure.Managers;
 using Infrastructure.Services;
 using System;
 using System.Threading;

@@ -1,14 +1,12 @@
-using UnityEngine;
 using UnityEngine.Events;
 
-namespace Infrastructure.Managers
+namespace Infrastructure.Services
 {
-    public interface ILevelManager
+    public interface ILevelService
     {
         event UnityAction Victory;
         event UnityAction Defeat;
-        GameObject GameObject { get; }
-
+        void Init();
         void StartWaves();
     }
 }

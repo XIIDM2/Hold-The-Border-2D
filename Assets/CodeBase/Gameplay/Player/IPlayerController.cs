@@ -9,6 +9,8 @@ namespace Gameplay.Player
         IDamageable Health { get; }
         int Gold { get; }
         int SkipWaveTimerGoldMultiplier { get; }
+
+        void Init();
         bool TrySpendGold(int amount);
         void AddGold(int amount);
 

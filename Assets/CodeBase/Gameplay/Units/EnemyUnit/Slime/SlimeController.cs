@@ -1,6 +1,4 @@
-using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
-using Infrastructure.Managers;
 using System.Threading;
 using UnityEngine;
 using VContainer;
@@ -13,7 +11,6 @@ namespace Gameplay.Units.Enemy
         [SerializeField] private Transform _secondSpawnPosition;
 
         private IUnitFactory _unitFactory;
-
         private CancellationToken _ctc;
 
         [Inject]

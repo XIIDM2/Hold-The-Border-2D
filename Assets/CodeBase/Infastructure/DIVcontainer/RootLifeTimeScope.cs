@@ -3,6 +3,7 @@ using Core.Interfaces;
 using Data;
 using Gameplay.UI;
 using Infrastructure.Services;
+using Infrastructure.Services.Bootstrappers;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -23,12 +24,15 @@ namespace Infrastructure.DI
 
             builder.RegisterInstance(_faderPrefab);
 
-            builder.Register<IAssetProviderService, AssetProviderService>(Lifetime.Singleton);
+            builder.Register<AssetProviderService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf();
+
             builder.Register<AudioService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SettingsService>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<EventBus>(Lifetime.Singleton).AsImplementedInterfaces();
+
+            builder.RegisterEntryPoint<GameBootsTrapper>();
         }
     }
 }

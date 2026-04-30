@@ -3,7 +3,7 @@ using VContainer.Unity;
 
 namespace Infrastructure.Services
 {
-    public class SettingsService : ISettingsService, IStartable
+    public class SettingsService : ISettingsService
     {
         public string SFXSettingName { get; init; } = "SFX";
         public string AmbienceSettingName { get; init; } = "Ambience";
@@ -20,7 +20,7 @@ namespace Infrastructure.Services
             _audioService = audioService;
         }
 
-        public void Start()
+        public void Init()
         {
             QualitySettings.SetQualityLevel(PlayerPrefs.GetInt(QUALITY_SETTING_NAME, 2));
             _audioService.SFXVolume = PlayerPrefs.GetFloat(SFXSettingName, 0.5f);

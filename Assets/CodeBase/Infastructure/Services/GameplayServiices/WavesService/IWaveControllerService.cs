@@ -19,8 +19,8 @@ namespace Infrastructure.Services
         event UnityAction WavesCleared;
         void Init(Vector2 spawnPosition);
 
-        UniTask InitUnitsPools(CancellationToken cancellationToken);
-        UniTask WavesLogicAsync(CancellationToken cancellationToken);
+        UniTask InitUnitsPools();
+        UniTask WavesLogicAsync();
 
         void SkipWaveTimer();
     }

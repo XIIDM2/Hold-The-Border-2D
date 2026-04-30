@@ -32,9 +32,9 @@ namespace Gameplay.Towers
             _pool = new ObjectPool<Projectile>
             (
                 createFunc: CreateProjectile,
-                actionOnGet: OnGetProjectile,
-                actionOnRelease: OnReleaseProjectile,
-                actionOnDestroy: OnDestroyProjectile,
+                actionOnGet: GetProjectile,
+                actionOnRelease: ReleaseProjectile,
+                actionOnDestroy: DestroyProjectile,
                 collectionCheck: true,   
                 defaultCapacity: 10,
                 maxSize: 50
@@ -47,18 +47,18 @@ namespace Gameplay.Towers
             return Instantiate(_projectilePrefab);
         }
 
-        private void OnGetProjectile(Projectile projectile)
+        private void GetProjectile(Projectile projectile)
         {
 
             projectile.gameObject.SetActive(true);
         }
 
-        private void OnReleaseProjectile(Projectile projectile)
+        private void ReleaseProjectile(Projectile projectile)
         {
             projectile.gameObject.SetActive(false);
         }
 
-        private void OnDestroyProjectile(Projectile projectile)
+        private void DestroyProjectile(Projectile projectile)
         {
             Destroy(projectile);
         }

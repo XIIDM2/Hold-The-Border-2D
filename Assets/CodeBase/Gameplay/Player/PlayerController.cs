@@ -5,11 +5,10 @@ using Infrastructure.Services;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using VContainer.Unity;
 
 namespace Gameplay.Player
 {
-    public class PlayerController : IPlayerController, IStartable, IDisposable
+    public class PlayerController : IPlayerController, IDisposable
     {
         public event UnityAction<int> GoldChanged;
         public IDamageable Health { get; private set; }
@@ -19,19 +18,21 @@ namespace Gameplay.Player
         private AudioClip _onDamageSound;
 
         private IEventBus _eventBus;
+        private PlayerData _data;
 
-        public PlayerController(IEventBus eventBus, PlayerData _data)
+        public PlayerController(IEventBus eventBus, PlayerData data)
         {
             _eventBus = eventBus;
+            _data = data;
+        }
 
+        public void Init()
+        {
             Health = new Health();
             Health.Init(_data.MaxHeath);
             Gold = _data.StartGold;
             _onDamageSound = _data.HitSound;
-        }
 
-        public void Start()
-        {
             Health.HealthChanged += OnHealthChanged;
             Health.Death += OnDeath;
         }

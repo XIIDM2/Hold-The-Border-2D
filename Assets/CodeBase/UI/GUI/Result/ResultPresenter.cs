@@ -1,5 +1,5 @@
 using Infrastructure;
-using Infrastructure.Managers;
+using Infrastructure.Services;
 using System;
 using VContainer.Unity;
 
@@ -9,20 +9,20 @@ namespace Gameplay.UI
     {
         private readonly ResultView _view;
 
-        private readonly ILevelManager _manager;
+        private readonly ILevelService _levelService;
         private readonly SceneController _controller;
 
-        public ResultPresenter(ResultView view, ILevelManager manager, SceneController controller)
+        public ResultPresenter(ResultView view, ILevelService manager, SceneController controller)
         {
             _view = view;
-            _manager = manager;
+            _levelService = manager;
             _controller = controller;
         }
 
         public void Start()
         {
-            _manager.Victory += OnVictory;
-            _manager.Defeat += OnDefeat;
+            _levelService.Victory += OnVictory;
+            _levelService.Defeat += OnDefeat;
 
             _view.RestartRequested += OnRestartRequested;
             _view.MainMenuRequested += OnMainMenuRequested;
@@ -30,8 +30,8 @@ namespace Gameplay.UI
 
         public void Dispose()
         {
-            _manager.Victory -= OnVictory;
-            _manager.Defeat -= OnDefeat;
+            _levelService.Victory -= OnVictory;
+            _levelService.Defeat -= OnDefeat;
 
             _view.RestartRequested -= OnRestartRequested;
             _view.MainMenuRequested -= OnMainMenuRequested;

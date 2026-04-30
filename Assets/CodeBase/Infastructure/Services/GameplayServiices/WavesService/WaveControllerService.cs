@@ -37,9 +37,10 @@ namespace Infrastructure.Services
         private AudioClip _nextWaveStartedSound;
 
         private CancellationTokenSource _skipWaveTimerTokenSource;
+        private CancellationToken _levelCtc;
 
 
-        public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, IAudioService audioService, WaveData wavesData, GameplayRegistry gameplayRegistry)
+        public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, IAudioService audioService, WaveData wavesData, GameplayRegistry gameplayRegistry, CancellationToken levelCtc)
         {
             _unitFactory = unitFactory;
             _pathProvider = pathProvider;
@@ -48,7 +49,7 @@ namespace Infrastructure.Services
 
             _unitsAmount = _wavesData.WaveUnitsAmount;
             _nextWaveStartedSound = gameplayRegistry.SFXRegistry.StartWaveSound;
-
+            _levelCtc = levelCtc;
         }
 
         public void Start()
@@ -68,15 +69,15 @@ namespace Infrastructure.Services
             _spawnPosition = spawnPosition;
         }
 
-        public async UniTask InitUnitsPools(CancellationToken cancellationToken)
+        public async UniTask InitUnitsPools()
         {
             foreach (EnemyUnitType type in _wavesData.LevelUnitTypes)
             {
-                await _unitFactory.InitPool(type, cancellationToken);
+                await _unitFactory.InitPool(type, _levelCtc);
             }
         }
 
-        public async UniTask WavesLogicAsync(CancellationToken cancellationToken)
+        public async UniTask WavesLogicAsync()
         {
             foreach (var wave in _wavesData.WavesConfigs)
             {
@@ -86,12 +87,12 @@ namespace Infrastructure.Services
                 {
                     for (int i = 0; i < units.Amount; i++)
                     {
-                        await _unitFactory.CreateUnit(units.Type, _pathProvider.GetWaypoint(units.Path), _spawnPosition, cancellationToken);
+                        await _unitFactory.CreateUnit(units.Type, _pathProvider.GetWaypoint(units.Path), _spawnPosition, _levelCtc);
 
-                        await UniTask.WaitForSeconds(units.IntervalCurrent, cancellationToken : cancellationToken);
+                        await UniTask.WaitForSeconds(units.IntervalCurrent, cancellationToken : _levelCtc);
                     }
 
-                    await UniTask.WaitForSeconds(units.IntervalNext, cancellationToken: cancellationToken);
+                    await UniTask.WaitForSeconds(units.IntervalNext, cancellationToken: _levelCtc);
                 }
 
                 WaveFinished?.Invoke();
@@ -102,7 +103,7 @@ namespace Infrastructure.Services
 
                 TimerForNextWave = wave.WaveInterval;
 
-                using (CancellationTokenSource linkedCtc = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, _skipWaveTimerTokenSource.Token))
+                using (CancellationTokenSource linkedCtc = CancellationTokenSource.CreateLinkedTokenSource(_levelCtc, _skipWaveTimerTokenSource.Token))
                 {
                     while (TimerForNextWave > 0)
                     {
@@ -112,7 +113,7 @@ namespace Infrastructure.Services
 
                         if (isCancelled)
                         {
-                            if (cancellationToken.IsCancellationRequested) return;
+                            if (_levelCtc.IsCancellationRequested) return;
                             break;
                         }
 

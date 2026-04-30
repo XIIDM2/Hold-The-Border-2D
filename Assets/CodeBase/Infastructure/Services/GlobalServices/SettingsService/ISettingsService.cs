@@ -9,6 +9,7 @@ namespace Infrastructure.Services
         string MusicSettingName { get; }
         string CurrentQualitySettingName { get; }
 
+        public void Init();
         public void DecreaseQuality();
         public void IncreaseQuality();
         public void SetSFXVolume(float value);

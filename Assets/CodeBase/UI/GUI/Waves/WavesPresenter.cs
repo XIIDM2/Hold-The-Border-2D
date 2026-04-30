@@ -1,7 +1,5 @@
 using Gameplay.Player;
-using Infrastructure.Managers;
 using Infrastructure.Services;
-using NUnit.Framework.Internal.Commands;
 using System;
 using VContainer.Unity;
 
@@ -13,9 +11,9 @@ namespace Gameplay.UI
 
         private readonly IWaveControllerService _service;
         private IPlayerController _player;
-        private readonly ILevelManager _manager;
+        private readonly ILevelService _manager;
 
-        public WavesPresenter(WavesView view, IWaveControllerService service, IPlayerController player, ILevelManager manager)
+        public WavesPresenter(WavesView view, IWaveControllerService service, IPlayerController player, ILevelService manager)
         {
             _view = view;
             _service = service;
