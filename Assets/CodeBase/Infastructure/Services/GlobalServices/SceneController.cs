@@ -60,7 +60,7 @@ namespace Infrastructure
 
             await fader.UnFadeScreen();
 
-            GameObject.Destroy(fader);
+            GameObject.Destroy(fader.gameObject);
         }
 
         public void RestartScene()
@@ -72,6 +72,7 @@ namespace Infrastructure
 
         public void LoadMainMenuScene()
         {
+            StartTime();
             SceneManager.LoadScene(MAIN_MENU_SCENE_NAME);
         }
 

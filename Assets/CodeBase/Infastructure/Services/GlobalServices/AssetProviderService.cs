@@ -34,7 +34,7 @@ namespace Assets.CodeBase.Infastructure.Services
                     continue; 
                 }
                 currentAsyncOperationsDict.Add(resourceLocation.PrimaryKey, handle);
-                tasks.Add(handle.ToUniTask());
+                tasks.Add(handle.ToUniTask(cancellationToken : cancellationToken));
 
             }
 

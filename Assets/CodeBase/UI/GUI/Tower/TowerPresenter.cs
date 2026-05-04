@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Gameplay.Player;
 using Gameplay.Towers;
 using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Services;
@@ -6,6 +7,7 @@ using System;
 using System.Threading;
 using UnityEngine;
 using VContainer.Unity;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Gameplay.UI
 {
@@ -22,14 +24,17 @@ namespace Gameplay.UI
         private ITowerSelectionService _selectionService;
         private ITowerBuildService _buildService;
 
+        private IPlayerController _player;
+
         private IRadiusVisualizerService _radiusVisualizerService;
         private CancellationToken _ctc;
 
-        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IRadiusVisualizerService radiusVisualizerService, CancellationToken ctc)
+        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IPlayerController player, IRadiusVisualizerService radiusVisualizerService, CancellationToken ctc)
         {
             _view = view;
             _selectionService = selectionService;
             _buildService = buildService;
+            _player = player;
             _radiusVisualizerService = radiusVisualizerService;
             _ctc = ctc;
         }
@@ -73,6 +78,9 @@ namespace Gameplay.UI
             if (tower.CurrentTierIndex >= tower.MaxTier) _view.UpgradeButton.gameObject.SetActive(false);
 
             _view.ShowTowerPanel(tower.CurrentTierConfig.UpgradePrice.ToString(), tower.CurrentTierConfig.SellPrice.ToString(), tower.transform.position);
+
+            if (_player.Gold >= _tower.CurrentTierConfig.UpgradePrice) _view.ShowUpgradeButton();
+            else _view.HideUpgradeButton();
 
             _radiusVisualizerService.ShowVisualizer(_tower, _tower.CurrentTierConfig.AttackRadius);
         }
