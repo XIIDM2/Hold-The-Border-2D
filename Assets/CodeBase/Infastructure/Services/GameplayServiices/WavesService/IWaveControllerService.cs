@@ -16,12 +16,10 @@ namespace Infrastructure.Services
         event UnityAction<int> NextWaveStarted;
         event UnityAction<float> NextWaveTimerTicked;
         event UnityAction WaveFinished;
-        event UnityAction WavesCleared;
         void Init(Vector2 spawnPosition);
 
         UniTask InitUnitsPools();
         UniTask WavesLogicAsync();
-
         void SkipWaveTimer();
     }
 }

@@ -11,10 +11,10 @@ namespace Infrastructure.Services.Bootstrappers
 
         private AudioClip _music;
 
-        public MainMenuBootsTrapper(IEventBus eventBus, GameplayRegistry gameplayRegistry)
+        public MainMenuBootsTrapper(IEventBus eventBus, SFXRegistry SFXRegistry)
         {
             _eventBus = eventBus;
-            _music = gameplayRegistry.SFXRegistry.MainMenuMusic;
+            _music = SFXRegistry.MainMenuMusic;
         }
 
         public void Start()

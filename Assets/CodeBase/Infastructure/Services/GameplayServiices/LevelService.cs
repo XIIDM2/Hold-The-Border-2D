@@ -1,15 +1,12 @@
-using Cysharp.Threading.Tasks;
 using Infrastructure.Events;
 using System;
 using UnityEngine.Events;
 using VContainer;
-using VContainer.Unity;
 
 namespace Infrastructure.Services
 {
     public class LevelService : ILevelService, IDisposable
     {
-        private IWaveControllerService _waveService;
         private IEventBus _eventBus;
         private SceneController _sceneController;
 
@@ -17,9 +14,8 @@ namespace Infrastructure.Services
         public event UnityAction Defeat;
 
         [Inject]
-        public void Construct(IWaveControllerService waveService, IEventBus eventBus, SceneController sceneController)
+        public void Construct(IEventBus eventBus, SceneController sceneController)
         {
-            _waveService = waveService;
             _eventBus = eventBus;
             _sceneController = sceneController;
         }
@@ -27,18 +23,13 @@ namespace Infrastructure.Services
         public void Init()
         {
             _eventBus.Subscribe<PlayerDiedEvent>(OnPlayerDeath);
-            _waveService.WavesCleared += OnWaveFinished;
+            _eventBus.Subscribe<AllEnemiesKilledEvent>(OnAllEnemiesKilled);
         }
 
         public void Dispose()
         {
             _eventBus.Unsubscribe<PlayerDiedEvent>(OnPlayerDeath);
-            _waveService.WavesCleared -= OnWaveFinished;
-        }
-
-        public void StartWaves()
-        {
-            _waveService.WavesLogicAsync().Forget();
+            _eventBus.Unsubscribe<AllEnemiesKilledEvent>(OnAllEnemiesKilled);
         }
 
         private void OnPlayerDeath(PlayerDiedEvent _)
@@ -47,7 +38,7 @@ namespace Infrastructure.Services
             Defeat?.Invoke();
         }
 
-        private void OnWaveFinished()
+        private void OnAllEnemiesKilled(AllEnemiesKilledEvent _)
         {
             _sceneController.StopTime();
             Victory?.Invoke();

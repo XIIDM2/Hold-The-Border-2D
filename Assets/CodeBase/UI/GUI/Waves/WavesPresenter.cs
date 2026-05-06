@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using Gameplay.Player;
 using Infrastructure.Services;
 using System;
@@ -45,7 +46,7 @@ namespace Gameplay.UI
 
         private void OnWavesStartRequested()
         {
-            _manager.StartWaves();
+            _service.WavesLogicAsync().Forget();
         }
 
         private void OnWaveTimerSkipRequested()

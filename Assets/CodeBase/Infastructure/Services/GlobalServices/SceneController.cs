@@ -18,6 +18,8 @@ namespace Infrastructure
 
         private readonly IAssetProviderService _providerService;
 
+        private string _lastLoadedLabel = null;
+
         private Fader _faderPrefab;
 
         public SceneController(IAssetProviderService providerService, Fader faderPrefab)
@@ -36,7 +38,7 @@ namespace Infrastructure
             Time.timeScale = 0.0f;
         }
 
-        public async UniTask ChangeScene(int sceneBuildIndex, CancellationToken token=default)
+        public async UniTask ChangeScene(string sceneName, string addressablesLabel=null, bool loadHUD=true, CancellationToken token=default)
         {
             Fader fader = GameObject.Instantiate(_faderPrefab);
 
@@ -48,15 +50,19 @@ namespace Infrastructure
 
             _providerService.ReleaseAllAssets();
 
-            await _providerService.LoadMultipleAssetsByLabel("Level_1", token);
+            if (addressablesLabel != null)
+            {
+                await _providerService.LoadMultipleAssetsByLabel(addressablesLabel, token);
+                _lastLoadedLabel = addressablesLabel;
+            }
 
             await UniTask.WaitForSeconds(FAKE_LOADING_TIME);
 
             await fader.FadeSceen();
 
-            await SceneManager.LoadSceneAsync(sceneBuildIndex, LoadSceneMode.Single);
+            await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Single);
 
-            SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
+            if (loadHUD) SceneManager.LoadScene(HUD_SCENE_NAME, LoadSceneMode.Additive);
 
             await fader.UnFadeScreen();
 
@@ -66,14 +72,14 @@ namespace Infrastructure
         public void RestartScene()
         {
             StartTime();
-            ChangeScene(SceneManager.GetActiveScene().buildIndex).Forget();
+            ChangeScene(SceneManager.GetActiveScene().name, _lastLoadedLabel).Forget();
 
         }
 
         public void LoadMainMenuScene()
         {
             StartTime();
-            SceneManager.LoadScene(MAIN_MENU_SCENE_NAME);
+            ChangeScene(MAIN_MENU_SCENE_NAME, loadHUD : false).Forget();
         }
 
         public void Exit()

@@ -6,22 +6,13 @@ using UnityEngine.AddressableAssets;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Gameplay Registry", menuName = "Scriptable Objects/Catalogs/GameplayRegistry")]
+    [CreateAssetMenu(fileName = "Gameplay Registry", menuName = "Scriptable Objects/Registries/GameplayRegistry")]
     public class GameplayRegistry : ScriptableObject
     {
-        public SFXRegistry SFXRegistry => _SFXRegistry;
         public AssetReferenceGameObject BuildSiteReference => _buildSiteReference;
-        public AssetReferenceGameObject DamagePopupReference => _damagePopupReference;
-        public AssetReferenceGameObject TowerPanelReference => _towerPanelReference;
         public TowerData[] TowerDatas => _towerDatas;
 
-        [SerializeField] private SFXRegistry _SFXRegistry;
-
         [SerializeField] private AssetReferenceGameObject _buildSiteReference;
-
-        [Header("UI")]
-        [SerializeField] private AssetReferenceGameObject _damagePopupReference;
-        [SerializeField] private AssetReferenceGameObject _towerPanelReference;
 
         [SerializeField] private EnemyUnitData[] _unitDatas;
         [SerializeField] private TowerData[] _towerDatas;

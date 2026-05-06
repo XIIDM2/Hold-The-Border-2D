@@ -7,6 +7,5 @@ namespace Infrastructure.Services
         event UnityAction Victory;
         event UnityAction Defeat;
         void Init();
-        void StartWaves();
     }
 }

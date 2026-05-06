@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Path;
 using Gameplay.Units.Enemy;
+using Infrastructure.Events;
 using Infrastructure.Factories;
 using System;
 using System.Threading;
@@ -16,7 +17,6 @@ namespace Infrastructure.Services
         public event UnityAction<int> NextWaveStarted;
         public event UnityAction<float> NextWaveTimerTicked;
         public event UnityAction WaveFinished;
-        public event UnityAction WavesCleared;
 
         public bool IsLastWave => CurrentWaveIndex >= WavesLength;
         public int CurrentWaveIndex { get; private set; } = 1;
@@ -33,6 +33,8 @@ namespace Infrastructure.Services
         private readonly IAudioService _audioService;
         private readonly WaveData _wavesData;
 
+        private readonly IEventBus _eventBus;
+
         private int _unitsAmount;
         private AudioClip _nextWaveStartedSound;
 
@@ -40,15 +42,17 @@ namespace Infrastructure.Services
         private CancellationToken _levelCtc;
 
 
-        public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, IAudioService audioService, WaveData wavesData, GameplayRegistry gameplayRegistry, CancellationToken levelCtc)
+        public WaveControllerService(IUnitFactory unitFactory, IPathProvider pathProvider, IAudioService audioService, WaveData wavesData, IEventBus eventBus, SFXRegistry SFXRegistry, CancellationToken levelCtc)
         {
             _unitFactory = unitFactory;
             _pathProvider = pathProvider;
             _audioService = audioService;
             _wavesData = wavesData;
 
+            _eventBus = eventBus;
+
             _unitsAmount = _wavesData.WaveUnitsAmount;
-            _nextWaveStartedSound = gameplayRegistry.SFXRegistry.StartWaveSound;
+            _nextWaveStartedSound = SFXRegistry.StartWaveSound;
             _levelCtc = levelCtc;
         }
 
@@ -152,7 +156,7 @@ namespace Infrastructure.Services
 
             _unitsAmount--;
 
-            if (_unitsAmount == 0) WavesCleared?.Invoke();
+            if (_unitsAmount == 0) _eventBus.Publish(new AllEnemiesKilledEvent());
         }
 
     }

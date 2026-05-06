@@ -1,7 +1,8 @@
 using Assets.CodeBase.Infastructure.Services;
-using Core.Interfaces;
+using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.UI;
+using Infrastructure.Factories;
 using Infrastructure.Services;
 using Infrastructure.Services.Bootstrappers;
 using UnityEngine;
@@ -12,17 +13,28 @@ namespace Infrastructure.DI
 {
     public class RootLifeTimeScope : LifetimeScope
     {
-        [SerializeField] private GameplayRegistry _dataCatalog;
+        [SerializeField] private ProjectRegistry _projectRegistry;
+        [SerializeField] private GameplayRegistry _gameplayRegistry;
+        [SerializeField] private SFXRegistry _SFXRegistry;
+        [SerializeField] private UIRegistry _UIRegistry;
         [SerializeField] private PlayerData _playerData;
 
         [SerializeField] private Fader _faderPrefab;
 
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterInstance(_dataCatalog);
+            builder.RegisterInstance(_gameplayRegistry);
+            builder.RegisterInstance(_projectRegistry);
+            builder.RegisterInstance(_SFXRegistry);
+            builder.RegisterInstance(_UIRegistry);
+
+            builder.RegisterInstance(this.GetCancellationTokenOnDestroy());
+
             builder.RegisterInstance(_playerData);
 
             builder.RegisterInstance(_faderPrefab);
+
+            builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
 
             builder.Register<AssetProviderService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf();

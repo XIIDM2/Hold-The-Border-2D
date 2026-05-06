@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c09c2f6fbbbb54f9ace4a2c803facc, type: 3}
+  m_Name: UIRegistry
+  m_EditorClassIdentifier: Assembly-CSharp::Data.UIRegistry
+  _levelButtonReference:
+    m_AssetGUID: dc3c95e5a4d53f040930ecc29c1c8f40
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _damagePopupReference:
+    m_AssetGUID: 9186de22c9f8ba746a752b8580ec0b87
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
+  _towerPanelReference:
+    m_AssetGUID: 3cef098fd72b1fe4ca348050f671a324
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
