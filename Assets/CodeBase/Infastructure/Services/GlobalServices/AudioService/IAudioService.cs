@@ -1,13 +1,14 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Infrastructure.Services
 {
     public interface IAudioService
     {
-        public void Init();
-        public void PlaySound(AudioClip clip);
-        public void PlayMusic(AudioClip clip);
-        public void PlayAmbience(AudioClip clip);
+        void Init();
+        void PlaySound(AudioClip clip);
+        UniTask PlayMusic(AudioClip clip);
+        void PlayAmbience(AudioClip clip);
 
         float SFXVolume { get; set; }
         float AmbienceVolume {  get; set; }

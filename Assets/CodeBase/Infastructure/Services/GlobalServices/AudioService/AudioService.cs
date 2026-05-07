@@ -4,6 +4,7 @@ using Infrastructure.Events;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
 using VContainer.Unity;
@@ -39,11 +40,12 @@ public class AudioService : IAudioService, IDisposable
     {
         get
         {
-            return _music.volume;
+            return _activeMusic.volume;
         }
         set
         {
-            _music.volume = value;
+            _activeMusic.volume = value;
+            _inactiveMusic.volume = value;
         }
     }
 
@@ -55,13 +57,15 @@ public class AudioService : IAudioService, IDisposable
 
     private const float PITCH_OFFSET = 0.15f;
     private const int SFX_POOL_DEFAULT_CAPACITY = 10;
+    private const float FADE_DURATION = 0.4f;
 
     private GameObject _audioGameObject;
 
     private ObjectPool<AudioSource> _SFXPool;
 
     private float _SFXVolume;
-    private AudioSource _music;
+    private AudioSource _activeMusic;
+    private AudioSource _inactiveMusic;
     private AudioSource _ambience;
 
     private IEventBus _eventBus;
@@ -96,10 +100,36 @@ public class AudioService : IAudioService, IDisposable
         PlaySoundAsync(clip).Forget();
     }
 
-    public void PlayMusic(AudioClip clip)
+    public async UniTask PlayMusic(AudioClip clip)
     {
-        _music.clip = clip;
-        _music.Play();
+        if (_activeMusic.clip == null)
+        {
+            _activeMusic.clip = clip;
+            _activeMusic.Play();
+        }
+        else
+        {
+            _inactiveMusic.clip = clip;
+            _inactiveMusic.volume = 0;
+            _inactiveMusic.Play();
+
+            float currentVolume = _activeMusic.volume;
+            float percentage = 0;
+
+            while (_activeMusic.volume > 0)
+            {
+                _activeMusic.volume = Mathf.Lerp(currentVolume, 0, percentage);
+                _inactiveMusic.volume = Mathf.Lerp(0, currentVolume, percentage);
+
+                percentage += FADE_DURATION * Time.deltaTime;
+
+                await UniTask.WaitForEndOfFrame();
+            }
+
+            _activeMusic.Stop();
+
+            (_activeMusic, _inactiveMusic) = (_inactiveMusic, _activeMusic);
+        }
     }
 
     public void PlayAmbience(AudioClip clip)
@@ -185,11 +215,16 @@ public class AudioService : IAudioService, IDisposable
         GameObject MusicGameObject = new GameObject(MUSIC_GAMEOBJECT_NAME);
         MusicGameObject.transform.SetParent(_audioGameObject.transform);
 
-        _music = MusicGameObject.AddComponent<AudioSource>();
+        _activeMusic = MusicGameObject.AddComponent<AudioSource>();
+        _inactiveMusic = MusicGameObject.AddComponent<AudioSource>();
 
-        _music.playOnAwake = false;
-        _music.loop = true;
-        _music.volume = DEFAULT_VALUE;
+        _activeMusic.playOnAwake = false;
+        _inactiveMusic.playOnAwake = false;
+        _activeMusic.loop = true;
+        _inactiveMusic.loop = true;
+
+        _activeMusic.volume = DEFAULT_VALUE;
+        _inactiveMusic.volume = 0.0f;
     }
 
     private async UniTask PlaySoundAsync(AudioClip clip)
@@ -212,7 +247,7 @@ public class AudioService : IAudioService, IDisposable
 
     private void OnLevelStarted(LevelStartedEvent levelClips)
     {
-       if (levelClips.Music) PlayMusic(levelClips.Music);   
+       if (levelClips.Music) PlayMusic(levelClips.Music).Forget();   
        if (levelClips.Ambience) PlayAmbience(levelClips.Ambience);
     }
 
