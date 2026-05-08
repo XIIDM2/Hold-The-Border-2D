@@ -3,6 +3,7 @@ using Data;
 using Gameplay.Player;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
+using Infrastructure.Events;
 using Infrastructure.Factories;
 using System.Threading;
 using UnityEngine;
@@ -14,13 +15,18 @@ namespace Infrastructure.Services
         private IPlayerController _player;
         private ITowerFactory _factory;
 
-        private GameplayRegistry _gameplayRegistry;
+        private IEventBus _eventBus;
 
-        public TowerBuildService(IPlayerController player, ITowerFactory factory, GameplayRegistry gameplayRegistry)
+        private GameplayRegistry _gameplayRegistry;
+        private SFXRegistry _SFXRegistry;
+
+        public TowerBuildService(IPlayerController player, ITowerFactory factory, IEventBus eventBus, GameplayRegistry gameplayRegistry, SFXRegistry SFXRegistry)
         {
             _player = player;
             _factory = factory;
+            _eventBus = eventBus;
             _gameplayRegistry = gameplayRegistry;
+            _SFXRegistry = SFXRegistry;
         }
 
 
@@ -44,6 +50,7 @@ namespace Infrastructure.Services
 
             Object.Destroy(site.gameObject);
             _player.TrySpendGold(buildPrice);
+            _eventBus.Publish(new InvokeSFX(_SFXRegistry.CoinsSound));
 
         }
 
@@ -59,6 +66,7 @@ namespace Infrastructure.Services
 
             _player.TrySpendGold(upgradePrice);
             tower.UpgradeRequested?.Invoke();
+            _eventBus.Publish(new InvokeSFX(_SFXRegistry.CoinsSound));
         }
 
         public async UniTask SellTower(TowerController tower, CancellationToken cancellationToken)
@@ -76,6 +84,7 @@ namespace Infrastructure.Services
 
             _player.AddGold(sellPrice);
             Object.Destroy(tower.gameObject);
+            _eventBus.Publish(new InvokeSFX(_SFXRegistry.CoinsSound));
 
         }
     }

@@ -3,6 +3,7 @@ using Core.Interfaces;
 using Data;
 using DG.Tweening;
 using Gameplay.Towers.FSM;
+using Infrastructure.Events;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using UnityEngine;
@@ -36,6 +37,7 @@ namespace Gameplay.Towers
 
 
         private ITowerSelectionService _selectionService;
+
         private TowerData _data;
 
         private Tween _highlightTween;
@@ -118,6 +120,7 @@ namespace Gameplay.Towers
             _data = data;
 
             ApplyCurrentTier();
+            Audio.PlayBuildSound();
             // первичная инициализация
         }
 
@@ -125,7 +128,7 @@ namespace Gameplay.Towers
         {
             Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
             Detection.Init(CurrentTierConfig.AttackRadius);
-            Audio.Init(CurrentTierConfig.AttackSound);
+            Audio.Init(CurrentTierConfig.BuildSound, CurrentTierConfig.AttackSound);
 
             if (Attack is TowerAttackByUnits attackByUnits)
             {

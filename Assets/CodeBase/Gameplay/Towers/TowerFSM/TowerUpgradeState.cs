@@ -20,6 +20,7 @@ namespace Gameplay.Towers.FSM
 
             controller.MoveToNextTier();
             controller.ApplyCurrentTier();
+            controller.Audio.PlayBuildSound();
 
             controller.Animation.PlayUpgradeAnimation();
 

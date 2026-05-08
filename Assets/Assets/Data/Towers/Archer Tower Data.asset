@@ -33,6 +33,7 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: 67964e5fbaec30b478283c9277be8aed, type: 2}
     _idleAnimation: {fileID: 7400000, guid: af364be1f82f0894690af9b87355ffca, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}
   - _upgradePrice: 70
     _sellPrice: 63
@@ -43,6 +44,7 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: 2d33e0aacd5968247af0abbd580392af, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 975b172647ba1664bae9811ccfbe4f32, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}
   - _upgradePrice: 100
     _sellPrice: 112
@@ -53,6 +55,7 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: d5a45c16c10d714469bf04c51d0eaabf, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 6037353944246804abec635a034f0521, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}
   - _upgradePrice: 150
     _sellPrice: 182
@@ -63,6 +66,7 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: 90fb0a26e8fb6574982c0df48da33889, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 93cbe023301bf2542ac446d9d77623fb, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}
   - _upgradePrice: 200
     _sellPrice: 287
@@ -73,6 +77,7 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: 95ed68ca8b234d14dbe4901564f8cdf8, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 1e97893d19bd5814489ae6248211e8cc, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}
   - _upgradePrice: 300
     _sellPrice: 427
@@ -83,6 +88,7 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: 91e931a99ba2518428bcbaf8905bc724, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 41efa513fcbafa14da10730998712988, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}
   - _upgradePrice: 0
     _sellPrice: 637
@@ -93,4 +99,5 @@ MonoBehaviour:
     _projectilePrefab: {fileID: 929726434339198249, guid: ed3f3c2096e3121489cab85d7dc0c6f4, type: 3}
     _upgradeAnimation: {fileID: 7400000, guid: f1f1fa4ee6cf6944d904581599d77e2d, type: 2}
     _idleAnimation: {fileID: 7400000, guid: 83390489e3aa9954791ca8e5d1a59511, type: 2}
+    _buildSound: {fileID: 8300000, guid: a7bc7f4803f8c364bbdb05987f8aa976, type: 3}
     _attackSound: {fileID: 8300000, guid: ef962fa2dc6753a49b1b70f54ce4e04a, type: 3}

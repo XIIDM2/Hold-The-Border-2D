@@ -1,5 +1,8 @@
+using Data;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
+using Infrastructure.Events;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Infrastructure.Services
@@ -15,11 +18,24 @@ namespace Infrastructure.Services
         public BuildSite BuildSite { get; private set; }
         public TowerController Tower { get; private set; }
 
+        private readonly IEventBus _eventBus;
+
+        private AudioClip _hoverSound;
+        private AudioClip _selectSound;
+
+        public TowerSelectionService(IEventBus eventBus, SFXRegistry SFXRegistry)
+        {
+            _eventBus = eventBus;
+            _hoverSound = SFXRegistry.HoverSound;
+            _selectSound = SFXRegistry.ClickSound;
+        }
+
         public void SelectBuildSite(BuildSite site)
         {
             BuildSite = site;
             BuildsiteSelected?.Invoke(BuildSite);
             ClearTowerSelection();
+            _eventBus.Publish(new InvokeSFX(_selectSound));
         }
 
         public void SelectTower(TowerController tower)
@@ -27,6 +43,7 @@ namespace Infrastructure.Services
             Tower = tower;
             TowerSelected?.Invoke(Tower);
             ClearBuildSiteSelection();
+            _eventBus.Publish(new InvokeSFX(_selectSound));
 
         }
 
