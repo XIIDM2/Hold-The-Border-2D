@@ -20,13 +20,11 @@ namespace Infrastructure.Services
 
         private readonly IEventBus _eventBus;
 
-        private AudioClip _hoverSound;
-        private AudioClip _selectSound;
+        private readonly AudioClip _selectSound;
 
         public TowerSelectionService(IEventBus eventBus, SFXRegistry SFXRegistry)
         {
             _eventBus = eventBus;
-            _hoverSound = SFXRegistry.HoverSound;
             _selectSound = SFXRegistry.ClickSound;
         }
 

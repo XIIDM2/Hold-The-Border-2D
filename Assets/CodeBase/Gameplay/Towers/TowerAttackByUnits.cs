@@ -1,3 +1,4 @@
+using Data;
 using Gameplay.Projectiles;
 using Gameplay.Towers.Units;
 using Infrastructure.Interfaces;
@@ -9,7 +10,7 @@ using UnityEngine.Pool;
 
 namespace Gameplay.Towers
 {
-    public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable, IProjectileRequireable
+    public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable
     {
         private GameObject _unitsVisualPrefab;
         private Projectile _projectilePrefab; 
@@ -63,19 +64,16 @@ namespace Gameplay.Towers
             Destroy(projectile);
         }
 
-        public override void Init(int damage, float cooldown)
+        public override void Init(TowerData.TowerTiersConfig currentTier)
         {
-            base.Init(damage, cooldown);
+            base.Init(currentTier);
+
+            InitUnitVisualPrefab(currentTier.AtackersModulePrefab);
+
+            InitProjectile(currentTier.ProjectilePrefab);
 
             InitAttackers();
 
-        }
-
-        public void InitUnitVisualPrefab(GameObject prefab)
-        {
-            Destroy(_unitsVisualPrefab);
-
-            _unitsVisualPrefab = Instantiate(prefab, gameObject.transform);
         }
 
         public void InitAttackers()
@@ -102,7 +100,13 @@ namespace Gameplay.Towers
             _unitsSharedAttackCooldown = new WaitForSeconds(_cooldown / _attackers.Count);
         }
 
-        public void InitProjectile(GameObject projectilePrefab)
+        private void InitUnitVisualPrefab(GameObject prefab)
+        {
+            Destroy(_unitsVisualPrefab);
+
+            _unitsVisualPrefab = Instantiate(prefab, gameObject.transform);
+        }
+        private void InitProjectile(GameObject projectilePrefab)
         {
             _projectilePrefab = projectilePrefab.GetComponent<Projectile>();
         }

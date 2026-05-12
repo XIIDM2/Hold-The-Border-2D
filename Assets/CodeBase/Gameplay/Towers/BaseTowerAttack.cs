@@ -1,10 +1,10 @@
 using Core.Utilities.CustomProperties;
+using Data;
 using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Gameplay.Towers
 {
@@ -37,10 +37,10 @@ namespace Gameplay.Towers
             }  
         }
 
-        public virtual void Init(int damage, float cooldown)
+        public virtual void Init(TowerData.TowerTiersConfig currentTier)
         {
-            _damage = damage;
-            _cooldown = cooldown;
+            _damage = currentTier.Damage;
+            _cooldown = currentTier.AttackCooldown;
 
             if (_currentStrategy == null)
             {

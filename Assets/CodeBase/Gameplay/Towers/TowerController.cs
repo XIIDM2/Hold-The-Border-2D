@@ -3,7 +3,6 @@ using Core.Interfaces;
 using Data;
 using DG.Tweening;
 using Gameplay.Towers.FSM;
-using Infrastructure.Events;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using UnityEngine;
@@ -121,7 +120,7 @@ namespace Gameplay.Towers
 
             ApplyCurrentTier();
             Audio.PlayBuildSound();
-            // первичная инициализация
+            // initial init
         }
 
         public void ApplyCurrentTier()
@@ -130,19 +129,9 @@ namespace Gameplay.Towers
             Detection.Init(CurrentTierConfig.AttackRadius);
             Audio.Init(CurrentTierConfig.BuildSound, CurrentTierConfig.AttackSound);
 
-            if (Attack is TowerAttackByUnits attackByUnits)
-            {
-                attackByUnits.InitUnitVisualPrefab(CurrentTierConfig.AtackersModulePrefab);
-            }
+            if (Attack) Attack.Init(CurrentTierConfig);
 
-            if (Attack) Attack.Init(CurrentTierConfig.Damage, CurrentTierConfig.AttackCooldown);
-
-            if (Attack is IProjectileRequireable projectileRequireable)
-            {
-                projectileRequireable.InitProjectile(CurrentTierConfig.ProjectilePrefab);
-            }
-
-            // назначение данных
+            // data binding
         }
 
         public void MoveToNextTier()
