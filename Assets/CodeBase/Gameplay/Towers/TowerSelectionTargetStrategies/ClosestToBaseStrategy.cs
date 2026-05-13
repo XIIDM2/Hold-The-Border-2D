@@ -6,11 +6,11 @@ namespace Gameplay.Towers.TargetSelectionStrategies
 {
     public class ClosestToBaseStrategy : ITowerSelectionTargetStrategy
     {
-        public ITargetable SelectTarget(List<ITargetable> targetables)
+        public ITargetable SelectTarget(IReadOnlyCollection<ITargetable> targetables)
         {
             if (targetables.Count == 0) return null;
 
-            ITargetable currentTarget = targetables[0];
+            ITargetable currentTarget = null;
             int higestWaypointIndex = -1;
             float closestDistanceWaypoint = float.MaxValue;
 

@@ -28,7 +28,7 @@ public class TowerAudio : MonoBehaviour
     }
 
 
-    public void OnAttack(Transform _)
+    public void OnAttack()
     {
         _eventBus.Publish(new InvokeSFX(_attackSound));
     }

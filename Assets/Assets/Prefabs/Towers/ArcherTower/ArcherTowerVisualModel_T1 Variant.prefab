@@ -77,6 +77,10 @@ PrefabInstance:
       value: TowerArcher_T1
       objectReference: {fileID: 0}
     - target: {fileID: 4061923808569142594, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061923808569142594, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}

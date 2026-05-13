@@ -3,7 +3,6 @@ using Core.Interfaces;
 using Data;
 using DG.Tweening;
 using Gameplay.Towers.FSM;
-using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,20 +27,25 @@ namespace Gameplay.Towers
         public TowerAudio Audio { get; private set; }
 
 
+
+
         [Header("FSM")]
         public FiniteStateMachine<TowerController> ActionFSM { get; private set; }
         public TowerUpgradeState UpgradeState { get; private set; }
         public TowerIdleState IdleState { get; private set; }
         public TowerAttackState AttackState { get; private set; }
 
-
-        private ITowerSelectionService _selectionService;
-
-        private TowerData _data;
-
+        [Header("Tween Settings")]
         private Tween _highlightTween;
         private float _highlightSize = 1.3f;
         private float _highlightDuration = 0.5f;
+
+        [Header("Dependencies")]
+        private ITowerSelectionService _selectionService;
+        private TowerData _data;
+
+        private BoxCollider2D _boxCollider;
+        private SpriteRenderer _spriteRenderer;
 
         [Inject]
         public void Construct(ITowerSelectionService selectionService)
@@ -62,6 +66,9 @@ namespace Gameplay.Towers
             AttackState = new TowerAttackState();
 
             ActionFSM = new FiniteStateMachine<TowerController>();
+
+            _boxCollider = GetComponentInChildren<BoxCollider2D>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         private void Start()
@@ -125,11 +132,15 @@ namespace Gameplay.Towers
 
         public void ApplyCurrentTier()
         {
+            _boxCollider.size = _spriteRenderer.sprite.bounds.size;
+
             Animation.Init(CurrentTierConfig.UpgradeAnimation, CurrentTierConfig.IdleAnimation);
             Detection.Init(CurrentTierConfig.AttackRadius);
             Audio.Init(CurrentTierConfig.BuildSound, CurrentTierConfig.AttackSound);
 
             if (Attack) Attack.Init(CurrentTierConfig);
+
+
 
             // data binding
         }

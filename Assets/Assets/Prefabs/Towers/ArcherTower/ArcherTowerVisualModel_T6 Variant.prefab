@@ -78,6 +78,10 @@ PrefabInstance:
       value: TowerArcher_T3
       objectReference: {fileID: 0}
     - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_MaskInteraction
       value: 0
       objectReference: {fileID: 0}
@@ -142,6 +146,10 @@ PrefabInstance:
     - target: {fileID: 675314045665097179, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_Name
       value: TowerArcher_T3 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3264405948723207024, guid: 1ebfc7c0b3d76c04bbfee0e0ac5d8e08, type: 3}
       propertyPath: m_MaskInteraction

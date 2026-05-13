@@ -5,16 +5,18 @@ namespace Gameplay.Towers.TargetSelectionStrategies
 {
     public class LowestHealthStrategy : ITowerSelectionTargetStrategy
     {
-        public ITargetable SelectTarget(List<ITargetable> targetables)
+        public ITargetable SelectTarget(IReadOnlyCollection<ITargetable> targetables)
         {
             if (targetables.Count == 0) return null;
 
-            ITargetable target = targetables[0];
+            ITargetable target = null;
+            int lowestHealth = int.MaxValue;
 
             foreach (ITargetable targetable in targetables)
             {
-                if (target.Health.CurrentHealth > targetable.Health.CurrentHealth)
+                if (lowestHealth > targetable.Health.CurrentHealth)
                 {
+                    lowestHealth = targetable.Health.CurrentHealth;
                     target = targetable;
                 }
             }

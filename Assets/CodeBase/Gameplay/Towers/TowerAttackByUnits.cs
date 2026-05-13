@@ -24,7 +24,6 @@ namespace Gameplay.Towers
 
         private ObjectPool<Projectile> _pool;
 
-
         private void Awake()
         {
             _animation = GetComponentInChildren<TowerAnimation>();
@@ -82,7 +81,6 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent -= InstantiateProjectile;
-                attacker.AttackAnimationEvent -= _audio.OnAttack;
                 _animation.UpgradeAnimationCompleted -= attacker.TowerUnitSpawn;
             }
 
@@ -93,7 +91,6 @@ namespace Gameplay.Towers
             foreach (TowerUnitAnimation attacker in _attackers)
             {
                 attacker.AttackAnimationEvent += InstantiateProjectile;
-                attacker.AttackAnimationEvent += _audio.OnAttack;
                 _animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
             }
 
@@ -113,7 +110,7 @@ namespace Gameplay.Towers
 
         private void InstantiateProjectile(Transform _firePoint)
         {
-            if (_unitsInRange.Count == 0) return;
+            if (_targetsInRange.Count == 0) return;
 
             Projectile projectile = _pool.Get();
 
@@ -123,17 +120,19 @@ namespace Gameplay.Towers
 
             projectile.InitPool(_pool);
 
+            _audio.OnAttack();
+
         }
 
         protected override IEnumerator AttackRoutine()
         {
             if (_attackers.Count == 0) yield break;
 
-            while (_unitsInRange.Count > 0)
+            while (_targetsInRange.Count > 0)
             {
                 foreach (TowerUnitAnimation attacker in _attackers)
                 {
-                    if (_unitsInRange.Count == 0) yield break;
+                    if (_targetsInRange.Count == 0) yield break;
 
                     attacker.SetTarget(_currentTarget);
                     attacker.PlayAttackAnimation();

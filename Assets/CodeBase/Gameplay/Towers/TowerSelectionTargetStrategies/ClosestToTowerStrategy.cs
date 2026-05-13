@@ -13,16 +13,19 @@ namespace Gameplay.Towers.TargetSelectionStrategies
             _towerPosition = towerPosition;
         }
 
-        public ITargetable SelectTarget(List<ITargetable> targetables)
+        public ITargetable SelectTarget(IReadOnlyCollection<ITargetable> targetables)
         {
             if (targetables.Count == 0) return null;
 
-            ITargetable target = targetables[0];
+            ITargetable target = null;
+            float closestDistance = float.MaxValue;
 
             foreach (ITargetable targetable in targetables)
             {
-                if (Vector2.Distance(target.Position, _towerPosition) > Vector2.Distance(targetable.Position, _towerPosition))
+                float currentDistance = Vector2.Distance(targetable.Position, _towerPosition);
+                if (closestDistance > currentDistance)
                 {
+                    closestDistance = currentDistance;
                     target = targetable;
                 }
             }

@@ -4,6 +4,6 @@ namespace Infrastructure.Interfaces
 {
     public interface ITowerSelectionTargetStrategy
     {
-        ITargetable SelectTarget(List<ITargetable> targetables);
+        ITargetable SelectTarget(IReadOnlyCollection<ITargetable> targetables);
     }
 }

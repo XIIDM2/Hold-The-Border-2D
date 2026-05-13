@@ -12,21 +12,17 @@ namespace Gameplay.UI
 {
     public class TowerPresenter : IStartable, IDisposable
     {
-        private const int CLOSEST_TO_TOWER_STRATEGY_INDEX = 1;
-        private const int CLOSEST_TO_BASE_STRATEGY_INDEX = 2;
-        private const int LOWEST_HEALTH_STRATEGY_INDEX = 3;
-
         private TowerController _tower;
 
         private TowerView _view;
 
-        private ITowerSelectionService _selectionService;
-        private ITowerBuildService _buildService;
+        private readonly ITowerSelectionService _selectionService;
+        private readonly ITowerBuildService _buildService;
 
-        private IPlayerController _player;
+        private readonly IPlayerController _player;
 
-        private IRadiusVisualizerService _radiusVisualizerService;
-        private CancellationToken _ctc;
+        private readonly IRadiusVisualizerService _radiusVisualizerService;
+        private readonly CancellationToken _ctc;
 
         public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IPlayerController player, IRadiusVisualizerService radiusVisualizerService, CancellationToken ctc)
         {
@@ -130,26 +126,8 @@ namespace Gameplay.UI
 
         private void OnStrategyChanged(int strategyIndex)
         {
-            if (_selectionService.Tower)
-            {
-                switch (strategyIndex)
-                {
-                    case CLOSEST_TO_TOWER_STRATEGY_INDEX:
-                        _tower.Attack.SelectStrategy(new ClosestToTowerStrategy(_tower.transform.position));
-                        break;
-                    case CLOSEST_TO_BASE_STRATEGY_INDEX:
-                        _tower.Attack.SelectStrategy(new ClosestToBaseStrategy());
-                        break;
-                    case LOWEST_HEALTH_STRATEGY_INDEX:
-                        _tower.Attack.SelectStrategy(new LowestHealthStrategy());
-                        break;
-                    default:
-                        Debug.Log("Strategy Index Not Found");
-                        break;
-                }
-            }
+            if (_selectionService.Tower) _tower.Attack.SelectStrategy(strategyIndex);
         }
-
 
     }
 }

@@ -14,6 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Data.ProjectRegistry
   _levelDatas:
   - {fileID: 11400000, guid: 53b24ff196e37c54da399573b3697860, type: 2}
-  - {fileID: 11400000, guid: 53b24ff196e37c54da399573b3697860, type: 2}
-  - {fileID: 11400000, guid: 53b24ff196e37c54da399573b3697860, type: 2}
-  - {fileID: 11400000, guid: 53b24ff196e37c54da399573b3697860, type: 2}

@@ -10,14 +10,19 @@ namespace Gameplay.Towers
 {
     public abstract class BaseTowerAttack : MonoBehaviour
     {
-        private const float TIME_TO_UPDATE_STRATEGY = 0.5f;
-        public IReadOnlyList<ITargetable> UnitsInRange => _unitsInRange;
+        public IReadOnlyCollection<ITargetable> TargetsInRange => _targetsInRange.Values;
+
+        private const float TIME_TO_UPDATE_STRATEGY = 1.0f;
+
+        private const int CLOSEST_TO_TOWER_STRATEGY_INDEX = 1;
+        private const int CLOSEST_TO_BASE_STRATEGY_INDEX = 2;
+        private const int LOWEST_HEALTH_STRATEGY_INDEX = 3;
 
         [SerializeField, ReadOnly] protected int _damage;
         [SerializeField, ReadOnly] protected float _cooldown;
 
-        protected List<ITargetable> _unitsInRange = new List<ITargetable>();
         protected Dictionary<IDamageable, ITargetable> _targetsInRange = new Dictionary<IDamageable, ITargetable>();
+        protected Dictionary<int, ITowerSelectionTargetStrategy> _targetStrategies;
 
         protected ITargetable _currentTarget;
 
@@ -28,13 +33,15 @@ namespace Gameplay.Towers
 
         private void Update()
         {
+            if (_targetsInRange.Count == 0) return;
+
             _updateStrategyTimer += Time.deltaTime;
 
             if (_updateStrategyTimer > TIME_TO_UPDATE_STRATEGY)
             {
-                _currentTarget = _currentStrategy.SelectTarget(_unitsInRange);
+                _currentTarget = _currentStrategy.SelectTarget(_targetsInRange.Values);
                 _updateStrategyTimer = 0;
-            }  
+            }
         }
 
         public virtual void Init(TowerData.TowerTiersConfig currentTier)
@@ -42,16 +49,28 @@ namespace Gameplay.Towers
             _damage = currentTier.Damage;
             _cooldown = currentTier.AttackCooldown;
 
+            _targetStrategies = new Dictionary<int, ITowerSelectionTargetStrategy>
+            {
+                { CLOSEST_TO_TOWER_STRATEGY_INDEX, new ClosestToTowerStrategy(transform.position) },
+                { CLOSEST_TO_BASE_STRATEGY_INDEX, new ClosestToBaseStrategy() },
+                { LOWEST_HEALTH_STRATEGY_INDEX, new LowestHealthStrategy() },
+            };
+
+
             if (_currentStrategy == null)
             {
-                SelectStrategy(new ClosestToTowerStrategy(transform.position));
-                _currentStrategy.SelectTarget(_unitsInRange);
+                SelectStrategy(CLOSEST_TO_TOWER_STRATEGY_INDEX);
             }
         }
 
-        public void SelectStrategy(ITowerSelectionTargetStrategy strategy)
+        public void SelectStrategy(int strategyIndex)
         {
-            _currentStrategy = strategy;
+            if (_targetStrategies.TryGetValue(strategyIndex, out ITowerSelectionTargetStrategy targetStrategy))
+            {
+                _currentStrategy = targetStrategy;
+                _currentStrategy.SelectTarget(_targetsInRange.Values);
+            }
+            else Debug.LogWarning("Strategy Index not found");
         }
 
         public void Attack()
@@ -70,24 +89,15 @@ namespace Gameplay.Towers
 
         public void AddToAttackList(ITargetable target)
         {
-            if (!_unitsInRange.Contains(target))
-            {
-                _unitsInRange.Add(target);
-            }
+            if (_targetsInRange.TryAdd(target.Health, target)) target.Health.Death += OnTargetDeath;
 
-            _targetsInRange.TryAdd(target.Health, target);
-
-            target.Health.Death += OnTargetDeath;
         }
 
         public void RemoveFromAttackList(ITargetable target)
         {
             target.Health.Death -= OnTargetDeath;
             _targetsInRange.Remove(target.Health);
-            _unitsInRange.Remove(target);
         }
-
-        protected abstract IEnumerator AttackRoutine();
 
         protected void OnTargetDeath(IDamageable damageable)
         {
@@ -96,5 +106,6 @@ namespace Gameplay.Towers
                 RemoveFromAttackList(target);
             }
         }
+        protected abstract IEnumerator AttackRoutine();
     }
 }
