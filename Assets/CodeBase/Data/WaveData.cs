@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Wave Data", menuName = "Scriptable Objects/Waves/Wave Data")]
+    [CreateAssetMenu(fileName = "Wave Data", menuName = "ScriptableObjects/Waves/Wave Data")]
     public class WaveData : ScriptableObject
     {
         [System.Serializable]

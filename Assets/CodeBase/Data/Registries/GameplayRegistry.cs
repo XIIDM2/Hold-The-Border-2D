@@ -6,7 +6,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Gameplay Registry", menuName = "Scriptable Objects/Registries/GameplayRegistry")]
+    [CreateAssetMenu(fileName = "Gameplay Registry", menuName = "ScriptableObjects/Registries/GameplayRegistry")]
     public class GameplayRegistry : ScriptableObject
     {
         public AssetReferenceGameObject BuildSiteReference => _buildSiteReference;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Enemy Unit Data", menuName = "Scriptable Objects/Units/Enemy Units/Unit Data")]
+    [CreateAssetMenu(fileName = "Enemy Unit Data", menuName = "ScriptableObjects/Units/Enemy Units/Unit Data")]
     public class EnemyUnitData : UnitData
     {
         [SerializeField] private EnemyUnitType _type;

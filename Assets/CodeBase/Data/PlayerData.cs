@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Player Data", menuName = "Scriptable Objects/Player/Player Data")]
+    [CreateAssetMenu(fileName = "Player Data", menuName = "ScriptableObjects/Player/Player Data")]
     public class PlayerData : ScriptableObject
     {
         [SerializeField] private int _maxHeath;

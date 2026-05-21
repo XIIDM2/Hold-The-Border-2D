@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "SFX Registry", menuName = "Scriptable Objects/Registries/SFXRegistry")]
+    [CreateAssetMenu(fileName = "SFX Registry", menuName = "ScriptableObjects/Registries/SFXRegistry")]
     public class SFXRegistry : ScriptableObject
     {
         [SerializeField] private AudioClip _mainMenuMusic;

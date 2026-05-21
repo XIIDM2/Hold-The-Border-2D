@@ -3,7 +3,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "UIRegistry", menuName = "Scriptable Objects/Registries/UIRegistry")]
+    [CreateAssetMenu(fileName = "UIRegistry", menuName = "ScriptableObjects/Registries/UIRegistry")]
     public class UIRegistry : ScriptableObject
     {
         [SerializeField] private AssetReferenceGameObject _levelButtonReference;

@@ -3,7 +3,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Unit Data", menuName = "Scriptable Objects/Units/Unit Data")]
+    [CreateAssetMenu(fileName = "Unit Data", menuName = "ScriptableObjects/Units/Unit Data")]
     public class UnitData : ScriptableObject
     {
         [SerializeField] private AssetReferenceGameObject _prefabReference;

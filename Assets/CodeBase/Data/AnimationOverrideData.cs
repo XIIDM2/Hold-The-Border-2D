@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Animation Override Data", menuName = "Scriptable Objects/Animations/Animation Override Data")]
+    [CreateAssetMenu(fileName = "Animation Override Data", menuName = "ScriptableObjects/Animations/Animation Override Data")]
     public class AnimationOverrideData : ScriptableObject
     {
         [System.Serializable]

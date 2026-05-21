@@ -10,7 +10,6 @@ using Infrastructure.Factories;
 using Infrastructure.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.tvOS;
 using VContainer;
 
 namespace Gameplay.Units.Enemy

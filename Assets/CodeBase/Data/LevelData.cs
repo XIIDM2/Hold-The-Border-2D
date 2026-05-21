@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Level Data", menuName = "Scriptable Objects/Levels/Level Data")]
+    [CreateAssetMenu(fileName = "Level Data", menuName = "ScriptableObjects/Levels/Level Data")]
     public class LevelData : ScriptableObject
     {
         [SerializeField] private string _levelName;

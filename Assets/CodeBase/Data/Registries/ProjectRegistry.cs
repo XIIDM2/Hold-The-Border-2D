@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Project Registry", menuName = "Scriptable Objects/Registries/ProjectRegistry")]
+    [CreateAssetMenu(fileName = "Project Registry", menuName = "ScriptableObjects/Registries/ProjectRegistry")]
     public class ProjectRegistry : ScriptableObject
     {
         [SerializeField] private LevelData[] _levelDatas;

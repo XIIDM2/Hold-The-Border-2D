@@ -4,7 +4,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Data
 {
-    [CreateAssetMenu(fileName = "Tower Data", menuName = "Scriptable Objects/Towers/Tower Data")]
+    [CreateAssetMenu(fileName = "Tower Data", menuName = "ScriptableObjects/Towers/Tower Data")]
     public class TowerData : ScriptableObject
     {
         [System.Serializable]
