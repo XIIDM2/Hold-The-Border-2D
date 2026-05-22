@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -11,5 +12,10 @@ namespace Data
 
         public AssetReferenceGameObject Prefab => _prefab;
         public float FuseDuration => _fuseDuration;
+
+        public override async UniTask Execute()
+        {
+            // TODO
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -13,5 +14,10 @@ namespace Data
         public AssetReferenceGameObject Prefab => _prefab;
         public float Duration => _duration;
         public float SlowPercentage => _slowPercentage;
+
+        public override async UniTask Execute()
+        {
+            // TODO
+        }
     }
 }

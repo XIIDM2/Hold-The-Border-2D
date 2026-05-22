@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfee3e6c471ed884a996fcb1e17a24be, type: 3}
   m_Name: Spikes
   m_EditorClassIdentifier: Assembly-CSharp::Data.SpikeSkillData
-  _name: 
+  _name: Spikes
   _description: 
   _icon: {fileID: 0}
   _price: 0
+  _cooldown: 0
   _castType: 0
   _damage: 1
   _radius: 5

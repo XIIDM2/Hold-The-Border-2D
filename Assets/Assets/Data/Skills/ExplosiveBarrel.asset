@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2b7c528f5a704f44ae9257f47cfe769, type: 3}
   m_Name: ExplosiveBarrel
   m_EditorClassIdentifier: Assembly-CSharp::Data.ExplosiveBarrelSkillData
+  _name: Explosive Barrel
+  _description: 
+  _icon: {fileID: 0}
+  _price: 0
+  _cooldown: 0
+  _castType: 0
+  _damage: 0
+  _radius: 0
   _prefab:
     m_AssetGUID: 
     m_SubObjectName: 

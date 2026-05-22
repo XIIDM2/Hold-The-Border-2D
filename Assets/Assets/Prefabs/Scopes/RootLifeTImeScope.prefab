@@ -52,5 +52,6 @@ MonoBehaviour:
   _gameplayRegistry: {fileID: 11400000, guid: 510cbbd95291e7246be65cdc9cfe96f6, type: 2}
   _SFXRegistry: {fileID: 11400000, guid: d45c4100d7b0ce34384563631325434c, type: 2}
   _UIRegistry: {fileID: 11400000, guid: e468bb26b8607d44b88d1ef05ea48bff, type: 2}
+  _skillRegistry: {fileID: 11400000, guid: e9fdcac5e4fa18b4d9a19a2f5fa8d4b6, type: 2}
   _playerData: {fileID: 11400000, guid: af202be03e43eba46bb6061f71638c95, type: 2}
   _faderPrefab: {fileID: 1375060106615122706, guid: 1831754433c4ae84a8cb199345e8a8ec, type: 3}
