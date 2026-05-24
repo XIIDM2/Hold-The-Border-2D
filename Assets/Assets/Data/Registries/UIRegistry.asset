@@ -18,6 +18,12 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
+  _skillButtonReference:
+    m_AssetGUID: 731079f7e0897e245acfd41e6ac20c10
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   _damagePopupReference:
     m_AssetGUID: 9186de22c9f8ba746a752b8580ec0b87
     m_SubObjectName: 

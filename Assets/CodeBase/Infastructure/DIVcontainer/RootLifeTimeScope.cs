@@ -63,8 +63,6 @@ namespace Infrastructure.DI
             {
                 skill.Init(eventBus, skillFactory);
             }
-
-            Debug.Log("All skills initialized");
         }
 
 

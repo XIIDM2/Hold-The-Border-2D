@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 8a6fc81ed873ee24c8ff529fb78ee125
   m_SerializeEntries:
+  - m_GUID: 731079f7e0897e245acfd41e6ac20c10
+    m_Address: Assets/Assets/Prefabs/UI/SkillButton.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dc3c95e5a4d53f040930ecc29c1c8f40
     m_Address: Assets/Assets/Prefabs/UI/LevelButton.prefab
     m_ReadOnly: 0

@@ -27,6 +27,15 @@ namespace Infrastructure.Factories
             return levelButton;
         }
 
+        public async UniTask<SkillButton> CreateSkillButton(SkillData data, CancellationToken cancellationToken)
+        {
+            SkillButton skillButton = await Create<SkillButton>(_UIRegistry.SkillButtonReference, Vector2.zero, cancellationToken);
+
+            skillButton.Init(data);
+
+            return skillButton;
+        }
+
         public async UniTask<DamagePopup>CreateDamagePopup(Vector2 position, int damage, CancellationToken cancellationToken)
         {
             DamagePopup popup = await Create<DamagePopup>(_UIRegistry.DamagePopupReference, position, cancellationToken);

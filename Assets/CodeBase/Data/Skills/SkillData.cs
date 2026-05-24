@@ -2,6 +2,7 @@ using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
 using Infrastructure.Services;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Data
 {

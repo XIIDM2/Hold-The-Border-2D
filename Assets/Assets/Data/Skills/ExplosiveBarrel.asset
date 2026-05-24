@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Data.ExplosiveBarrelSkillData
   _name: Explosive Barrel
   _description: 
-  _icon: {fileID: 0}
-  _price: 0
+  _icon: {fileID: 6937817954938267909, guid: fb319fcb8cf25ac4bbb5bff0369f743a, type: 3}
+  _price: 20
   _cooldown: 0
   _castType: 0
   _damage: 0
