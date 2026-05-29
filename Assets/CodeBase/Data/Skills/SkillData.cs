@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using Infrastructure.Factories;
 using Infrastructure.Services;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Data
 {
@@ -31,7 +30,7 @@ namespace Data
             _skillFactory = skillFactory;
         }
 
-        public abstract UniTask Execute();
+        public abstract UniTask Execute(Vector2? position = null);
 
     }
 }

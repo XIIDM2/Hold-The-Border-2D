@@ -1,10 +1,8 @@
 using Cysharp.Threading.Tasks;
 using Gameplay.UI;
 using Infrastructure.Events;
-using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
 using VContainer.Unity;
@@ -94,6 +92,7 @@ public class AudioService : IAudioService, IDisposable
         _eventBus.Unsubscribe<LevelStartedEvent>(OnLevelStarted);
         _eventBus.Unsubscribe<InvokeSFX>(OnSFX);
     }
+
 
     public void PlaySound(AudioClip clip)
     {

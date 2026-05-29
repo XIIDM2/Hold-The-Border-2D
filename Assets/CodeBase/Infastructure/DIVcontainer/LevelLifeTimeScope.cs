@@ -26,9 +26,12 @@ namespace Infrastructure.DI
 
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);
+            builder.Register<ISkillFactory, SkillFactory>(Lifetime.Singleton);
 
             builder.Register<PlayerController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<WaveControllerService>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<SkillService>(Lifetime.Singleton).AsImplementedInterfaces();
+
 
             builder.Register<TowerBuildService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<TowerSelectionService>(Lifetime.Singleton).AsImplementedInterfaces();
@@ -41,6 +44,20 @@ namespace Infrastructure.DI
             builder.RegisterInstance(destroyCancellationToken);
 
             builder.RegisterEntryPoint<LevelBootsTrapper>();
+
+            builder.RegisterBuildCallback(InitSkills);
+        }
+
+        private void InitSkills(IObjectResolver container)
+        {
+            IEventBus eventBus = container.Resolve<IEventBus>();
+            ISkillFactory skillFactory = container.Resolve<ISkillFactory>();
+            SkillRegistry skillRegistry = container.Resolve<SkillRegistry>();
+
+            foreach (SkillData skill in skillRegistry.SkillDatas)
+            {
+                skill.Init(eventBus, skillFactory);
+            }
         }
     }
 }

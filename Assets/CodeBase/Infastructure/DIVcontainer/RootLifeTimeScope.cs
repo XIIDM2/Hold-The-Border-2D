@@ -32,13 +32,13 @@ namespace Infrastructure.DI
             builder.RegisterInstance(_faderPrefab);
 
             builder.Register<IUIFactory, UIFactory>(Lifetime.Singleton);
-            builder.Register<ISkillFactory, SkillFactory>(Lifetime.Singleton);
 
             builder.Register<AssetProviderService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SceneController>(Lifetime.Singleton).AsSelf();
 
             builder.Register<AudioService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<SettingsService>(Lifetime.Singleton).AsImplementedInterfaces();
+            builder.Register<InputService>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<EventBus>(Lifetime.Singleton).AsImplementedInterfaces();
 
@@ -50,21 +50,6 @@ namespace Infrastructure.DI
 
             builder.RegisterEntryPoint<GameBootsTrapper>();
 
-            builder.RegisterBuildCallback(InitSkills);
-
         }
-
-        private void InitSkills(IObjectResolver container)
-        {
-            IEventBus eventBus = container.Resolve<IEventBus>();
-            ISkillFactory skillFactory = container.Resolve<ISkillFactory>();
-
-            foreach (SkillData skill in _skillRegistry.SkillDatas)
-            {
-                skill.Init(eventBus, skillFactory);
-            }
-        }
-
-
     }
 }

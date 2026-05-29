@@ -1,20 +1,25 @@
 using Core.Interfaces;
 using Cysharp.Threading.Tasks;
+using Infrastructure.Interfaces;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using VContainer;
 
 namespace Infrastructure.Factories
 {
     public class SkillFactory : BaseFactory, ISkillFactory
     {
-        public SkillFactory(IAssetProviderService assetProvider, IObjectResolver objectResolver) : base(assetProvider, objectResolver)
+        private CancellationToken _ctc;
+        public SkillFactory(IAssetProviderService assetProvider, IObjectResolver objectResolver, CancellationToken ctc) : base(assetProvider, objectResolver)
         {
+            _ctc = ctc;
         }
 
-        public async UniTask<GameObject> CreateSkillGameObject()
+        public async UniTask<TSkill>CreateSkillGameObject<TSkill>(AssetReferenceGameObject assetReference, Vector2 position) where TSkill : Component, ISkill
         {
-            // TODO
-            return null;
+            TSkill skill = await Create<TSkill>(assetReference, position, _ctc);
+            return skill;
         }
     }
 }

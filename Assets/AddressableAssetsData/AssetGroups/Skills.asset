@@ -10,14 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Skills
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Default Local Group
-  m_GUID: 8a6fc81ed873ee24c8ff529fb78ee125
-  m_SerializeEntries: []
+  m_GroupName: Skills
+  m_GUID: 8dda292f8f1706d4da5d0a75357f43b0
+  m_SerializeEntries:
+  - m_GUID: 96adb7154b740024b84cd8e111f214dc
+    m_Address: Spikes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level_1
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 4beb7aec40df26045b6f6be651ac641a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 8f7ccbe321689ca418c8604208a43072, type: 2}
-    - {fileID: 11400000, guid: f0bb89fa0e16a61478e2dad2b9f40128, type: 2}
+    - {fileID: 11400000, guid: 3f3c43afad786b24cb04aa83649b2cae, type: 2}
+    - {fileID: 11400000, guid: 3228d5e869ced4c4a92297b0ff7a9f3a, type: 2}

@@ -62,13 +62,13 @@ namespace Assets.CodeBase.Infastructure.Services
             }
         }
 
-        public async UniTask<T> LoadAssetByReference<T>(AssetReference reference, CancellationToken cancellationToken) where T : class
+        public async UniTask<T> LoadAssetByReference<T>(AssetReference reference, CancellationToken cancellationToken)
         {
             string address = await LoadAssetAddress(reference, cancellationToken);
 
             if (_asyncOperationsDict.TryGetValue(address, out AsyncOperationHandle cachedHandle))
             {
-                return cachedHandle.Result as T;
+                return (T)cachedHandle.Result;
             }
 
             AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(address);

@@ -21,8 +21,20 @@ MonoBehaviour:
     m_SerializedLabels:
     - Level_1
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 731079f7e0897e245acfd41e6ac20c10
+    m_Address: SkillButton
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level_1
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9186de22c9f8ba746a752b8580ec0b87
     m_Address: DamagePopup
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level_1
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc3c95e5a4d53f040930ecc29c1c8f40
+    m_Address: LevelButton
     m_ReadOnly: 0
     m_SerializedLabels:
     - Level_1

@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Data;
 using Infrastructure.Factories;
+using Infrastructure.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -15,14 +16,16 @@ namespace Gameplay.UI
 
         private readonly IUIFactory _factory;
         private readonly SkillRegistry _registry;
+        private readonly ISkillService _skillService;
         private readonly CancellationToken _ctc;
 
         private List<SkillButton> _buttons = new List<SkillButton>();
 
-        public SkillsPresenter(SkillsView view, IUIFactory factory, SkillRegistry registry, CancellationToken ctc)
+        public SkillsPresenter(SkillsView view, IUIFactory factory, ISkillService skillService, SkillRegistry registry, CancellationToken ctc)
         {
             _view = view;
             _factory = factory;
+            _skillService = skillService;
             _registry = registry;
             _ctc = ctc;
         }
@@ -44,14 +47,16 @@ namespace Gameplay.UI
         {
             foreach (SkillButton button in _buttons)
             {
-                _buttons.Remove(button);
+                button.SkillRequested -= OnSkillRequested;
             }
+
+            _buttons.Clear();
         }
 
         private void OnSkillRequested(SkillData skill)
         {
-            Debug.Log("Starting Executing skill: " + skill.Name);
-            // Skill Sevice SkillExecute method invoke
+            Debug.Log("Кнопка нажата: " + skill.name);
+            _skillService.HandleSkillRequest(skill);
         }
             
     }

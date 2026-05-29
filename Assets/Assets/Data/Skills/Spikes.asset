@@ -17,11 +17,11 @@ MonoBehaviour:
   _icon: {fileID: 9180251791023625898, guid: 1914812ccaf98fc4d8dbe0ce3d41a24e, type: 3}
   _price: 10
   _cooldown: 0
-  _castType: 0
+  _castType: 1
   _damage: 1
   _radius: 5
   _prefab:
-    m_AssetGUID: 
+    m_AssetGUID: 96adb7154b740024b84cd8e111f214dc
     m_SubObjectName: 
     m_SubObjectType: 
     m_SubObjectGUID: 

@@ -15,9 +15,12 @@ namespace Data
         public float Duration => _duration;
         public float SlowPercentage => _slowPercentage;
 
-        public override async UniTask Execute()
+        public override async UniTask Execute(Vector2? position = null)
         {
-            // TODO
+            Vector2 pos = position ?? Vector2.zero;
+
+            SpikesSkill spikes = await _skillFactory.CreateSkillGameObject<SpikesSkill>(_prefab, pos);
+            spikes.Init(_damage, _slowPercentage, _duration, _radius);
         }
     }
 }

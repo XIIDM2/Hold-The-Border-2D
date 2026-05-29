@@ -13,9 +13,9 @@ namespace Data
         public AssetReferenceGameObject Prefab => _prefab;
         public float FuseDuration => _fuseDuration;
 
-        public override async UniTask Execute()
+        public override async UniTask Execute(Vector2? position = null)
         {
-            // TODO
+            await UniTask.CompletedTask;
         }
     }
 }
