@@ -609,7 +609,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             ""id"": ""61f2db6d-b30e-4f5c-a3b7-c8aa3ce94e30"",
             ""actions"": [
                 {
-                    ""name"": ""SelectTarget"",
+                    ""name"": ""ConfirmTarget"",
                     ""type"": ""Button"",
                     ""id"": ""af82c3c0-826b-4b1b-95a6-bea93762ab97"",
                     ""expectedControlType"": """",
@@ -625,6 +625,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GetTargetPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""1ef2007e-d169-4fbf-aaed-8493f0ff67b2"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -635,7 +644,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SelectTarget"",
+                    ""action"": ""ConfirmTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -647,6 +656,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""CancelTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d292496-0888-4232-b395-778189c6083f"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GetTargetPosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -730,8 +750,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // SkillTargeting
         m_SkillTargeting = asset.FindActionMap("SkillTargeting", throwIfNotFound: true);
-        m_SkillTargeting_SelectTarget = m_SkillTargeting.FindAction("SelectTarget", throwIfNotFound: true);
+        m_SkillTargeting_ConfirmTarget = m_SkillTargeting.FindAction("ConfirmTarget", throwIfNotFound: true);
         m_SkillTargeting_CancelTarget = m_SkillTargeting.FindAction("CancelTarget", throwIfNotFound: true);
+        m_SkillTargeting_GetTargetPosition = m_SkillTargeting.FindAction("GetTargetPosition", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1008,8 +1029,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     // SkillTargeting
     private readonly InputActionMap m_SkillTargeting;
     private List<ISkillTargetingActions> m_SkillTargetingActionsCallbackInterfaces = new List<ISkillTargetingActions>();
-    private readonly InputAction m_SkillTargeting_SelectTarget;
+    private readonly InputAction m_SkillTargeting_ConfirmTarget;
     private readonly InputAction m_SkillTargeting_CancelTarget;
+    private readonly InputAction m_SkillTargeting_GetTargetPosition;
     /// <summary>
     /// Provides access to input actions defined in input action map "SkillTargeting".
     /// </summary>
@@ -1022,13 +1044,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public SkillTargetingActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "SkillTargeting/SelectTarget".
+        /// Provides access to the underlying input action "SkillTargeting/ConfirmTarget".
         /// </summary>
-        public InputAction @SelectTarget => m_Wrapper.m_SkillTargeting_SelectTarget;
+        public InputAction @ConfirmTarget => m_Wrapper.m_SkillTargeting_ConfirmTarget;
         /// <summary>
         /// Provides access to the underlying input action "SkillTargeting/CancelTarget".
         /// </summary>
         public InputAction @CancelTarget => m_Wrapper.m_SkillTargeting_CancelTarget;
+        /// <summary>
+        /// Provides access to the underlying input action "SkillTargeting/GetTargetPosition".
+        /// </summary>
+        public InputAction @GetTargetPosition => m_Wrapper.m_SkillTargeting_GetTargetPosition;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1055,12 +1081,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_SkillTargetingActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_SkillTargetingActionsCallbackInterfaces.Add(instance);
-            @SelectTarget.started += instance.OnSelectTarget;
-            @SelectTarget.performed += instance.OnSelectTarget;
-            @SelectTarget.canceled += instance.OnSelectTarget;
+            @ConfirmTarget.started += instance.OnConfirmTarget;
+            @ConfirmTarget.performed += instance.OnConfirmTarget;
+            @ConfirmTarget.canceled += instance.OnConfirmTarget;
             @CancelTarget.started += instance.OnCancelTarget;
             @CancelTarget.performed += instance.OnCancelTarget;
             @CancelTarget.canceled += instance.OnCancelTarget;
+            @GetTargetPosition.started += instance.OnGetTargetPosition;
+            @GetTargetPosition.performed += instance.OnGetTargetPosition;
+            @GetTargetPosition.canceled += instance.OnGetTargetPosition;
         }
 
         /// <summary>
@@ -1072,12 +1101,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="SkillTargetingActions" />
         private void UnregisterCallbacks(ISkillTargetingActions instance)
         {
-            @SelectTarget.started -= instance.OnSelectTarget;
-            @SelectTarget.performed -= instance.OnSelectTarget;
-            @SelectTarget.canceled -= instance.OnSelectTarget;
+            @ConfirmTarget.started -= instance.OnConfirmTarget;
+            @ConfirmTarget.performed -= instance.OnConfirmTarget;
+            @ConfirmTarget.canceled -= instance.OnConfirmTarget;
             @CancelTarget.started -= instance.OnCancelTarget;
             @CancelTarget.performed -= instance.OnCancelTarget;
             @CancelTarget.canceled -= instance.OnCancelTarget;
+            @GetTargetPosition.started -= instance.OnGetTargetPosition;
+            @GetTargetPosition.performed -= instance.OnGetTargetPosition;
+            @GetTargetPosition.canceled -= instance.OnGetTargetPosition;
         }
 
         /// <summary>
@@ -1262,12 +1294,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface ISkillTargetingActions
     {
         /// <summary>
-        /// Method invoked when associated input action "SelectTarget" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ConfirmTarget" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSelectTarget(InputAction.CallbackContext context);
+        void OnConfirmTarget(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "CancelTarget" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1275,5 +1307,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnCancelTarget(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GetTargetPosition" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGetTargetPosition(InputAction.CallbackContext context);
     }
 }

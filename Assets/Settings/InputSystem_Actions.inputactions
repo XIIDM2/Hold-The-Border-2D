@@ -523,7 +523,7 @@
             "id": "61f2db6d-b30e-4f5c-a3b7-c8aa3ce94e30",
             "actions": [
                 {
-                    "name": "SelectTarget",
+                    "name": "ConfirmTarget",
                     "type": "Button",
                     "id": "af82c3c0-826b-4b1b-95a6-bea93762ab97",
                     "expectedControlType": "",
@@ -539,6 +539,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GetTargetPosition",
+                    "type": "Value",
+                    "id": "1ef2007e-d169-4fbf-aaed-8493f0ff67b2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -549,7 +558,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SelectTarget",
+                    "action": "ConfirmTarget",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -561,6 +570,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CancelTarget",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d292496-0888-4232-b395-778189c6083f",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GetTargetPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

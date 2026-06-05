@@ -1,57 +1,81 @@
 using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 using VContainer.Unity;
-using static InputSystem_Actions;
 
 namespace Infrastructure.Services
 {
-    public class InputService : IInputService, ISkillTargetingActions, IStartable, IDisposable
+    public class InputService : IInputService, IStartable, IDisposable
     {
-        public event Action SkillTargeted;
-        public event Action SkillCanceled;
+        private Action<Vector2> SkillTargeted;
+        private Action SkillCanceled;
+        private Action<Vector2> SkillPositionChanged;
 
         private InputSystem_Actions _actions;
+        private Camera _camera;
 
         public void Start()
         {
-            if (_actions == null)
-            {
-                _actions = new InputSystem_Actions();
-                _actions.SkillTargeting.SetCallbacks(this);
-            }
-            _actions.Enable();
-            DisableSkillMap();
+            _actions ??= new InputSystem_Actions();
+
+            _actions.SkillTargeting.ConfirmTarget.performed += OnConfirmTarget;
+            _actions.SkillTargeting.CancelTarget.performed += OnCancelTarget;
+            _actions.SkillTargeting.GetTargetPosition.performed += OnGetTargetPosition;
         }
 
         public void Dispose()
         {
-            _actions.Disable();
+            _actions.SkillTargeting.ConfirmTarget.performed -= OnConfirmTarget;
+            _actions.SkillTargeting.CancelTarget.performed -= OnCancelTarget;
+            _actions.SkillTargeting.GetTargetPosition.performed -= OnGetTargetPosition;
+
+            _actions.Dispose();
         }
 
         public void EnableSkillMap()
         {
+            _camera = Camera.main;
             _actions.SkillTargeting.Enable();
         }
 
         public void DisableSkillMap()
         {
+            _camera = null;
+
+            SkillTargeted = null;
+            SkillCanceled = null;
+            SkillPositionChanged = null;
+
             _actions.SkillTargeting.Disable();
         }
 
-        public void OnSelectTarget(InputAction.CallbackContext context)
+        public void HandleTargeting(Action<Vector2> confirmTarget, Action cancelTarget, Action<Vector2> positionChanged)
         {
-            if (context.performed)
-            {
-                SkillTargeted?.Invoke();
-            }
+
+            SkillTargeted = confirmTarget;
+            SkillCanceled = cancelTarget;
+            SkillPositionChanged = positionChanged;
+
+            EnableSkillMap();
         }
 
-        public void OnCancelTarget(InputAction.CallbackContext context)
+        private void OnConfirmTarget(InputAction.CallbackContext context)
         {
-            if (context.performed)
-            {
-                SkillCanceled?.Invoke();
-            }
+            Vector3 worldPos = _camera.ScreenToWorldPoint(_actions.SkillTargeting.GetTargetPosition.ReadValue<Vector2>());
+            SkillTargeted?.Invoke(worldPos);
+            DisableSkillMap();
+        }
+
+        private void OnCancelTarget(InputAction.CallbackContext context)
+        {
+            SkillCanceled?.Invoke();
+            DisableSkillMap();
+        }
+
+        private void OnGetTargetPosition(InputAction.CallbackContext context)
+        {
+            Vector3 worldPos = _camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            SkillPositionChanged?.Invoke(worldPos);
         }
 
     }

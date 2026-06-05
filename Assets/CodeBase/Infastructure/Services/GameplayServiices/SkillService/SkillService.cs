@@ -1,54 +1,68 @@
 using Cysharp.Threading.Tasks;
 using Data;
+using UnityEngine;
 using VContainer.Unity;
 
 namespace Infrastructure.Services
 {
     public class SkillService : ISkillService
     {
-        private readonly IInputService _inputService;
+        private SkillData _currentSkill;
 
-        public SkillService(IInputService inputService)
+        private readonly IInputService _inputService;
+        private readonly IVisualizerService _visualizerService;
+
+        public SkillService(IInputService inputService, IVisualizerService visualizerService)
         {
             _inputService = inputService;
+            _visualizerService = visualizerService;
         }
 
         public void HandleSkillRequest(SkillData skill)
         {
-            if (skill.CastType == SkillCastType.InstantCast)
+            _currentSkill = skill;
+
+            if (_currentSkill.CastType == SkillCastType.InstantCast)
             {
-                skill.Execute().Forget();
+                _currentSkill.Execute().Forget();
             }
-            else if (skill.CastType == SkillCastType.TargetCast)
+            else if (_currentSkill.CastType == SkillCastType.TargetCast)
             {
-                _inputService.EnableSkillMap();
+                Cursor.visible = false;
 
-                _inputService.SkillTargeted += OnSkillTargeted;
-                _inputService.SkillCanceled += OnSkillCanceled;
+                _visualizerService.SetVisualizerRadius(skill.Radius);
+                _visualizerService.SetVisualizerHologram(skill.Icon);
+                _visualizerService.ShowVisualizer();
 
-                void OnSkillTargeted()
-                {
-                    skill.Execute().Forget();
-
-                    Unsubscribe();
-                }
-
-                void OnSkillCanceled()
-                {
-                    Unsubscribe();
-                }
-
-                void Unsubscribe()
-                {
-                    _inputService.SkillTargeted -= OnSkillTargeted;
-                    _inputService.SkillTargeted -= OnSkillTargeted;
-
-                    _inputService.DisableSkillMap();
-                }
+                _inputService.HandleTargeting(OnSkillTargeted, OnSkillCancelled, OnPositonChanged);
 
             }
         }
 
+        private void OnSkillTargeted(Vector2 position)
+        {
+            if (_currentSkill == null) return;
 
+            _currentSkill.Execute(position).Forget();
+
+            CleanUp();
+        }
+
+        private void OnSkillCancelled()
+        {
+            CleanUp();
+        }
+
+        private void OnPositonChanged(Vector2 position)
+        {
+            _visualizerService.SetVisualizerPosition(position);
+        }
+
+        private void CleanUp()
+        {
+            _currentSkill = null;
+            Cursor.visible = true;
+            _visualizerService.HideVisualizer();
+        }
     }
 }

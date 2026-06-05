@@ -55,7 +55,6 @@ namespace Gameplay.UI
 
         private void OnSkillRequested(SkillData skill)
         {
-            Debug.Log("Кнопка нажата: " + skill.name);
             _skillService.HandleSkillRequest(skill);
         }
             

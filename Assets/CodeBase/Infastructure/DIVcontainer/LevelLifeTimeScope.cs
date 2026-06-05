@@ -30,14 +30,15 @@ namespace Infrastructure.DI
 
             builder.Register<PlayerController>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<WaveControllerService>(Lifetime.Singleton).AsImplementedInterfaces();
-            builder.Register<SkillService>(Lifetime.Singleton).AsImplementedInterfaces();
 
 
             builder.Register<TowerBuildService>(Lifetime.Singleton).AsImplementedInterfaces();
             builder.Register<TowerSelectionService>(Lifetime.Singleton).AsImplementedInterfaces();
 
-            builder.RegisterComponentInHierarchy<RadiusVisualizerService>().AsImplementedInterfaces();
+            builder.RegisterComponentInHierarchy<VisualizerService>().AsImplementedInterfaces();
             builder.RegisterComponentInHierarchy<PathService>().As<IPathProvider>();
+
+            builder.Register<SkillService>(Lifetime.Singleton).AsImplementedInterfaces();
 
             builder.Register<LevelService>(Lifetime.Singleton).AsImplementedInterfaces();
 

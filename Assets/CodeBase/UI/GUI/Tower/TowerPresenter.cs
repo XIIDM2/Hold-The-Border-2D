@@ -1,11 +1,9 @@
 using Cysharp.Threading.Tasks;
 using Gameplay.Player;
 using Gameplay.Towers;
-using Gameplay.Towers.TargetSelectionStrategies;
 using Infrastructure.Services;
 using System;
 using System.Threading;
-using UnityEngine;
 using VContainer.Unity;
 
 namespace Gameplay.UI
@@ -21,10 +19,10 @@ namespace Gameplay.UI
 
         private readonly IPlayerController _player;
 
-        private readonly IRadiusVisualizerService _radiusVisualizerService;
+        private readonly IVisualizerService _radiusVisualizerService;
         private readonly CancellationToken _ctc;
 
-        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IPlayerController player, IRadiusVisualizerService radiusVisualizerService, CancellationToken ctc)
+        public TowerPresenter(TowerView view, ITowerSelectionService selectionService, ITowerBuildService buildService, IPlayerController player, IVisualizerService radiusVisualizerService, CancellationToken ctc)
         {
             _view = view;
             _selectionService = selectionService;
@@ -77,7 +75,7 @@ namespace Gameplay.UI
             if (_player.Gold >= _tower.CurrentTierConfig.UpgradePrice) _view.ShowUpgradeButton();
             else _view.HideUpgradeButton();
 
-            _radiusVisualizerService.ShowVisualizer(_tower, _tower.CurrentTierConfig.AttackRadius);
+            _radiusVisualizerService.ShowVisualizer(tower.transform.position, _tower.CurrentTierConfig.AttackRadius);
         }
 
         private void HideTowerView()
@@ -93,14 +91,14 @@ namespace Gameplay.UI
                 _tower.CurrentTierConfig.AttackCooldown.ToString(), _tower.NextTierConfig.AttackCooldown.ToString(),
                 _tower.CurrentTierConfig.AttackRadius.ToString(), _tower.NextTierConfig.AttackRadius.ToString());
 
-            _radiusVisualizerService.ShowVisualizer(_tower, _tower.NextTierConfig.AttackRadius);
+            _radiusVisualizerService.ShowVisualizer(_tower.transform.position, _tower.NextTierConfig.AttackRadius);
         }
 
         private void HideUpgradePanel()
         {
             _view.HideUpgradePanel();
 
-            _radiusVisualizerService.ShowVisualizer(_tower, _tower.CurrentTierConfig.AttackRadius);
+            _radiusVisualizerService.ShowVisualizer(_tower.transform.position, _tower.CurrentTierConfig.AttackRadius);
         }
 
         private void OnUpgradeRequested()

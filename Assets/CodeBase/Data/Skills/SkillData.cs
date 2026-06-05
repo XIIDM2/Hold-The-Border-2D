@@ -13,6 +13,7 @@ namespace Data
         [SerializeField] protected int _price;
         [SerializeField] protected float _cooldown;
         [SerializeField] protected SkillCastType _castType;
+        [SerializeField] protected float _radius;
 
         protected IEventBus _eventBus;
         protected ISkillFactory _skillFactory;
@@ -23,6 +24,7 @@ namespace Data
         public int Price => _price;
         public float Cooldown => _cooldown;
         public SkillCastType CastType => _castType;
+        public float Radius => _radius;
 
         public void Init(IEventBus eventBus, ISkillFactory skillFactory)
         {

@@ -49,8 +49,8 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   _levelLabel: 0
+  _LevelData: {fileID: 0}
   _waveData: {fileID: 11400000, guid: 557ac4c51c4f577408cd4e7c006decb4, type: 2}
-  _baseTransform: {fileID: 0}
 --- !u!1 &2631780272979997324
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 3869034042720281093}
   - component: {fileID: 4427240695435112290}
   m_Layer: 0
-  m_Name: RadiusVisualizer
+  m_Name: VisualizerService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -409,10 +409,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5183889055978485952}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac769cefb65664a4f83850adf18bccda, type: 3}
+  m_Script: {fileID: 11500000, guid: 0904fac10ad8b0e4aa4f9e99c1b50340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RadiusVisualizerService
-  _radiusVisualizerPrefab: {fileID: 3908960461468506681, guid: 00e5943151ee76142a480079fb1230c8, type: 3}
+  _visualizer: {fileID: 0}
 --- !u!1 &6207215588216702145
 GameObject:
   m_ObjectHideFlags: 0
