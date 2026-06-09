@@ -15,7 +15,7 @@ namespace Gameplay.Towers.Units
         [SerializeField] private Transform _firePoint;
         [SerializeField] private AnimationOverrideData _data;
 
-        private GameObject _target;
+        private Vector2? _targetPosition;
 
         protected override void Awake()
         {
@@ -27,7 +27,7 @@ namespace Gameplay.Towers.Units
 
         private void Update()
         {
-            if (_target)
+            if (_targetPosition.HasValue)
             {
                 Vector2 direction = CalculateDirection();
                 Utilities.FlipTransform(gameObject.transform, direction.x);
@@ -36,12 +36,9 @@ namespace Gameplay.Towers.Units
             }
         }
 
-        public void SetTarget(ITargetable target)
+        public void SetTargetPosition (Vector2? targetPosition)
         {
-            if (target != null && target is Component component)
-            {
-                _target = component.gameObject;
-            }
+            _targetPosition = targetPosition;
         }
 
         public void PlayAttackAnimation()
@@ -57,7 +54,7 @@ namespace Gameplay.Towers.Units
 
         private Vector2 CalculateDirection()
         {
-            Vector2 direction = _target.transform.position - transform.position;
+            Vector2 direction = (Vector3)_targetPosition.Value - transform.position;
 
             if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
             {

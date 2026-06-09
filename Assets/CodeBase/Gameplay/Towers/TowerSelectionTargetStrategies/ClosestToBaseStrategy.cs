@@ -11,7 +11,7 @@ namespace Gameplay.Towers.TargetSelectionStrategies
             if (targetables.Count == 0) return null;
 
             ITargetable currentTarget = null;
-            int higestWaypointIndex = -1;
+            int higestWaypointIndex = int.MinValue;
             float closestDistanceWaypoint = float.MaxValue;
 
             foreach (ITargetable potentialTarget in targetables)

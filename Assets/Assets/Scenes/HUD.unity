@@ -471,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -1166,6 +1166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillsUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4681213472554563783, guid: b221efb1e32672b40a6126ef38943b1d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9156985812344097377, guid: b221efb1e32672b40a6126ef38943b1d, type: 3}
       propertyPath: m_Spacing
       value: 10
@@ -1309,11 +1313,39 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3506681068099346218, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 338
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506681068099346218, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506681068099346218, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3506681068099346218, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275569024093486352, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_Spacing
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275569024093486352, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275569024093486352, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_ChildControlHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275569024093486352, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5275569024093486352, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5579563391106567562, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
@@ -1323,6 +1355,14 @@ PrefabInstance:
     - target: {fileID: 5579563391106567562, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579563391106567562, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 338
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579563391106567562, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 112
       objectReference: {fileID: 0}
     - target: {fileID: 5579563391106567562, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1427,6 +1467,10 @@ PrefabInstance:
     - target: {fileID: 7567328931264305816, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9010127090724859066, guid: 4d4c07e2a5755e548a19111ff89e0ef0, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

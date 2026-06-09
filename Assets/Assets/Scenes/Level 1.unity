@@ -11367,8 +11367,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4299166404506729631, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: orthographic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299166404506729631, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
       propertyPath: orthographic size
-      value: 8.15
+      value: 8.4375
       objectReference: {fileID: 0}
     - target: {fileID: 4427240695435112290, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
       propertyPath: _visualizer
@@ -11418,6 +11422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Setup
       objectReference: {fileID: 0}
+    - target: {fileID: 7910981230413337783, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: _waveData
+      value: 
+      objectReference: {fileID: 11400000, guid: 557ac4c51c4f577408cd4e7c006decb4, type: 2}
     - target: {fileID: 7910981230413337783, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
       propertyPath: _LevelData
       value: 

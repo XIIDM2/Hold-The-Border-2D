@@ -134,12 +134,23 @@ namespace Gameplay.Towers
                 {
                     if (_targetsInRange.Count == 0) yield break;
 
-                    attacker.SetTarget(_currentTarget);
-                    attacker.PlayAttackAnimation();
+                    if (_currentTarget != null && _targetsInRange.ContainsKey(_currentTarget.Health))
+                    {
+                        attacker.SetTargetPosition(_currentTarget.Position);
+                        attacker.PlayAttackAnimation();
+                    }
+                    else
+                    {
+                        attacker.SetTargetPosition(null);
+                        yield return null;
+                        break;
+                    }
 
                     yield return _unitsSharedAttackCooldown;
                 }
             }
+
+            _attackCoroutine = null;
         }
     }
 }

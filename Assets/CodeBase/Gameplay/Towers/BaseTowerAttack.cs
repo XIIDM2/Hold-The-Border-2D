@@ -12,7 +12,7 @@ namespace Gameplay.Towers
     {
         public IReadOnlyCollection<ITargetable> TargetsInRange => _targetsInRange.Values;
 
-        private const float TIME_TO_UPDATE_STRATEGY = 1.0f;
+        private const float TIME_TO_UPDATE_STRATEGY = 0.1f;
 
         private const int CLOSEST_TO_TOWER_STRATEGY_INDEX = 1;
         private const int CLOSEST_TO_BASE_STRATEGY_INDEX = 2;
@@ -37,9 +37,9 @@ namespace Gameplay.Towers
 
             _updateStrategyTimer += Time.deltaTime;
 
-            if (_updateStrategyTimer > TIME_TO_UPDATE_STRATEGY)
+            if (_currentTarget == null || _updateStrategyTimer > TIME_TO_UPDATE_STRATEGY)
             {
-                _currentTarget = _currentStrategy.SelectTarget(_targetsInRange.Values);
+                SelectTarget();
                 _updateStrategyTimer = 0;
             }
         }
@@ -68,9 +68,14 @@ namespace Gameplay.Towers
             if (_targetStrategies.TryGetValue(strategyIndex, out ITowerSelectionTargetStrategy targetStrategy))
             {
                 _currentStrategy = targetStrategy;
-                _currentStrategy.SelectTarget(_targetsInRange.Values);
+                SelectTarget();
             }
             else Debug.LogWarning("Strategy Index not found");
+        }
+
+        public void SelectTarget()
+        {
+            if (_currentStrategy != null) _currentTarget = _currentStrategy.SelectTarget(_targetsInRange.Values);
         }
 
         public void Attack()
@@ -90,22 +95,24 @@ namespace Gameplay.Towers
         public void AddToAttackList(ITargetable target)
         {
             if (_targetsInRange.TryAdd(target.Health, target)) target.Health.Death += OnTargetDeath;
-
         }
 
         public void RemoveFromAttackList(ITargetable target)
         {
             target.Health.Death -= OnTargetDeath;
+            if (_currentTarget == target) _currentTarget = null;
             _targetsInRange.Remove(target.Health);
         }
 
         protected void OnTargetDeath(IDamageable damageable)
         {
+
             if (_targetsInRange.TryGetValue(damageable, out ITargetable target))
             {
                 RemoveFromAttackList(target);
             }
         }
+
         protected abstract IEnumerator AttackRoutine();
     }
 }
