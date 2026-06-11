@@ -3,6 +3,7 @@ using Data;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using Infrastructure;
+using Infrastructure.Events;
 using Infrastructure.Factories;
 using Infrastructure.Services;
 using System;
@@ -22,16 +23,19 @@ namespace Gameplay.UI
         private readonly ITowerSelectionService _selectionService;
         private readonly ITowerBuildService _buildService;
 
+        private readonly IEventBus _eventBus;
+
         private readonly SceneController _controller;
         private readonly GameplayRegistry _registry;
         private readonly CancellationToken _ctc;
 
-        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, SceneController controller, GameplayRegistry registry, CancellationToken ctc)
+        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, IEventBus eventBus, SceneController controller, GameplayRegistry registry, CancellationToken ctc)
         {
             _view = view;
             _UIFactory = uIFactory;
             _selectionService = selectionService;
             _buildService = buildService;
+            _eventBus = eventBus;
             _controller = controller;
             _registry = registry;
             _ctc = ctc;
@@ -80,12 +84,14 @@ namespace Gameplay.UI
 
         private void ShowBuildingPanel(BuildSite site)
         {
+            _eventBus.Publish(new UIStateChanged(UIStates.InTowerBuildingPanel));
             _view.ShowBuildingPanel();
             _controller.StopTime();
         }
 
         private void HideBuildingPanel()
         {
+            _eventBus.Publish(new UIStateChanged(UIStates.InActiveGameplay));
             _view.HideBuildingPanel();
             _controller.StartTime();
         }

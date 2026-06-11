@@ -36,8 +36,8 @@ namespace Gameplay.Units.Enemy
 
         private void OnDeath()
         {
-            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _firstSpawnPosition.transform.position, _ctc);
-            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _secondSpawnPosition.transform.position, _ctc);
+            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _firstSpawnPosition.transform.position, _ctc, Pathing.CurrentWaypointIndex);
+            _unitFactory.CreateUnit(EnemyUnitType.BabySlime, Pathing.CurrentWaypoint, _secondSpawnPosition.transform.position, _ctc, Pathing.CurrentWaypointIndex);
         }
     }
 }

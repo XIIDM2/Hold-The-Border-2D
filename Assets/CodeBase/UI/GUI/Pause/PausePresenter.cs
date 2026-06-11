@@ -1,4 +1,6 @@
 using Infrastructure;
+using Infrastructure.Events;
+using Infrastructure.Services;
 using System;
 using VContainer.Unity;
 
@@ -9,10 +11,13 @@ namespace Gameplay.UI
         private readonly PauseView _view;
         private readonly SceneController _controller;
 
-        public PausePresenter(PauseView view, SceneController controller)
+        private readonly IEventBus _eventBus;
+
+        public PausePresenter(PauseView view, SceneController controller, IEventBus eventBus)
         {
             _view = view;
             _controller = controller;
+            _eventBus = eventBus;
         }
 
         public void Start()
@@ -34,12 +39,14 @@ namespace Gameplay.UI
 
         private void OnPauseRequested()
         {
+            _eventBus.Publish(new UIStateChanged(UIStates.InPausePanel));
             _controller.StopTime();
             _view.ShowPanel();
         }
 
         private void OnContinueRequested()
         {
+            _eventBus.Publish(new UIStateChanged(UIStates.InActiveGameplay));
             _controller.StartTime();
             _view.HidePanel();
         }

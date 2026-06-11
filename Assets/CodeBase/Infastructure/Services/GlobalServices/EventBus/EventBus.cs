@@ -8,7 +8,7 @@ namespace Infrastructure.Services
     {
         private Dictionary<Type, List<Delegate>> _subscribers = new Dictionary<Type, List<Delegate>>();
 
-        public void Subscribe<T>(Action<T> method) where T : struct, IEvent
+        public void Subscribe<T>(Action<T> method) where T : IEvent
         {
             var eventType = typeof(T);
 
@@ -21,7 +21,7 @@ namespace Infrastructure.Services
             list.Add(method);
         }
 
-        public void Unsubscribe<T>(Action<T> method) where T : struct, IEvent
+        public void Unsubscribe<T>(Action<T> method) where T : IEvent
         {
             var eventType = typeof(T);
 
@@ -36,7 +36,7 @@ namespace Infrastructure.Services
             }
         }
 
-        public void Publish<T>(T eventData) where T : struct, IEvent
+        public void Publish<T>(T eventData) where T : IEvent
         {
             var eventType = typeof(T);
 

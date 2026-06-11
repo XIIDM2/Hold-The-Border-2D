@@ -11,6 +11,8 @@ namespace Gameplay.UI
         public event UnityAction WavesStartRequested;
         public event UnityAction WavesTimerSkipRequested;
 
+        [SerializeField] private GameObject _buttonsPanel;
+
         [SerializeField] private TMP_Text _wavesText;
 
         [SerializeField] private Button _startWavesButton;
@@ -51,6 +53,16 @@ namespace Gameplay.UI
             _sequence.Append(_skipTimerImage.DOFade(1f, 1f)).Join(_skipTimerText.DOFade(1f, 1f)).SetLink(gameObject, LinkBehaviour.KillOnDisable).SetAutoKill(false).Pause();
 
             _skipTimerImage.gameObject.SetActive(false);
+        }
+
+        public void ShowButtonsPanel()
+        {
+            _buttonsPanel.SetActive(true);
+        }
+
+        public void HideButtonsPanel()
+        {
+            _buttonsPanel.SetActive(false);
         }
 
         public void HighlightSkipButton()

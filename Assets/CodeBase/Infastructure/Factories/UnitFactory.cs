@@ -25,7 +25,7 @@ namespace Infrastructure.Factories
         }
 
 
-        public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken)
+        public async UniTask<EnemyUnitController> CreateUnit(EnemyUnitType type, Waypoint start, Vector2 position, CancellationToken cancellationToken, int waypointIndex = 0)
         {
             EnemyUnitData unitData = _gameplayRegistry.GetUnitData(type);
 
@@ -51,7 +51,7 @@ namespace Infrastructure.Factories
 
             }
 
-            enemy.Init(unitData, start);
+            enemy.Init(unitData, start, waypointIndex);
 
             UnitCreated?.Invoke(enemy);
 

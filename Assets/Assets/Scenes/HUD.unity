@@ -591,6 +591,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 785665714}
     m_Modifications:
+    - target: {fileID: 69720097267015279, guid: b765b4c22a6bf604fb927c35cc31d2a2, type: 3}
+      propertyPath: _buttonsPanel
+      value: 
+      objectReference: {fileID: 566427282592611566}
     - target: {fileID: 1572782309765771798, guid: b765b4c22a6bf604fb927c35cc31d2a2, type: 3}
       propertyPath: m_Name
       value: WavesUI
@@ -716,6 +720,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b765b4c22a6bf604fb927c35cc31d2a2, type: 3}
+--- !u!1 &566427282592611566 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5702967660205784793, guid: b765b4c22a6bf604fb927c35cc31d2a2, type: 3}
+  m_PrefabInstance: {fileID: 566427282592611565}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3564576766131195780
 PrefabInstance:
   m_ObjectHideFlags: 0

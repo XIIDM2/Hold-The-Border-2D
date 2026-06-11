@@ -83,7 +83,7 @@ namespace Gameplay.Units.Enemy
             Health.Death -= OnDeath;
         }
 
-        public void Init(EnemyUnitData data, Waypoint start)
+        public void Init(EnemyUnitData data, Waypoint start, int waypointIndex = 0)
         {
             GoldOnDeath = data.GoldOnDeath;
 
@@ -92,7 +92,7 @@ namespace Gameplay.Units.Enemy
             Health?.Init(data.MaxHealth);
             _currentHealth = Health.CurrentHealth;
 
-            if (Pathing) Pathing.Init(start);
+            if (Pathing) Pathing.Init(start, waypointIndex);
             if (Movement) Movement.Init(data.MovementSpeed);
             if (Attack) Attack.Init(data.AttackDamage, data.AttackCooldown);
             if (Animation) Animation.Init(data.OverrideAnimations);
