@@ -39,6 +39,8 @@ namespace Gameplay.Player
 
         public void Dispose()
         {
+            if (Health == null) return;
+
             Health.HealthChanged -= OnHealthChanged;
             Health.Death -= OnDeath;
         }

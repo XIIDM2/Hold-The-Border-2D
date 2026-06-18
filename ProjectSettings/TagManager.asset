@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
-  - 
-  - 
+  - Enemy
+  - Tower
   - 
   - 
   - 
@@ -43,6 +43,18 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Buildsite
+    uniqueID: 2576018977
+    locked: 0
+  - name: Skill
+    uniqueID: 3707376359
+    locked: 0
+  - name: Tower
+    uniqueID: 403049683
+    locked: 0
+  - name: Enemy
+    uniqueID: 1681537455
     locked: 0
   m_RenderingLayers:
   - Default

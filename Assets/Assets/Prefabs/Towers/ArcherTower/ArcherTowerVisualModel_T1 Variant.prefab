@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1203272770162432918}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArcherTowerVisualModel_T1 Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4988356197018874514}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attackers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,9 +76,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerArcher_T1
       objectReference: {fileID: 0}
+    - target: {fileID: 675314045665097179, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061923808569142594, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4061923808569142594, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4061923808569142594, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 403049683
       objectReference: {fileID: 0}
     - target: {fileID: 4061923808569142594, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
       propertyPath: m_MaskInteraction
@@ -123,6 +135,10 @@ PrefabInstance:
     - target: {fileID: 5348146719292196219, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233181895569911227, guid: e0956e9f9a72ba446a755ef6472c5cd5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

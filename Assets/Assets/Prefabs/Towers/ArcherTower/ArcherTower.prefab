@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8970561967749663861}
   - component: {fileID: 1322804136371765046}
   - component: {fileID: 4137455169512547362}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: VisualModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 403049683
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -855298285791758126, guid: 3c4946f6aefc599468c6170a6623705c, type: 3}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 8452731921587783088}
   - component: {fileID: 4922884071310378367}
   - component: {fileID: 2798986763045696664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArcherTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

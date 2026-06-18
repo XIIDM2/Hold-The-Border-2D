@@ -15,7 +15,10 @@ namespace Data
 
         public override async UniTask Execute(Vector2? position = null)
         {
-            await UniTask.CompletedTask;
+            Vector2 pos = position ?? Vector2.zero;
+
+            ExplosiveBarrelSkill barrel = await _skillFactory.CreateSkillGameObject<ExplosiveBarrelSkill>(_prefab, pos);
+            barrel.Init(_damage, _fuseDuration, _radius);
         }
     }
 }

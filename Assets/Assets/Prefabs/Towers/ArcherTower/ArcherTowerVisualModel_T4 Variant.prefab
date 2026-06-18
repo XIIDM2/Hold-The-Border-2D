@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4986871337382435549}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArcherTowerVisualModel_T4 Variant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 420241855788108520}
   - component: {fileID: 8910251347265014704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpriteMask (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7838162318995298810}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Attackers (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,6 +168,10 @@ PrefabInstance:
     - target: {fileID: 675314045665097179, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
       propertyPath: m_Name
       value: TowerArcher_T2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 675314045665097179, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 675314045665097179, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
       propertyPath: m_IsActive
@@ -233,6 +237,10 @@ PrefabInstance:
       propertyPath: m_MaskInteraction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7052870185793789389, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -254,6 +262,10 @@ PrefabInstance:
     - target: {fileID: 675314045665097179, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
       propertyPath: m_Name
       value: TowerArcher_T2
+      objectReference: {fileID: 0}
+    - target: {fileID: 675314045665097179, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 675314045665097179, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
       propertyPath: m_IsActive
@@ -314,6 +326,10 @@ PrefabInstance:
     - target: {fileID: 6950833915553756566, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
       propertyPath: m_MaskInteraction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7052870185793789389, guid: 2c166d5f38b9df04082e76113ae91ef1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

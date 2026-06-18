@@ -3,11 +3,13 @@ using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Path;
 using Gameplay.Player;
+using Gameplay.StatusEffects;
 using Gameplay.UI;
 using Gameplay.Units.Enemy.FSM;
 using Gameplay.Units.FSM;
 using Infrastructure.Factories;
 using Infrastructure.Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer;
@@ -41,6 +43,7 @@ namespace Gameplay.Units.Enemy
 
 
         private int _currentHealth; // For DamagePopup
+        private List<StatusEffect> _statusEffects = new();
 
         [Inject]
         public void Construct(IPlayerController player, IUIFactory UIFactory)
@@ -71,6 +74,19 @@ namespace Gameplay.Units.Enemy
             ActionFSM.StateInit(MoveState, this);
         }
 
+        protected override void Update()
+        { 
+            base.Update();
+            if (_statusEffects.Count <= 0) return;
+
+            foreach (StatusEffect effect in _statusEffects)
+            {
+                effect.OnUpdate(Time.deltaTime);
+
+                if (effect.IsFinished) RemoveStatusEffect(effect);
+            }
+        }
+
         protected virtual void OnEnable()
         {
             Health.HealthChanged += OnDamageRecieved;
@@ -85,6 +101,8 @@ namespace Gameplay.Units.Enemy
 
         public void Init(EnemyUnitData data, Waypoint start, int waypointIndex = 0)
         {
+            _statusEffects.Clear();
+
             GoldOnDeath = data.GoldOnDeath;
 
             PathEndDamage = data.PathEndDamage;
@@ -108,6 +126,19 @@ namespace Gameplay.Units.Enemy
             Type = type;
             UnitFactory = unitFactory;
         }
+
+        public void AddStatusEffect(StatusEffect effect)
+        {
+            _statusEffects.Add(effect);
+            effect.OnApply(this);
+        }
+
+        public void RemoveStatusEffect(StatusEffect effect)
+        {
+            effect.OnRemove();
+            _statusEffects.Remove(effect);
+        }
+
 
         private void OnDamageRecieved(int healthAfterDamage)
         {

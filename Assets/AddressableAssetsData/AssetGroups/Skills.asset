@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: Skills
   m_GUID: 8dda292f8f1706d4da5d0a75357f43b0
   m_SerializeEntries:
+  - m_GUID: 00b7b1bc69721db4894fe4e85a9058ca
+    m_Address: ExplosiveBarrel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Level_1
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 96adb7154b740024b84cd8e111f214dc
     m_Address: Spikes
     m_ReadOnly: 0

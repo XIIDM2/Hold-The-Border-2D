@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 205286204}
   - component: {fileID: 205286206}
   - component: {fileID: 205286205}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6846,7 +6846,7 @@ GameObject:
   - component: {fileID: 747350077}
   - component: {fileID: 747350079}
   - component: {fileID: 747350078}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap Trees
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7481,7 +7481,7 @@ GameObject:
   - component: {fileID: 748567719}
   - component: {fileID: 748567721}
   - component: {fileID: 748567720}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap Tree Shadows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9264,7 +9264,7 @@ GameObject:
   - component: {fileID: 1342016725}
   - component: {fileID: 1342016727}
   - component: {fileID: 1342016726}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap Misc Decorations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10279,7 +10279,7 @@ GameObject:
   - component: {fileID: 1746403069}
   - component: {fileID: 1746403071}
   - component: {fileID: 1746403070}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tilemap Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11378,6 +11378,34 @@ PrefabInstance:
       propertyPath: _visualizer
       value: 
       objectReference: {fileID: -7416487512125036801, guid: 00e5943151ee76142a480079fb1230c8, type: 3}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[0]'
+      value: 874875775
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[1]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[2]'
+      value: -1718948319
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[3]'
+      value: 403049683
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[4]'
+      value: 1681537455
+      objectReference: {fileID: 0}
+    - target: {fileID: 5384543055700158632, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
+      propertyPath: 'm_ApplyToSortingLayers.Array.data[5]'
+      value: -587590937
+      objectReference: {fileID: 0}
     - target: {fileID: 5530484375044360200, guid: 1cbf322facd73d44c83ddacfb3fec452, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

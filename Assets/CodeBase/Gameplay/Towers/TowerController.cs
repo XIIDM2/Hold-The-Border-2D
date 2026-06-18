@@ -26,9 +26,6 @@ namespace Gameplay.Towers
         public TowerAnimation Animation { get; private set; }
         public TowerAudio Audio { get; private set; }
 
-
-
-
         [Header("FSM")]
         public FiniteStateMachine<TowerController> ActionFSM { get; private set; }
         public TowerUpgradeState UpgradeState { get; private set; }
