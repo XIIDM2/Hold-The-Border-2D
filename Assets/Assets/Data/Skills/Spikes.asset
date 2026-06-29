@@ -19,6 +19,7 @@ MonoBehaviour:
   _cooldown: 0
   _castType: 1
   _radius: 0.5
+  _animationOverrideData: {fileID: 11400000, guid: fe01e5ad21e379c48adf43bd42eae495, type: 2}
   _damage: 3
   _prefab:
     m_AssetGUID: 96adb7154b740024b84cd8e111f214dc

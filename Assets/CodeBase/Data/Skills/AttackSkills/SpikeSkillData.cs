@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Gameplay.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -20,7 +21,7 @@ namespace Data
             Vector2 pos = position ?? Vector2.zero;
 
             SpikesSkill spikes = await _skillFactory.CreateSkillGameObject<SpikesSkill>(_prefab, pos);
-            spikes.Init(_damage, _slowPercentage, _duration, _radius);
+            spikes.Init(_damage, _slowPercentage, _duration, _radius, _animationOverrideData);
         }
     }
 }

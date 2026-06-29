@@ -15,6 +15,8 @@ namespace Data
         [SerializeField] protected SkillCastType _castType;
         [SerializeField] protected float _radius;
 
+        [SerializeField] protected AnimationOverrideData _animationOverrideData;
+
         protected IEventBus _eventBus;
         protected ISkillFactory _skillFactory;
 
