@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Gameplay.Skills;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -18,7 +19,7 @@ namespace Data
             Vector2 pos = position ?? Vector2.zero;
 
             ExplosiveBarrelSkill barrel = await _skillFactory.CreateSkillGameObject<ExplosiveBarrelSkill>(_prefab, pos);
-            barrel.Init(_damage, _fuseDuration, _radius);
+            barrel.Init(_damage, _fuseDuration, _radius, _animationOverrideData);
         }
     }
 }

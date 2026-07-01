@@ -16,7 +16,7 @@ MonoBehaviour:
   _description: 
   _icon: {fileID: 1646375367856145251, guid: 76b844983f1e82b46b496851115a52cd, type: 3}
   _price: 10
-  _cooldown: 0
+  _cooldown: 5
   _castType: 1
   _radius: 0.5
   _animationOverrideData: {fileID: 11400000, guid: fe01e5ad21e379c48adf43bd42eae495, type: 2}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Gameplay.Skills
 {
-    public class SpikesSkillAnimation : BaseAnimation
+    public class DeployableSkillAnimation : BaseAnimation
     {
         public readonly int IsDespawnHash = Animator.StringToHash("IsDespawn");
 

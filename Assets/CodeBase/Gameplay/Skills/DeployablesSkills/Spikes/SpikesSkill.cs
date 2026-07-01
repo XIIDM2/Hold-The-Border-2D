@@ -19,22 +19,22 @@ namespace Gameplay.Skills
 
         private CircleCollider2D _collider;
 
-        private SpikesSkillAnimation _animation;
+        private DeployableSkillAnimation _animation;
 
         private void Awake()
         {
             _collider = GetComponent<CircleCollider2D>();
-            _animation = GetComponentInChildren<SpikesSkillAnimation>();
+            _animation = GetComponentInChildren<DeployableSkillAnimation>();
         }
 
-        public void Init(int damage, int slowPercentage, float duration, float radius, AnimationOverrideData _animationData)
+        public void Init(int damage, int slowPercentage, float duration, float radius, AnimationOverrideData animationData)
         {
             _damage = damage;
             _slowPercentage = slowPercentage;
 
             _collider.radius = radius;
 
-            _animation.Init(_animationData);
+            _animation.Init(animationData);
 
             StartCoroutine(LifeTimeRoutine(duration));
         }

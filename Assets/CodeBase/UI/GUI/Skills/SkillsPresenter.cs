@@ -24,7 +24,7 @@ namespace Gameplay.UI
         private readonly SkillRegistry _registry;
         private readonly CancellationToken _ctc;
 
-        private List<SkillButton> _buttons = new List<SkillButton>();
+        private Dictionary<SkillData, SkillButton> _buttons = new();
 
         public SkillsPresenter(SkillsView view, IUIFactory factory, IEventBus eventBus, ISkillService skillService, SkillRegistry registry, CancellationToken ctc)
         {
@@ -45,27 +45,42 @@ namespace Gameplay.UI
 
                 button.SkillRequested += OnSkillRequested;
 
-                _buttons.Add(button);
+                _buttons.TryAdd(skill, button);
             }
 
+            _skillService.SkillApplied += OnSkillApplied;
             _eventBus.Subscribe<UIStateChanged>(OnUIStateChanged);
         }
 
         public void Dispose()
         {
-            foreach (SkillButton button in _buttons)
+            foreach (SkillButton button in _buttons.Values)
             {
                 button.SkillRequested -= OnSkillRequested;
             }
 
             _buttons.Clear();
 
+            _skillService.SkillApplied -= OnSkillApplied;
             _eventBus.Unsubscribe<UIStateChanged>(OnUIStateChanged);
         }
 
         private void OnSkillRequested(SkillData skill)
         {
             _skillService.HandleSkillRequest(skill);
+        }
+
+        private void OnSkillApplied(SkillData skill)
+        {
+            Debug.Log("SKill applied called");
+            if (_buttons.TryGetValue(skill, out var button))
+            {
+                button.DisableInteraction();
+                button.ShowCooldown();
+                Debug.Log("skill found, button found, methods called");
+            }
+
+
         }
 
         private void OnUIStateChanged(UIStateChanged state) 

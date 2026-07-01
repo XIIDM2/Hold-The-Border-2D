@@ -1,4 +1,5 @@
 using Data;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,11 +11,16 @@ namespace Gameplay.UI
     {
         public event UnityAction<SkillData> SkillRequested;
 
-        private Button _button;
         [SerializeField] private Image _icon;
+        [SerializeField] private Image _cooldown;
+
+        private Tween _cooldownTween;
+
+        private Button _button;
         private TMP_Text _costText;
 
         private SkillData _data;
+
 
         private void Awake()
         {
@@ -39,6 +45,25 @@ namespace Gameplay.UI
             _icon.sprite = data.Icon;
             _costText.text = data.Price.ToString();
 
+            _cooldown.fillAmount = 1;
+            _cooldownTween = _cooldown.DOFillAmount(0, _data.Cooldown).SetEase(Ease.Linear).SetAutoKill(false).Pause().OnComplete(EnableInteraction);
+            _cooldown.fillAmount = 0;
+        }
+
+        public void EnableInteraction()
+        {
+            _button.interactable = true;
+        }
+
+        public void DisableInteraction()
+        {
+            _button.interactable = false;
+        }
+
+        public void ShowCooldown()
+        {
+            _cooldown.fillAmount = 1;
+            _cooldownTween.Restart();
         }
 
         private void OnButtonClicked()

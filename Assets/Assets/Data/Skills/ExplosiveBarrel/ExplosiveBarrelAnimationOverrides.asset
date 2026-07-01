@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba123a746f7f4ae42a09f707f3d03e65, type: 3}
+  m_Name: ExplosiveBarrelAnimationOverrides
+  m_EditorClassIdentifier: Assembly-CSharp::Data.AnimationOverrideData
+  _configs:
+  - _baseClip: {fileID: 7400000, guid: b31ac7651a9b1ef4ea8e5f9ba12e3848, type: 2}
+    _overrideClip: {fileID: 7400000, guid: dd4b1ee9d5cd3c345abd2ea10c57a234, type: 2}
+  - _baseClip: {fileID: 7400000, guid: 87d2384032d0019459bf93d8f786b76a, type: 2}
+    _overrideClip: {fileID: 7400000, guid: 82c8cd96239d85c48bbc2dc71d55ef26, type: 2}
+  - _baseClip: {fileID: 7400000, guid: d1cb091d50b3f254d8769807279feba8, type: 2}
+    _overrideClip: {fileID: 7400000, guid: 454a958e984f64845b834502c3e83309, type: 2}

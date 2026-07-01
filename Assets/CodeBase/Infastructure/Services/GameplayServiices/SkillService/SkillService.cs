@@ -1,12 +1,14 @@
 using Cysharp.Threading.Tasks;
 using Data;
 using UnityEngine;
+using UnityEngine.Events;
 using VContainer.Unity;
 
 namespace Infrastructure.Services
 {
     public class SkillService : ISkillService
     {
+        public event UnityAction<SkillData> SkillApplied;
         private SkillData _currentSkill;
 
         private readonly IInputService _inputService;
@@ -25,6 +27,7 @@ namespace Infrastructure.Services
             if (_currentSkill.CastType == SkillCastType.InstantCast)
             {
                 _currentSkill.Execute().Forget();
+                SkillApplied.Invoke(_currentSkill);
             }
             else if (_currentSkill.CastType == SkillCastType.TargetCast)
             {
@@ -36,6 +39,7 @@ namespace Infrastructure.Services
 
                 _inputService.HandleTargeting(OnSkillTargeted, OnSkillCancelled, OnPositonChanged);
 
+
             }
         }
 
@@ -44,6 +48,7 @@ namespace Infrastructure.Services
             if (_currentSkill == null) return;
 
             _currentSkill.Execute(position).Forget();
+            SkillApplied.Invoke(_currentSkill);
 
             CleanUp();
         }
