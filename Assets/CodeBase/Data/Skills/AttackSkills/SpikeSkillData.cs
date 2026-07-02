@@ -23,5 +23,15 @@ namespace Data
             SpikesSkill spikes = await _skillFactory.CreateSkillGameObject<SpikesSkill>(_prefab, pos);
             spikes.Init(_damage, _slowPercentage, _duration, _radius, _animationOverrideData);
         }
+
+        public override string GetDescription()
+        {
+            string description = _description
+            .Replace("{damage}", $"{_damage}")
+            .Replace("{slowPercent}", $"{_slowPercentage}")
+            .Replace("{duration} ", $"{_duration}");
+
+            return description;
+        }
     }
 }

@@ -8,7 +8,7 @@ namespace Data
     public abstract class SkillData : ScriptableObject
     {
         [SerializeField] protected string _name;
-        [SerializeField] protected string _description;
+        [SerializeField, TextArea] protected string _description;
         [SerializeField] protected Sprite _icon;
         [SerializeField] protected int _price;
         [SerializeField] protected float _cooldown;
@@ -21,7 +21,6 @@ namespace Data
         protected ISkillFactory _skillFactory;
 
         public string Name => _name;
-        public string Description => _description;
         public Sprite Icon => _icon;
         public int Price => _price;
         public float Cooldown => _cooldown;
@@ -33,6 +32,8 @@ namespace Data
             _eventBus = eventBus;
             _skillFactory = skillFactory;
         }
+
+        public virtual string GetDescription() => null;
 
         public abstract UniTask Execute(Vector2? position = null);
 

@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: ExplosiveBarrel
   m_EditorClassIdentifier: Assembly-CSharp::Data.ExplosiveBarrelSkillData
   _name: Explosive Barrel
-  _description: 
+  _description: Deploys a barrel that explodes after {fuseDuration} sec, dealing
+    {damage} damage to nearby enemies.
   _icon: {fileID: 6937817954938267909, guid: fb319fcb8cf25ac4bbb5bff0369f743a, type: 3}
-  _price: 20
+  _price: 40
   _cooldown: 8
   _castType: 1
   _radius: 1
   _animationOverrideData: {fileID: 11400000, guid: 663accf33f9ae9a42b88545268ce163d, type: 2}
-  _damage: 10
+  _damage: 50
   _prefab:
     m_AssetGUID: 00b7b1bc69721db4894fe4e85a9058ca
     m_SubObjectName: 

@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Data;
+using Gameplay.Player;
 using Infrastructure.Events;
 using Infrastructure.Factories;
 using Infrastructure.Services;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using VContainer.Unity;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Gameplay.UI
 {
@@ -18,6 +20,7 @@ namespace Gameplay.UI
         private readonly IUIFactory _factory;
 
         private readonly ISkillService _skillService;
+        private readonly IPlayerController _player;
 
         private readonly IEventBus _eventBus;
 
@@ -26,12 +29,13 @@ namespace Gameplay.UI
 
         private Dictionary<SkillData, SkillButton> _buttons = new();
 
-        public SkillsPresenter(SkillsView view, IUIFactory factory, IEventBus eventBus, ISkillService skillService, SkillRegistry registry, CancellationToken ctc)
+        public SkillsPresenter(SkillsView view, IUIFactory factory, IEventBus eventBus, ISkillService skillService, IPlayerController player, SkillRegistry registry, CancellationToken ctc)
         {
             _view = view;
             _factory = factory;
             _eventBus = eventBus;
             _skillService = skillService;
+            _player = player;
             _registry = registry;
             _ctc = ctc;
         }
@@ -49,6 +53,7 @@ namespace Gameplay.UI
             }
 
             _skillService.SkillApplied += OnSkillApplied;
+            _player.GoldChanged += OnGoldChanged;
             _eventBus.Subscribe<UIStateChanged>(OnUIStateChanged);
         }
 
@@ -62,6 +67,7 @@ namespace Gameplay.UI
             _buttons.Clear();
 
             _skillService.SkillApplied -= OnSkillApplied;
+            _player.GoldChanged -= OnGoldChanged;
             _eventBus.Unsubscribe<UIStateChanged>(OnUIStateChanged);
         }
 
@@ -72,15 +78,18 @@ namespace Gameplay.UI
 
         private void OnSkillApplied(SkillData skill)
         {
-            Debug.Log("SKill applied called");
             if (_buttons.TryGetValue(skill, out var button))
             {
-                button.DisableInteraction();
                 button.ShowCooldown();
-                Debug.Log("skill found, button found, methods called");
             }
+        }
 
-
+        private void OnGoldChanged(int currentAmount)
+        {
+            foreach (KeyValuePair<SkillData, SkillButton> pair in _buttons)
+            {
+                pair.Value.SetAffordable(currentAmount >= pair.Key.Price);
+            }
         }
 
         private void OnUIStateChanged(UIStateChanged state) 

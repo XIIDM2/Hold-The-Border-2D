@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Spikes
   m_EditorClassIdentifier: Assembly-CSharp::Data.SpikeSkillData
   _name: Spikes
-  _description: 
+  _description: Spikes erupt from the ground, dealing {damage} damage to the enemy
+    and slowing it by {slowPercent}% for {duration} sec.
   _icon: {fileID: 1646375367856145251, guid: 76b844983f1e82b46b496851115a52cd, type: 3}
-  _price: 10
+  _price: 20
   _cooldown: 5
   _castType: 1
   _radius: 0.5

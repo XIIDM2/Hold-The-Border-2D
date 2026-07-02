@@ -1,8 +1,10 @@
 using Cysharp.Threading.Tasks;
 using Data;
+using Gameplay.Player;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer.Unity;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Infrastructure.Services
 {
@@ -13,11 +15,13 @@ namespace Infrastructure.Services
 
         private readonly IInputService _inputService;
         private readonly IVisualizerService _visualizerService;
+        private readonly IPlayerController _player;
 
-        public SkillService(IInputService inputService, IVisualizerService visualizerService)
+        public SkillService(IInputService inputService, IVisualizerService visualizerService, IPlayerController player)
         {
             _inputService = inputService;
             _visualizerService = visualizerService;
+            _player = player;
         }
 
         public void HandleSkillRequest(SkillData skill)
@@ -27,7 +31,12 @@ namespace Infrastructure.Services
             if (_currentSkill.CastType == SkillCastType.InstantCast)
             {
                 _currentSkill.Execute().Forget();
-                SkillApplied.Invoke(_currentSkill);
+                if (_player.Gold >= _currentSkill.Price)
+                {
+                    _player.TrySpendGold(_currentSkill.Price);
+                    SkillApplied.Invoke(_currentSkill);
+                }
+                
             }
             else if (_currentSkill.CastType == SkillCastType.TargetCast)
             {
@@ -48,7 +57,11 @@ namespace Infrastructure.Services
             if (_currentSkill == null) return;
 
             _currentSkill.Execute(position).Forget();
-            SkillApplied.Invoke(_currentSkill);
+            if (_player.Gold >= _currentSkill.Price)
+            {
+                _player.TrySpendGold(_currentSkill.Price);
+                SkillApplied.Invoke(_currentSkill);
+            }
 
             CleanUp();
         }

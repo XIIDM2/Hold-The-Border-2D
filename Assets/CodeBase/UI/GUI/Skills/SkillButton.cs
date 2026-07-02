@@ -3,16 +3,20 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace Gameplay.UI
 {
-    public class SkillButton : MonoBehaviour
+    public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public event UnityAction<SkillData> SkillRequested;
 
         [SerializeField] private Image _icon;
         [SerializeField] private Image _cooldown;
+
+        [SerializeField] private GameObject _tooltip;
+        [SerializeField] private TMP_Text _tooltipText;
 
         private Tween _cooldownTween;
 
@@ -21,6 +25,8 @@ namespace Gameplay.UI
 
         private SkillData _data;
 
+        private bool _canAfford;
+        private bool _isOnCooldown;
 
         private void Awake()
         {
@@ -37,6 +43,15 @@ namespace Gameplay.UI
         {
             _button.onClick.RemoveListener(OnButtonClicked);
         }
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            _tooltip.SetActive(true);
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _tooltip.SetActive(false);
+        }
 
         public void Init(SkillData data)
         {
@@ -45,24 +60,24 @@ namespace Gameplay.UI
             _icon.sprite = data.Icon;
             _costText.text = data.Price.ToString();
 
+            _tooltip.SetActive(false);
+            _tooltipText.text = _data.GetDescription();
+
             _cooldown.fillAmount = 1;
-            _cooldownTween = _cooldown.DOFillAmount(0, _data.Cooldown).SetEase(Ease.Linear).SetAutoKill(false).Pause().OnComplete(EnableInteraction);
+            _cooldownTween = _cooldown.DOFillAmount(0, _data.Cooldown).SetEase(Ease.Linear).SetAutoKill(false).Pause().OnComplete(OnCooldownCompllete);
             _cooldown.fillAmount = 0;
-        }
 
-        public void EnableInteraction()
-        {
-            _button.interactable = true;
         }
-
-        public void DisableInteraction()
+        public void SetAffordable(bool affordable)
         {
-            _button.interactable = false;
+            _canAfford = affordable;
+            SetInteractable();
         }
 
         public void ShowCooldown()
         {
             _cooldown.fillAmount = 1;
+            _isOnCooldown = true;
             _cooldownTween.Restart();
         }
 
@@ -70,5 +85,14 @@ namespace Gameplay.UI
         {
             SkillRequested?.Invoke(_data);
         }
+
+        private void OnCooldownCompllete()
+        {
+            _isOnCooldown = false;
+            SetInteractable();
+        }
+
+        private void SetInteractable() => _button.interactable = _canAfford && !_isOnCooldown;
+       
     }
 }

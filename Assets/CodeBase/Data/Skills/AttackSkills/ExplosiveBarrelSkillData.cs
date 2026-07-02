@@ -21,5 +21,14 @@ namespace Data
             ExplosiveBarrelSkill barrel = await _skillFactory.CreateSkillGameObject<ExplosiveBarrelSkill>(_prefab, pos);
             barrel.Init(_damage, _fuseDuration, _radius, _animationOverrideData);
         }
+
+        public override string GetDescription()
+        {
+            string description = _description
+            .Replace("{damage}", $"{_damage}")
+            .Replace("{fuseDuration}", $"{_fuseDuration}");
+
+            return description;
+        }
     }
 }
