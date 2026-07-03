@@ -27,7 +27,7 @@ namespace Gameplay.UI
 
             _view.ExitSettingsRequested += OnExitRequested;
 
-            _view.Init(_settings.CurrentQualitySettingName, PlayerPrefs.GetFloat(_settings.SFXSettingName), PlayerPrefs.GetFloat(_settings.AmbienceSettingName), PlayerPrefs.GetFloat(_settings.MusicSettingName));
+            _view.Init(_settings.CurrentQualitySettingName, _settings.SFXVolumeValue, _settings.AmbienceVolume, _settings.MusicVolume);
         }
 
         public void Dispose()

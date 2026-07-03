@@ -11,7 +11,7 @@ namespace Gameplay.Skills
             SetBool(IsDespawnHash, true);
         }
 
-        public void AEDespawn() => Destroy(gameObject);
+        public void AEDespawn() => Destroy(transform.root.gameObject);
         
     }
     

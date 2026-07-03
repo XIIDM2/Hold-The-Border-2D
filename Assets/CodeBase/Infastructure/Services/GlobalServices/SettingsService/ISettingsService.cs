@@ -4,10 +4,10 @@ namespace Infrastructure.Services
 {
     public interface ISettingsService
     {
-        string SFXSettingName { get; }
-        string AmbienceSettingName { get; }
-        string MusicSettingName { get; }
         string CurrentQualitySettingName { get; }
+        public float SFXVolumeValue { get; }
+        public float AmbienceVolume { get; }
+        public float MusicVolume { get; }
 
         public void Init();
         public void DecreaseQuality();

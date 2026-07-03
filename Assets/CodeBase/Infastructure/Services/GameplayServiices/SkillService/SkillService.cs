@@ -4,7 +4,6 @@ using Gameplay.Player;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer.Unity;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Infrastructure.Services
 {

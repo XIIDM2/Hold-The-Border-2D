@@ -32,6 +32,7 @@ namespace Gameplay
 
             for (int i = 0; i < _clipOverrides.Count; ++i)
             {
+
                 _clipOverrides[i] = new KeyValuePair<AnimationClip, AnimationClip>(_clipOverrides[i].Key, data.GetOverrideClip(_clipOverrides[i].Key));
             }
 
