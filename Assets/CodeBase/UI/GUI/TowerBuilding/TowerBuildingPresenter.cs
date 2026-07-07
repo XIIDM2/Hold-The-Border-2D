@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Data;
+using Gameplay.Player;
 using Gameplay.Towers;
 using Gameplay.Towers.BuildSite;
 using Infrastructure;
@@ -15,7 +16,7 @@ namespace Gameplay.UI
 {
     public class TowerBuildingPresenter : IAsyncStartable, IDisposable
     {
-        private List<TowerBuildingStatsView> _towerStatsViews = new List<TowerBuildingStatsView>();
+        private List<(TowerBuildingStatsView buildingView, int price)> _towerStatsTurples = new List<(TowerBuildingStatsView buildingView, int price)>();
 
         private readonly TowerBuildingView _view;
 
@@ -23,18 +24,21 @@ namespace Gameplay.UI
         private readonly ITowerSelectionService _selectionService;
         private readonly ITowerBuildService _buildService;
 
+        private readonly IPlayerController _player;
+
         private readonly IEventBus _eventBus;
 
         private readonly SceneController _controller;
         private readonly GameplayRegistry _registry;
         private readonly CancellationToken _ctc;
 
-        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, IEventBus eventBus, SceneController controller, GameplayRegistry registry, CancellationToken ctc)
+        public TowerBuildingPresenter(TowerBuildingView view, IUIFactory uIFactory, ITowerSelectionService selectionService, ITowerBuildService buildService, IPlayerController player, IEventBus eventBus, SceneController controller, GameplayRegistry registry, CancellationToken ctc)
         {
             _view = view;
             _UIFactory = uIFactory;
             _selectionService = selectionService;
             _buildService = buildService;
+            _player = player;
             _eventBus = eventBus;
             _controller = controller;
             _registry = registry;
@@ -59,11 +63,13 @@ namespace Gameplay.UI
 
                 towerPanelView.BuildRequested += BuildRequested;
 
-                _towerStatsViews.Add(towerPanelView);
+                _towerStatsTurples.Add((towerPanelView, towerData.BuildPrice));
             }
 
             _selectionService.BuildsiteSelected += ShowBuildingPanel;
             _selectionService.BuildSiteDeselected += HideBuildingPanel;
+
+            _player.GoldChanged += OnGoldChanged;
 
             _view.PanelCloseRequested += HideBuildingPanel;
 
@@ -74,11 +80,13 @@ namespace Gameplay.UI
             _selectionService.BuildsiteSelected -= ShowBuildingPanel;
             _selectionService.BuildSiteDeselected -= HideBuildingPanel;
 
+            _player.GoldChanged -= OnGoldChanged;
+
             _view.PanelCloseRequested -= HideBuildingPanel;
 
-            foreach (TowerBuildingStatsView towerPanelView in _towerStatsViews)
+            foreach ((TowerBuildingStatsView buildingView, int price) in _towerStatsTurples)
             {
-                towerPanelView.BuildRequested -= BuildRequested;
+                buildingView.BuildRequested -= BuildRequested;
             }
         }
 
@@ -94,6 +102,17 @@ namespace Gameplay.UI
             _eventBus.Publish(new UIStateChanged(UIStates.InActiveGameplay));
             _view.HideBuildingPanel();
             _controller.StartTime();
+        }
+
+        private void OnGoldChanged(int currentGold)
+        {
+
+            foreach ((TowerBuildingStatsView buildingView, int price) in _towerStatsTurples)
+            {
+                bool canAfford = currentGold >= price;
+
+                buildingView.SetBuildingButtonActive(canAfford);
+            }
         }
 
         private void BuildRequested(TowerType type)

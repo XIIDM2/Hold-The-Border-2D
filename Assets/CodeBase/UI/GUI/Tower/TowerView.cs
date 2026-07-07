@@ -108,15 +108,13 @@ namespace Gameplay.UI
             _toolTip.SetActive(false);
         }
 
-        public void ShowUpgradeButton()
+        public void SetInteractableUpgradeButton(bool interactable)
         {
-            _upgradeButton.interactable = true;
+            if (_upgradeButton.interactable == interactable) return;
+
+            _upgradeButton.interactable = interactable;
         }
 
-        public void HideUpgradeButton()
-        {
-            _upgradeButton.interactable = false;
-        }
 
         public void OnControllerPointerExit()
         {

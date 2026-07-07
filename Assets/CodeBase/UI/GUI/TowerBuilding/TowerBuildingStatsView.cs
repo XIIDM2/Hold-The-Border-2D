@@ -47,6 +47,13 @@ namespace Gameplay.UI
             _buildButton.onClick.RemoveListener(OnButtonClicked);
         }
 
+        public void SetBuildingButtonActive(bool active)
+        {
+            if (_buildButton.gameObject.activeSelf == active) return;
+
+            _buildButton.gameObject.SetActive(active);
+        }
+
         private void OnButtonClicked()
         {
             BuildRequested?.Invoke(_type);

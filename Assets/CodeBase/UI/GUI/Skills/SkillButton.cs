@@ -92,7 +92,15 @@ namespace Gameplay.UI
             SetInteractable();
         }
 
-        private void SetInteractable() => _button.interactable = _canAfford && !_isOnCooldown;
+        private void SetInteractable()
+        {
+            bool newValue = _canAfford && !_isOnCooldown;
+
+            if (_button.interactable == newValue) return;
+
+            _button.interactable = newValue;
+        }
+
        
     }
 }

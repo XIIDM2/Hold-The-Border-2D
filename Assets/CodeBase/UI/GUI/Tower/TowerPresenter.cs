@@ -10,8 +10,6 @@ namespace Gameplay.UI
 {
     public class TowerPresenter : IStartable, IDisposable
     {
-        private TowerController _tower;
-
         private TowerView _view;
 
         private readonly ITowerSelectionService _selectionService;
@@ -37,6 +35,8 @@ namespace Gameplay.UI
             _selectionService.TowerSelected += ShowTowerView;
             _selectionService.TowerDeselected += HideTowerView;
 
+            _player.GoldChanged += OnGoldChanged;
+
             _view.ControllerPointerExit += HideTowerView;
 
             _view.UpgradeButtonPointerEnter += ShowUpgradePanel;
@@ -53,6 +53,8 @@ namespace Gameplay.UI
             _selectionService.TowerSelected -= ShowTowerView;
             _selectionService.TowerDeselected -= HideTowerView;
 
+            _player.GoldChanged -= OnGoldChanged;
+
             _view.ControllerPointerExit -= HideTowerView;
 
             _view.UpgradeButtonPointerEnter -= ShowUpgradePanel;
@@ -66,16 +68,13 @@ namespace Gameplay.UI
 
         private void ShowTowerView(TowerController tower)
         {
-            _tower = tower;
-
             if (tower.CurrentTierIndex >= tower.MaxTier) _view.UpgradeButton.gameObject.SetActive(false);
 
             _view.ShowTowerPanel(tower.CurrentTierConfig.UpgradePrice.ToString(), tower.CurrentTierConfig.SellPrice.ToString(), tower.transform.position);
 
-            if (_player.Gold >= _tower.CurrentTierConfig.UpgradePrice) _view.ShowUpgradeButton();
-            else _view.HideUpgradeButton();
+            OnGoldChanged(_player.Gold);
 
-            _radiusVisualizerService.ShowVisualizer(tower.transform.position, _tower.CurrentTierConfig.AttackRadius);
+            _radiusVisualizerService.ShowVisualizer(tower.transform.position, _selectionService.Tower.CurrentTierConfig.AttackRadius);
         }
 
         private void HideTowerView()
@@ -87,25 +86,34 @@ namespace Gameplay.UI
         private void ShowUpgradePanel()
         {
             _view.ShowUpgradePanel(
-                _tower.CurrentTierConfig.Damage.ToString(), _tower.NextTierConfig.Damage.ToString(),
-                _tower.CurrentTierConfig.AttackCooldown.ToString(), _tower.NextTierConfig.AttackCooldown.ToString(),
-                _tower.CurrentTierConfig.AttackRadius.ToString(), _tower.NextTierConfig.AttackRadius.ToString());
+                _selectionService.Tower.CurrentTierConfig.Damage.ToString(), _selectionService.Tower.NextTierConfig.Damage.ToString(),
+                _selectionService.Tower.CurrentTierConfig.AttackCooldown.ToString(), _selectionService.Tower.NextTierConfig.AttackCooldown.ToString(),
+                _selectionService.Tower.CurrentTierConfig.AttackRadius.ToString(), _selectionService.Tower.NextTierConfig.AttackRadius.ToString());
 
-            _radiusVisualizerService.ShowVisualizer(_tower.transform.position, _tower.NextTierConfig.AttackRadius);
+            _radiusVisualizerService.ShowVisualizer(_selectionService.Tower.transform.position, _selectionService.Tower.NextTierConfig.AttackRadius);
         }
 
         private void HideUpgradePanel()
         {
             _view.HideUpgradePanel();
 
-            _radiusVisualizerService.ShowVisualizer(_tower.transform.position, _tower.CurrentTierConfig.AttackRadius);
+            _radiusVisualizerService.ShowVisualizer(_selectionService.Tower.transform.position, _selectionService.Tower.CurrentTierConfig.AttackRadius);
+        }
+
+        private void OnGoldChanged(int currentGold)
+        {
+            if (!_selectionService.Tower) return;
+
+            bool canAfford = currentGold >= _selectionService.Tower.CurrentTierConfig.UpgradePrice;
+
+            _view.SetInteractableUpgradeButton(canAfford);
         }
 
         private void OnUpgradeRequested()
         {
             if (_selectionService.Tower)
             {
-                _buildService.UpgradeTower(_tower);
+                _buildService.UpgradeTower(_selectionService.Tower);
                 _selectionService.ClearTowerSelection();
             }
 
@@ -117,14 +125,14 @@ namespace Gameplay.UI
         {
             if (_selectionService.Tower)
             {
-                _buildService.SellTower(_tower, _ctc).Forget();
+                _buildService.SellTower(_selectionService.Tower, _ctc).Forget();
                 _selectionService.ClearTowerSelection();
             }
         }
 
         private void OnStrategyChanged(int strategyIndex)
         {
-            if (_selectionService.Tower) _tower.Attack.SelectStrategy(strategyIndex);
+            if (_selectionService.Tower) _selectionService.Tower.Attack.SelectStrategy(strategyIndex);
         }
 
     }

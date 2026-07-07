@@ -77,8 +77,10 @@ public class AudioService : IAudioService, IDisposable
     {
         CreateAudioSystem();
 
+#pragma warning disable UDR0005 // Domain Reload Analyzer | We are using DI and Dispose() to clean subscription on static events
         CustomButton.ButtonClicked += PlaySound;
         CustomButton.ButtonHovered += PlaySound;
+#pragma warning restore UDR0005 // Domain Reload Analyzer
 
         _eventBus.Subscribe<LevelStartedEvent>(OnLevelStarted);
         _eventBus.Subscribe<InvokeSFX>(OnSFX);
