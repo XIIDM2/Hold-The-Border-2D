@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Data.WaveData
   _wavesConfigs:
   - _unitsConfigs:
-    - _type: 3
-      _amount: 5
+    - _type: 1
+      _amount: 1
       _intervalCurrent: 0
       _intervalNext: 0
       _path: 0
     _waveInterval: 0
-  _waveUnitsAmount: 15
-  _levelUnitTypes: 03000000
+  _waveUnitsAmount: 1
+  _levelUnitTypes: 01000000

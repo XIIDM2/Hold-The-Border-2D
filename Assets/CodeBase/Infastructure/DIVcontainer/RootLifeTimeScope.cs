@@ -1,7 +1,7 @@
-using Assets.CodeBase.Infastructure.Services;
 using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.UI;
+using Infastructure.Services;
 using Infrastructure.Factories;
 using Infrastructure.Services;
 using Infrastructure.Services.Bootstrappers;

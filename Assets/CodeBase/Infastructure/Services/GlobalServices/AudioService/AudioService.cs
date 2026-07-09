@@ -7,249 +7,252 @@ using UnityEngine;
 using UnityEngine.Pool;
 using VContainer.Unity;
 
-public class AudioService : IAudioService, IDisposable
-{
-    public const float DEFAULT_VALUE = 0.5f;
-    public float SFXVolume
+namespace Infastructure.Services
+{   
+    public class AudioService : IAudioService, IDisposable
     {
-        get
+        public const float DEFAULT_VALUE = 0.5f;
+        public float SFXVolume
         {
-            return _SFXVolume;
+            get
+            {
+                return _SFXVolume;
+            }
+            set
+            {
+                _SFXVolume = Mathf.Clamp01(value);
+            }
         }
-        set
+
+        public float AmbienceVolume
         {
-            _SFXVolume = Mathf.Clamp01(value);
+            get
+            {
+                return _ambience.volume;
+            }
+            set
+            {
+                _ambience.volume = value;
+            }
         }
-    }
 
-    public float AmbienceVolume
-    {
-        get
+        public float MusicVolume
         {
-            return _ambience.volume;
+            get
+            {
+                return _activeMusic.volume;
+            }
+            set
+            {
+                _activeMusic.volume = value;
+                _inactiveMusic.volume = value;
+            }
         }
-        set
+
+
+        private const string AUDIO_GAMEOBJECT_NAME = "AudioSystem";
+        private const string SFX_GAMEOBJECT_NAME = "SFX";
+        private const string MUSIC_GAMEOBJECT_NAME = "Music";
+        private const string AMBIENCE_GAMEOBJECT_NAME = "Ambience";
+
+        private const float PITCH_OFFSET = 0.15f;
+        private const int SFX_POOL_DEFAULT_CAPACITY = 10;
+        private const float FADE_DURATION = 0.4f;
+
+        private GameObject _audioGameObject;
+
+        private ObjectPool<AudioSource> _SFXPool;
+
+        private float _SFXVolume;
+        private AudioSource _activeMusic;
+        private AudioSource _inactiveMusic;
+        private AudioSource _ambience;
+
+        private IEventBus _eventBus;
+
+        public AudioService(IEventBus eventBus)
         {
-            _ambience.volume = value;
+            _eventBus = eventBus;
         }
-    }
 
-    public float MusicVolume
-    {
-        get
+        public void Init()
         {
-            return _activeMusic.volume;
-        }
-        set
-        {
-            _activeMusic.volume = value;
-            _inactiveMusic.volume = value;
-        }
-    }
-
-
-    private const string AUDIO_GAMEOBJECT_NAME = "AudioSystem";
-    private const string SFX_GAMEOBJECT_NAME = "SFX";
-    private const string MUSIC_GAMEOBJECT_NAME = "Music";
-    private const string AMBIENCE_GAMEOBJECT_NAME = "Ambience";
-
-    private const float PITCH_OFFSET = 0.15f;
-    private const int SFX_POOL_DEFAULT_CAPACITY = 10;
-    private const float FADE_DURATION = 0.4f;
-
-    private GameObject _audioGameObject;
-
-    private ObjectPool<AudioSource> _SFXPool;
-
-    private float _SFXVolume;
-    private AudioSource _activeMusic;
-    private AudioSource _inactiveMusic;
-    private AudioSource _ambience;
-
-    private IEventBus _eventBus;
-
-    public AudioService(IEventBus eventBus)
-    {
-        _eventBus = eventBus;
-    }
-
-    public void Init()
-    {
-        CreateAudioSystem();
+            CreateAudioSystem();
 
 #pragma warning disable UDR0005 // Domain Reload Analyzer | We are using DI and Dispose() to clean subscription on static events
-        CustomButton.ButtonClicked += PlaySound;
-        CustomButton.ButtonHovered += PlaySound;
+            CustomButton.ButtonClicked += PlaySound;
+            CustomButton.ButtonHovered += PlaySound;
 #pragma warning restore UDR0005 // Domain Reload Analyzer
 
-        _eventBus.Subscribe<LevelStartedEvent>(OnLevelStarted);
-        _eventBus.Subscribe<InvokeSFX>(OnSFX);
-    }
-
-    public void Dispose()
-    {
-        CustomButton.ButtonClicked -= PlaySound;
-        CustomButton.ButtonHovered -= PlaySound;
-
-        _eventBus.Unsubscribe<LevelStartedEvent>(OnLevelStarted);
-        _eventBus.Unsubscribe<InvokeSFX>(OnSFX);
-    }
-
-
-    public void PlaySound(AudioClip clip)
-    {
-        PlaySoundAsync(clip).Forget();
-    }
-
-    public async UniTask PlayMusic(AudioClip clip)
-    {
-        if (_activeMusic.clip == null)
-        {
-            _activeMusic.clip = clip;
-            _activeMusic.Play();
+            _eventBus.Subscribe<LevelStartedEvent>(OnLevelStarted);
+            _eventBus.Subscribe<InvokeSFX>(OnSFX);
         }
-        else
+
+        public void Dispose()
         {
-            _inactiveMusic.clip = clip;
-            _inactiveMusic.volume = 0;
-            _inactiveMusic.Play();
+            CustomButton.ButtonClicked -= PlaySound;
+            CustomButton.ButtonHovered -= PlaySound;
 
-            float currentVolume = _activeMusic.volume;
-            float percentage = 0;
+            _eventBus.Unsubscribe<LevelStartedEvent>(OnLevelStarted);
+            _eventBus.Unsubscribe<InvokeSFX>(OnSFX);
+        }
 
-            while (_activeMusic.volume > 0)
+
+        public void PlaySound(AudioClip clip)
+        {
+            PlaySoundAsync(clip).Forget();
+        }
+
+        public async UniTask PlayMusic(AudioClip clip)
+        {
+            if (_activeMusic.clip == null)
             {
-                _activeMusic.volume = Mathf.Lerp(currentVolume, 0, percentage);
-                _inactiveMusic.volume = Mathf.Lerp(0, currentVolume, percentage);
+                _activeMusic.clip = clip;
+                _activeMusic.Play();
+            }
+            else
+            {
+                _inactiveMusic.clip = clip;
+                _inactiveMusic.volume = 0;
+                _inactiveMusic.Play();
 
-                percentage += FADE_DURATION * Time.deltaTime;
+                float currentVolume = _activeMusic.volume;
+                float percentage = 0;
 
-                await UniTask.WaitForEndOfFrame();
+                while (_activeMusic.volume > 0)
+                {
+                    _activeMusic.volume = Mathf.Lerp(currentVolume, 0, percentage);
+                    _inactiveMusic.volume = Mathf.Lerp(0, currentVolume, percentage);
+
+                    percentage += FADE_DURATION * Time.deltaTime;
+
+                    await UniTask.WaitForEndOfFrame();
+                }
+
+                _activeMusic.Stop();
+
+                (_activeMusic, _inactiveMusic) = (_inactiveMusic, _activeMusic);
+            }
+        }
+
+        public void PlayAmbience(AudioClip clip)
+        {
+            _ambience.clip = clip;
+            _ambience.Play();
+        }
+
+        private void CreateAudioSystem()
+        {
+            _audioGameObject = new GameObject(AUDIO_GAMEOBJECT_NAME);
+
+            _SFXPool = new ObjectPool<AudioSource>
+            (
+                createFunc: CreateSFXSource,
+                actionOnGet: GetSFXSource,
+                actionOnRelease: ReleaseSFXSource,
+                actionOnDestroy: DestroySFXSource,
+                collectionCheck: true,
+                defaultCapacity: SFX_POOL_DEFAULT_CAPACITY,
+                maxSize: 20
+            );
+
+            AudioSource[] SFXSourses = new AudioSource[SFX_POOL_DEFAULT_CAPACITY];
+
+            for (int i = 0; i < SFX_POOL_DEFAULT_CAPACITY; i++)
+            {
+                SFXSourses[i] = _SFXPool.Get();
+
             }
 
-            _activeMusic.Stop();
+            for (int i = 0; i < SFX_POOL_DEFAULT_CAPACITY; i++)
+            {
+                _SFXPool.Release(SFXSourses[i]);
+            }
 
-            (_activeMusic, _inactiveMusic) = (_inactiveMusic, _activeMusic);
+            CreateAmbienceSource();
+            CreateMusicSource();
+
+            UnityEngine.Object.DontDestroyOnLoad(_audioGameObject);
         }
-    }
 
-    public void PlayAmbience(AudioClip clip)
-    {
-        _ambience.clip = clip;
-        _ambience.Play();
-    }
-
-    private void CreateAudioSystem()
-    {
-        _audioGameObject = new GameObject(AUDIO_GAMEOBJECT_NAME);
-
-        _SFXPool = new ObjectPool<AudioSource>
-        (
-            createFunc: CreateSFXSource,
-            actionOnGet: GetSFXSource,
-            actionOnRelease: ReleaseSFXSource,
-            actionOnDestroy: DestroySFXSource,
-            collectionCheck: true,
-            defaultCapacity: SFX_POOL_DEFAULT_CAPACITY,
-            maxSize: 20
-        );
-
-        AudioSource[] SFXSourses = new AudioSource[SFX_POOL_DEFAULT_CAPACITY];
-
-        for (int i = 0; i < SFX_POOL_DEFAULT_CAPACITY; i++)
+        private AudioSource CreateSFXSource()
         {
-            SFXSourses[i] = _SFXPool.Get();
+            GameObject SFXGameObject = new GameObject(SFX_GAMEOBJECT_NAME);
+            SFXGameObject.transform.SetParent(_audioGameObject.transform);
+            AudioSource SFX = SFXGameObject.AddComponent<AudioSource>();
 
+            SFX.playOnAwake = false;
+            SFX.volume = _SFXVolume;
+
+            return SFX;
         }
 
-        for (int i = 0; i < SFX_POOL_DEFAULT_CAPACITY; i++)
+        private void GetSFXSource(AudioSource source)
         {
-            _SFXPool.Release(SFXSourses[i]);
+            source.gameObject.SetActive(true);
+            source.volume = _SFXVolume;
         }
 
-        CreateAmbienceSource();
-        CreateMusicSource();
+        private void ReleaseSFXSource(AudioSource source)
+        {
+            source.gameObject.SetActive(false);
+        }
 
-        GameObject.DontDestroyOnLoad(_audioGameObject);
+        private void DestroySFXSource(AudioSource source)
+        {
+            UnityEngine.Object.Destroy(source.gameObject);
+        }
+
+        private void CreateAmbienceSource()
+        {
+            GameObject AmbienceGameObject = new GameObject(AMBIENCE_GAMEOBJECT_NAME);
+            AmbienceGameObject.transform.SetParent(_audioGameObject.transform);
+            _ambience = AmbienceGameObject.AddComponent<AudioSource>();
+
+            _ambience.playOnAwake = false;
+            _ambience.volume = DEFAULT_VALUE;
+        }
+
+        private void CreateMusicSource()
+        {
+            GameObject MusicGameObject = new GameObject(MUSIC_GAMEOBJECT_NAME);
+            MusicGameObject.transform.SetParent(_audioGameObject.transform);
+
+            _activeMusic = MusicGameObject.AddComponent<AudioSource>();
+            _inactiveMusic = MusicGameObject.AddComponent<AudioSource>();
+
+            _activeMusic.playOnAwake = false;
+            _inactiveMusic.playOnAwake = false;
+            _activeMusic.loop = true;
+            _inactiveMusic.loop = true;
+
+            _activeMusic.volume = DEFAULT_VALUE;
+            _inactiveMusic.volume = 0.0f;
+        }
+
+        private async UniTask PlaySoundAsync(AudioClip clip)
+        {
+            AudioSource SFX = _SFXPool.Get();
+
+            SFX.pitch = UnityEngine.Random.Range(1 - PITCH_OFFSET, 1 + PITCH_OFFSET);
+            SFX.PlayOneShot(clip);
+
+            await UniTask.WaitForSeconds(clip.length, true);
+
+            _SFXPool.Release(SFX);
+        }
+
+
+        private void OnSFX(InvokeSFX SFX)
+        {
+            PlaySound(SFX.Sound);
+        }
+
+        private void OnLevelStarted(LevelStartedEvent levelClips)
+        {
+            if (levelClips.Music) PlayMusic(levelClips.Music).Forget();
+            if (levelClips.Ambience) PlayAmbience(levelClips.Ambience);
+        }
+
     }
-
-    private AudioSource CreateSFXSource()
-    {
-        GameObject SFXGameObject = new GameObject(SFX_GAMEOBJECT_NAME);
-        SFXGameObject.transform.SetParent(_audioGameObject.transform);
-        AudioSource SFX = SFXGameObject.AddComponent<AudioSource>();
-
-        SFX.playOnAwake = false;
-        SFX.volume = _SFXVolume;
-
-        return SFX;
-    }
-
-    private void GetSFXSource(AudioSource source)
-    {
-        source.gameObject.SetActive(true);
-        source.volume = _SFXVolume;
-    }
-
-    private void ReleaseSFXSource(AudioSource source)
-    {
-        source.gameObject.SetActive(false);
-    }
-
-    private void DestroySFXSource(AudioSource source)
-    {
-        GameObject.Destroy(source.gameObject);
-    }
-
-    private void CreateAmbienceSource()
-    {
-        GameObject AmbienceGameObject = new GameObject(AMBIENCE_GAMEOBJECT_NAME);
-        AmbienceGameObject.transform.SetParent(_audioGameObject.transform);
-        _ambience = AmbienceGameObject.AddComponent<AudioSource>();
-
-        _ambience.playOnAwake = false;
-        _ambience.volume = DEFAULT_VALUE;
-    }
-
-    private void CreateMusicSource()
-    {
-        GameObject MusicGameObject = new GameObject(MUSIC_GAMEOBJECT_NAME);
-        MusicGameObject.transform.SetParent(_audioGameObject.transform);
-
-        _activeMusic = MusicGameObject.AddComponent<AudioSource>();
-        _inactiveMusic = MusicGameObject.AddComponent<AudioSource>();
-
-        _activeMusic.playOnAwake = false;
-        _inactiveMusic.playOnAwake = false;
-        _activeMusic.loop = true;
-        _inactiveMusic.loop = true;
-
-        _activeMusic.volume = DEFAULT_VALUE;
-        _inactiveMusic.volume = 0.0f;
-    }
-
-    private async UniTask PlaySoundAsync(AudioClip clip)
-    {
-        AudioSource SFX = _SFXPool.Get();
-
-        SFX.pitch = UnityEngine.Random.Range(1 - PITCH_OFFSET, 1 + PITCH_OFFSET);
-        SFX.PlayOneShot(clip);
-
-        await UniTask.WaitForSeconds(clip.length, true);
-
-        _SFXPool.Release(SFX);
-    }
-
-
-    private void OnSFX(InvokeSFX SFX)
-    {
-        PlaySound(SFX.Sound);
-    }
-
-    private void OnLevelStarted(LevelStartedEvent levelClips)
-    {
-       if (levelClips.Music) PlayMusic(levelClips.Music).Forget();   
-       if (levelClips.Ambience) PlayAmbience(levelClips.Ambience);
-    }
-
 }

@@ -5,5 +5,6 @@ namespace Gameplay.UI
         InActiveGameplay,
         InTowerBuildingPanel,
         InPausePanel,
+        InResultPanel,
     }
 }

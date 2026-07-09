@@ -3,33 +3,36 @@ using UnityEngine;
 using VContainer;
 using Infrastructure.Events;
 
-public class TowerAudio : MonoBehaviour
+namespace Gameplay.Towers
 {
-    private AudioClip _attackSound;
-    private AudioClip _buildSound;
-
-    private IEventBus _eventBus;
-
-    [Inject]
-    public void Construct(IEventBus eventBus)
+    public class TowerAudio : MonoBehaviour
     {
-        _eventBus = eventBus;
-    }
+        private AudioClip _attackSound;
+        private AudioClip _buildSound;
 
-    public void Init(AudioClip buildSound, AudioClip attackSound)
-    {
-        _buildSound = buildSound;
-        _attackSound = attackSound;
-    }
+        private IEventBus _eventBus;
 
-    public void PlayBuildSound()
-    {
-        _eventBus.Publish(new InvokeSFX(_buildSound));
-    }
+        [Inject]
+        public void Construct(IEventBus eventBus)
+        {
+            _eventBus = eventBus;
+        }
+
+        public void Init(AudioClip buildSound, AudioClip attackSound)
+        {
+            _buildSound = buildSound;
+            _attackSound = attackSound;
+        }
+
+        public void PlayBuildSound()
+        {
+            _eventBus.Publish(new InvokeSFX(_buildSound));
+        }
 
 
-    public void OnAttack()
-    {
-        _eventBus.Publish(new InvokeSFX(_attackSound));
+        public void OnAttack()
+        {
+            _eventBus.Publish(new InvokeSFX(_attackSound));
+        }
     }
 }

@@ -36,7 +36,6 @@ namespace Infrastructure.Services
 
             if (buildPrice > _player.Gold)
             {
-                Debug.Log("Not enough gold");
                 return;
             }
 
@@ -44,7 +43,7 @@ namespace Infrastructure.Services
 
             if (!tower)
             {
-                Debug.LogError("Failed to build tower");
+                Debug.LogError($"Failed to build {tower}");
                 return;
             }
 
@@ -60,7 +59,6 @@ namespace Infrastructure.Services
 
             if (upgradePrice > _player.Gold)
             {
-                Debug.Log($"Not enough gold: Player Gold:{_player.Gold}, Required Gold: {tower.CurrentTierConfig.UpgradePrice}");
                 return;
             }
 
@@ -78,7 +76,7 @@ namespace Infrastructure.Services
 
             if (!buildSite)
             {
-                Debug.LogError("Failed to sell tower");
+                Debug.LogError($"Failed to sell {tower}");
                 return;
             }
 

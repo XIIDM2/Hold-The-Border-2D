@@ -56,6 +56,11 @@ namespace Gameplay.UI
             _pausePanel.SetActive(false);
         }
 
+        public void HidePauseButton()
+        {
+            _pauseButton.gameObject.SetActive(false);
+        }
+
         private void OnPauseButtonClicked()
         {
             PauseRequested?.Invoke();

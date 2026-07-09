@@ -27,6 +27,8 @@ namespace Gameplay.UI
             _view.RestartRequested += OnRestartRequested;
             _view.MainMenuRequested += OnMainMenuRequested;
 
+            _eventBus.Subscribe<UIStateChanged>(OnUIStateChanged);
+
         }
 
         public void Dispose()
@@ -35,6 +37,8 @@ namespace Gameplay.UI
             _view.ContinueRequested -= OnContinueRequested;
             _view.RestartRequested -= OnRestartRequested;
             _view.MainMenuRequested -= OnMainMenuRequested;
+
+            _eventBus.Unsubscribe<UIStateChanged>(OnUIStateChanged);
         }
 
         private void OnPauseRequested()
@@ -49,6 +53,15 @@ namespace Gameplay.UI
             _eventBus.Publish(new UIStateChanged(UIStates.InActiveGameplay));
             _controller.StartTime();
             _view.HidePanel();
+        }
+
+        private void OnUIStateChanged(UIStateChanged state)
+        {
+            if (state.CurrentState == UIStates.InResultPanel)
+            {
+                _view.HidePanel();
+                _view.HidePauseButton();
+            }
         }
 
         private void OnRestartRequested()

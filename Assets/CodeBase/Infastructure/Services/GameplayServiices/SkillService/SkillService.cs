@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using Data;
 using Gameplay.Player;
+using Infastructure.Services;
 using UnityEngine;
 using UnityEngine.Events;
 using VContainer.Unity;

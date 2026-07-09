@@ -1,4 +1,5 @@
 using Infrastructure;
+using Infrastructure.Events;
 using Infrastructure.Services;
 using System;
 using VContainer.Unity;
@@ -9,12 +10,15 @@ namespace Gameplay.UI
     {
         private readonly ResultView _view;
 
+        private readonly IEventBus _eventBus;
+
         private readonly ILevelService _levelService;
         private readonly SceneController _controller;
 
-        public ResultPresenter(ResultView view, ILevelService manager, SceneController controller)
+        public ResultPresenter(ResultView view, IEventBus eventBus, ILevelService manager, SceneController controller)
         {
             _view = view;
+            _eventBus = eventBus;
             _levelService = manager;
             _controller = controller;
         }
@@ -39,11 +43,13 @@ namespace Gameplay.UI
 
         private void OnVictory()
         {
+            _eventBus.Publish(new UIStateChanged(UIStates.InResultPanel));
             _view.ShowVictoryPanel();
         }
 
         private void OnDefeat()
         {
+            _eventBus.Publish(new UIStateChanged(UIStates.InResultPanel));
             _view.ShowDefeatPanel();
         }
 

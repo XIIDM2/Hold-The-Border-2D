@@ -70,7 +70,9 @@ namespace Gameplay.Towers
                 _currentStrategy = targetStrategy;
                 SelectTarget();
             }
+#if UNITY_EDITOR
             else Debug.LogWarning("Strategy Index not found");
+#endif
         }
 
         public void SelectTarget()

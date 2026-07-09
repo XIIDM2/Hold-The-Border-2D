@@ -84,13 +84,13 @@ namespace Gameplay.UI
 
         private void OnUIStateChanged(UIStateChanged state)
         {
-            if (state.CurrentState == UIStates.InTowerBuildingPanel || state.CurrentState == UIStates.InPausePanel)
-            {
-                _view.HideButtonsPanel();
-            }
-            else if (state.CurrentState == UIStates.InActiveGameplay)
+            if (state.CurrentState == UIStates.InActiveGameplay)
             {
                 _view.ShowButtonsPanel();
+            }
+            else
+            {
+                _view.HideButtonsPanel();
             }
         }
 

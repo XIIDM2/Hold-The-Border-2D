@@ -50,7 +50,6 @@ namespace Gameplay.Player
         {
             if (Gold < amount)
             {
-                Debug.LogWarning("Not Enough Gold");
                 return false;
             }
 

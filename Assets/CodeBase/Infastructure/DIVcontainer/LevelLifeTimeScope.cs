@@ -6,6 +6,7 @@ using Infrastructure.Factories;
 using Infrastructure.Services;
 using Infrastructure.Services.Bootstrappers;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using VContainer;
 using VContainer.Unity;
 
@@ -23,6 +24,7 @@ namespace Infrastructure.DI
             builder.RegisterInstance(_LevelData);
             builder.RegisterInstance(_waveData);
             builder.RegisterComponentInHierarchy<LevelConfig>();
+            builder.RegisterComponentInHierarchy<Physics2DRaycaster>();
 
             builder.Register<IUnitFactory, UnitFactory>(Lifetime.Singleton);
             builder.Register<ITowerFactory, TowerFactory>(Lifetime.Singleton);

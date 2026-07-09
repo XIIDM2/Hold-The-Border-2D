@@ -2,9 +2,8 @@ using Data;
 using Gameplay.Projectiles;
 using Gameplay.Towers.Units;
 using Infrastructure.Interfaces;
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -13,9 +12,9 @@ namespace Gameplay.Towers
     public class TowerAttackByUnits : BaseTowerAttack, IAttackerRequireable
     {
         private GameObject _unitsVisualPrefab;
-        private Projectile _projectilePrefab; 
+        private Projectile _projectilePrefab;
 
-        private List<TowerUnitAnimation> _attackers = new List<TowerUnitAnimation>();
+        private TowerUnitAnimation[] _attackers = Array.Empty<TowerUnitAnimation>();
 
         private TowerAnimation _animation;
         private TowerAudio _audio;
@@ -84,9 +83,7 @@ namespace Gameplay.Towers
                 _animation.UpgradeAnimationCompleted -= attacker.TowerUnitSpawn;
             }
 
-            _attackers.Clear();
-
-            _attackers = _unitsVisualPrefab.GetComponentsInChildren<TowerUnitAnimation>().ToList();
+            _attackers = _unitsVisualPrefab.GetComponentsInChildren<TowerUnitAnimation>();
 
             foreach (TowerUnitAnimation attacker in _attackers)
             {
@@ -94,7 +91,7 @@ namespace Gameplay.Towers
                 _animation.UpgradeAnimationCompleted += attacker.TowerUnitSpawn;
             }
 
-            _unitsSharedAttackCooldown = new WaitForSeconds(_cooldown / _attackers.Count);
+            _unitsSharedAttackCooldown = new WaitForSeconds(_cooldown / _attackers.Length);
         }
 
         private void InitUnitVisualPrefab(GameObject prefab)
@@ -126,7 +123,7 @@ namespace Gameplay.Towers
 
         protected override IEnumerator AttackRoutine()
         {
-            if (_attackers.Count == 0) yield break;
+            if (_attackers.Length == 0) yield break;
 
             while (_targetsInRange.Count > 0)
             {

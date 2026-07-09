@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SFXRegistry
   _mainMenuMusic: {fileID: 8300000, guid: d4c8955ed82f10b4b971f81287a9b1c1, type: 3}
   _startWaveSound: {fileID: 8300000, guid: b80651c1a1edfce489c4ad99eec9cc71, type: 3}
-  _victorySound: {fileID: 8300000, guid: 891c879f43d23d140a65d2026559ce6c, type: 3}
-  _defeatSound: {fileID: 8300000, guid: 8c25e5808ebdf7a4f9ab6f53e1801093, type: 3}
+  _victorySound: {fileID: 8300000, guid: 3aa5514222943474ea88488d597191cf, type: 3}
+  _defeatSound: {fileID: 8300000, guid: a309f15ec43546543881e2485849ccd5, type: 3}
   _coinsSound: {fileID: 8300000, guid: 002382707250de942829ff9062504840, type: 3}
   _hoverSound: {fileID: 8300000, guid: f44b7388dcf5dd14a981e85a3aa5a9f6, type: 3}
   _clickSound: {fileID: 8300000, guid: c230389cdba1a4d47bda71c4d0e2b6f9, type: 3}

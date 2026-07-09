@@ -2,6 +2,7 @@ using Core.FSM;
 using Cysharp.Threading.Tasks;
 using Gameplay.Units.Enemy;
 using System;
+using System.Threading;
 
 
 namespace Gameplay.Units.FSM
@@ -10,6 +11,7 @@ namespace Gameplay.Units.FSM
     {
         private const float TIME_BEFORE_DISSOLVE = 2.0f;
         private bool _isAnimationComplete = false;
+        private CancellationToken _ctc;
 
         public override State<EnemyUnitController> HandleTransitions(EnemyUnitController controller)
         {
@@ -21,6 +23,7 @@ namespace Gameplay.Units.FSM
         public override void Enter(EnemyUnitController controller)
         {
             base.Enter(controller);
+            _ctc = controller.GetCancellationTokenOnDestroy();
 
             _isAnimationComplete = false;
 
@@ -37,7 +40,6 @@ namespace Gameplay.Units.FSM
         {
             base.Exit(controller);
 
-
             controller.Animation.DissolveAnimationComplete -= OnAnimationComplete;
 
             controller.Animation.SetBool(controller.Animation.IsDissolvingHash, false);
@@ -45,7 +47,7 @@ namespace Gameplay.Units.FSM
 
         private async UniTaskVoid WaitBeforeDissolve(EnemyUnitController controller)
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(TIME_BEFORE_DISSOLVE));
+            await UniTask.Delay(TimeSpan.FromSeconds(TIME_BEFORE_DISSOLVE), cancellationToken : _ctc);
 
             controller.Animation.SetBool(controller.Animation.IsDissolvingHash, true);
         }

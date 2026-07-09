@@ -4,6 +4,7 @@ using Infrastructure.Events;
 using Infrastructure.Interfaces;
 using Infrastructure.Services;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 
@@ -16,6 +17,10 @@ namespace Gameplay.Skills
         private int _damage;
         private float _radius;
 
+        private const string ENEMY_LAYER_MASK_NAME = "Enemy";
+        private List<Collider2D> _enemiesInExplosionRadius = new();
+        private ContactFilter2D _enemyFilter;
+            
         private CircleCollider2D _collider;
         private ExplosiveBarrelAnimation _animation;
 
@@ -31,6 +36,10 @@ namespace Gameplay.Skills
         {
             _collider = GetComponent<CircleCollider2D>();
             _animation= GetComponentInChildren<ExplosiveBarrelAnimation>();
+
+            _enemyFilter = new ContactFilter2D();
+            _enemyFilter.SetLayerMask(LayerMask.GetMask(ENEMY_LAYER_MASK_NAME));
+            _enemyFilter.useTriggers = true;
         }
 
         private void OnEnable()
@@ -66,9 +75,9 @@ namespace Gameplay.Skills
         {
             _eventBus.Publish(new InvokeSFX(_explosionSound));
 
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, _radius);
+            Physics2D.OverlapCircle(transform.position, _radius, _enemyFilter, _enemiesInExplosionRadius);
 
-            foreach (Collider2D hit in hits)
+            foreach (Collider2D hit in _enemiesInExplosionRadius)
             {
                 if (hit.transform.root.TryGetComponent(out EnemyUnitController enemy))
                 {

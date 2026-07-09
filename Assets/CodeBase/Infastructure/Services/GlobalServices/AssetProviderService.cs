@@ -7,7 +7,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
 
-namespace Assets.CodeBase.Infastructure.Services
+namespace Infastructure.Services
 {
     public class AssetProviderService : IAssetProviderService
     {
