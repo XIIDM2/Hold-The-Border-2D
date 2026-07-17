@@ -36,6 +36,12 @@ TODO - добавить gif
 ---
 
 ## Используемые технологии и библиотеки
+1. [VContainer](https://vcontainer.hadashikick.jp/) — DI-контейнер, используется для внедрения зависимостей
+2. [UniTask](https://github.com/cysharp/unitask) — библиотека, обеспечивающая эффективную интеграцию async/await без выделения памяти для Unity
+3. [DOTween (HOTween v2)](https://dotween.demigiant.com/index.php) — библиотека твинов, используется для анимации объектов в Unity
+4. [Addressables](https://docs.unity3d.com/Packages/com.unity.addressables@3.1/manual/index.html) — пакет Unity, используется для асинхронной загрузки и выгрузки ассетов
+5. [Input System](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.19/manual/index.html) — пакет Unity, используется для обработки пользовательского ввода
+6. [Project Auditor](https://docs.unity3d.com/Packages/com.unity.project-auditor@2.0/manual/index.html) — пакет Unity, содержащий набор аналитических инструментов для выявления потенциальных проблем в проекте
 
 ---
 
