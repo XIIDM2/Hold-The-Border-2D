@@ -1,6 +1,6 @@
 # Hold The Border 2D
 
-Hold The Border 2D — это 2D-прототип Tower Defense, цель которого — не дать врагам прорваться через оборону.
+Hold The Border 2D — это 2D-прототип Tower Defense
 
 TODO - добавить gif
 
