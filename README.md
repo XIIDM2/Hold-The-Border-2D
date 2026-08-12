@@ -2,7 +2,7 @@
 
 Hold The Border 2D — это 2D-прототип Tower Defense
 
-TODO - добавить gif
+![Demo](demo.gif)
 
 ---
 
