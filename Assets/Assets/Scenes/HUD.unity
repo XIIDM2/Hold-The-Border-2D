@@ -168,6 +168,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2206557516348819122, guid: 8cfed3177cbc1f14a971adb7c5fafed7, type: 3}
+      propertyPath: m_text
+      value: Attack Closest to base enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2557554514756003932, guid: 8cfed3177cbc1f14a971adb7c5fafed7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
