@@ -78,6 +78,7 @@ namespace Gameplay.UI
         {
             _cooldown.fillAmount = 1;
             _isOnCooldown = true;
+            SetInteractable();
             _cooldownTween.Restart();
         }
 

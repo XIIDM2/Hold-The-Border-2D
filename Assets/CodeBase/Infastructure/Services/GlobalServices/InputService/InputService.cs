@@ -8,9 +8,9 @@ namespace Infrastructure.Services
 {
     public class InputService : IInputService, IStartable, IDisposable
     {
-        private Action<Vector2> SkillTargeted;
-        private Action SkillCanceled;
-        private Action<Vector2> SkillPositionChanged;
+        public Vector2 PointerPosition => Pointer.current != null ? Pointer.current.position.ReadValue() : Vector2.zero;
+        public event Action<Vector2> SkillTargeted;
+        public event Action SkillCanceled;
 
         private InputSystem_Actions _actions;
         private Camera _camera;
@@ -21,14 +21,12 @@ namespace Infrastructure.Services
 
             _actions.SkillTargeting.ConfirmTarget.performed += OnConfirmTarget;
             _actions.SkillTargeting.CancelTarget.performed += OnCancelTarget;
-            _actions.SkillTargeting.GetTargetPosition.performed += OnGetTargetPosition;
         }
 
         public void Dispose()
         {
             _actions.SkillTargeting.ConfirmTarget.performed -= OnConfirmTarget;
             _actions.SkillTargeting.CancelTarget.performed -= OnCancelTarget;
-            _actions.SkillTargeting.GetTargetPosition.performed -= OnGetTargetPosition;
 
             _actions.Dispose();
         }
@@ -45,25 +43,13 @@ namespace Infrastructure.Services
 
             SkillTargeted = null;
             SkillCanceled = null;
-            SkillPositionChanged = null;
 
             _actions.SkillTargeting.Disable();
         }
 
-        public void HandleTargeting(Action<Vector2> confirmTarget, Action cancelTarget, Action<Vector2> positionChanged)
-        {
-
-            SkillTargeted = confirmTarget;
-            SkillCanceled = cancelTarget;
-            SkillPositionChanged = positionChanged;
-
-            EnableSkillMap();
-        }
-
         private void OnConfirmTarget(InputAction.CallbackContext context)
         {
-            Vector3 worldPos = _camera.ScreenToWorldPoint(_actions.SkillTargeting.GetTargetPosition.ReadValue<Vector2>());
-            SkillTargeted?.Invoke(worldPos);
+            SkillTargeted?.Invoke(_camera.ScreenToWorldPoint(PointerPosition));
             DisableSkillMap();
         }
 
@@ -72,12 +58,5 @@ namespace Infrastructure.Services
             SkillCanceled?.Invoke();
             DisableSkillMap();
         }
-
-        private void OnGetTargetPosition(InputAction.CallbackContext context)
-        {
-            Vector3 worldPos = _camera.ScreenToWorldPoint(context.ReadValue<Vector2>());
-            SkillPositionChanged?.Invoke(worldPos);
-        }
-
     }
 }
