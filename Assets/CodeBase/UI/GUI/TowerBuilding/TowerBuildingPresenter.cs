@@ -59,7 +59,7 @@ namespace Gameplay.UI
                     cancellation
                 );
 
-                towerPanelView.gameObject.transform.SetParent(_view.BuildingPanel.transform);
+                towerPanelView.gameObject.transform.SetParent(_view.BuildingPanel.transform, false);
 
                 towerPanelView.BuildRequested += BuildRequested;
 

@@ -491,6 +491,9 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_StaticBatching: 1
     m_DynamicBatching: 0
+  - m_BuildTarget: WebGL
+    m_StaticBatching: 0
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -511,7 +514,10 @@ PlayerSettings:
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding: []
-  m_BuildTargetDefaultTextureCompressionFormat: []
+  m_BuildTargetDefaultTextureCompressionFormat:
+  - serializedVersion: 3
+    m_BuildTarget: WebGL
+    m_Formats: 05000000
   playModeTestRunnerEnabled: 0
   runPlayModeTestAsEditModeTest: 0
   actionOnDotNetUnhandledException: 1
@@ -750,7 +756,7 @@ PlayerSettings:
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
   webGLMemorySize: 32
-  webGLExceptionSupport: 1
+  webGLExceptionSupport: 3
   webGLNameFilesAsHashes: 0
   webGLShowDiagnostics: 0
   webGLDataCaching: 1
@@ -791,7 +797,7 @@ PlayerSettings:
     QNX: DOTWEEN;DOTWEEN_UITOOLKIT
     Standalone: DOTWEEN;UNITASK_DOTWEEN_SUPPORT;DOTWEEN_UITOOLKIT
     VisionOS: DOTWEEN;DOTWEEN_UITOOLKIT
-    WebGL: DOTWEEN;DOTWEEN_UITOOLKIT
+    WebGL: DOTWEEN;DOTWEEN_UITOOLKIT;UNITASK_DOTWEEN_SUPPORT
     Windows Store Apps: DOTWEEN;DOTWEEN_UITOOLKIT
     XboxOne: DOTWEEN;DOTWEEN_UITOOLKIT
     iPhone: DOTWEEN;DOTWEEN_UITOOLKIT

@@ -44,7 +44,7 @@ namespace Gameplay.UI
             foreach (SkillData skill in _registry.SkillDatas)
             {
                 SkillButton button = await _factory.CreateSkillButton(skill, _ctc);
-                button.transform.SetParent(_view.SkillsPanel.transform);
+                button.transform.SetParent(_view.SkillsPanel.transform, false);
 
                 button.SkillRequested += OnSkillRequested;
 

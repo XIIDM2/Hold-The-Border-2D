@@ -37,7 +37,7 @@ namespace Gameplay.UI
             {
                 LevelButton button = await _factory.CreateLevelButton(data.LevelName, data.AddressablesLabel, _ctc);
 
-                button.gameObject.transform.SetParent(_view.LevelPanel.transform);
+                button.gameObject.transform.SetParent(_view.LevelPanel.transform, false);
 
                 button.ButtonClicked += OnLevelButtonClicked;
 
